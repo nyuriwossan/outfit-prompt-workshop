@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>テスト | 衣装プロンプト工房</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .t-summary { font-family: var(--serif); font-size: 20px; margin: 8px 0 16px; }
+  .t-summary.is-ok { color: var(--accent-deep); }
+  .t-summary.is-ng { color: var(--wine); }
+  .t-list { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+  .t-list li { padding: 6px 0; border-bottom: 1px solid var(--line); display: flex; gap: 8px; align-items: baseline; }
+  .t-mark { flex: none; width: 1.2em; font-weight: 700; }
+  .t-ok .t-mark { color: var(--accent); }
+  .t-ng { color: var(--wine); }
+  .t-error { display: block; font-size: 12px; opacity: .85; margin-top: 2px; }
+</style>
+</head>
+<body>
+<main class="app">
+  <a class="back-link" href="index.html">← 開始画面へ戻る</a>
+  <h1 class="page-title">ロジックテスト</h1>
+  <p class="p p--note">保存まわりのテストは、localStorage の読み書きをメモリに差し替えて実行しています。ここを開いても、保存済みの衣装は消えません。</p>
+  <p id="summary" class="t-summary">実行中…</p>
+  <ul id="results" class="t-list"></ul>
+</main>
+
+<script src="data/colors.js"></script>
+<script src="data/concept.js"></script>
+<script src="data/garments.js"></script>
+<script src="data/parts.js"></script>
+<script src="data/materials.js"></script>
+<script src="data/decorations.js"></script>
+<script src="data/motifs.js"></script>
+<script src="data/attributes.js"></script>
+<script src="data/presets.js"></script>
+<script src="data/rules.js"></script>
+<script src="app.js"></script>
+<script src="generator.js"></script>
+<script src="advisor.js"></script>
+<script src="gacha.js"></script>
+<script src="tests.js"></script>
+<script>
+(function () {
+  var r = CPW.runTests();
+  var s = document.getElementById('summary');
+  s.textContent = r.passed + ' / ' + r.total + ' 通過' + (r.failed ? '（' + r.failed + '件 失敗）' : '');
+  s.className = 't-summary ' + (r.failed ? 'is-ng' : 'is-ok');
+
+  var ul = document.getElementById('results');
+  r.results.forEach(function (res) {
+    var li = document.createElement('li');
+    li.className = res.ok ? 't-ok' : 't-ng';
+    var mark = document.createElement('span');
+    mark.className = 't-mark';
+    mark.textContent = res.ok ? '✓' : '×';
+    var body = document.createElement('span');
+    body.textContent = res.name;
+    if (!res.ok) {
+      var e = document.createElement('span');
+      e.className = 't-error';
+      e.textContent = res.error;
+      body.appendChild(e);
+    }
+    li.appendChild(mark);
+    li.appendChild(body);
+    ul.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>
