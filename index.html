@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>衣装プロンプト工房 | Costume Prompt Workshop</title>
+<meta name="description" content="服の形・部位・素材・装飾・配色を選んで、一着の英語プロンプトを仕立てる設計台。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#app">本文へ飛ぶ</a>
+
+<main id="app" class="app"></main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<noscript><p class="p" style="padding:16px">この工房はJavaScriptで動作します。ブラウザの設定で有効にしてから開き直してください。</p></noscript>
+
+<!-- データ層（app.js より前に読む） -->
+<script src="data/colors.js"></script>
+<script src="data/concept.js"></script>
+<script src="data/garments.js"></script>
+<script src="data/parts.js"></script>
+<script src="data/materials.js"></script>
+<script src="data/decorations.js"></script>
+<script src="data/conditions.js"></script>
+<script src="data/motifs.js"></script>
+<script src="data/attributes.js"></script>
+<script src="data/presets.js"></script>
+<script src="data/rules.js"></script>
+
+<!-- 本体 -->
+<script src="app.js"></script>
+<script src="generator.js"></script>
+<script src="advisor.js"></script>
+<script src="gacha.js"></script>
+</body>
+</html>
