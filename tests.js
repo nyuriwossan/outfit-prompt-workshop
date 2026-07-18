@@ -1864,9 +1864,9 @@
     eq(w.requiredAxis, 'type');
     eq(w.axes.map(function (a) { return a.key; }).join(','), 'type,size,spread,count,texture,color');
   });
-  test('特殊：翼の代表データが揃っている（種類7・大きさ4・開き方4・質感6）', function () {
+  test('特殊：翼のデータが揃っている（Phase 5B前半：種類10以上・大きさ4・開き方4・質感6）', function () {
     var w = SPW();
-    eq(SC.axisOf(w, 'type').options.length, 7);
+    assert(SC.axisOf(w, 'type').options.length >= 10, '翼の種類が10未満：' + SC.axisOf(w, 'type').options.length);
     eq(SC.axisOf(w, 'size').options.length, 4);
     eq(SC.axisOf(w, 'spread').options.length, 4);
     eq(SC.axisOf(w, 'texture').options.length, 6);
@@ -1879,13 +1879,13 @@
       assert(SC.axisOf(sl, 'color'), sl.id + ' に色の軸がない');
     });
   });
-  test('特殊：角5〜7・光輪5〜6・尾5〜7の代表データ', function () {
+  test('特殊：角10以上・光輪8以上・尾10以上（Phase 5B前半で拡張）', function () {
     var h = SC.axisOf(SPH(), 'type').options.length;
     var l = SC.axisOf(SPL(), 'type').options.length;
     var t = SC.axisOf(SPT(), 'type').options.length;
-    assert(h >= 5 && h <= 7, '角が ' + h);
-    assert(l >= 5 && l <= 6, '光輪が ' + l);
-    assert(t >= 5 && t <= 7, '尾が ' + t);
+    assert(h >= 10, '角が ' + h);
+    assert(l >= 8, '光輪が ' + l);
+    assert(t >= 10, '尾が ' + t);
   });
   test('特殊：浮遊装飾5・魔法的装飾5', function () {
     eq(D.specialParts.floating.length, 5);
@@ -2958,6 +2958,296 @@
     assert(!/\.\s*,/.test(de), de);
     assert(!/,,/.test(de), de);
     assert(/\. dullure, languid gaze, dull eyes, subtle allure$/.test(de), de);
+  });
+
+  /* ---- 実機確認後の文言微修正 ---- */
+  test('文言：ガチャ対象・維持条件の日本語ラベルに「振る」系の言い回しが残っていない', function () {
+    var casual = /振る|振れ|どこを|維持するもの/;
+    GA.TARGETS.concat(GA.KEEPS).forEach(function (x) {
+      assert(!casual.test(x.labelJa), x.id + ' に旧い言い回し：' + x.labelJa);
+    });
+  });
+  test('文言：ガチャの差分ラベルに「振る」系の言い回しが残っていない', function () {
+    var o = outfit({ garment: { category: 'dress', subtype: 'ball_gown' }, palette: { primary: 'jet_black' }, concept: { worldview: 'western_fantasy' } });
+    var cands = GA.roll(o, { targetId: 'palette', keeps: [], seed: 1 });
+    cands.forEach(function (c) {
+      (c.diff || []).forEach(function (d) {
+        assert(!/振る|振れ|維持するもの/.test(d.labelJa + d.fromJa + d.toJa), '差分に旧い言い回し：' + d.labelJa);
+      });
+    });
+  });
+  test('データ出力：中身は従来のJSON形式のまま', function () {
+    var o = outfit({ garment: { category: 'dress', subtype: 'ball_gown' } });
+    o.name = '狼と深紅の装束';
+    var raw = CPW.store.exportOutfit(o);
+    var parsed = JSON.parse(raw);
+    eq(parsed.type, 'cpw-outfit');
+    eq(parsed.version, CPW.SCHEMA_VERSION);
+    assert(parsed.outfit && parsed.outfit.garment.subtype === 'ball_gown', '衣装が入っていない');
+  });
+  test('データ出力：書き出したものをそのまま読み戻せる', function () {
+    var o = outfit({ garment: { category: 'dress', subtype: 'ball_gown' }, palette: { primary: 'jet_black' } });
+    var r = CPW.store.importJSON(CPW.store.exportOutfit(o));
+    assert(r.ok, '読み戻せない：' + r.reasonJa);
+  });
+
+
+  /* ============================================================
+   * Phase 5B 前半
+   * ========================================================== */
+
+  /* ---- データ健全性 ---- */
+  test('5B：全データセットでIDが重複しない', function () {
+    [['colors', D.colors], ['materials', D.materials], ['patterns', D.patterns],
+     ['decorations', D.decorations], ['motifs', D.motifs], ['garments', D.garments],
+     ['presets', D.presets]].forEach(function (pair) {
+      var seen = {};
+      pair[1].forEach(function (item) {
+        assert(!seen[item.id], pair[0] + ' でIDが重複：' + item.id);
+        seen[item.id] = true;
+      });
+    });
+  });
+  test('5B：全データセットのIDはsnake_case', function () {
+    [D.colors, D.materials, D.patterns, D.decorations, D.motifs, D.garments, D.presets].forEach(function (list) {
+      list.forEach(function (item) {
+        assert(/^[a-z0-9_]+$/.test(item.id), 'snake_caseでないID：' + item.id);
+      });
+    });
+  });
+  test('5B：全データセットでlabelJaが空でない', function () {
+    [D.colors, D.materials, D.patterns, D.decorations, D.motifs, D.garments, D.presets].forEach(function (list) {
+      list.forEach(function (item) { assert(item.labelJa && item.labelJa.length > 0, item.id + ' のlabelJaが空'); });
+    });
+  });
+  test('5B：色は120件以上・hexが妥当・recommendedWithの参照先が実在', function () {
+    assert(D.colors.length >= 120, '色が ' + D.colors.length);
+    var ids = {};
+    D.colors.forEach(function (c) { ids[c.id] = true; });
+    D.colors.forEach(function (c) {
+      assert(/^#[0-9a-fA-F]{6}$/.test(c.hex), c.id + ' のhexが不正：' + c.hex);
+      (c.recommendedWith || []).forEach(function (id) { assert(ids[id], c.id + ' が未定義色を推奨：' + id); });
+    });
+  });
+  test('5B：素材は40件以上・全件がmatClassesを持つ', function () {
+    assert(D.materials.length >= 40, '素材が ' + D.materials.length);
+    D.materials.forEach(function (m) {
+      assert(Array.isArray(m.matClasses) && m.matClasses.length > 0, m.id + ' にmatClassesが無い');
+    });
+  });
+  test('5B：柄25以上・装飾40以上・モチーフ30以上', function () {
+    assert(D.patterns.length >= 25, '柄が ' + D.patterns.length);
+    assert(D.decorations.length >= 40, '装飾が ' + D.decorations.length);
+    assert(D.motifs.length >= 30, 'モチーフが ' + D.motifs.length);
+  });
+  test('5B：基本衣装は60件以上（人魚系を除いても60以上）', function () {
+    var basic = D.garments.filter(function (g) { return g.category !== 'merfolk'; });
+    assert(basic.length >= 60, '基本衣装が ' + basic.length);
+  });
+  test('5B：プリセットは20件以上', function () {
+    assert(D.presets.length >= 20, 'プリセットが ' + D.presets.length);
+  });
+
+  /* ---- 禁止語（ブランド名・実在警察機関・性別語） ---- */
+  function allPromptTexts() {
+    var texts = [];
+    var push = function (s) { if (s) texts.push(String(s)); };
+    [D.colors, D.materials, D.patterns, D.decorations, D.motifs, D.garments].forEach(function (list) {
+      list.forEach(function (item) {
+        push(item.promptEn); push(item.shortPrompt); push(item.detailedPrompt);
+      });
+    });
+    D.specialParts.slots.forEach(function (slot) {
+      slot.axes.forEach(function (a) { a.options.forEach(function (o) { push(o.shortPrompt); }); });
+    });
+    return texts;
+  }
+  test('5B：ブランド名が英語プロンプトに混入しない', function () {
+    var re = /\b(nike|adidas|gucci|chanel|prada|dior|uniqlo|burberry|hermes|louis vuitton|versace|armani|rolex)\b/i;
+    allPromptTexts().forEach(function (t) { assert(!re.test(t), 'ブランド名混入：' + t); });
+  });
+  test('5B：実在警察機関名が混入しない', function () {
+    var re = /\b(nypd|lapd|fbi|cia|interpol|scotland yard|metropolitan police|keishicho|carabinieri)\b/i;
+    allPromptTexts().forEach(function (t) { assert(!re.test(t), '実在機関名混入：' + t); });
+  });
+  test('5B：性別語が英語プロンプトに混入しない', function () {
+    var re = /\b(male|female|man|woman|men|women|boy|boys|girl|girls|feminine|masculine|ladies|gentlemen)\b/i;
+    allPromptTexts().forEach(function (t) { assert(!re.test(t), '性別語混入：' + t); });
+  });
+
+  /* ---- 衣装の核の区別 ---- */
+  test('5B：学ラン・セーラー・ブレザーの核が互いに混ざらない', function () {
+    var gaku = U.byId(D.garments, 'gakuran_uniform');
+    var sailor = U.byId(D.garments, 'sailor_school_uniform');
+    var blazer = U.byId(D.garments, 'school_blazer_uniform');
+    assert(/gakuran/.test(gaku.shortPrompt), '学ランの核に gakuran が無い');
+    assert(/sailor/.test(sailor.shortPrompt), 'セーラーの核に sailor が無い');
+    assert(/blazer/.test(blazer.shortPrompt), 'ブレザーの核に blazer が無い');
+    assert(!/sailor|blazer/.test(gaku.shortPrompt), '学ランの核に他の語が混ざる');
+    assert(!/gakuran|blazer/.test(sailor.shortPrompt), 'セーラーの核に他の語が混ざる');
+  });
+  test('5B：白衣の核は laboratory coat', function () {
+    var g = U.byId(D.garments, 'laboratory_coat_outfit');
+    assert(/laboratory coat/.test(g.shortPrompt) || /laboratory coat/.test(g.detailedPrompt), '白衣の核が laboratory coat でない');
+  });
+  test('5B：旗袍は漢服と別の核を持つ', function () {
+    var q = U.byId(D.garments, 'qipao');
+    assert(/qipao/.test(q.shortPrompt), '旗袍の核に qipao が無い');
+    assert(!/hanfu/.test(q.shortPrompt + ' ' + q.detailedPrompt), '旗袍に hanfu が混ざる');
+  });
+  test('5B：バニー2種は互いに区別される', function () {
+    var c = U.byId(D.garments, 'classic_bunny_suit');
+    var r = U.byId(D.garments, 'reverse_bunny_suit');
+    assert(/bunny/.test(c.shortPrompt) && /bunny/.test(r.shortPrompt), 'バニーの核が無い');
+    assert(/reverse/.test(r.shortPrompt), '逆バニーの核に reverse が無い');
+    assert(!/reverse/.test(c.shortPrompt), 'クラシックの核に reverse が混ざる');
+  });
+  test('5B：必須衣装がすべて実在する', function () {
+    ['gakuran_uniform', 'sailor_school_uniform', 'school_blazer_uniform',
+     'classic_maid_dress', 'victorian_maid_dress', 'cafe_maid_outfit', 'gothic_maid_dress',
+     'classic_bunny_suit', 'reverse_bunny_suit', 'laboratory_coat_outfit',
+     'fictional_police_uniform', 'mafia_style_suit', 'qipao', 'changshan',
+     'modern_chinese_outfit', 'tang_style_outfit', 'nun_habit',
+     'side_cutout_knitwear', 'open_back_cutout_knitwear', 'mermaid_tail'].forEach(function (id) {
+      assert(U.byId(D.garments, id), id + ' が無い');
+    });
+  });
+
+  /* ---- 人魚（チェックポイント4） ---- */
+  function merOutfit() {
+    return SC.applyPatch(SC.createOutfit(), {
+      garment: { category: 'merfolk', subtype: 'mermaid_tail', wearRole: 'main_outfit' },
+      parts: { mermaid_tail_form: 'classic_scaled_tail' },
+      silhouette: { fit: 'fitted' },
+      materials: { primary: 'iridescent_fabric' },
+      palette: { primary: 'turquoise' }
+    });
+  }
+  test('5B人魚：脚の衣類・靴・素足が出力に混ざらない', function () {
+    var o = merOutfit();
+    o.parts.footwear = 'knee_high_boots';                       // 値が残っていても
+    o.parts.legwear = [{ id: 'thigh_high_stockings', layer: 'main' }];
+    var s = G.short(o) + ' ' + G.detailed(o);
+    assert(!/\b(boots?|stockings?|tights|socks|sneakers|pumps|heels|barefoot)\b/i.test(s), '脚系が出力に混ざる：' + s);
+  });
+  test('5B人魚：一本の尾と「人間の脚は無い」が明示される', function () {
+    var o = merOutfit();
+    var s = G.short(o);
+    var d = G.detailed(o);
+    assert(s.indexOf('single fish tail') >= 0, '短縮版に single fish tail が無い：' + s);
+    assert(s.indexOf('no human legs') >= 0, '短縮版に no human legs が無い：' + s);
+    assert(/no human legs|replacing separate human legs/.test(d), '詳細版に脚の否定が無い：' + d);
+  });
+  test('5B人魚：feet の肯定的な言及が無い', function () {
+    var o = merOutfit();
+    var s = (G.short(o) + ' ' + G.detailed(o))
+      .replace(/no feet/g, '').replace(/no human legs/g, '')
+      .replace(/replacing separate human legs and feet/g, '');
+    assert(!/\b(feet|foot|legs?)\b/i.test(s), 'feet/legs の残留：' + s);
+  });
+  test('5B人魚：通常の尾（獣の尾）に人魚の尾が混ざらない', function () {
+    var t = SC.axisOf(SPT(), 'type');
+    t.options.forEach(function (o) {
+      assert(!/mermaid|fish tail/i.test(o.shortPrompt), '通常尾に人魚が混入：' + o.id);
+    });
+  });
+  test('5B人魚：merfolkカテゴリは脚系スロットを持たない', function () {
+    var cat = U.byId(D.garmentCategories, 'merfolk');
+    assert(cat, 'merfolk カテゴリが無い');
+    ['bottoms', 'skirt_shape', 'legwear', 'footwear', 'leg_opening', 'hem'].forEach(function (id) {
+      assert(cat.slots.indexOf(id) < 0, 'merfolk に ' + id + ' がある');
+    });
+    assert(cat.slots.indexOf('mermaid_tail_form') === 0, 'mermaid_tail_form が先頭に無い');
+    eq(cat.requiredSlots.length, 1);
+  });
+  test('5B人魚：完成度の母数に尾の形が入り、脚系は入らない', function () {
+    var o = merOutfit();
+    var p = CPW.progress.compute(o);
+    eq(p.percent, 100, '必須が全て埋まっているのに100%でない');
+    var o2 = merOutfit();
+    o2.parts.mermaid_tail_form = null;
+    var p2 = CPW.progress.compute(o2);
+    assert(p2.percent < 100, '尾の形が空でも100%になる');
+    assert(p2.missing.indexOf('尾の形') >= 0, '不足に尾の形が出ない');
+  });
+  test('5B人魚：ガチャは脚まわりを回さない', function () {
+    var o = merOutfit();
+    eq(GA.roll(o, { target: 'legwear', seed: 1 }).length, 0, '人魚で legwear ガチャが回る');
+  });
+  test('5B人魚：JSON往復で構造が保たれる', function () {
+    var o = merOutfit();
+    var raw = JSON.parse(JSON.stringify(o));
+    var m = SC.migrate(raw);
+    assert(m.ok, '往復で読めない');
+    eq(m.outfit.garment.category, 'merfolk');
+    eq(m.outfit.parts.mermaid_tail_form, 'classic_scaled_tail');
+  });
+  test('5B人魚：旧スキーマ0.1のデータがそのまま読める', function () {
+    var legacy = SC.createOutfit();
+    legacy.version = '0.1';
+    var m = SC.migrate(JSON.parse(JSON.stringify(legacy)));
+    assert(m.ok, '0.1 が読めない');
+    assert(m.migrated, '0.1 が移行扱いにならない');
+    eq(m.outfit.version, CPW.SCHEMA_VERSION);
+  });
+  test('5B人魚：カテゴリを行き来しても脚の値は保持される', function () {
+    var o = SC.applyPatch(SC.createOutfit(), {
+      garment: { category: 'top_bottom', subtype: 'simple_tshirt_and_jeans' },
+      parts: { footwear: 'sneakers' }
+    });
+    var mer = SC.applyPatch(o, { garment: { category: 'merfolk', subtype: 'mermaid_tail' } });
+    eq(SC.normalize(mer).parts.footwear, 'sneakers', '人魚化で footwear が消えた');
+    var back = SC.applyPatch(mer, { garment: { category: 'top_bottom', subtype: 'simple_tshirt_and_jeans' } });
+    eq(SC.normalize(back).parts.footwear, 'sneakers', '戻したら footwear が消えた');
+  });
+  test('5B人魚：警告器は表示外スロットの値に反応しない', function () {
+    var o = merOutfit();
+    o.parts.footwear = 'barefoot';
+    o.parts.legwear = [{ id: 'thigh_high_stockings', layer: 'main' }];
+    var issues = AD.check(o);
+    issues.forEach(function (i) {
+      assert(!/legwear|footwear|barefoot|stocking/i.test(JSON.stringify(i)), '脚系の警告が出る：' + JSON.stringify(i));
+    });
+  });
+
+  /* ---- ランダム走査（全衣装の生成健全性） ---- */
+  test('5B走査：全衣装で短縮・詳細出力が壊れない', function () {
+    var badPatterns = [
+      /undefined/, /\bnull\b/, /,\s*,/, /\.\s*\./, /\.,/,
+      /-inspired[^,]*-inspired/, /\bwith barefoot\b/, /\bwith two-piece\b/,
+      /\ba board shorts\b/, /\ba pair of a\b/,
+      /\b(male|female|man|woman|men|women|boy|girl)\b/i,
+      /\b(nike|adidas|gucci|chanel|nypd|fbi)\b/i
+    ];
+    D.garments.forEach(function (g) {
+      var o = SC.applyPatch(SC.createOutfit(), {
+        garment: { category: g.category, subtype: g.id, wearRole: 'main_outfit' },
+        silhouette: { fit: 'fitted' },
+        materials: { primary: 'cotton' },
+        palette: { primary: 'deep_navy' }
+      });
+      if (g.category === 'merfolk') o.parts.mermaid_tail_form = 'classic_scaled_tail';
+      var s = G.short(o);
+      var d = G.detailed(o);
+      badPatterns.forEach(function (re) {
+        assert(!re.test(s), g.id + ' の短縮版が不正（' + re + '）：' + s);
+        assert(!re.test(d), g.id + ' の詳細版が不正（' + re + '）：' + d);
+      });
+      if (g.category === 'merfolk') {
+        assert(!/\b(boots?|stockings?|tights|socks|sneakers|pumps)\b/i.test(s + ' ' + d), g.id + ' に脚系が混ざる');
+      }
+    });
+  });
+  test('5B走査：シードを変えたガチャ全対象で出力が壊れない', function () {
+    var o = SC.applyPatch(SC.createOutfit(), U.byId(D.presets, 'daily_casual').patch);
+    [11, 22, 33].forEach(function (seed) {
+      GA.TARGETS.forEach(function (t) {
+        GA.roll(o, { target: t.id, seed: seed }).forEach(function (r) {
+          var s = G.short(r.outfit || SC.applyPatch(o, r.patch));
+          assert(!/undefined|,\s*,/.test(s), t.id + ' のガチャ結果が不正：' + s);
+        });
+      });
+    });
   });
 
   /* ---- 実行 ---- */
