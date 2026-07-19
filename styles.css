@@ -346,6 +346,10 @@ html, body {
 .chips--tight { gap: 4px; }
 .chip--sm { min-height: 34px; padding: 4px 10px; font-size: 12px; }
 
+@media (max-width: 560px) {
+  .chip--sm { min-height: var(--tap); }
+}
+
 /* ---------- Phase 2：装飾 ---------- */
 .deco-item {
   border: 1px solid var(--line); border-radius: var(--radius);
