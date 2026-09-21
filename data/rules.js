@@ -521,4 +521,28 @@
     /* 補助候補で1カテゴリから出す上限 */
     categoryLimit: 2
   };
+  // Phase 5C warnings are advisory: selections remain available to deliberate mixes.
+  [
+    ['styling_inapplicable','stylingInapplicable','着こなしに対応する部位がない','現在の衣装で成立しない着こなしは、選択を保持して英文への出力を休止します。'],
+    ['styling_conflict','stylingConflict','同じ部位の着こなしが重なる','先に選んだ着こなしを英文へ反映します。'],
+    ['symmetry_detail','symmetryDetail','左右対称と非対称構造','非対称の具体的な構造を英文で優先します。対称性の選択自体は保持されます。'],
+    ['rigid_draping','rigidDraping','硬い装甲と柔らかなドレープ','布のパネルを重ねる意図か、素材と仕立てをご確認ください。'],
+    ['swim_cutout_duplicate','swimCutoutDuplicate','水着の背面とカットアウトが重なる','水着専用の背面指定を英文で優先します。'],
+    ['open_back_armor','openBackArmor','背あきと背面を覆う硬い装甲','背面装甲を英文で優先し、開口の選択は保持します。']
+  ].forEach(function (r) {
+    CPW.data.rules.push({id:r[0],kind:'check',check:r[1],type:'physical',severity:'warning',category:'仕立て・着こなし',
+      titleJa:r[2],messageJa:r[3],resolutions:[{labelJa:'このまま維持する',action:'ignore'}]});
+  });
+  CPW.data.tailoringAffinity = {
+    casual: [['silhouette.fit','relaxed'],['silhouette.fit','regular_fit'],['styling.items','sleeves_rolled_up'],['styling.items','half_tucked'],['parts.closure','button_front']],
+    formal: [['silhouette.fit','tailored'],['silhouette.upperVolume','structured'],['parts.collar','notched_lapels'],['parts.closure','button_front'],['styling.items','neatly_arranged']],
+    punk: [['parts.asymmetry_detail','uneven_hem'],['parts.closure','asymmetric_zipper'],['parts.hem','torn_hem'],['decorations.items','metal_studs'],['decorations.items','eyelets'],['decorations.items','safety_pin_details']],
+    techwear: [['parts.closure','asymmetric_zipper'],['parts.closure','multiple_buckles'],['parts.construction_detail','modular_panels'],['silhouette.fit','structured_fit']],
+    romantic: [['parts.neckline','sweetheart_neckline'],['parts.sleeves','bishop_sleeves'],['parts.construction_detail','gathered_panels'],['decorations.items','ruffles']],
+    gothic: [['parts.collar','high_standing_collar'],['parts.closure','lace_up_front'],['parts.construction_detail','corseted_structure'],['parts.hem','asymmetric_hem']],
+    merfolk: [['parts.asymmetry_detail','diagonal_draping'],['parts.cutout','open_back'],['decorations.items','shell_ornaments'],['decorations.items','pearl_details']]
+  };
+  CPW.data.affinity.styleDecorations.punk = ['metal_studs','eyelets','safety_pin_details','spikes'];
+  CPW.data.affinity.styleDecorations.romantic = ['ruffles','fabric_flowers','pleated_trim'];
+  CPW.data.affinity.styleDecorations.techwear = ['eyelets','rivets','metal_plates'];
 })(window);

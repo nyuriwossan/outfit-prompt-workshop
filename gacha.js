@@ -50,6 +50,11 @@
    * ガチャ対象
    * ========================================================== */
   var TARGETS = [
+    { id: 'silhouette', labelJa: 'シルエット', paths: Object.keys(D.silhouette).map(function (k) { return 'silhouette.' + k; }) },
+    { id: 'tailoring', labelJa: '仕立て', paths: ['parts.closure', 'parts.construction_detail', 'parts.asymmetry_detail'] },
+    { id: 'cutout', labelJa: 'カットアウト', paths: ['parts.cutout'] },
+    { id: 'styling', labelJa: '着こなし', paths: ['styling.items'] },
+    { id: 'style', labelJa: '様式', paths: ['concept.primaryStyle', 'concept.secondaryStyles'] },
     { id: 'garment', labelJa: '基本衣装', paths: ['garment.subtype'] },
     { id: 'collar', labelJa: '襟・胸元', paths: ['parts.collar', 'parts.neckline'] },
     { id: 'sleeves', labelJa: '袖', paths: ['parts.sleeves', 'parts.cuffs'] },
@@ -106,6 +111,24 @@
 
   function rollPatch(o, target, rng, keepIds) {
     var patch = {};
+    if (target.id === 'silhouette') {
+      var shape = {};
+      Object.keys(D.silhouette).forEach(function (k) {
+        if (o.garment.category === 'merfolk' && (k === 'lowerVolume' || k === 'length')) return;
+        shape[k] = pick(rng, D.silhouette[k]).id;
+      });
+      return { silhouette: shape };
+    }
+    if (target.id === 'style') {
+      if (keepIds.indexOf('primaryStyle') >= 0) return null;
+      return { concept: { primaryStyle: pick(rng, D.styles).id, secondaryStyles: [] } };
+    }
+    if (target.id === 'styling') {
+      var available = shuffled(rng, CPW.styling.available(o)), ids = [];
+      var count = rng() < 0.5 ? 1 : 2;
+      available.forEach(function (opt) { if (ids.length < count && CPW.styling.compatible(opt, ids)) ids.push(opt.id); });
+      return { styling: { items: ids } };
+    }
 
     if (target.id === 'palette') {
       var pool = D.colors.filter(function (c) { return ['gem'].indexOf(c.family) < 0; });
@@ -146,7 +169,7 @@
       var items = decos.slice(0, n).map(function (d, i) {
         return {
           type: d.id,
-          placements: (d.recommendedPlacements || ['overall']).slice(0, 1 + Math.floor(rng() * 2)),
+          placements: (d.recommendedPlacements || ['overall']).filter(function (p) { return CPW.decorationPlacementAllowed(o, p); }).slice(0, 1 + Math.floor(rng() * 2)),
           role: i === 0 ? 'focal' : 'support',
           size: pick(rng, D.decorationSizes).id,
           quantity: pick(rng, D.decorationQuantities).id
@@ -280,16 +303,19 @@
       return { parts: { handwear: value } };
     }
 
-    // 単一スロットの寄せ集め（襟・袖・裾・靴）
+    // 通常スロット（襟・袖・裾・靴・仕立て・複数選択のカットアウト）
     var parts = {};
     var any = false;
     target.paths.forEach(function (p) {
       var slotId = p.replace(/^parts\./, '');
       var slot = optionsForSlot(slotId);
-      if (!slot || S.slotKind(slot) !== 'single') return;
+      if (!slot || S.slotKind(slot) === 'composite') return;
       var cat = U.byId(D.garmentCategories, o.garment.category);
       if (cat && cat.slots.indexOf(slotId) < 0) return;      // その衣装に無い部位は振らない
-      parts[slotId] = pick(rng, slot.options).id;
+      var options = slot.options.filter(function (opt) { return CPW.partOptionAllowed(o, slotId, opt); });
+      if (!options.length) return;
+      var selected = pick(rng, options).id;
+      parts[slotId] = S.slotKind(slot) === 'multi' ? [{ id: selected, layer: 'main' }] : selected;
       any = true;
     });
     if (!any) return null;
@@ -312,9 +338,10 @@
     }
     var lists = [D.colors, D.materials, D.decorations, D.garments, D.attributes, D.colorSchemes,
       D.transparency, D.surfaces, D.thickness, D.patterns, D.styles, D.motifs,
-      D.conditions, D.conditionSeverities, D.conditionExtents, D.conditionPlacements,
+      D.styling, D.conditions, D.conditionSeverities, D.conditionExtents, D.conditionPlacements,
       D.specialParts.decorativeChains, D.specialParts.restraintChains, D.specialParts.floating, D.specialParts.magical];
     // 特殊パーツの軸の値
+    Object.keys(D.silhouette).forEach(function (key) { lists.push(D.silhouette[key]); });
     D.specialParts.slots.forEach(function (sl) { sl.axes.forEach(function (ax) { lists.push(ax.options); }); });
     for (var i = 0; i < lists.length; i++) {
       var hit = U.byId(lists[i], value);

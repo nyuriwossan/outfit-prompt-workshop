@@ -567,3 +567,7 @@ html, body {
   border-radius: var(--radius);
   padding: .4rem .5rem;
 }
+/* Phase 5C: one level of headings; every option remains a wrapping tap target. */
+.option-group { margin: 12px 0 6px; font-size: 13px; font-weight: 700; }
+.field, .field-body, .chips { min-width: 0; max-width: 100%; }
+.chip { min-width: 44px; min-height: 44px; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }

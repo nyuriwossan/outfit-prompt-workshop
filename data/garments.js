@@ -33,43 +33,43 @@
   CPW.data.garmentCategories = [
     {
       id: 'top_bottom', labelJa: 'トップス＋ボトムス',
-      slots: ['neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'hem', 'cover_up', 'handwear', 'legwear', 'footwear', 'headwear'],
+      slots: ['neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'hem', 'cover_up', 'handwear', 'legwear', 'footwear', 'headwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['sleeves'],
       recommendedSlots: ['neckline', 'waist', 'hem', 'footwear']
     },
     {
       id: 'dress', labelJa: 'ドレス・ワンピース',
-      slots: ['neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'skirt_shape', 'hem', 'cover_up', 'handwear', 'legwear', 'footwear', 'headwear'],
+      slots: ['neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'skirt_shape', 'hem', 'cover_up', 'handwear', 'legwear', 'footwear', 'headwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['skirt_shape'],
       recommendedSlots: ['neckline', 'sleeves', 'waist', 'hem', 'legwear', 'footwear']
     },
     {
       id: 'uniform', labelJa: 'スーツ・制服',
-      slots: ['inner_shirt', 'collar', 'shoulders', 'sleeves', 'cuffs', 'vest', 'waist', 'bottoms', 'handwear', 'legwear', 'footwear', 'cover_up', 'headwear'],
+      slots: ['inner_shirt', 'collar', 'shoulders', 'sleeves', 'cuffs', 'vest', 'waist', 'bottoms', 'handwear', 'legwear', 'footwear', 'cover_up', 'headwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['bottoms'],
       recommendedSlots: ['inner_shirt', 'collar', 'sleeves', 'waist', 'footwear']
     },
     {
       id: 'robe', labelJa: 'ローブ・コート',
-      slots: ['neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'hem', 'handwear', 'legwear', 'footwear', 'cover_up', 'headwear'],
+      slots: ['neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'hem', 'handwear', 'legwear', 'footwear', 'cover_up', 'headwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['sleeves'],
       recommendedSlots: ['collar', 'hem', 'waist', 'footwear']
     },
     {
       id: 'wafuku', labelJa: '和装',
-      slots: ['collar', 'sleeves', 'waist', 'hem', 'handwear', 'legwear', 'footwear', 'headwear'],
+      slots: ['collar', 'sleeves', 'waist', 'hem', 'handwear', 'legwear', 'footwear', 'headwear', 'construction_detail', 'asymmetry_detail'],
       requiredSlots: ['waist'],
       recommendedSlots: ['collar', 'sleeves', 'hem', 'footwear']
     },
     {
       id: 'chinese', labelJa: '中華服',
-      slots: ['collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'hem', 'handwear', 'legwear', 'footwear', 'headwear'],
+      slots: ['collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'hem', 'handwear', 'legwear', 'footwear', 'headwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['collar'],
       recommendedSlots: ['sleeves', 'waist', 'hem', 'footwear']
     },
     {
       id: 'swimwear', labelJa: '水着',
-      slots: ['swim_form', 'neckline', 'straps', 'back', 'waist', 'leg_opening', 'coverage', 'cover_up', 'footwear', 'headwear'],
+      slots: ['swim_form', 'neckline', 'straps', 'back', 'waist', 'leg_opening', 'coverage', 'cover_up', 'footwear', 'headwear', 'construction_detail', 'asymmetry_detail', 'cutout'],
       requiredSlots: ['swim_form'],
       recommendedSlots: ['neckline', 'straps', 'back', 'coverage']
     },
@@ -79,14 +79,14 @@
        * slots に含めない。値は outfit.parts に残るが、UI・出力・完成度・警告・ガチャの
        * いずれにも混ぜない（カテゴリ slots から外す方式）。 */
       id: 'merfolk', labelJa: '人魚',
-      slots: ['mermaid_tail_form', 'neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'cover_up', 'handwear', 'headwear'],
+      slots: ['mermaid_tail_form', 'neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'waist', 'cover_up', 'handwear', 'headwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['mermaid_tail_form'],
       recommendedSlots: ['neckline', 'waist', 'headwear']
     },
     {
       id: 'lingerie', labelJa: '下着・ランジェリー',
       // ボディスーツやシュミーズは襟・袖・手袋を持ちうるので、その分もスロットに含める（ケースA）
-      slots: ['lingerie_form', 'neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'top_structure', 'bottom_structure', 'straps', 'waist', 'garter', 'handwear', 'legwear', 'cover_up', 'footwear'],
+      slots: ['lingerie_form', 'neckline', 'collar', 'shoulders', 'sleeves', 'cuffs', 'top_structure', 'bottom_structure', 'straps', 'waist', 'garter', 'handwear', 'legwear', 'cover_up', 'footwear', 'construction_detail', 'asymmetry_detail', 'closure', 'cutout'],
       requiredSlots: ['lingerie_form'],
       recommendedSlots: ['neckline', 'collar', 'sleeves', 'handwear', 'legwear']
     }

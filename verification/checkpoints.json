@@ -1,0 +1,47 @@
+{
+  "baselineCommit": "2f99585e788a2046b10b5af595684fd1dc67f34f",
+  "checkpoints": [
+    {
+      "checkpoint": "baseline",
+      "total": 524,
+      "passed": 524,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP1",
+      "total": 531,
+      "passed": 531,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP2",
+      "total": 543,
+      "passed": 543,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP3",
+      "total": 549,
+      "passed": 549,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP4",
+      "total": 568,
+      "passed": 568,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP5",
+      "total": 570,
+      "passed": 570,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP6",
+      "total": 615,
+      "passed": 615,
+      "failed": 0
+    }
+  ]
+}

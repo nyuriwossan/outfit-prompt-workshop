@@ -34,7 +34,7 @@
   }
 
   function words(s) {
-    return String(s || '').toLowerCase().replace(/[^a-z0-9\s-]/g, '').split(/[\s-]+/).filter(Boolean);
+    return String(s || '').toLowerCase().replace(/crewneck/g, 'crew neck').replace(/[^a-z0-9\s-]/g, '').split(/[\s-]+/).filter(Boolean);
   }
 
   /* a / an。母音字ではなく音で決める必要があるものだけ例外表に置く。 */
@@ -300,7 +300,7 @@
       isMerfolk ? null : en(D.silhouette.lowerVolume, s.lowerVolume),
       en(D.silhouette.waist, s.waist),
       isMerfolk ? null : en(D.silhouette.length, s.length),
-      en(D.silhouette.symmetry, s.symmetry)
+      s.symmetry === 'symmetrical' && CPW.structureFacts(o).asymmetric ? null : en(D.silhouette.symmetry, s.symmetry)
     ].filter(Boolean);
     if (!list.length) return { short: [], detailed: [] };
     return { short: list, detailed: [joinAnd(list) + ' in silhouette'] };
@@ -319,6 +319,7 @@
     if (!cat) return { short: [], detailed: [] };
     var out = [];
     var detailOut = [];
+    var facts = CPW.structureFacts(o);
     cat.slots.forEach(function (slotId) {
       if (slotId === 'swim_form') return;   // 水着の型は核へ統合済み（blockIdentity）
       if (slotId === 'mermaid_tail_form') return;   // 尾の形は blockMerfolk へ統合（重複修正・仕様書§10）
@@ -335,6 +336,8 @@
       }
       if (kind === 'multi') {
         v.forEach(function (item) {
+          if (!CPW.partOptionAllowed(o, slotId, U.byId(slot.options, item.id))) return;
+          if (facts.rigidBack && (U.byId(slot.options, item.id).tags || []).indexOf('open_back') >= 0) return;
           var text = en(slot.options, item.id);
           if (!text) return;
           var layer = U.byId(D.partLayers, item.layer);
@@ -345,6 +348,8 @@
         return;
       }
       var opt = U.byId(slot.options, v);
+      if (!CPW.partOptionAllowed(o, slotId, opt)) return;
+      if (facts.rigidBack && (opt.tags || []).indexOf('open_back') >= 0) return;
       var t = opt ? opt.shortPrompt : null;
       if (!t) return;
       // barefoot は衣装パーツではなく着用状態。blockWearState が別に扱う。
@@ -353,12 +358,20 @@
       detailOut.push(opt.detailedPrompt || t);
     });
     if (!out.length) return { short: [], detailed: [] };
-    var forDetail = detailOut.filter(function (p) { return !containsWords(headWords || [], words(p)); });
+    var forDetail = compress(detailOut).filter(function (p) { return !containsWords(headWords || [], words(p)); });
     return { short: out, detailed: forDetail.length ? [joinAnd(forDetail)] : [] };
   }
 
-  /* 着用状態（素足など）。衣装パーツと同列の名詞として扱わず、
-   * 接続語（with）を受けない独立の句にする。"with barefoot" を作らないための分離。 */
+  /* 着こなしは名詞句と組み合わせ、一つの worn with 句へまとめる。 */
+  function blockStyling(o) {
+    var active = CPW.styling.active(o);
+    return {
+      short: active.map(function (opt) { return opt.shortPrompt; }),
+      detailed: active.length ? ['worn with ' + joinAnd(active.map(function (opt) { return opt.detailFragment; }))] : []
+    };
+  }
+
+  /* 素足などの着用状態には with を付けず、worn barefoot として出力する。 */
   function blockWearState(o) {
     var plan = CPW.slotPlan(o);
     var cat = plan.category;
@@ -573,7 +586,11 @@
   }
 
   function blockDecorations(o, mode) {
-    var items = (o.decorations.items || []).filter(function (i) { return !!i.type; });
+    var items = (o.decorations.items || []).filter(function (i) { return !!i.type; }).map(function (i) {
+      var copy = U.clone(i);
+      copy.placements = (i.placements || []).filter(function (p) { return CPW.decorationPlacementAllowed(o,p); });
+      return copy;
+    });
     var focal = U.byId(D.decorations, o.decorations.focalMotif);
     if (!items.length && !focal) return { short: [], detailed: [] };
 
@@ -797,7 +814,7 @@
    * 公開API
    * ========================================================== */
   var BLOCK_ORDER = [
-    'identity', 'palette', 'silhouette', 'garments', 'parts', 'wearState', 'merfolk', 'materials',
+    'identity', 'palette', 'silhouette', 'garments', 'parts', 'styling', 'wearState', 'merfolk', 'materials',
     'condition', 'decorations', 'theme', 'specialParts', 'effects', 'presentation', 'optionalNarrative', 'quality'
   ];
 
@@ -811,6 +828,7 @@
       silhouette: blockSilhouette(o),
       garments: blockGarments(o),
       parts: blockParts(o, headWords),
+      styling: blockStyling(o),
       wearState: blockWearState(o),
       merfolk: blockMerfolk(o),
       materials: blockMaterials(o),
@@ -857,6 +875,7 @@
 
   /* 詳細版。接続語は同じものを続けて使わない。 */
   var CONNECTORS = {
+    styling: ['', ''],
     garments: ['', ''],
     parts: ['with', 'paired with', 'completed with'],
     merfolk: ['', ''],

@@ -84,7 +84,7 @@
   /* ============================================================
    * schema
    * ========================================================== */
-  CPW.SCHEMA_VERSION = '0.3';  // Phase 5B 後半：condition（状態・加工）を追加。0.1 / 0.2 データはそのまま読める。
+  CPW.SCHEMA_VERSION = '0.4';  // Phase 5C: styling; 0.1–0.3 remain readable.
 
   var schema = (CPW.schema = {
     /* Phase 5A：部位スロットIDの snake_case 統一にともなう読み替え表。
@@ -143,7 +143,8 @@
 
         presentation: { focus: 'full_outfit', poseAssist: null, compositionAssist: null },
 
-        condition: { items: [] },   // 状態・加工。最大2件。空配列＝状態指定なし（疑似IDは保存しない）
+        styling: { items: [] },     // 着方の指定。最大2件。
+        condition: { items: [] },   // 状態・加工。最大2件。
 
         output: { includeNarrative: false, includeEffects: false, includePresentation: false, includeQualityTags: false, customTags: '' }
       };
@@ -276,6 +277,7 @@
       o.parts = clean;
       o.specialParts = schema.normalizeSpecialParts(o.specialParts);
       o.condition = schema.normalizeCondition(o.condition);
+      o.styling = schema.normalizeStyling(o.styling);
       if (typeof o.output.customTags !== 'string') o.output.customTags = '';
       return o;
     },
@@ -305,11 +307,15 @@
       return base;
     },
 
-    /* 状態・加工の正規化（Phase 5B 後半）。
-     * ・未知の type は捨てる（アプリ全体は停止しない）。
-     * ・severity / extent / placements は既知の値へ丸める。
-     * ・最大2件。3件以上あった場合は先頭2件だけ残す。
-     * ・空配列＝状態指定なし。no_condition のような疑似IDは作らない。 */
+    /* 着こなしの正規化。既知のIDを重複なしで最大2件保持する。 */
+    normalizeStyling: function (raw) {
+      var seen = {};
+      return { items: (raw && Array.isArray(raw.items) ? raw.items : []).filter(function (id) {
+        if (typeof id !== 'string' || seen[id] || !util.byId(D.styling, id)) return false;
+        seen[id] = true; return true;
+      }).slice(0, 2) };
+    },
+    /* 状態・加工：未知の種類を除外し、程度・範囲・部位を正規化して最大2件にする。 */
     normalizeCondition: function (raw) {
       var cond = util.isPlainObject(raw) ? raw : {};
       var list = Array.isArray(cond.items) ? cond.items : [];
@@ -465,6 +471,35 @@
     };
   }
   CPW.slotPlan = slotPlan;
+
+  // The same structural applicability gate is used by UI, generation and suggestions.
+  CPW.partOptionAllowed = function (outfit, slotId, opt) {
+    var cat = util.byId(D.garmentCategories, outfit.garment.category);
+    if (!opt || !cat || cat.slots.indexOf(slotId) < 0) return false;
+    if (cat.id === 'merfolk' && opt.upperOnlyCompatible === false) return false;
+    if (cat.id === 'swimwear' && slotId === 'cutout' && outfit.parts.back &&
+        (opt.tags || []).indexOf('open_back') >= 0) return false;
+    return true;
+  };
+  CPW.decorationPlacementAllowed = function (outfit, id) {
+    return outfit.garment.category !== 'merfolk' || ['legs', 'skirt', 'hem'].indexOf(id) < 0;
+  };
+  CPW.structureFacts = function (o) {
+    var cat = util.byId(D.garmentCategories, o.garment.category), options = [];
+    if (cat) cat.slots.forEach(function (id) {
+      var slot = util.byId(D.partSlots, id), v = o.parts[id];
+      if (!slot || !slot.options) return;
+      var values = Array.isArray(v) ? v.map(function (it) { return it.id; }) : [v];
+      values.forEach(function (id) { var opt = util.byId(slot.options,id); if (opt && CPW.partOptionAllowed(o,slot.id,opt)) options.push(opt); });
+    });
+    function has(tag) { return options.some(function (opt) { return (opt.tags || []).indexOf(tag) >= 0; }); }
+    var mat = util.byId(D.materials,o.materials.primary);
+    var rigid = !!mat && (mat.matClasses || mat.tags || []).some(function (t) { return t === 'rigid' || t === 'metallic'; });
+    var garment = util.byId(D.garments,o.garment.subtype);
+    return { asymmetric: has('asymmetric') || CPW.styling.active(o).some(function (opt) { return opt.id === 'asymmetrically_worn'; }), draped: has('draped'), rigid: rigid,
+      openBack: has('open_back') || !!garment && (garment.tags || []).indexOf('open_back') >= 0,
+      rigidBack: rigid && (has('covered_back') || !!cat && cat.slots.indexOf('vest') >= 0 && o.parts.vest === 'armored_vest') };
+  };
 
   /* スロットの段階（UIの見出し表示に使う） */
   CPW.slotTier = function (outfit, slotId) {
@@ -655,6 +690,20 @@
       util.setPath(state.outfit, path, value);
       state.touch();
     },
+    toggleStyling: function (id) {
+      var items = state.outfit.styling.items.slice(), index = items.indexOf(id);
+      if (index >= 0) items.splice(index, 1);
+      else {
+        var opt = util.byId(D.styling, id);
+        if (items.length >= 2) return '着こなし・着崩しは2件まで指定できます。';
+        var reason = CPW.styling.reason(state.outfit, opt);
+        if (reason) return reason;
+        if (!CPW.styling.compatible(opt, items)) return '同じ部位の着こなしを外してから選んでください。';
+        items.push(id);
+      }
+      state.set('styling.items', items);
+      return '';
+    },
     /* 特殊パーツの1スロットを丸ごと差し替える。
      * applyPatch（deepMerge）だと「外した軸」が古い値のまま残ってしまうので、
      * ここだけは置き換えにする。 */
@@ -776,6 +825,14 @@
     var list = field.options();
 
     var groups = [{ id: null, labelJa: null, items: list }];
+    if (list.length >= 12 && list.some(function (opt) { return opt.groupJa; })) {
+      groups = [];
+      list.forEach(function (opt) {
+        var name = opt.groupJa || 'その他', group = groups.filter(function (g) { return g.labelJa === name; })[0];
+        if (!group) { group = { labelJa: name, items: [] }; groups.push(group); }
+        group.items.push(opt);
+      });
+    }
     if (field.grouped && D.motifGroups && list === D.motifs) {
       groups = D.motifGroups.map(function (g) {
         return { id: g.id, labelJa: g.labelJa, items: list.filter(function (o) { return o.group === g.id; }) };
@@ -917,7 +974,14 @@
       body.innerHTML = '';
       var val = cfg.get();
       var row = ui.el('div', { class: 'chips' });
-      cfg.items().forEach(function (o) {
+      var items = cfg.items(), lastGroup = null;
+      items.forEach(function (o) {
+        if (items.length >= 12 && o.groupJa && o.groupJa !== lastGroup) {
+          if (row.childNodes.length) body.appendChild(row);
+          body.appendChild(ui.el('p', { class: 'option-group', text: o.groupJa }));
+          row = ui.el('div', { class: 'chips' });
+          lastGroup = o.groupJa;
+        }
         var sel = cfg.multi ? (Array.isArray(val) && val.indexOf(o.id) >= 0) : val === o.id;
         var key = cfg.fkey + ':' + o.id;
         var b = ui.el('button', {
@@ -954,7 +1018,7 @@
     if (kind === 'multi') return renderMultiSlot(slot);
     return selectField({
       labelJa: slot.labelJa, noteJa: slot.noteJa, fkey: 'part:' + slot.id,
-      items: function () { return slot.options; },
+      items: function () { return slot.options.filter(function (opt) { return CPW.partOptionAllowed(state.outfit, slot.id, opt); }); },
       get: function () { return state.outfit.parts[slot.id] || null; },
       set: function (id, sel) { state.setPart(slot.id, sel ? null : id); }
     });
@@ -975,7 +1039,13 @@
       body.innerHTML = '';
       var val = current();
       var row = ui.el('div', { class: 'chips' });
-      slot.options.forEach(function (o) {
+      var lastGroup = null;
+      slot.options.filter(function (opt) { return CPW.partOptionAllowed(state.outfit, slot.id, opt); }).forEach(function (o) {
+        if (slot.options.length >= 12 && o.groupJa && o.groupJa !== lastGroup) {
+          if (row.childNodes.length) body.appendChild(row);
+          body.appendChild(ui.el('p', { class: 'option-group', text: o.groupJa }));
+          row = ui.el('div', { class: 'chips' }); lastGroup = o.groupJa;
+        }
         var sel = val.some(function (v) { return v.id === o.id; });
         var key = 'part:' + slot.id + ':' + o.id;
         var b = ui.el('button', {
@@ -1374,6 +1444,25 @@
     draw();
   }
 
+  function buildStylingSection(panel) {
+    panel.innerHTML = '';
+    panel.appendChild(ui.el('p', { class: 'field-note', text: '袖をまくる、シャツを出す、上着を開けるなど、衣装そのものを変えずに着方を指定します。最大2件までです。' }));
+    panel.appendChild(selectField({
+      labelJa: '着方を選ぶ', fkey: 'styling', multi: true,
+      items: function () {
+        return D.styling.filter(function (opt) {
+          return state.outfit.styling.items.indexOf(opt.id) >= 0 || CPW.styling.applicable(state.outfit, opt);
+        });
+      },
+      get: function () { return state.outfit.styling.items; },
+      set: function (id) { var message = state.toggleStyling(id); if (message) ui.toast(message); }
+    }));
+    state.outfit.styling.items.forEach(function (id) {
+      var opt = util.byId(D.styling, id), reason = CPW.styling.reason(state.outfit, opt);
+      if (reason) panel.appendChild(ui.el('p', { class: 'field-note', text: opt.labelJa + '：' + reason }));
+    });
+  }
+
   /* ---------- 3. 素材・装飾 ---------- */
   function buildMaterialSection(panel) {
     var baseMaterials = D.materials.filter(function (m) { return m.category === 'material'; });
@@ -1472,7 +1561,13 @@
 
         card.appendChild(ui.el('p', { class: 'field-sub', text: '種類' }));
         var trow = ui.el('div', { class: 'chips' });
+        var decoGroup = null;
         D.decorations.forEach(function (opt) {
+          if (opt.groupJa !== decoGroup) {
+            if (trow.childNodes.length) card.appendChild(trow);
+            card.appendChild(ui.el('p', { class: 'option-group', text: opt.groupJa }));
+            trow = ui.el('div', { class: 'chips' }); decoGroup = opt.groupJa;
+          }
           var sel = item.type === opt.id;
           var key = 'deco:' + idx + ':type:' + opt.id;
           var b = ui.el('button', {
@@ -1487,6 +1582,7 @@
         card.appendChild(ui.el('p', { class: 'field-sub', text: '位置（複数可）' }));
         var prow = ui.el('div', { class: 'chips' });
         D.decorationPlacements.forEach(function (pl) {
+          if (!CPW.decorationPlacementAllowed(o, pl.id)) return;
           var sel = (item.placements || []).indexOf(pl.id) >= 0;
           var key = 'deco:' + idx + ':place:' + pl.id;
           var b = ui.el('button', {
@@ -1999,6 +2095,7 @@
   var SECTIONS = [
     { id: 'concept', labelJa: 'コンセプト', phase: 1 },
     { id: 'structure', labelJa: '衣装構造', phase: 2 },
+    { id: 'styling', labelJa: '着こなし・着崩し', phase: 5 },
     { id: 'material', labelJa: '素材・装飾', phase: 2 },
     { id: 'condition', labelJa: '衣装の状態・加工', phase: 5 },
     { id: 'palette', labelJa: '配色', phase: 2 },
@@ -2105,6 +2202,8 @@
         panel.appendChild(renderAttributeField());
       } else if (sec.id === 'structure') {
         buildStructureSection(panel);
+      } else if (sec.id === 'styling') {
+        buildStylingSection(panel);
       } else if (sec.id === 'material') {
         buildMaterialSection(panel);
       } else if (sec.id === 'condition') {
@@ -2462,6 +2561,7 @@
       push(slot.labelJa, util.labelOf(slot.options, v));
     });
 
+    push('着こなし・着崩し', o.styling.items.map(function (id) { return util.labelOf(D.styling, id); }).join('、'));
     push('主素材', util.labelOf(D.materials, o.materials.primary));
     push('副素材', util.labelOf(D.materials, o.materials.secondary));
     push('装飾素材', util.labelOf(D.materials, o.materials.trim));
@@ -2771,6 +2871,14 @@
     // 設計台のヘッダ（未保存表示・主要条件・配色・基本設計％）は状態の変化に追従させる。
     // 衣装名の入力は emit しないので、入力中にヘッダが作り直されることはない。
     state.subscribe(refreshHeader);
+    state.subscribe(function () {
+      var panel = document.getElementById('panel-styling');
+      if (panel) {
+        var focused = document.activeElement && document.activeElement.getAttribute('data-fkey');
+        buildStylingSection(panel);
+        if (focused && focused.indexOf('styling:') === 0) focusBack(panel, focused);
+      }
+    });
     global.addEventListener('hashchange', render);
     global.addEventListener('beforeunload', function () { if (autosave.pending()) store.saveDraft(state.outfit); });
     render();

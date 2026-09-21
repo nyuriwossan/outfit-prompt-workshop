@@ -1,0 +1,43 @@
+{
+  "browser": "153.0.4234.48",
+  "viewports": [
+    {
+      "width": 375,
+      "horizontalOverflow": false,
+      "tapTargetsAtLeast44": true,
+      "chipWrapping": true,
+      "stylingAddRemove": true,
+      "thirdRejected": true,
+      "categorySwitch": true,
+      "merfolk": true,
+      "saveReload": true,
+      "categories": 9
+    },
+    {
+      "width": 390,
+      "horizontalOverflow": false,
+      "tapTargetsAtLeast44": true,
+      "chipWrapping": true,
+      "stylingAddRemove": true,
+      "thirdRejected": true,
+      "categorySwitch": true,
+      "merfolk": true,
+      "saveReload": true,
+      "categories": 9
+    },
+    {
+      "width": 430,
+      "horizontalOverflow": false,
+      "tapTargetsAtLeast44": true,
+      "chipWrapping": true,
+      "stylingAddRemove": true,
+      "thirdRejected": true,
+      "categorySwitch": true,
+      "merfolk": true,
+      "saveReload": true,
+      "categories": 9
+    }
+  ],
+  "errors": [],
+  "browserTests": "615 / 615 通過"
+}

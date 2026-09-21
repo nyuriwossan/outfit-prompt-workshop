@@ -235,6 +235,23 @@
    * ルール側はパラメータだけを持ち、調べ方はここ。
    * ========================================================== */
   var CHECKS = {
+    stylingInapplicable: function (o) {
+      var bad = o.styling.items.filter(function (id) { return !CPW.styling.applicable(o,U.byId(D.styling,id)); });
+      return bad.length ? {involvedPaths:['styling.items'],extraJa:bad.map(function(id){return U.labelOf(D.styling,id);}).join('、')} : null;
+    },
+    stylingConflict: function (o) {
+      if (!o.styling.items.some(function(id) {return !CPW.styling.compatible(U.byId(D.styling,id),o.styling.items);})) return null;
+      return {involvedPaths:['styling.items']};
+    },
+    symmetryDetail: function (o) {
+      return o.silhouette.symmetry==='symmetrical' && CPW.structureFacts(o).asymmetric ? {involvedPaths:['silhouette.symmetry','parts.asymmetry_detail','parts.shoulders','parts.sleeves']} : null;
+    },
+    rigidDraping: function (o) {var f=CPW.structureFacts(o);return f.rigid && f.draped ? {involvedPaths:['materials.primary','parts.construction_detail']} : null;},
+    openBackArmor: function (o) {var f=CPW.structureFacts(o);return f.rigidBack && f.openBack ? {involvedPaths:['materials.primary','parts.cutout','parts.back','parts.vest']} : null;},
+    swimCutoutDuplicate: function (o) {
+      var slot=U.byId(D.partSlots,'cutout');
+      return o.garment.category==='swimwear' && o.parts.back && (o.parts.cutout||[]).some(function(it) {return (U.byId(slot.options,it.id).tags||[]).indexOf('open_back')>=0;}) ? {involvedPaths:['parts.back','parts.cutout']} : null;
+    },
     primaryMissing: function (o) {
       if (o.palette.primary) return null;
       var others = ['secondary', 'accent', 'metal', 'gem'].filter(function (k) { return !!o.palette[k]; });
@@ -654,6 +671,9 @@
   }
 
   var PATH_LABELS = {
+    'styling.items': '着こなし・着崩し',
+    'silhouette.upperVolume': '上半身の量感', 'silhouette.lowerVolume': '下半身の量感',
+    'silhouette.waist': 'ウエスト位置', 'silhouette.length': '丈', 'silhouette.symmetry': '対称性',
     'palette.primary': '主色', 'palette.secondary': '副色', 'palette.accent': '差し色',
     'palette.metal': '金属色', 'palette.gem': '宝石色', 'palette.scheme': '配色方式',
     'decorations.density': '装飾密度', 'decorations.items': '装飾', 'condition.items': '状態・加工', 'decorations.focalMotif': '主役装飾モチーフ',
@@ -824,7 +844,7 @@
       }
       if (score <= 0) return;
       var items = (o.decorations.items || []).concat([{
-        type: d.id, placements: (d.recommendedPlacements || []).slice(0, 2), role: 'support', size: 'medium', quantity: 'few'
+        type: d.id, placements: (d.recommendedPlacements || []).filter(function(p) {return CPW.decorationPlacementAllowed(o,p);}).slice(0, 2), role: 'support', size: 'medium', quantity: 'few'
       }]);
       out.push(cand(o, {
         kind: 'standard', category: '装飾', path: 'decorations.items', valueId: d.id,
@@ -949,6 +969,7 @@
         if (!slot || S.slotKind(slot) !== 'single') return;
         var best = null;
         slot.options.forEach(function (opt) {
+          if (!CPW.partOptionAllowed(o,slot.id,opt)) return;
           if (attrAvoids(ctx, opt)) return;
           var f = feelScore(o, opt);
           if (!f) return;
@@ -1086,7 +1107,41 @@
     return out;
   }
 
-  /* hard競合を生む候補は出さない */
+  /* 現在の衣装・様式に合う未設定の部位と着こなしを提案する。 */
+  function tailoringCandidates(o) {
+    var keys=[], style=o.concept.primaryStyle, category=o.garment.category;
+    if (style && D.tailoringAffinity[style]) keys.push(style);
+    if (category==='merfolk') keys.push('merfolk');
+    if (['business_suit','mafia_style_suit'].indexOf(o.garment.subtype)>=0 || /formal|business/.test(o.concept.occasion||'')) keys.push('formal');
+    if (o.concept.worldview==='modern' && (!style || ['casual','street','minimal','smart_casual'].indexOf(style)>=0)) keys.push('casual');
+    var out=[];
+    keys.forEach(function(key) {
+      D.tailoringAffinity[key].forEach(function(pair) {
+        var path=pair[0], id=pair[1], opt, value=id, group='部位';
+        if (path.indexOf('parts.')===0) {
+          var slot=U.byId(D.partSlots,path.split('.')[1]); opt=U.byId(slot.options,id);
+          if (S.isSlotFilled(slot,o.parts[slot.id]) || !CPW.partOptionAllowed(o,slot.id,opt)) return;
+          if (slot.multi) value=[{id:id,layer:'main'}];
+        } else if (path.indexOf('silhouette.')===0) {
+          var axis=path.split('.')[1]; opt=U.byId(D.silhouette[axis],id); group='シルエット';
+          if (o.silhouette[axis] || category==='merfolk' && ['length','lowerVolume'].indexOf(axis)>=0) return;
+        } else if (path==='styling.items') {
+          opt=U.byId(D.styling,id); group='着こなし';
+          if (o.styling.items.length>=2 || !CPW.styling.applicable(o,opt) || !CPW.styling.compatible(opt,o.styling.items)) return;
+          value=o.styling.items.concat([id]);
+        } else {
+          opt=U.byId(D.decorations,id); group='装飾';
+          value=o.decorations.items.concat([{type:id,placements:['chest'],role:'support',quantity:'few',size:'medium'}]);
+        }
+        if (!opt) return;
+        out.push(cand(o,{kind:'standard',category:group,path:path,valueId:id,labelJa:opt.labelJa,promptEn:opt.shortPrompt,
+          score:7,reasons:['現在の衣装・様式に合う仕立ての候補'],patch:setPatch(path,value)}));
+      });
+    });
+    return out;
+  }
+
+  /* hard競合を生む候補は出さない。 */
   function introducesHard(o, patch) {
     if (!patch) return false;
     var next;
@@ -1111,7 +1166,7 @@
       pool = pool.concat(resolveCandidates(o, ctx), fillCandidates(o, ctx),
         colorCandidates(o, ctx), materialCandidates(o, ctx),
         decorationCandidates(o, ctx), silhouetteCandidates(o, ctx), patternCandidates(o, ctx),
-        conditionCandidates(o, ctx),
+        conditionCandidates(o, ctx), tailoringCandidates(o),
         motifCandidates(o, ctx), attributeStyleCandidates(o, ctx));
     }
     if (mode === 'surprise' || mode === 'both') {

@@ -3326,14 +3326,14 @@
   });
 
   /* ---- 保存・移行 ---- */
-  test('5B後半：スキーマは0.3', function () {
-    eq(CPW.SCHEMA_VERSION, '0.3');
+  test('5B後半：スキーマ互換を維持して0.4へ更新', function () {
+    eq(CPW.SCHEMA_VERSION, '0.4');
   });
   test('5B後半：0.1データを読み込める（conditionは空で補完）', function () {
     var m = SC.migrate({ version: '0.1', concept: {}, garment: { category: 'dress', subtype: 'ball_gown' },
       parts: { skirtShape: 'a_line_skirt' } });
     assert(m.ok, m.reasonJa);
-    eq(m.outfit.version, '0.3');
+    eq(m.outfit.version, CPW.SCHEMA_VERSION);
     assert(Array.isArray(m.outfit.condition.items) && m.outfit.condition.items.length === 0, 'conditionが空でない');
   });
   test('5B後半：0.2データ（人魚）を読み込める', function () {
