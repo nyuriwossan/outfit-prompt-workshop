@@ -3327,7 +3327,7 @@
 
   /* ---- 保存・移行 ---- */
   test('5B後半：スキーマ互換を維持して0.4へ更新', function () {
-    eq(CPW.SCHEMA_VERSION, '0.5');
+    eq(CPW.SCHEMA_VERSION, '0.6');
   });
   test('5B後半：0.1データを読み込める（conditionは空で補完）', function () {
     var m = SC.migrate({ version: '0.1', concept: {}, garment: { category: 'dress', subtype: 'ball_gown' },

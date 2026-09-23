@@ -70,7 +70,7 @@
         condition:{items:[{type:'rain_soaked',severity:'moderate',extent:'overall',placements:[]}]},
         output:{customTags:'Exact_CASE (tag:1.2), 保持'}};
       var before=C.generator.short(raw), r=C.schema.migrate(raw);
-      assert(r.ok && r.outfit.version==='0.5'); assert(r.outfit.styling.items.length===0);
+      assert(r.ok && r.outfit.version==='0.6'); assert(r.outfit.styling.items.length===0);
       assert(C.generator.short(r.outfit)===before);
       assert(r.outfit.output.customTags===raw.output.customTags);
     });

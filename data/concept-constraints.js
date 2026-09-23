@@ -1,0 +1,37 @@
+/* Explicit exclusion membership. No fuzzy English matching at runtime. */
+(function(g){
+  var D=g.CPW.data,F=D.conceptFashion,R={};
+  function ids(s){return s?s.split(' '):[];}
+  function rule(id,values){R[id]=values;}
+  rule('no_frills',{decorations:ids('ruffles frills rosettes'),parts:ids('ruffled_collar ruffled_cuffs ruffled_hem ruffled_shirt one_sided_ruffles'),garments:D.garments.filter(function(x){return x.tags.indexOf('frilled')>=0;}).map(function(x){return x.id;}).concat(['flamenco'])});
+  rule('no_lace',{materials:['lace'],decorations:ids('lace_trim lace_panels'),patterns:['floral_lace_pattern'],parts:ids('lace_collar lace_cuffs lace_hem lace_socks lace_shorts'),garments:ids('lace_bodysuit bra_and_briefs garter_lingerie_set')});
+  rule('no_ribbons',{decorations:ids('ribbon_bow ribbon_lacing layered_bows'),parts:ids('ribbon_tie bow_belt'),garments:['hanbok']});
+  rule('no_flower_decoration',{decorations:ids('rose_ornament rosettes fabric_flowers')});
+  rule('no_gems',{materials:['crystal_details'],decorations:ids('crystal_embroidery sapphire_brooch rhinestones gem_settings'),specialTypes:ids('horn_crystal')});
+  rule('no_metal_decoration',{decorations:ids('silver_embroidery gold_embroidery metal_studs brass_buttons buckles zippers chain_details gear_ornaments clockwork_details spikes eyelets grommets rivets safety_pin_details metal_plates ornamental_clasps medallions medals aiguillettes'),materials:['metallic_thread']});
+  rule('no_fur',{materials:['faux_fur'],decorations:['fur_trim'],parts:['fur_trimmed_collar'],garments:['fur_coat']});
+  rule('no_leather',{materials:ids('leather suede'),parts:['leather_belt']});
+  rule('no_transparency',{materials:ids('flowing_chiffon organza mesh gauze translucent_film lace'),parts:ids('illusion_neckline sheer_overlay_shirt sheer_tights sheer_cover_up sheer_robe translucent_fin_tail mesh_inset_cutout'),decorations:['mesh_panels'],garments:['babydoll'],clearPaths:['materials.transparency']});
+  rule('no_patterns',{clearPaths:['materials.patterns']});
+  rule('no_large_ornament',{decorations:ids('brooch_cluster layered_bows fabric_flowers metal_plates'),parts:['oversized_bonnet'],decorationLimit:2,maxSize:'medium',maxQuantity:'few'});
+  rule('minimal_ornament',{decorationLimit:1,densityLimit:1,maxQuantity:'single'});
+  var dresses=D.garments.filter(function(x){return x.category==='dress';}).map(function(x){return x.id;});
+  rule('no_dress',{garments:dresses.concat(['qipao','swim_dress','chemise','babydoll'])});
+  rule('no_skirt',{garments:dresses.concat(ids('knit_and_skirt cardigan_and_long_skirt hanbok lehenga sailor_school_uniform school_blazer_uniform school_uniform swim_dress')),parts:ids('tiered_skirt a_line_skirt pencil_skirt micro_mini_skirt mermaid_skirt straight_skirt pleated_skirt circle_skirt full_skirt bubble_skirt tulip_skirt wrap_skirt handkerchief_skirt asymmetric_skirt fishtail_skirt gathered_skirt asymmetric_skirt_panel'),clearPaths:['parts.skirt_shape']});
+  rule('no_trousers',{garments:ids('shirt_and_trousers hoodie_and_cargo business_suit simple_tshirt_and_jeans simple_shirt_and_ankle_pants crewneck_knit_and_chinos sweatshirt_and_joggers rib_knit_and_wide_pants oversized_shirt_and_leggings blouse_and_tapered_pants work_coveralls ao_dai mariachi gakuran_uniform swim_trunks rash_guard_set'),parts:ids('fitted_trousers wide_trousers shorts straight_trousers tapered_trousers flared_trousers cropped_trousers ankle_pants cargo_pants joggers tailored_shorts pleated_shorts culottes shorts_form')});
+  rule('no_armor',{materials:ids('plate_armor chainmail scale_armor'),parts:ids('armored_vest single_shoulder_guard'),decorations:['metal_plates']});
+  rule('no_cape',{garments:['cape_coat'],parts:ids('full_back_cape shoulder_cape cape_shoulders one_sided_cape'),silhouette:['cape_upper']});
+  rule('no_hood',{garments:ids('hoodie_and_cargo oversized_plush_hoodie_set'),parts:['hood'],styling:ids('hood_up hood_down')});
+  rule('no_cutouts',{garments:ids('side_cutout_knitwear open_back_cutout_knitwear reverse_bunny_suit monokini'),parts:ids('open_back keyhole_neckline one_shoulder_neckline cold_shoulder'),clearPaths:['parts.cutout']});
+  rule('modest_coverage',{garments:D.garments.filter(function(x){return ['swimwear','lingerie'].indexOf(x.category)>=0;}).map(function(x){return x.id;}).concat(ids('side_cutout_knitwear open_back_cutout_knitwear belly_dance carnival')),parts:ids('plunging_neckline deep_v_neck open_neckline off_shoulder cold_shoulder one_shoulder sleeveless high_slit_hem high_leg minimal_coverage strapless bralette underwire_bra bandeau open_back backless'),silhouette:ids('micro mini ultra_cropped cropped upper_thigh'),clearPaths:['parts.cutout'],maxExposure:1});
+  rule('no_asymmetry',{parts:ids('off_center_neckline one_shoulder_neckline asymmetric_neckline one_shoulder one_sleeve asymmetric_sleeves asymmetric_hem high_low_hem asymmetric_skirt asymmetric_zipper'),silhouette:ids('asymmetrical subtly_asymmetrical strongly_asymmetrical diagonal_balance one_sided_emphasis high_low'),clearPaths:['parts.asymmetry_detail'],styling:['asymmetrically_worn']});
+  rule('no_special_parts',{specialSlots:['wings','horns','tail','halo'],clearPaths:['specialParts.decorativeChains','specialParts.restraintChains','specialParts.floating','specialParts.magical']});
+  ['wings','horns','tail','halo'].forEach(function(k){rule('no_'+k,{specialSlots:[k]});});
+  rule('no_animal_motifs',{decorations:ids('feather_details feather_trim shell_ornaments coral_ornaments'),patterns:ids('dragon_pattern phoenix_pattern'),specialSlots:['wings','horns','tail'],garments:ids('classic_bunny_suit reverse_bunny_suit shell_top_mermaid_set'),parts:ids('koi_patterned_tail'),motifs:ids('sea_and_mermaid')});
+  rule('no_flower_motifs',{decorations:ids('rose_ornament rosettes fabric_flowers'),patterns:ids('floral_lace_pattern small_floral large_floral cherry_blossom_print'),styles:['botanical'],motifs:ids('plants_and_vines')});
+  rule('no_modern',{styles:ids('contemporary street techwear cyberpunk futuristic athleisure sports_inspired y2k'),materials:ids('holographic_fabric neoprene vinyl spandex'),garments:D.garments.filter(function(x){return x.tags.indexOf('modern')>=0;}).map(function(x){return x.id;}).concat(ids('hoodie_and_cargo simple_tshirt_and_jeans sweatshirt_and_joggers work_coveralls competition_swimsuit rash_guard_set')),parts:ids('zip_front asymmetric_zipper cargo_pants joggers sneakers'),eras:ids('contemporary near_future far_future y2k_era'),worldviews:ids('modern sci_fi')});
+  rule('no_historical',{styles:ids('victorian baroque classical edwardian art_nouveau art_deco vintage retro steampunk'),garments:D.garments.filter(function(x){return x.tags.indexOf('traditional')>=0||x.tags.indexOf('historical')>=0;}).map(function(x){return x.id;}),eras:ids('ancient classical_period medieval renaissance baroque_era rococo_era regency victorian_era belle_epoque edwardian_era early_showa'),worldviews:['historical_western']});
+  rule('no_damage',{conditions:ids('frayed_edges torn_light torn_places tattered scuffed scratched dented chipped singed scorched battle_worn distressed raw_edged'),parts:['torn_hem']});
+  rule('no_dirt',{conditions:ids('dust_stained dust_covered mud_splattered mud_caked soiled soot_stained oil_stained sand_covered salt_stained paint_splattered blood_stain_small blood_spattered blood_stains_marked blood_soaked blood_drenched blood_smeared')});
+  F.exclusionRules=R;
+})(window);

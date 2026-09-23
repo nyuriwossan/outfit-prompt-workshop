@@ -546,4 +546,5 @@
   CPW.data.affinity.styleDecorations.romantic = ['ruffles','fabric_flowers','pleated_trim'];
   CPW.data.affinity.styleDecorations.techwear = ['eyelets','rivets','metal_plates'];
   CPW.data.rules.push({id:'concept_cultural_note',kind:'check',check:'conceptCulturalNote',type:'output',severity:'info',category:'コンセプト',titleJa:'伝統衣装の創作上の扱い',messageJa:'文化的な衣装に着想を得た創作です。完全な史実再現を保証するものではありません。',resolutions:[]});
+  [['duplicate','conceptDuplicate','主題と副題の重複'],['story','conceptStory','物語状態の組み合わせ'],['exclusions','conceptExclusions','除外条件との競合'],['era','conceptEra','時代と衣装の組み合わせ'],['role','conceptRole','役割と場面の組み合わせ']].forEach(function(r){CPW.data.rules.push({id:'concept_'+r[0],kind:'check',check:r[1],type:'output',severity:'warning',category:'コンセプト',titleJa:r[2],messageJa:r[2],resolutions:[{labelJa:'意図した組み合わせとして維持',action:'ignore'}]});});
 })(window);

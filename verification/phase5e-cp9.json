@@ -1,0 +1,92 @@
+{
+  "checkpoint": "CP9",
+  "baselineCommit": "b6cf526bfd33e500ed136986630e5cab74cd970e",
+  "total": 1386,
+  "passed": 1386,
+  "failed": 0,
+  "checkpoints": [
+    {
+      "checkpoint": "CP0",
+      "total": 809,
+      "passed": 809,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP1",
+      "total": 816,
+      "passed": 816,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP2",
+      "total": 816,
+      "passed": 816,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP3",
+      "total": 816,
+      "passed": 816,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP4",
+      "total": 1352,
+      "passed": 1352,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP5",
+      "total": 1352,
+      "passed": 1352,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP6",
+      "total": 1359,
+      "passed": 1359,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP7",
+      "total": 1359,
+      "passed": 1359,
+      "failed": 0
+    },
+    {
+      "checkpoint": "CP8",
+      "total": 1381,
+      "passed": 1381,
+      "failed": 0
+    }
+  ],
+  "baselineRetention": {
+    "baseline": 809,
+    "retained": 809,
+    "missing": []
+  },
+  "audit": {
+    "outfitCases": 250000,
+    "generatedTexts": 500000,
+    "failures": 0,
+    "rejectedRequests": 579
+  },
+  "diversity": {
+    "selections": 1000,
+    "twoDomainSets": 1000,
+    "structuralPairs": 3000,
+    "identicalPairs": 0,
+    "exceptions": 0
+  },
+  "ui": {
+    "browser": "153.0.4234.48",
+    "widths": [
+      375,
+      390,
+      430
+    ],
+    "errors": [],
+    "nativeSafari": "Not available; mobile touch emulation is not an iPhone native picker test."
+  },
+  "standaloneReport": "Delivered separately as phase5e-standalone-verification.json alongside the release ZIP and patch."
+}

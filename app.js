@@ -84,11 +84,11 @@
   /* ============================================================
    * schema
    * ========================================================== */
-  CPW.SCHEMA_VERSION = '0.5';  // Phase 5D: inspiration and optional presentation; 0.1–0.4 remain readable.
+  CPW.SCHEMA_VERSION = '0.6';  // Phase 5E: compound inspiration; 0.1–0.5 remain readable.
 
   var schema = (CPW.schema = {
     emptyInspiration: function () {
-      return {categoryId:null,motifId:null,customMotif:'',directions:[],baseId:null,placements:[],strengthId:null,exposure:null,foodGroupId:null,foodApplications:[],traditional:{regionId:null,attireId:null,treatmentId:null,qipaoNecklineId:null,qipaoLengthId:null,qipaoSlitId:null,qipaoDrapeId:null},idolStyleId:null,artNouveauShapeId:null};
+      return {categoryId:null,motifId:null,customMotif:'',secondary:{categoryId:null,motifId:null,customMotif:''},blendMode:'primary_dominant',context:{worldviewId:null,eraId:null,roleId:null,occasionId:null,storyStateIds:[]},designLanguages:[],interpretationMode:'auto',exclusions:[],directions:[],baseId:null,placements:[],strengthId:null,exposure:null,foodGroupId:null,foodApplications:[],traditional:{regionId:null,attireId:null,treatmentId:null,qipaoNecklineId:null,qipaoLengthId:null,qipaoSlitId:null,qipaoDrapeId:null},idolStyleId:null,artNouveauShapeId:null};
     },
     /* Phase 5A：部位スロットIDの snake_case 統一にともなう読み替え表。
      * 保存データのキーなので、消さずに残す。 */

@@ -24,7 +24,7 @@
     if(s.traditional.attireId!=='qipao')Object.keys(s.traditional).filter(function(k){return k.indexOf('qipao')===0;}).forEach(function(k){s.traditional[k]=null;});
     if(s.categoryId==='traditional'||s.motifId!=='idol'&&s.baseId!=='idol')s.idolStyleId=null;
     if(s.motifId!=='art_nouveau')s.artNouveauShapeId=null;
-    return s;
+    return C.conceptFashion.normalizeExpansion?C.conceptFashion.normalizeExpansion(s,r):s;
   }
   function label(s){var m=U.byId(F.motifs,s.motifId)||U.byId(F.attires,s.traditional.attireId);return s.customMotif.trim()||(m&&m.labelJa)||'自由なコンセプト';}
   function buildCandidates(selection,options){
@@ -35,6 +35,7 @@
     if(deferredTradition)p={};
     s.directions.forEach(function(id){var extra=(F.mappings.directionRecommendations||{})[id];if(!extra)return;Object.keys(extra).forEach(function(k){if(k==='parts')p.parts=Object.assign({},extra.parts,p.parts||{});else if(!p[k]||!p[k].length)p[k]=U.clone(extra[k]);});});
     var basePool=F.mappings.bases[s.baseId]||[],pool=a?[a.id]:basePool.length?basePool:p.garments||['cocktail_dress','business_suit','mage_robe'];
+    if(!a&&!basePool.length&&opts.garmentPool&&opts.garmentPool.length)pool=opts.garmentPool;
     if(m&&m.id==='mermaid_tale'&&!preserve)pool=['sea_silk_mermaid_outfit'].concat(basePool.length?basePool:['ball_gown','shell_top_mermaid_set']);
     var start=Math.floor(rng()*pool.length),count=Math.max(1,Math.min(3,Number(opts.count)||3)),out=[];
     for(var i=0;i<count;i++){

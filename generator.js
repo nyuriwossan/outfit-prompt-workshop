@@ -830,7 +830,12 @@
     else if(m){
       var aliases={art_nouveau:['style','art_nouveau'],art_deco:['style','art_deco'],gothic_cathedral:['motif','gothic_cathedral'],mermaid_tale:['motif','sea_and_mermaid'],red_hood:['motif','red_hood_forest']},a=aliases[m.id];
       var represented=a&&(a[0]==='style'?[o.concept.primaryStyle].concat(o.concept.secondaryStyles):[o.concept.primaryThemeMotif].concat(o.concept.secondaryThemeMotifs)).indexOf(a[1])>=0;
-      if(!represented)list.push(m.shortPrompt);
+      var translated=CPW.conceptFashion&&CPW.conceptFashion.expandedSelection&&CPW.conceptFashion.expandedSelection(s)&&CPW.conceptFashion.motifRepresented(o,m.id);
+      if(!represented&&!translated)list.push(m.shortPrompt);
+    }
+    if(s.secondary){
+      if(s.secondary.customMotif.trim()&&s.secondary.customMotif.trim()!==s.customMotif.trim())list.push('custom "'+s.secondary.customMotif.trim()+'" concept');
+      else {var secondary=U.byId(F.motifs,s.secondary.motifId);if(secondary&&secondary.id!==s.motifId&&!CPW.conceptFashion.motifRepresented(o,secondary.id))list.push(secondary.shortPrompt);}
     }
     // Treatment is an intentional choice, not a warning or an alternative garment engine.
     if(s.traditional.attireId&&s.traditional.attireId===o.garment.subtype){var treatment=U.byId(F.treatments,s.traditional.treatmentId);if(treatment)list.push(treatment.shortPrompt);}

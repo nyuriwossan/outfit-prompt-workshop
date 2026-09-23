@@ -1,0 +1,448 @@
+/* Phase 5E: curated visual translations. IDs on the right refer to existing data. */
+(function(g){
+  'use strict'; var D=g.CPW.data,F=D.conceptFashion,M=F.mappings;
+  function clone(x){return JSON.parse(JSON.stringify(x));}
+  function rows(text){return text.trim().split('\n').map(function(line){return line.split('|');});}
+  function addMotifs(category,text){rows(text).forEach(function(r){
+    var p=clone(M.motifs[r[2]]);delete p.specialParts;delete p.motifs;
+    if(r[3])p.colors=r[3].split(',');if(r[4])p.decorations=r[4].split(',');if(r[5])p.parts.construction_detail=[r[5]];
+    var en=r[0].replace(/_/g,' '),m={id:r[0],labelJa:r[1],shortPrompt:en+'-inspired',category:category,summaryJa:r[1]+'を'+(r[6]||'配色と質感・衣服の構造')+'へ置き換えます。',recommended:p,fallback:{shape:en+' visual rhythm',detail:en+' accents'}};
+    F.motifs.push(m);M.motifs[m.id]=p;
+  });}
+  addMotifs('concept',`affection|愛情|first_love|rose_quartz,warm_ivory|heart_charms|wrapped_panels|包み込む重なり
+obsession|執着|jealousy|wine_red,ink_black|chain_details|corseted_structure|束ねた線と拘束的な仕立て
+longing|憧れ|hope|sky_blue,pale_gold|dangling_charms|layered_panels
+loss|喪失|solitude|ash_gray,pearl_white|piping|unstructured
+regret|後悔|nostalgia|dusty_rose,taupe|contrast_stitching|overlapping_panels
+promise|約束|first_love|ice_blue,polished_silver|knot_details|wrapped_panels
+secret|秘密|abyss|midnight_blue,plum_purple|ornamental_clasps|overlapping_panels
+memory|記憶|nostalgia|warm_ivory,antique_gold|medallions|layered_panels
+oblivion|忘却|solitude|pearl_gray,chalk_white|piping|unstructured
+dream|夢|aurora|lilac,ice_blue|bead_fringe|draped_panels
+nightmare|悪夢|abyss|ink_black,eggplant|spikes|modular_panels
+destiny|運命|time_magic|antique_gold,deep_navy|chain_details|wrapped_panels
+freedom|自由|butterfly|sky_blue,pure_white|fringe|unstructured
+bondage|束縛|time_magic|gunmetal,jet_black|buckles|reinforced_structure
+rebellion|反逆|storm|scarlet,ink_black|safety_pin_details|detachable_panels
+atonement|贖罪|celestial|ash_gray,warm_ivory|silver_embroidery|pleated_panels
+rebirth|再生|phoenix|young_leaf_green,pale_gold|contrast_stitching|overlapping_panels
+silence|静寂|solitude|pearl_gray,ice_blue|pintucks|shaped_seams
+chaos|混沌|storm|magenta,cobalt_blue|dangling_charms|modular_panels
+order|秩序|art_deco|jet_black,pearl_white|piping|panel_construction
+boundary|境界|stained_glass|ink_black,chalk_white|contrast_embroidery|contrast_seams
+eternity|永遠|time_magic|platinum_metal,deep_navy|knot_details|wrapped_panels
+farewell|別離|nostalgia|dusty_lavender,ash_gray|fringe|layered_panels
+homecoming|帰郷|red_hood|warm_brown,forest_green|decorative_buttons|quilted_panels
+taboo|禁忌|abyss|eggplant,antique_gold|ornamental_clasps|boned_structure`);
+  addMotifs('fantasy',`fallen_angel|堕天|celestial|charcoal_gray,oxidized_silver|feather_trim|layered_panels
+sanctuary|聖域|celestial|warm_ivory,pale_gold|gold_embroidery|panel_construction
+curse|呪い|abyss|eggplant,verdigris_metal|chain_details|wrapped_panels
+seal|封印|time_magic|vermilion,jet_black|knot_buttons|reinforced_structure
+summoning|召喚|moon_witch|amethyst_violet,polished_silver|medallions|panel_construction
+alchemy|錬金術|time_magic|copper_metal,teal|gear_ornaments|modular_panels
+forbidden_book|禁書|gothic_cathedral|wine_red,antique_gold|ornamental_clasps|layered_panels
+star_magic|星魔法|celestial|midnight_blue,pale_gold|star_charms|pleated_panels
+shadow_magic|影魔法|abyss|ink_black,slate_gray|piping|overlapping_panels
+life_magic|生命魔法|rose|young_leaf_green,warm_ivory|beadwork|gathered_panels
+elemental_spirit|精霊|aurora|aqua,opal_white|dangling_charms|draped_panels
+fairy|妖精|butterfly|mint,blush_pink|bead_fringe|layered_panels
+dream_magic|夢魔法|aurora|periwinkle,lilac|sequins|draped_panels
+mirror_world|鏡世界|mercury|polished_silver,ink_black|metal_plates|panel_construction
+otherworld|異界|abyss|violet,seafoam_green|rhinestones|modular_panels
+void|虚空|solitude|jet_black,obsidian_black|piping|unstructured
+ancient_weapon|古代兵器|time_magic|bronze_metal,verdigris_metal|rivets|reinforced_structure
+arcane_machine|魔導機械|time_magic|gunmetal,amethyst_violet|gear_ornaments|modular_panels
+dragon_rider|竜騎士|crystal_dragon|forest_green,antique_gold|metal_plates|reinforced_structure
+moon_temple|月の神殿|moon_witch|pearl_white,midnight_blue|moon_charms|panel_construction
+crystal_palace|水晶宮|ice_crystal|ice_blue,opal_white|crystal_embroidery|panel_construction
+floating_city|浮遊都市|celestial|sky_blue,warm_ivory|dangling_charms|detachable_panels
+poison|毒|jealousy|lime_green,eggplant,ink_black|spikes|overlapping_panels`);
+  addMotifs('myth',`sun_deity|太陽神|phoenix|bright_gold,vermilion|gold_embroidery|pleated_panels
+moon_deity|月神|moon_witch|polished_silver,midnight_blue|moon_charms|draped_panels
+underworld|冥界|abyss|ink_black,burgundy|chain_details|layered_panels
+world_tree|世界樹|wisteria|forest_green,antique_gold|braided_trim|panel_construction
+fate_threads|運命の糸|time_magic|vermilion,pearl_white|ribbon_lacing|wrapped_panels
+oracle|神託|celestial|warm_ivory,amethyst_violet|medallions|pleated_panels
+grail|聖杯|celestial|bright_gold,pearl_white|gem_settings|boned_structure
+labyrinth|迷宮|art_deco|sand_beige,ink_black|piping|panel_construction
+forbidden_fruit|禁断の果実|rose|ruby_red,forest_green|beadwork|gathered_panels
+swan_maiden|白鳥の乙女|ballet|pure_white,ice_blue|feather_trim|draped_panels
+sea_legend|海の伝承|deep_sea|teal,antique_gold|shell_ornaments|layered_panels
+forest_spirit|森の精霊|wisteria|moss_green,warm_brown|braided_trim|wrapped_panels
+dragon_slayer|竜退治|valkyrie|gunmetal,deep_crimson|metal_plates|reinforced_structure
+hero_return|英雄の帰還|valkyrie|royal_blue,antique_gold|medals|shaped_seams
+fallen_kingdom|亡国|gothic_cathedral|ash_gray,wine_red|medallions|layered_panels
+sleeping_castle|眠れる城|rose|dusty_rose,ivy_green|lace_trim|overlapping_panels
+cursed_crown|呪われた王冠|gothic_cathedral|oxidized_silver,eggplant|spikes|boned_structure
+lost_kingdom|失われた王国|rococo|sand_beige,antique_gold|gold_embroidery|layered_panels
+executioner|処刑人の寓話|abyss|jet_black,gunmetal|buckles|reinforced_structure
+knight_tale|騎士の物語|valkyrie|polished_silver,royal_blue|metal_plates|reinforced_structure
+magician_tale|魔術師の物語|moon_witch|royal_purple,antique_gold|star_charms|layered_panels
+scholar_tale|学者の物語|time_magic|warm_brown,deep_navy|decorative_buttons|shaped_seams
+royalty_tale|王族の物語|rococo|royal_blue,pale_gold|gold_embroidery|panel_construction
+funeral_tale|葬送|solitude|jet_black,pearl_gray|pintucks|pleated_panels`);
+  addMotifs('nature',`lunar_eclipse|月食|eclipse|oxblood,ink_black|moon_charms|wrapped_panels
+new_moon|新月|moon_witch|ink_black,midnight_blue|piping|unstructured
+full_moon|満月|moon_witch|pearl_white,deep_navy|moon_charms|gathered_panels
+crescent_moon|三日月|moon_witch|polished_silver,ice_blue|moon_charms|wrapped_panels
+meteor_shower|流星群|aurora|midnight_blue,polished_silver|bead_fringe|pleated_panels
+nebula|星雲|aurora|violet,magenta|sequins|draped_panels
+galaxy|銀河|aurora|deep_navy,opal_white|star_charms|wrapped_panels
+twilight|夕暮れ|dawn|sunset_orange,dusty_lavender|beadwork|draped_panels
+polar_night|極夜|solitude|midnight_blue,ice_blue|piping|layered_panels
+midnight_sun|白夜|dawn|warm_ivory,peach|gold_embroidery|unstructured
+lightning|雷|storm|lemon_yellow,gunmetal|metal_plates|contrast_seams
+blizzard|吹雪|ice_crystal|snow_white,slate_gray|snowflake_motif|overlapping_panels
+fog|霧|smoke|pearl_gray,ice_blue|draped_trim|draped_panels
+rain|雨|deep_sea|steel_blue,polished_silver|bead_fringe|pleated_panels
+rainbow|虹|aurora|coral_pink,aqua,lemon_yellow|sequins|panel_construction
+sea|海|deep_sea|lagoon_blue,pearl_white|shell_ornaments|draped_panels
+wave|波|deep_sea|aqua,teal|draped_trim|wrapped_panels
+glacier|氷河|ice_crystal|ice_blue,opal_white|crystal_embroidery|panel_construction
+volcano|火山|phoenix|obsidian_black,vermilion|metal_studs|reinforced_structure
+desert|砂漠|red_hood|sand_beige,gold_ochre|braided_trim|wrapped_panels
+oasis|オアシス|deep_sea|teal,sand_beige|beadwork|draped_panels
+forest|森|wisteria|forest_green,warm_brown|braided_trim|layered_panels
+ancient_tree|古木|wisteria|warm_brown,moss_green|contrast_stitching|panel_construction
+flower_field|花畑|rose|blush_pink,young_leaf_green|fabric_flowers|gathered_panels
+snowfield|雪原|ice_crystal|snow_white,ice_blue|snowflake_motif|unstructured
+night_sky|夜空|moon_witch|midnight_blue,pale_gold|star_charms|layered_panels
+star|星|celestial|deep_navy,polished_silver|star_charms|panel_construction`);
+  addMotifs('living',`moth|蛾|butterfly|taupe,warm_brown|embroidery|shaped_seams
+spider|蜘蛛|butterfly|jet_black,polished_silver|ribbon_lacing|panel_construction
+bee|蜂|butterfly|honey_yellow,jet_black|piping|quilted_panels
+dragonfly|トンボ|butterfly|teal,gunmetal|metal_plates|shaped_seams
+wolf|狼|red_hood|ash_gray,ink_black|fur_trim|layered_panels
+fox|狐|red_hood|burnt_orange,pearl_white|tassels|wrapped_panels
+cat|猫|solitude|jet_black,warm_ivory|piping|shaped_seams
+deer|鹿|wisteria|warm_brown,warm_ivory|braided_trim|panel_construction
+horse|馬|valkyrie|chestnut_brown,jet_black|buckles|shaped_seams
+raven|鴉|butterfly|ink_black,violet|feather_trim|layered_panels
+swan|白鳥|ballet|pure_white,pearl_gray|feather_trim|draped_panels
+owl|梟|butterfly|warm_brown,cream_yellow|embroidery|overlapping_panels
+whale|鯨|deep_sea|deep_navy,pearl_gray|piping|shaped_seams
+deep_sea_fish|深海魚|deep_sea|ink_black,lagoon_blue|rhinestones|reinforced_structure
+snake|蛇|jealousy|forest_green,antique_gold|chain_details|wrapped_panels
+dragon|竜|crystal_dragon|ruby_red,gunmetal|metal_plates|reinforced_structure
+lily|百合|rose|pure_white,pale_gold|fabric_flowers|layered_panels
+lotus|蓮|rose|blush_pink,celadon|rosettes|overlapping_panels
+iris|アイリス|wisteria|violet,lemon_yellow|embroidery|pleated_panels
+chrysanthemum|菊|rose|marigold,warm_ivory|rosettes|pleated_panels
+camellia|椿|rose|vermilion,ivy_green|fabric_flowers|shaped_seams
+ivy|蔦|wisteria|ivy_green,warm_brown|braided_trim|wrapped_panels
+moss|苔|wisteria|moss_green,olive|smocking|unstructured
+mushroom|キノコ|rose|brick_red,eggshell|beadwork|gathered_panels
+flower|花|rose|dusty_rose,sage_green|fabric_flowers|overlapping_panels`);
+  addMotifs('material',`glass|ガラス|stained_glass|pale_cyan,pearl_white|beadwork|panel_construction
+quartz|水晶|ice_crystal|opal_white,ice_blue|crystal_embroidery|shaped_seams
+gemstone|宝石|stained_glass|ruby_red,sapphire_blue|gem_settings|panel_construction
+gold|金|mercury|bright_gold,antique_gold|gold_embroidery|draped_panels
+silver|銀|mercury|polished_silver,pearl_gray|silver_embroidery|shaped_seams
+copper|銅|mercury|copper_metal,verdigris_metal|brass_buttons|panel_construction
+rust|錆|time_magic|terracotta,warm_brown|rivets|reinforced_structure
+mirror|鏡|mercury|polished_silver,ink_black|metal_plates|panel_construction
+steam|蒸気|smoke|pearl_gray,warm_ivory|draped_trim|layered_panels
+flame|炎|phoenix|vermilion,amber_orange|fringe|layered_panels
+ash|灰|smoke|ash_gray,charcoal_gray|pintucks|unstructured
+bubble|泡|jellyfish|aqua,opal_white|pearl_details|gathered_panels
+droplet|水滴|jellyfish|ice_blue,polished_silver|bead_fringe|draped_panels
+ink|インク|smoke|ink_black,cobalt_blue|contrast_embroidery|draped_panels
+paper|紙|porcelain|chalk_white,linen_white|pleated_trim|pleated_panels
+ore|鉱石|ice_crystal|gunmetal,amethyst_violet|gem_settings|reinforced_structure
+pearl|真珠|porcelain|pearl_white,rose_quartz|pearl_details|shaped_seams
+iridescence|偏光|aurora|peacock_blue,violet|sequins|layered_panels
+hologram|ホログラム|aurora|magenta,aqua|rhinestones|modular_panels
+noise|ノイズ|smoke|charcoal_gray,chalk_white|contrast_stitching|detachable_panels
+glitch|グリッチ|stained_glass|magenta,lime_green|metal_plates|modular_panels
+clock|時計|time_magic|antique_gold,deep_navy|clockwork_details|panel_construction
+machine|機械|time_magic|gunmetal,copper_metal|gear_ornaments|modular_panels`);
+  addMotifs('art',`ruins|廃墟|gothic_cathedral|ash_gray,moss_green|contrast_stitching|detachable_panels
+palace|宮殿|rococo|warm_ivory,antique_gold|gold_embroidery|panel_construction
+fortress|城塞|gothic_cathedral|slate_gray,gunmetal|metal_plates|reinforced_structure
+library|図書館|time_magic|warm_brown,wine_red|decorative_buttons|layered_panels
+observatory|天文台|art_deco|deep_navy,polished_silver|star_charms|panel_construction
+greenhouse|温室|stained_glass|celadon,warm_ivory|piping|panel_construction
+mosaic|モザイク|stained_glass|cobalt_blue,terracotta|beadwork|panel_construction
+tile|タイル|porcelain|pure_white,cobalt_blue|contrast_embroidery|quilted_panels
+sculpture|彫刻|porcelain|chalk_white,pearl_gray|pintucks|boned_structure
+relief|レリーフ|gothic_cathedral|sand_beige,antique_gold|soutache|quilted_panels
+marquetry|寄木|art_deco|warm_brown,linen_white|contrast_stitching|panel_construction
+kintsugi|金継ぎ|porcelain|ink_black,bright_gold|gold_embroidery|contrast_seams
+embroidery_craft|刺繍工芸|rose|wine_red,warm_ivory|embroidery|topstitched
+weaving|織物|wisteria|linen_white,warm_brown|braided_trim|panel_construction
+paper_cutting|切り絵|art_deco|jet_black,pure_white|applique|layered_panels
+origami|折り紙|porcelain|pure_white,vermilion|pleated_trim|pleated_panels
+calligraphy|書|lacquer|ink_black,linen_white|contrast_embroidery|draped_panels
+ink_painting|墨絵|smoke|ink_black,pearl_gray|contrast_embroidery|unstructured
+bauhaus|バウハウス|art_deco|vermilion,cobalt_blue,lemon_yellow|piping|panel_construction
+baroque_art|バロック装飾|rococo|antique_gold,burgundy|soutache|ruched_construction
+brutalism|ブルータリズム|gothic_cathedral|charcoal_gray,ash_gray|metal_plates|reinforced_structure
+geometry|幾何学装飾|art_deco|jet_black,pure_white|piping|panel_construction`);
+  addMotifs('stage',`stage_magic|マジシャン|circus|jet_black,vermilion|ornamental_clasps|shaped_seams
+revue|レビュー|opera|hot_pink,bright_gold|sequins|layered_panels
+cabaret|キャバレー風舞台|opera|wine_red,jet_black|bead_fringe|corseted_structure
+concert|コンサート|idol|cobalt_blue,polished_silver|rhinestones|shaped_seams
+rock_stage|ロック舞台|idol|jet_black,scarlet|metal_studs|modular_panels
+court_ritual|王宮儀礼|rococo|royal_blue,antique_gold|aiguillettes|panel_construction
+coronation|戴冠式|rococo|royal_purple,bright_gold|gold_embroidery|boned_structure
+festival|祭礼|circus|vermilion,pale_gold|tassels|wrapped_panels
+parade|パレード|circus|royal_blue,pure_white|epaulette_ornaments|reinforced_structure
+runway|ファッションショー|art_deco|jet_black,pearl_white|metal_plates|modular_panels
+theatre|演劇|opera|burgundy,antique_gold|braided_trim|layered_panels
+dance|ダンス公演|ballet|blush_pink,ice_blue|fringe|draped_panels
+fantasy_stage|幻想舞台|aurora|violet,pale_gold|star_charms|layered_panels
+future_stage|未来舞台|mercury|polished_silver,aqua|metal_plates|modular_panels
+puppetry|人形劇|circus|vermilion,warm_ivory|decorative_buttons|panel_construction
+shadow_theatre|影絵劇|smoke|jet_black,amber_orange|piping|layered_panels`);
+  F.motifs.forEach(function(m){m.recommended=M.motifs[m.id];});
+  // Shape translations retain the source ornament's visual rhythm instead of using one generic substitute.
+  F.decorationInterpretations={
+    rose_ornament:{symbolic:['draped_trim','spikes'],abstract:['pleated_trim'],avant_garde:['rosettes','metal_plates']},
+    fabric_flowers:{symbolic:['gathering'],abstract:['pleated_trim'],avant_garde:['rosettes']},
+    rosettes:{symbolic:['ruching'],abstract:['shirring'],avant_garde:['gathering','metal_plates']},
+    feather_details:{symbolic:['fringe'],abstract:['pintucks'],avant_garde:['layered_bows']},
+    feather_trim:{symbolic:['fringe'],abstract:['pleated_trim'],avant_garde:['tassel_fringe']},
+    gear_ornaments:{symbolic:['eyelets'],abstract:['grommets'],avant_garde:['metal_plates','rivets']},
+    clockwork_details:{symbolic:['chain_details'],abstract:['rivets'],avant_garde:['metal_plates']},
+    star_charms:{symbolic:['rhinestones'],abstract:['contrast_stitching'],avant_garde:['spikes']},
+    moon_charms:{symbolic:['ornamental_clasps'],abstract:['piping'],avant_garde:['metal_plates']},
+    shell_ornaments:{symbolic:['pleated_trim'],abstract:['pintucks'],avant_garde:['pleated_trim','metal_plates']},
+    coral_ornaments:{symbolic:['braided_trim'],abstract:['contrast_embroidery'],avant_garde:['bead_fringe']},
+    heart_charms:{symbolic:['knot_details'],abstract:['gathering'],avant_garde:['layered_bows']}
+  };
+  function vocab(list,text,profiles){rows(text).forEach(function(r){var p=clone(profiles[r[2]]||{});list.push({id:r[0],labelJa:r[1],shortPrompt:r[0].replace(/_/g,' '),recommended:p});});}
+  var P={royal:{garments:['royal_uniform','ball_gown'],materials:['silk','brocade'],styles:['royal'],decorations:['gold_embroidery'],silhouette:{fit:['tailored']}},academic:{garments:['business_suit','long_coat','mage_robe'],materials:['wool','tweed'],styles:['dark_academia'],parts:{construction_detail:['layered_panels'],collar:['notched_lapels']},silhouette:{fit:['tailored']}},practical:{garments:['traveling_robe','adventurer_outfit','work_coveralls'],materials:['linen','canvas'],styles:['utility'],parts:{construction_detail:['layered_panels']},styling:['casually_worn']},military:{garments:['royal_uniform','light_combat_outfit'],materials:['twill','wool'],styles:['military'],decorations:['buckles'],silhouette:{fit:['structured_fit']}},arcane:{garments:['mage_robe','long_coat'],materials:['velvet','silk'],styles:['fantasy_adventurer'],decorations:['medallions'],parts:{construction_detail:['layered_panels']}},ceremonial:{garments:['priest_robe','royal_uniform'],materials:['brocade','silk'],styles:['ceremonial'],decorations:['silver_embroidery'],styling:['neatly_arranged']},modern:{garments:['business_suit','shirt_and_trousers'],materials:['cotton','wool'],styles:['contemporary'],silhouette:{fit:['regular_fit']}},future:{garments:['long_coat','work_coveralls'],materials:['nylon','holographic_fabric'],styles:['futuristic'],parts:{construction_detail:['modular_panels']}},romantic:{garments:['cocktail_dress','cape_coat'],materials:['silk','crepe'],styles:['romantic'],parts:{construction_detail:['draped_panels']}},stage:{garments:['stage_magician_outfit','idol_stage_outfit'],materials:['satin','taffeta'],styles:['theatrical'],decorations:['sequins'],silhouette:{upperVolume:['structured']}}};
+  vocab(D.worldviews,`urban_fantasy|都市幻想|modern
+post_apocalypse|文明崩壊後|practical
+retro_future|レトロフューチャー|future
+mythic_world|神話世界|ceremonial
+ocean_fantasy|海洋幻想|romantic
+desert_fantasy|砂漠幻想|practical
+academic_fantasy|学術幻想|academic`,P);
+  vocab(D.eras,`classical_period|古典期|ceremonial
+rococo_era|ロココ期|royal
+regency|リージェンシー|royal
+belle_epoque|ベル・エポック|romantic
+edwardian_era|エドワーディアン|academic
+nineteen_twenties|1920年代|stage
+nineteen_thirties|1930年代|modern
+nineteen_forties|1940年代|military
+nineteen_fifties|1950年代|romantic
+nineteen_sixties|1960年代|modern
+nineteen_seventies|1970年代|romantic
+nineteen_eighties|1980年代|stage
+nineteen_nineties|1990年代|modern
+y2k_era|Y2K|future
+far_future|遠未来|future
+retro_future_era|レトロフューチャー|future
+timeless_fantasy|時代不詳ファンタジー|arcane`,P);
+  vocab(D.roles,`monarch|君主|royal
+heir|王位継承者|royal
+courtier|宮廷人|royal
+diplomat|外交官|royal
+envoy|使節|royal
+chamberlain|侍従|royal
+royal_guard|近衛|military
+commander|指揮官|military
+mercenary|傭兵|military
+ranger|レンジャー|practical
+hunter|狩人|practical
+bodyguard|護衛|military
+witch|魔女|arcane
+alchemist|錬金術師|academic
+summoner|召喚士|arcane
+shaman|呪術師|arcane
+oracle_role|神託者|ceremonial
+healer|治癒師|practical
+necromancer|ネクロマンサー|arcane
+scholar|学者|academic
+researcher|研究者|academic
+librarian|図書館員|academic
+apothecary|薬師|practical
+doctor|医師|modern
+engineer|技師|practical
+mechanic|機械士|practical
+inventor|発明家|academic
+astronomer|天文学者|academic
+merchant|商人|modern
+sailor|船乗り|practical
+navigator|航海士|practical
+artisan|職人|practical
+tailor|仕立て屋|modern
+chef|料理人|practical
+actor|舞台俳優|stage
+dancer|ダンサー|stage
+musician|音楽家|stage
+illusionist|奇術師|stage
+detective|探偵|academic
+journalist|ジャーナリスト|modern`,P);
+  vocab(D.occasions,`school|通学|modern
+exploration|探索|practical
+expedition|遠征|practical
+voyage|航海|practical
+duel|決闘|military
+guard_duty|護衛任務|military
+infiltration|潜入|practical
+investigation|捜査|academic
+festival_occasion|祭礼|ceremonial
+coronation_occasion|戴冠式|royal
+ball|舞踏会|royal
+banquet|晩餐会|royal
+masked_ball|仮面舞踏会|stage
+funeral|葬送|ceremonial
+mourning|喪|ceremonial
+wedding|結婚式|romantic
+parade_occasion|パレード|military
+stage_occasion|舞台|stage
+concert_occasion|コンサート|stage
+dance_performance|ダンス公演|stage
+diplomacy|外交|royal
+pilgrimage|巡礼|practical
+research|研究|academic
+outdoors|野外活動|practical
+tea_party|茶会|romantic
+court_event|宮廷行事|royal`,P);
+  var legacyProfiles={worldviews:{modern:'modern',western_fantasy:'arcane',historical_western:'royal',dark_fantasy:'arcane',japanese:'ceremonial',chinese:'ceremonial',sci_fi:'future',fairy_tale:'romantic'},eras:{ancient:'ceremonial',medieval:'arcane',renaissance:'royal',baroque_era:'royal',victorian_era:'academic',early_showa:'academic',contemporary:'modern',near_future:'future'},roles:{commoner:'practical',student:'academic',office_worker:'modern',royal_prince:'royal',noble:'royal',maid:'modern',officer:'military',knight:'military',cleric:'ceremonial',mage:'arcane',adventurer:'practical',assassin:'military',shrine_maiden:'ceremonial',courtier_cn:'royal',idol:'stage',traveler:'practical'},occasions:{daily:'modern',work:'practical',ceremonial:'ceremonial',battle:'military',ritual:'ceremonial',party:'stage',travel:'practical',rest:'romantic',beach:'romantic'}};
+  Object.keys(legacyProfiles).forEach(function(k){D[k].forEach(function(x){if(!x.recommended)x.recommended=clone(P[legacyProfiles[k][x.id]]);});});
+  F.storyStates=[];
+  rows(`prime|全盛期||neatly_arranged
+newly_appointed|新任||neatly_arranged
+new_heir|継承したばかり||neatly_arranged
+long_journey|長旅の途中|dust_stained,worn|casually_worn
+returning_expedition|遠征帰り|weathered,mend_marks|casually_worn
+after_battle|戦闘後|dust_stained,battle_worn|disheveled
+in_exile|亡命中|faded,worn|casually_worn
+exiled|追放された|faded,patched|casually_worn
+fallen_status|没落後|faded,repaired|casually_worn
+hidden_identity|身分を隠している||neatly_arranged
+in_hiding|潜伏中||neatly_arranged
+captive|囚われている|worn,rumpled|disheveled
+just_escaped|脱出直後|dust_stained,torn_light|disheveled
+cursed|呪われている|aged|neatly_arranged
+sealed|封印されている|dust_covered,aged|neatly_arranged
+blessed|祝福されている||neatly_arranged
+encroached|侵食されている|weathered|disheveled
+purified|浄化された||neatly_arranged
+revived|復活した|repaired|neatly_arranged
+in_mourning|喪に服している||neatly_arranged
+inherited_clothes|古い衣装を受け継いだ|aged,mend_marks|neatly_arranged
+restored|修復された衣装|repaired,repair_stitching|neatly_arranged
+patched_life|継ぎ接ぎで使い続けている|patched,mend_marks|casually_worn
+long_used|長年使い込まれている|worn,faded|casually_worn
+caught_rain|雨に遭った|rain_soaked|casually_worn
+sea_wind|海風に晒された|salt_stained,sea_spray|casually_worn
+desert_journey|砂漠を旅している|sand_covered,sun_faded|casually_worn
+snow_journey|雪中を旅している|snow_damp|neatly_arranged
+ritual_ready|儀式用に整えられた||neatly_arranged
+disguised|変装中||neatly_arranged`).forEach(function(r){F.storyStates.push({id:r[0],labelJa:r[1],shortPrompt:r[0].replace(/_/g,' '),recommended:{conditionTypes:r[2]?r[2].split(','):[],styling:[r[3]]}});});
+  var dirs=`strict|厳格|military
+cold|冷徹|minimal
+romantic|ロマンティック|romantic
+melancholic|哀愁|vintage
+ephemeral|儚い|fairycore
+ominous|不穏|gothic
+rustic|素朴|cottagecore
+majestic|荘厳|ceremonial
+academic|学術的|dark_academia
+military|ミリタリー|military
+sporty|スポーティ|athleisure
+playful|遊び心|street
+luxurious|豪華|maximalist
+minimal|ミニマル|minimal
+maximal|マキシマル|maximalist
+refined|洗練|quiet_luxury
+rugged|無骨|workwear
+innocent|無垢|light_academia
+rebellious|反逆的|punk
+tranquil|静謐|minimal
+dynamic|躍動的|sports_inspired
+practical|実用的|utility
+ceremonial|儀礼的|ceremonial
+wild|野性的|forest`;
+  rows(dirs).forEach(function(r){F.directions.push({id:r[0],labelJa:r[1],shortPrompt:r[0]});M.directions[r[0]]=[r[2]];});
+  F.designLanguages=[];
+  rows(`linear|直線的|tailored|panel_construction
+curved|曲線的|contoured_fit|shaped_seams
+geometric|幾何学的|structured_fit|panel_construction
+organic|有機的|draped|overlapping_panels
+radial|放射状|fitted|pleated_panels
+spiral|螺旋|contoured_fit|wrapped_panels
+wavy|波状|draped|ruched_construction
+architectural|建築的|structured_fit|boned_structure
+sculptural|彫刻的|cocoon_fit|shaped_seams
+fluid|流動的|draped|draped_panels
+angular|鋭角的|structured_fit|reinforced_structure
+soft|柔らかい|soft_unstructured_fit|gathered_panels
+symmetrical|左右対称|tailored|panel_construction
+asymmetrical|左右非対称|draped|overlapping_panels
+vertical|縦長|slim_fit|princess_seams
+wide|横に広い|boxy|panel_construction
+compact|コンパクト|fitted|shaped_seams
+oversized|オーバーサイズ|oversized|unstructured
+layered|多層|relaxed|layered_panels
+modular|モジュール|structured_fit|modular_panels
+fragmented|断片的|boxy|detachable_panels
+repetitive|反復|tailored|pleated_panels
+negative_space|余白を活かす|regular_fit|unstructured
+translucent_layers|透過レイヤー|draped|layered_panels
+enveloping|包み込む|cocoon_fit|wrapped_panels
+open|開放的|relaxed|unstructured`).forEach(function(r){var p={silhouette:{fit:[r[2]]},parts:{construction_detail:[r[3]]}};if(r[0]==='symmetrical'||r[0]==='asymmetrical')p.silhouette.symmetry=[r[0]];if(r[0]==='translucent_layers')p.materials=['organza','translucent_film'];F.designLanguages.push({id:r[0],labelJa:r[1],shortPrompt:r[0].replace(/_/g,' '),recommended:p});});
+  function simple(text){return rows(text).map(function(r){return {id:r[0],labelJa:r[1],shortPrompt:r[0].replace(/_/g,' ')};});}
+  F.interpretationModes=simple(`auto|おまかせ
+literal|モチーフを分かりやすく
+symbolic|象徴的に
+abstract|抽象的に
+fashion|ファッションとして自然に
+stage|舞台衣装として大胆に
+avant_garde|前衛的に再構成`);
+  F.blendModes=simple(`primary_dominant|主題を中心に
+balanced|半々に混ぜる
+split_roles|役割を分ける
+secondary_accent|副題はアクセントだけ`);
+  F.strategies=simple(`readable|モチーフを分かりやすく
+wearable|ファッションとして自然に
+experimental|大胆に再構成`);
+  F.randomProfiles=simple(`all|完全おまかせ
+dark|ダーク
+fantasy|ファンタジー
+cute|かわいい
+elegant|上品
+dreamlike|幻想的
+unusual|奇抜
+stage|舞台衣装
+practical|実用的
+ceremonial|儀礼的
+sharp|端正・シャープ`);
+  F.exclusions=simple(`no_frills|フリルなし
+no_lace|レースなし
+no_ribbons|リボンなし
+no_flower_decoration|花装飾なし
+no_gems|宝石なし
+no_metal_decoration|金属装飾なし
+no_fur|毛皮なし
+no_leather|革なし
+no_transparency|透明素材なし
+no_patterns|柄なし
+no_large_ornament|大きな装飾なし
+minimal_ornament|装飾少なめ
+no_skirt|スカートなし
+no_dress|ドレスなし
+no_trousers|パンツなし
+no_armor|鎧なし
+no_cape|ケープなし
+no_hood|フードなし
+no_cutouts|カットアウトなし
+modest_coverage|肌見せ少なめ
+no_asymmetry|左右非対称なし
+no_special_parts|特殊パーツなし
+no_wings|翼なし
+no_horns|角なし
+no_tail|尾なし
+no_halo|光輪なし
+no_animal_motifs|動物モチーフなし
+no_flower_motifs|花モチーフなし
+no_modern|現代要素なし
+no_historical|歴史風要素なし
+no_damage|ダメージ表現なし
+no_dirt|汚れなし`);
+})(window);

@@ -1,0 +1,117 @@
+{
+  "baselineCommit": "b6cf526bfd33e500ed136986630e5cab74cd970e",
+  "schema": "0.6",
+  "before": {
+    "topics": 126,
+    "worldviews": 8,
+    "eras": 8,
+    "occasions": 9,
+    "roles": 16,
+    "storyStates": 0,
+    "directions": 16,
+    "designLanguages": 0,
+    "interpretationModes": 0,
+    "exclusions": 0,
+    "garments": 94,
+    "styles": 54,
+    "decorations": 81
+  },
+  "after": {
+    "topics": 311,
+    "worldviews": 15,
+    "eras": 25,
+    "occasions": 35,
+    "roles": 56,
+    "storyStates": 30,
+    "directions": 40,
+    "designLanguages": 26,
+    "interpretationModes": 7,
+    "exclusions": 32,
+    "garments": 94,
+    "styles": 54,
+    "decorations": 81
+  },
+  "added": {
+    "topics": 185,
+    "worldviews": 7,
+    "eras": 17,
+    "occasions": 26,
+    "roles": 40,
+    "storyStates": 30,
+    "directions": 24,
+    "designLanguages": 26,
+    "interpretationModes": 7,
+    "exclusions": 32,
+    "garments": 0,
+    "styles": 0,
+    "decorations": 0
+  },
+  "categories": {
+    "concept": {
+      "labelJa": "概念・感情",
+      "before": 5,
+      "after": 30
+    },
+    "fantasy": {
+      "labelJa": "ファンタジー・超常",
+      "before": 5,
+      "after": 28
+    },
+    "myth": {
+      "labelJa": "物語・神話・伝承",
+      "before": 5,
+      "after": 29
+    },
+    "food": {
+      "labelJa": "食べ物・飲み物",
+      "before": 72,
+      "after": 72
+    },
+    "nature": {
+      "labelJa": "自然・天体・気象",
+      "before": 5,
+      "after": 32
+    },
+    "living": {
+      "labelJa": "生き物・植物",
+      "before": 5,
+      "after": 30
+    },
+    "material": {
+      "labelJa": "素材・現象",
+      "before": 5,
+      "after": 28
+    },
+    "art": {
+      "labelJa": "美術・建築・工芸",
+      "before": 5,
+      "after": 27
+    },
+    "traditional": {
+      "labelJa": "民族・伝統衣装",
+      "before": 14,
+      "after": 14
+    },
+    "stage": {
+      "labelJa": "特殊・舞台衣装",
+      "before": 5,
+      "after": 21
+    }
+  },
+  "motifAdditions": 185,
+  "primaryVocabularyAdditions": 394,
+  "additionalControls": {
+    "blendModes": 4,
+    "strategies": 3,
+    "randomProfiles": 11
+  },
+  "unchanged": {
+    "colors": 128,
+    "materials": 50,
+    "patterns": 30,
+    "styling": 34,
+    "conditions": 53,
+    "garments": 94
+  },
+  "rules": 50
+}
