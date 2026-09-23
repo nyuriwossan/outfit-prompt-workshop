@@ -1964,7 +1964,7 @@
         ui.el('p', { class: 'hero-sub', text: 'パーツを組み合わせて、一着の英語プロンプトを仕立てる。' })
       ]),
       ui.el('div', { class: 'stack' }, [
-        ui.el('a', { class: 'btn btn--primary', href: '#/entry', text: '設計台から作る' }),
+        ui.el('a', { class: 'btn btn--primary', href: '#/entry', text: '細かく選んで作る' }),
         ui.el('a', {class:'btn',href:'#/concept_fashion',text:'コンセプトから作る'}),
         draft ? ui.el('a', { class: 'btn', href: '#/workshop', text: '前回の続き' + (draft.name ? '（' + draft.name + '）' : '') }) : null,
         ui.el('a', { class: 'btn', href: '#/library', text: '保存した衣装（' + lib.length + '）' })
@@ -1987,7 +1987,7 @@
 
   /* ---------- 開始方法 ---------- */
   var ENTRY_MODES = [
-    { id: 'zero', labelJa: 'ゼロから設計', descJa: '何も選ばず、空の設計台から始めます。' },
+    { id: 'zero', labelJa: 'ゼロから設計', descJa: '何も決めずに、まっさらな状態から作り始めます。' },
     { id: 'worldview', labelJa: '世界観から設計', descJa: '世界観を起点に、相性の良い候補を優先表示します。' },
     { id: 'garment', labelJa: '基本衣装から設計', descJa: 'ドレス、制服、水着など、服の形を起点にします。' },
     { id: 'preset', labelJa: 'プリセットから設計', descJa: '整合の取れた初期値を読み込みます。読み込み後もすべて変更できます。' },
@@ -1995,9 +1995,8 @@
   ];
 
   routes['/entry'] = function () {
-    if (!ENTRY_MODES.some(function(m){return m.id==='concept_fashion';})) ENTRY_MODES.unshift({id:'concept_fashion',labelJa:'コンセプトから作る',descJa:'題材から3案を比べ、選んだ一着を設計台へ。'});
     var cards = ENTRY_MODES.map(function (m) {
-      return ui.el('a', { class: 'card card--tap', href: m.id==='concept_fashion'?'#/concept_fashion':'#/setup/'+m.id }, [
+      return ui.el('a', { class: 'card card--tap', href: '#/setup/'+m.id }, [
         ui.el('h2', { class: 'card-title', text: m.labelJa }),
         ui.el('p', { class: 'p', text: m.descJa })
       ]);
@@ -2005,7 +2004,7 @@
     return screen('', [
       backBar('開始画面へ戻る', '#/'),
       ui.el('h1', { class: 'page-title', text: '何から始める？' }),
-      ui.el('p', { class: 'p p--lead', text: 'ここで選んだ内容を初期値として設計台に反映します。すべての項目は後から変更できます。' }),
+      ui.el('p', { class: 'p p--lead', text: 'ここで選んだ内容をもとに、衣装づくりを始めます。すべての項目は後から変更できます。' }),
       ui.el('div', { class: 'stack' }, cards)
     ]);
   };
