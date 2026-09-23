@@ -1,0 +1,842 @@
+[
+  {
+    "engine": "chromium",
+    "restricted": false,
+    "motif": "mille_feuille",
+    "index": 0,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "chromium",
+    "restricted": false,
+    "motif": "mille_feuille",
+    "index": 1,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "chromium",
+    "restricted": false,
+    "motif": "mille_feuille",
+    "index": 2,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "chromium",
+    "restricted": false,
+    "motif": "deep_sea",
+    "index": 0,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "chromium",
+    "restricted": false,
+    "motif": "deep_sea",
+    "index": 1,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "chromium",
+    "restricted": false,
+    "motif": "deep_sea",
+    "index": 2,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "chromium",
+    "restricted": true,
+    "motif": "mille_feuille",
+    "index": 0,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "chromium",
+    "restricted": true,
+    "motif": "mille_feuille",
+    "index": 1,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "chromium",
+    "restricted": true,
+    "motif": "mille_feuille",
+    "index": 2,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "chromium",
+    "restricted": true,
+    "motif": "deep_sea",
+    "index": 0,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "chromium",
+    "restricted": true,
+    "motif": "deep_sea",
+    "index": 1,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "chromium",
+    "restricted": true,
+    "motif": "deep_sea",
+    "index": 2,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "webkit",
+    "restricted": false,
+    "motif": "mille_feuille",
+    "index": 0,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "webkit",
+    "restricted": false,
+    "motif": "mille_feuille",
+    "index": 1,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "webkit",
+    "restricted": false,
+    "motif": "mille_feuille",
+    "index": 2,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "webkit",
+    "restricted": false,
+    "motif": "deep_sea",
+    "index": 0,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "webkit",
+    "restricted": false,
+    "motif": "deep_sea",
+    "index": 1,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "webkit",
+    "restricted": false,
+    "motif": "deep_sea",
+    "index": 2,
+    "dialogs": [
+      "現在の設計にこの候補を反映します。未保存の変更を置き換えてよいですか？"
+    ],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [],
+    "hash": "#/workshop",
+    "panel": true,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": true
+      },
+      {
+        "stage": "state.load"
+      }
+    ],
+    "stateUnchanged": false
+  },
+  {
+    "engine": "webkit",
+    "restricted": true,
+    "motif": "mille_feuille",
+    "index": 0,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [
+      "Use of window.confirm is not allowed in a sandboxed frame when the allow-modals flag is not set.\n    at unknown (:1:334)\n    at adopt (http://127.0.0.1:51322/concept-fashion-ui.js:29:35)\n    at unknown (http://127.0.0.1:51322/concept-fashion-ui.js:83:126)"
+    ],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "webkit",
+    "restricted": true,
+    "motif": "mille_feuille",
+    "index": 1,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [
+      "Use of window.confirm is not allowed in a sandboxed frame when the allow-modals flag is not set.\n    at unknown (:1:334)\n    at adopt (http://127.0.0.1:51322/concept-fashion-ui.js:29:35)\n    at unknown (http://127.0.0.1:51322/concept-fashion-ui.js:83:126)"
+    ],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "webkit",
+    "restricted": true,
+    "motif": "mille_feuille",
+    "index": 2,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [
+      "Use of window.confirm is not allowed in a sandboxed frame when the allow-modals flag is not set.\n    at unknown (:1:334)\n    at adopt (http://127.0.0.1:51322/concept-fashion-ui.js:29:35)\n    at unknown (http://127.0.0.1:51322/concept-fashion-ui.js:83:126)"
+    ],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "webkit",
+    "restricted": true,
+    "motif": "deep_sea",
+    "index": 0,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [
+      "Use of window.confirm is not allowed in a sandboxed frame when the allow-modals flag is not set.\n    at unknown (:1:334)\n    at adopt (http://127.0.0.1:51322/concept-fashion-ui.js:29:35)\n    at unknown (http://127.0.0.1:51322/concept-fashion-ui.js:83:126)"
+    ],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "webkit",
+    "restricted": true,
+    "motif": "deep_sea",
+    "index": 1,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [
+      "Use of window.confirm is not allowed in a sandboxed frame when the allow-modals flag is not set.\n    at unknown (:1:334)\n    at adopt (http://127.0.0.1:51322/concept-fashion-ui.js:29:35)\n    at unknown (http://127.0.0.1:51322/concept-fashion-ui.js:83:126)"
+    ],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  },
+  {
+    "engine": "webkit",
+    "restricted": true,
+    "motif": "deep_sea",
+    "index": 2,
+    "dialogs": [],
+    "styles": [
+      {
+        "mode": "preserve",
+        "pressed": "false",
+        "background": "rgb(251, 246, 236)"
+      },
+      {
+        "mode": "new",
+        "pressed": "true",
+        "background": "rgb(251, 246, 236)"
+      }
+    ],
+    "errors": [
+      "Use of window.confirm is not allowed in a sandboxed frame when the allow-modals flag is not set.\n    at unknown (:1:334)\n    at adopt (http://127.0.0.1:51322/concept-fashion-ui.js:29:35)\n    at unknown (http://127.0.0.1:51322/concept-fashion-ui.js:83:126)"
+    ],
+    "hash": "#/concept_fashion",
+    "panel": false,
+    "trace": [
+      {
+        "stage": "confirm-enter"
+      },
+      {
+        "stage": "confirm-return",
+        "result": false
+      }
+    ],
+    "stateUnchanged": true
+  }
+]

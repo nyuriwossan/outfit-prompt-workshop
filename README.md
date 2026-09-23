@@ -6,6 +6,14 @@
 
 ---
 
+## Phase 5E hotfix：候補採用と配色英文
+
+既存の設計がある場合の候補採用を、ブラウザの確認ダイアログから候補カード内の確認へ変更しました。確認ダイアログが抑止される環境で、全案が`state.load`の手前で停止する経路を未修正mainで再現しています。画面内の「この案を反映する」で採用し、「キャンセル」では現在の設計を維持します。採用中の例外は画面へ表示し、元の状態へ戻します。衣装ステップでは選択中のnew／preserveを色と文言で表示します。モードを選ぶだけでは次のステップへ進みません。
+
+配色方式`monochrome`は保存ID・日本語UIを維持し、英文へ方式名を追加しません。generator側でも同IDを抑止し、jet black／charcoal grayなど選択した色名で表現します。配色ガチャは色に根拠のない方式をランダム選択せず、`base_and_accent`を使います。利用者のcustomTagsは変更しません。
+
+既存1,386件を保持して、配色回帰138件を追加。全1,524テストが通過しています。全128色ペアの短縮版・詳細版32,768英文で、方式由来のmonochrome／grayscaleがないことを検証します。ブラウザ回帰は`node scripts/ui-phase5e-hotfix.cjs`、ネイティブ確認を禁止した環境の回帰は`node scripts/ui-phase5e-confirm.cjs`。開発用Playwrightを使用し、`CPW_ENGINE=webkit`でWebKitも確認できます。iPhone Safari実機での最終確認は別途必要です。schemaは0.6のままです。
+
 ## Phase 5E：物語・人物・複合モチーフ
 
 実装基準は作業開始時のGitHub main `b6cf526bfd33e500ed136986630e5cab74cd970e`。静的HTML/CSS/JSのまま、既存generator・保存キー・通常設計・ガチャを維持しています。Phase 6は未着手です。

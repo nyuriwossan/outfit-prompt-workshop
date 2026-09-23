@@ -143,7 +143,8 @@
       }
       p.accent = pick(rng, pool).id;
       p.metal = pick(rng, metals).id;
-      p.scheme = pick(rng, D.colorSchemes).id;
+      // These colors have no verified hue relationship; do not invent one.
+      p.scheme = 'base_and_accent';
       return { palette: p };
     }
 

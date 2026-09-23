@@ -1102,13 +1102,13 @@
   test('ケースA：短縮版が成立する', function () {
     var t = G.short(caseA());
     ['lace bodysuit', 'jet black', 'polished silver accents', 'high standing collar', 'fitted long sleeves',
-     'elbow-length fingerless lace gloves', 'garter details', 'thigh-high stockings', 'sheer floral lace', 'monochrome'].forEach(function (w) {
+     'elbow-length fingerless lace gloves', 'garter details', 'thigh-high stockings', 'sheer floral lace'].forEach(function (w) {
       assert(t.indexOf(w) >= 0, '短縮版に無い：' + w + ' / ' + t);
     });
   });
   test('ケースA：詳細版が成立する', function () {
     var t = G.detailed(caseA());
-    ['one-piece lace bodysuit', 'built around a monochrome jet black palette', 'elbow-length fingerless lace gloves', 'made of sheer floral lace'].forEach(function (w) {
+    ['one-piece lace bodysuit', 'built around a jet black palette', 'elbow-length fingerless lace gloves', 'made of sheer floral lace'].forEach(function (w) {
       assert(t.indexOf(w) >= 0, '詳細版に無い：' + w + ' / ' + t);
     });
   });
@@ -1845,7 +1845,7 @@
       palette: { primary: 'jet_black', accent: 'polished_silver', scheme: 'monochrome' }
     });
     eq(CPW.generator.short(o),
-      'jet black lace bodysuit, with polished silver accents, monochrome palette, body-hugging, high standing collar, fitted long sleeves, elbow-length fingerless lace gloves, thigh-high stockings, sheer floral lace');
+      'jet black lace bodysuit, with polished silver accents, body-hugging, high standing collar, fitted long sleeves, elbow-length fingerless lace gloves, thigh-high stockings, sheer floral lace');
   });
 
   /* ============================================================

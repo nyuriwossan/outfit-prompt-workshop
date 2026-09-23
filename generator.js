@@ -279,7 +279,9 @@
     if (!base && !extras.length) return { short: [], detailed: [] };
 
     // 短縮版：核が主色・副色を持っているので、ここは差し色以降だけ
-    var scheme = en(D.colorSchemes, o.palette.scheme);
+    // Keep the saved scheme ID, but describe clothing with its actual colors.
+    // "Monochrome" can otherwise be read as an instruction for the entire image.
+    var scheme = o.palette.scheme === 'monochrome' ? '' : en(D.colorSchemes, o.palette.scheme);
     var schemeAdj = scheme ? scheme.replace(/\s*(color\s*)?palette$/, '') : null;
 
     var sh = [];

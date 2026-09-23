@@ -37,7 +37,7 @@
 
   // 配色方式（11.5）
   CPW.data.colorSchemes = [
-    { id: 'monochrome', labelJa: '単色・モノクローム', promptEn: 'monochrome palette' },
+    { id: 'monochrome', labelJa: '単色・モノクローム', promptEn: '' },
     { id: 'analogous', labelJa: '同系色', promptEn: 'analogous color palette' },
     { id: 'base_and_accent', labelJa: '主色＋差し色', promptEn: '' },
     { id: 'value_contrast', labelJa: '明暗コントラスト', promptEn: 'high contrast palette' },

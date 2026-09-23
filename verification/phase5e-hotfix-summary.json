@@ -1,0 +1,74 @@
+{
+  "baselineCommit": "afa8d5ff194a2716e57cfa28f0ed604fc9d9254f",
+  "schema": "0.6",
+  "tests": {
+    "baseline": 1386,
+    "total": 1524,
+    "passed": 1524,
+    "failed": 0,
+    "additional": 138,
+    "retained": 1386
+  },
+  "colors": {
+    "pairs": 16384,
+    "texts": 32768,
+    "forbiddenAutomaticTerms": 0
+  },
+  "baselineReproduction": {
+    "sourceBlob": "bb9590d67a843a3d27b2236c94559453142be846",
+    "blockedCases": 12,
+    "stoppedBeforeLoad": 12,
+    "normalControls": 12
+  },
+  "ui": [
+    {
+      "engine": "chromium",
+      "browser": "153.0.4234.48",
+      "adoptions": 270,
+      "restrictedConfirmAdoptions": 36,
+      "conflictCases": 18,
+      "injectedFailureCases": 12,
+      "widths": [
+        375,
+        390,
+        430
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.5",
+      "adoptions": 270,
+      "restrictedConfirmAdoptions": 36,
+      "conflictCases": 18,
+      "injectedFailureCases": 12,
+      "widths": [
+        375,
+        390,
+        430
+      ],
+      "errors": []
+    }
+  ],
+  "legacyUi": [
+    {
+      "browser": "153.0.4234.48",
+      "widths": [
+        375,
+        390,
+        430
+      ],
+      "errors": []
+    },
+    {
+      "browser": "153.0.4234.48",
+      "widths": [
+        375,
+        390,
+        430
+      ],
+      "errors": []
+    }
+  ],
+  "nativeIPhoneVerified": false
+}
