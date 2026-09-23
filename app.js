@@ -84,9 +84,12 @@
   /* ============================================================
    * schema
    * ========================================================== */
-  CPW.SCHEMA_VERSION = '0.4';  // Phase 5C: styling; 0.1–0.3 remain readable.
+  CPW.SCHEMA_VERSION = '0.5';  // Phase 5D: inspiration and optional presentation; 0.1–0.4 remain readable.
 
   var schema = (CPW.schema = {
+    emptyInspiration: function () {
+      return {categoryId:null,motifId:null,customMotif:'',directions:[],baseId:null,placements:[],strengthId:null,exposure:null,foodGroupId:null,foodApplications:[],traditional:{regionId:null,attireId:null,treatmentId:null,qipaoNecklineId:null,qipaoLengthId:null,qipaoSlitId:null,qipaoDrapeId:null},idolStyleId:null,artNouveauShapeId:null};
+    },
     /* Phase 5A：部位スロットIDの snake_case 統一にともなう読み替え表。
      * 保存データのキーなので、消さずに残す。 */
     LEGACY_SLOT_IDS: {
@@ -105,6 +108,7 @@
         entryMode: null,
 
         concept: {
+          inspiration: schema.emptyInspiration(),
           worldview: null,
           era: null,
           occasion: null,
@@ -141,12 +145,12 @@
 
         palette: { primary: null, secondary: null, accent: null, metal: null, gem: null, scheme: null },
 
-        presentation: { focus: 'full_outfit', poseAssist: null, compositionAssist: null },
+        presentation: { focus: 'full_outfit', poseAssist: null, compositionAssist: null, preset:null,poseMood:null,seat:null,background:null,subject:null,rendering:{enabled:false,paint:null,finish:null,line:null} },
 
         styling: { items: [] },     // 着方の指定。最大2件。
         condition: { items: [] },   // 状態・加工。最大2件。
 
-        output: { includeNarrative: false, includeEffects: false, includePresentation: false, includeQualityTags: false, customTags: '' }
+        output: { includeNarrative: false, includeEffects: false, includePresentation: false, includeBackground:false,includeRendering:false,scope:null,includeQualityTags: false, customTags: '' }
       };
     },
 
@@ -250,6 +254,13 @@
       o.id = raw.id || base.id;
       o.name = typeof raw.name === 'string' ? raw.name : '';
       o.version = CPW.SCHEMA_VERSION;
+      ['concept','garment','silhouette','materials','decorations','palette','presentation','output'].forEach(function(k){if(!util.isPlainObject(o[k]))o[k]=util.clone(base[k]);});
+      var oldVersion=raw.version && ['0.1','0.2','0.3','0.4'].indexOf(String(raw.version))>=0;
+      o.concept.inspiration=CPW.conceptFashion && !oldVersion ? CPW.conceptFashion.normalizeSelection(o.concept.inspiration) : schema.emptyInspiration();
+      if(CPW.presentation)o.presentation=CPW.presentation.normalize(o.presentation);
+      ['includeBackground','includeRendering'].forEach(function(k){o.output[k]=!oldVersion && o.output[k]===true;});
+      o.output.scope=!oldVersion && ['outfit','pose','all'].indexOf(o.output.scope)>=0?o.output.scope:null;
+      if(CPW.presentation && o.output.scope)CPW.presentation.setScope(o,o.output.scope);
 
       ['secondaryStyles', 'secondaryThemeMotifs'].forEach(function (k) {
         if (!Array.isArray(o.concept[k])) o.concept[k] = [];
@@ -1921,6 +1932,7 @@
    * 画面
    * ========================================================== */
   var routes = {};
+  CPW.routes = routes;
   var appRoot = null;
 
   function screen(title, nodes, opts_) {
@@ -1952,7 +1964,8 @@
         ui.el('p', { class: 'hero-sub', text: 'パーツを組み合わせて、一着の英語プロンプトを仕立てる。' })
       ]),
       ui.el('div', { class: 'stack' }, [
-        ui.el('a', { class: 'btn btn--primary', href: '#/entry', text: '新しい衣装を設計する' }),
+        ui.el('a', { class: 'btn btn--primary', href: '#/entry', text: '設計台から作る' }),
+        ui.el('a', {class:'btn',href:'#/concept_fashion',text:'コンセプトから作る'}),
         draft ? ui.el('a', { class: 'btn', href: '#/workshop', text: '前回の続き' + (draft.name ? '（' + draft.name + '）' : '') }) : null,
         ui.el('a', { class: 'btn', href: '#/library', text: '保存した衣装（' + lib.length + '）' })
       ]),
@@ -1982,8 +1995,9 @@
   ];
 
   routes['/entry'] = function () {
+    if (!ENTRY_MODES.some(function(m){return m.id==='concept_fashion';})) ENTRY_MODES.unshift({id:'concept_fashion',labelJa:'コンセプトから作る',descJa:'題材から3案を比べ、選んだ一着を設計台へ。'});
     var cards = ENTRY_MODES.map(function (m) {
-      return ui.el('a', { class: 'card card--tap', href: '#/setup/' + m.id }, [
+      return ui.el('a', { class: 'card card--tap', href: m.id==='concept_fashion'?'#/concept_fashion':'#/setup/'+m.id }, [
         ui.el('h2', { class: 'card-title', text: m.labelJa }),
         ui.el('p', { class: 'p', text: m.descJa })
       ]);
@@ -2198,6 +2212,8 @@
       var panel = ui.el('div', { class: 'acc-panel', id: panelId, hidden: open ? null : 'hidden' });
 
       if (sec.id === 'concept') {
+        var inspiration=state.outfit.concept.inspiration;
+        panel.appendChild(ui.el('a',{class:'btn',href:'#/concept_fashion/edit',text:inspiration && (inspiration.motifId || inspiration.customMotif || inspiration.traditional && inspiration.traditional.attireId) ? 'コンセプトを編集：'+CPW.conceptFashion.label(inspiration) : 'コンセプトから候補を作る'}));
         CONCEPT_FIELDS.forEach(function (f) { panel.appendChild(renderField(f)); });
         panel.appendChild(renderAttributeField());
       } else if (sec.id === 'structure') {
@@ -2710,11 +2726,12 @@
       tagCard.appendChild(tagInput);
       host.appendChild(tagCard);
 
+      if(CPW.presentation)host.appendChild(CPW.presentation.controls(o,draw));
       var opts_ = ui.el('div', { class: 'card card--quiet' }, [
         ui.el('h2', { class: 'card-title', text: '出力に足すもの' }),
         ui.el('p', { class: 'p p--sub', text: '既定では衣装のみを出力します。必要なものだけを追加してください。' })
       ]);
-      OUTPUT_OPTIONS.forEach(function (opt) {
+      OUTPUT_OPTIONS.filter(function(opt){return opt.key!=='includePresentation';}).forEach(function (opt) {
         var on = !!o.output[opt.key];
         var key = 'out:' + opt.key;
         var line = ui.el('div', { class: 'opt-line' });

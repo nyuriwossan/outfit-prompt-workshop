@@ -1,0 +1,84 @@
+{
+  "baseline": "25a50aaec818811925418db5c34a608a365c6e44",
+  "reference": "f883463e3dd9f00c2de7c5e95c0855f11a0739d2",
+  "checkpoints": [
+    {
+      "checkpoint": "CP0",
+      "total": 615,
+      "passed": 615,
+      "failed": 0,
+      "evidence": "phase5d-cp0.json"
+    },
+    {
+      "checkpoint": "CP1",
+      "total": 637,
+      "passed": 637,
+      "failed": 0,
+      "evidence": "phase5d-cp1.json"
+    },
+    {
+      "checkpoint": "CP2",
+      "total": 673,
+      "passed": 673,
+      "failed": 0,
+      "evidence": "phase5d-cp2.json"
+    },
+    {
+      "checkpoint": "CP3",
+      "total": 673,
+      "passed": 673,
+      "failed": 0,
+      "evidence": "phase5d-cp3.json"
+    },
+    {
+      "checkpoint": "CP4",
+      "total": 686,
+      "passed": 686,
+      "failed": 0,
+      "evidence": "phase5d-cp4.json"
+    },
+    {
+      "checkpoint": "CP5",
+      "total": 744,
+      "passed": 744,
+      "failed": 0,
+      "evidence": "phase5d-cp5.json"
+    },
+    {
+      "checkpoint": "CP6",
+      "total": 792,
+      "passed": 792,
+      "failed": 0,
+      "evidence": "phase5d-cp6.json"
+    },
+    {
+      "checkpoint": "CP7",
+      "total": 805,
+      "passed": 805,
+      "failed": 0,
+      "evidence": "phase5d-cp7.json"
+    },
+    {
+      "checkpoint": "CP8",
+      "total": 809,
+      "passed": 809,
+      "failed": 0,
+      "evidence": "phase5d-tests.json"
+    }
+  ],
+  "audit": {
+    "outfitCases": 150000,
+    "generatedTexts": 300000,
+    "failures": 0,
+    "evidence": "phase5d-audit-150k.json"
+  },
+  "ui": {
+    "widths": [
+      375,
+      390,
+      430
+    ],
+    "errors": 0,
+    "evidence": "phase5d-ui.json"
+  }
+}

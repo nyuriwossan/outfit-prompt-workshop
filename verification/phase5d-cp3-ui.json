@@ -1,0 +1,36 @@
+{
+  "browser": "153.0.4234.48",
+  "viewports": [
+    {
+      "width": 375,
+      "preview": true,
+      "immutable": true,
+      "adopt": true,
+      "reload": true,
+      "reedit": true,
+      "noOverflow": true,
+      "tap44": true
+    },
+    {
+      "width": 390,
+      "preview": true,
+      "immutable": true,
+      "adopt": true,
+      "reload": true,
+      "reedit": true,
+      "noOverflow": true,
+      "tap44": true
+    },
+    {
+      "width": 430,
+      "preview": true,
+      "immutable": true,
+      "adopt": true,
+      "reload": true,
+      "reedit": true,
+      "noOverflow": true,
+      "tap44": true
+    }
+  ],
+  "errors": []
+}

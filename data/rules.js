@@ -545,4 +545,5 @@
   CPW.data.affinity.styleDecorations.punk = ['metal_studs','eyelets','safety_pin_details','spikes'];
   CPW.data.affinity.styleDecorations.romantic = ['ruffles','fabric_flowers','pleated_trim'];
   CPW.data.affinity.styleDecorations.techwear = ['eyelets','rivets','metal_plates'];
+  CPW.data.rules.push({id:'concept_cultural_note',kind:'check',check:'conceptCulturalNote',type:'output',severity:'info',category:'コンセプト',titleJa:'伝統衣装の創作上の扱い',messageJa:'文化的な衣装に着想を得た創作です。完全な史実再現を保証するものではありません。',resolutions:[]});
 })(window);

@@ -235,6 +235,7 @@
    * ルール側はパラメータだけを持ち、調べ方はここ。
    * ========================================================== */
   var CHECKS = {
+    conceptCulturalNote:function(o){var s=o.concept.inspiration;if(!s||!s.traditional.attireId)return null;return {involvedPaths:['concept.inspiration.traditional'],extraJa:(s.traditional.treatmentId===null||s.traditional.treatmentId==='traditional')&&s.exposure!==null?'被覆バランスの自動変更より、伝統衣装の識別構造を優先しています。':null};},
     stylingInapplicable: function (o) {
       var bad = o.styling.items.filter(function (id) { return !CPW.styling.applicable(o,U.byId(D.styling,id)); });
       return bad.length ? {involvedPaths:['styling.items'],extraJa:bad.map(function(id){return U.labelOf(D.styling,id);}).join('、')} : null;

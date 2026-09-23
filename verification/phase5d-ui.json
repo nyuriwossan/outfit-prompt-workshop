@@ -1,0 +1,63 @@
+{
+  "browser": "153.0.4234.48",
+  "viewports": [
+    {
+      "width": 375,
+      "foodTwoStep": true,
+      "traditionalQipao": true,
+      "merfolk": true,
+      "confirmationCancel": true,
+      "preserveMode": true,
+      "presentation": true,
+      "outputScopes": true,
+      "libraryDuplicate": true,
+      "browserTests": true,
+      "preview": true,
+      "immutable": true,
+      "adopt": true,
+      "reload": true,
+      "reedit": true,
+      "noOverflow": true,
+      "tap44": true
+    },
+    {
+      "width": 390,
+      "foodTwoStep": true,
+      "traditionalQipao": true,
+      "merfolk": true,
+      "confirmationCancel": true,
+      "preserveMode": true,
+      "presentation": true,
+      "outputScopes": true,
+      "libraryDuplicate": true,
+      "browserTests": true,
+      "preview": true,
+      "immutable": true,
+      "adopt": true,
+      "reload": true,
+      "reedit": true,
+      "noOverflow": true,
+      "tap44": true
+    },
+    {
+      "width": 430,
+      "foodTwoStep": true,
+      "traditionalQipao": true,
+      "merfolk": true,
+      "confirmationCancel": true,
+      "preserveMode": true,
+      "presentation": true,
+      "outputScopes": true,
+      "libraryDuplicate": true,
+      "browserTests": true,
+      "preview": true,
+      "immutable": true,
+      "adopt": true,
+      "reload": true,
+      "reedit": true,
+      "noOverflow": true,
+      "tap44": true
+    }
+  ],
+  "errors": []
+}

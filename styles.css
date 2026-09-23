@@ -571,3 +571,15 @@ html, body {
 .option-group { margin: 12px 0 6px; font-size: 13px; font-weight: 700; }
 .field, .field-body, .chips { min-width: 0; max-width: 100%; }
 .chip { min-width: 44px; min-height: 44px; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+/* Phase 5D: compact wizard; existing screen safe-area spacing remains in use. */
+.concept-wizard, .cf-candidate { min-width:0; overflow-wrap:anywhere; }
+.cf-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:16px 0; }
+.cf-steps .btn[aria-current="step"] { border:2px solid var(--accent); }
+.cf-select { display:block; width:100%; min-width:0; max-width:100%; min-height:44px; padding:10px; font:inherit; border:1px solid var(--line); border-radius:8px; background:var(--paper,#fff); color:inherit; }
+.cf-actions { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+.concept-wizard fieldset { border:0; padding:0; margin:0; }
+.cf-candidate summary, .presentation-panel summary { min-height:44px; padding:10px 0; cursor:pointer; }
+.cf-candidate .btn { width:100%; margin-top:10px; }
+
+.presentation-panel > label { display:block; margin-top:12px; }
+.presentation-panel > .btn { display:block; margin-top:12px; }

@@ -1,0 +1,2983 @@
+{
+  "total": 744,
+  "passed": 744,
+  "failed": 0,
+  "results": [
+    {
+      "name": "esc：HTMLの特殊文字を無害化する",
+      "ok": true
+    },
+    {
+      "name": "esc：nullは空文字になる",
+      "ok": true
+    },
+    {
+      "name": "deepMerge：入れ子を壊さず合成する",
+      "ok": true
+    },
+    {
+      "name": "deepMerge：配列は置き換える（連結しない）",
+      "ok": true
+    },
+    {
+      "name": "deepMerge：元のオブジェクトを書き換えない",
+      "ok": true
+    },
+    {
+      "name": "getPath / setPath：深い階層へ届く",
+      "ok": true
+    },
+    {
+      "name": "byId：見つからなければnull",
+      "ok": true
+    },
+    {
+      "name": "labelOf：未設定は空文字",
+      "ok": true
+    },
+    {
+      "name": "createOutfit：versionとidを持つ",
+      "ok": true
+    },
+    {
+      "name": "createOutfit：idは毎回異なる",
+      "ok": true
+    },
+    {
+      "name": "createOutfit：属性の反映先の初期値は仕様どおり（演出とシルエットはOFF）",
+      "ok": true
+    },
+    {
+      "name": "createOutfit：主テーマと主役装飾モチーフは別フィールド",
+      "ok": true
+    },
+    {
+      "name": "normalize：欠けたキーを既定値で補う",
+      "ok": true
+    },
+    {
+      "name": "normalize：未知のスロットは捨てる",
+      "ok": true
+    },
+    {
+      "name": "normalize：複数スロットの文字列は {id, layer} になる",
+      "ok": true
+    },
+    {
+      "name": "normalize：複数スロットのlayer指定は保つ（重ね着の識別）",
+      "ok": true
+    },
+    {
+      "name": "normalize：装飾密度は0〜5に丸める",
+      "ok": true
+    },
+    {
+      "name": "normalize：配列であるべき項目が壊れていても直す",
+      "ok": true
+    },
+    {
+      "name": "normalize：nameが文字列でなければ空にする",
+      "ok": true
+    },
+    {
+      "name": "validate：オブジェクトでなければ拒否する",
+      "ok": true
+    },
+    {
+      "name": "validate：concept/garmentが無ければ拒否する",
+      "ok": true
+    },
+    {
+      "name": "validate：将来バージョンは拒否する",
+      "ok": true
+    },
+    {
+      "name": "validate：正しいデータは通す",
+      "ok": true
+    },
+    {
+      "name": "migrate：version無しのデータを補って通す",
+      "ok": true
+    },
+    {
+      "name": "migrate：壊れたデータは理由付きで落とす",
+      "ok": true
+    },
+    {
+      "name": "applyPatch：パッチにない項目は保持する",
+      "ok": true
+    },
+    {
+      "name": "applyPatch：プリセットが整合した初期値を入れる",
+      "ok": true
+    },
+    {
+      "name": "applyPatch：プリセットの文字列legwearも正規化される",
+      "ok": true
+    },
+    {
+      "name": "progress：空の設計は0％",
+      "ok": true
+    },
+    {
+      "name": "progress：母数はrequiredだけ（中核5項目）",
+      "ok": true
+    },
+    {
+      "name": "progress：基本衣装を選ぶと requiredSlots の分だけ母数が増える",
+      "ok": true
+    },
+    {
+      "name": "progress：recommendedスロットは母数に入らない",
+      "ok": true
+    },
+    {
+      "name": "progress：optionalスロットは母数にも不足表示にも入らない",
+      "ok": true
+    },
+    {
+      "name": "progress：宝石色・特殊パーツ・出力オプションは母数に入らない",
+      "ok": true
+    },
+    {
+      "name": "progress：ドレスと水着で不足の中身が違う",
+      "ok": true
+    },
+    {
+      "name": "progress：サブタイプのrequiredSlotsが大分類より優先される",
+      "ok": true
+    },
+    {
+      "name": "progress：サブタイプのrequiredFields（透け感）が母数に入る",
+      "ok": true
+    },
+    {
+      "name": "progress：埋めた分だけ充足数が増える",
+      "ok": true
+    },
+    {
+      "name": "progress：未設定の項目名を返す",
+      "ok": true
+    },
+    {
+      "name": "progress：ケースAは基本設計100％になる",
+      "ok": true
+    },
+    {
+      "name": "progress：プリセットは50％以上を埋める",
+      "ok": true
+    },
+    {
+      "name": "progress：recommendedは補助候補として別に返る",
+      "ok": true
+    },
+    {
+      "name": "progress：埋めた推奨は補助候補から消える",
+      "ok": true
+    },
+    {
+      "name": "slotTier：required / recommended / optional を返す",
+      "ok": true
+    },
+    {
+      "name": "データ：requiredSlots / recommendedSlots は slots の中に含まれる",
+      "ok": true
+    },
+    {
+      "name": "データ：requiredSlots と recommendedSlots は重ならない",
+      "ok": true
+    },
+    {
+      "name": "store：下書きを保存して復元できる",
+      "ok": true
+    },
+    {
+      "name": "store：下書きが無ければnull",
+      "ok": true
+    },
+    {
+      "name": "store：壊れた下書きでも落ちずにnullを返す",
+      "ok": true
+    },
+    {
+      "name": "store：名前を付けて保存すると一覧に出る",
+      "ok": true
+    },
+    {
+      "name": "store：同じidを二度保存しても増えない（上書き）",
+      "ok": true
+    },
+    {
+      "name": "store：無名で保存すると既定名が付く",
+      "ok": true
+    },
+    {
+      "name": "store：複製は別idになり、元は残る",
+      "ok": true
+    },
+    {
+      "name": "store：削除は対象だけ消す",
+      "ok": true
+    },
+    {
+      "name": "store：一覧は更新日の新しい順に並ぶ",
+      "ok": true
+    },
+    {
+      "name": "export→import：単体の衣装が往復する",
+      "ok": true
+    },
+    {
+      "name": "export→import：全件バックアップが往復する",
+      "ok": true
+    },
+    {
+      "name": "import：取り込んだ衣装には新しいidが振られる（既存を潰さない）",
+      "ok": true
+    },
+    {
+      "name": "import：JSONとして壊れていても落ちず、理由を返す",
+      "ok": true
+    },
+    {
+      "name": "import：衣装データでないJSONは理由付きで断る",
+      "ok": true
+    },
+    {
+      "name": "import：一部が壊れていても、読める分だけ取り込む",
+      "ok": true
+    },
+    {
+      "name": "parseHash：空はトップ",
+      "ok": true
+    },
+    {
+      "name": "parseHash：一段のルート",
+      "ok": true
+    },
+    {
+      "name": "parseHash：パラメータを切り出す",
+      "ok": true
+    },
+    {
+      "name": "データ：衣装のcategoryはすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：categoryのslotsはすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：色のfamilyとtoneは定義済みの値だけ",
+      "ok": true
+    },
+    {
+      "name": "データ：色のrecommendedWithはすべて実在する色",
+      "ok": true
+    },
+    {
+      "name": "データ：属性のcolorsはすべて実在する色",
+      "ok": true
+    },
+    {
+      "name": "データ：属性は9件",
+      "ok": true
+    },
+    {
+      "name": "データ：モチーフのgroupはすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：モチーフの推奨色はすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：プリセットのpatchが参照するidはすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：プリセットのparts値は該当スロットに実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：装飾の推奨位置はすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "データ：ルールのidは重複しない",
+      "ok": true
+    },
+    {
+      "name": "データ：ルールのseverityはhard/warning/infoのみ",
+      "ok": true
+    },
+    {
+      "name": "データ：全idがカテゴリ内で一意",
+      "ok": true
+    },
+    {
+      "name": "データ：装飾量の語は装飾密度の語と衝突しない",
+      "ok": true
+    },
+    {
+      "name": "データ：手袋は4軸に分解されている（合成IDではない）",
+      "ok": true
+    },
+    {
+      "name": "データ：ケースAに必要な手袋の要素が各軸に揃っている",
+      "ok": true
+    },
+    {
+      "name": "データ：旧い合成手袋IDはどの軸にも残っていない",
+      "ok": true
+    },
+    {
+      "name": "データ：legacyMapの変換先はすべて実在する軸の値",
+      "ok": true
+    },
+    {
+      "name": "データ：装飾の役割は 主役／補助／縁取り の3種",
+      "ok": true
+    },
+    {
+      "name": "データ：層は日本語表記を持つ",
+      "ok": true
+    },
+    {
+      "name": "データ：legwearは複数選択できる（重複警告の前提）",
+      "ok": true
+    },
+    {
+      "name": "データ：拘束チェーンはnarrative印を持つ（衣装のみ出力で除外するため）",
+      "ok": true
+    },
+    {
+      "name": "データ：装飾チェーンはnarrative印を持たない",
+      "ok": true
+    },
+    {
+      "name": "手袋：4軸を個別に保持できる",
+      "ok": true
+    },
+    {
+      "name": "手袋：軸に無い値は捨てる",
+      "ok": true
+    },
+    {
+      "name": "手袋：種類が未選択なら有効値はnull（従属情報を出力へ混ぜない）",
+      "ok": true
+    },
+    {
+      "name": "手袋：種類が未選択でも従属軸は休止として保持される",
+      "ok": true
+    },
+    {
+      "name": "手袋：種類を選び直すと休止していた指定がそのまま戻る",
+      "ok": true
+    },
+    {
+      "name": "手袋：種類が未選択なら完成度の充足に数えない",
+      "ok": true
+    },
+    {
+      "name": "手袋：一つの句の材料へ畳める（Phase 3へ引き継ぐ形）",
+      "ok": true
+    },
+    {
+      "name": "手袋：一般語と具体語を重複させない",
+      "ok": true
+    },
+    {
+      "name": "手袋：アームウォーマーでは指先軸を含めない",
+      "ok": true
+    },
+    {
+      "name": "手袋：旧合成IDは新構造へ移行される",
+      "ok": true
+    },
+    {
+      "name": "手袋：未知の文字列IDは空の複合値になる（壊れない）",
+      "ok": true
+    },
+    {
+      "name": "手袋：プリセットの手袋が新構造で入る",
+      "ok": true
+    },
+    {
+      "name": "スロット：ドレスと水着とランジェリーで必要項目が違う",
+      "ok": true
+    },
+    {
+      "name": "スロット：ドレスに水着専用の項目は出ない",
+      "ok": true
+    },
+    {
+      "name": "スロット：水着に水着専用の項目が出る",
+      "ok": true
+    },
+    {
+      "name": "スロット：ランジェリーにガーター・下着型・手袋が出る",
+      "ok": true
+    },
+    {
+      "name": "スロット：充足判定は種別ごとに正しい",
+      "ok": true
+    },
+    {
+      "name": "レッグウェア：層を分けた重ね着を保持する",
+      "ok": true
+    },
+    {
+      "name": "レッグウェア：不正な層は主衣装へ落とす",
+      "ok": true
+    },
+    {
+      "name": "レッグウェア：実在しない選択肢は捨てる",
+      "ok": true
+    },
+    {
+      "name": "装飾：種類と位置の対応が一件ごとに保たれる",
+      "ok": true
+    },
+    {
+      "name": "装飾：主役装飾モチーフはコンセプトの主テーマと混ざらない",
+      "ok": true
+    },
+    {
+      "name": "配色：5つの役割が混線しない",
+      "ok": true
+    },
+    {
+      "name": "配色：色の役割は主色70・副色20・差し色10の目安を持つ",
+      "ok": true
+    },
+    {
+      "name": "ケースA：全要素が正しい項目へ整理される",
+      "ok": true
+    },
+    {
+      "name": "ケースA：手袋が素材・長さ・指先へ整理される",
+      "ok": true
+    },
+    {
+      "name": "ケースA：必要スロットがすべてランジェリーの表示項目に含まれる",
+      "ok": true
+    },
+    {
+      "name": "ケースA：透け感と密着シルエットを同時に表現できる",
+      "ok": true
+    },
+    {
+      "name": "ケースA：保存→復元で同一になる",
+      "ok": true
+    },
+    {
+      "name": "ケースA：下書き自動保存→復元で同一になる",
+      "ok": true
+    },
+    {
+      "name": "ケースA：JSON書き出し→取り込みで4軸と層が維持される",
+      "ok": true
+    },
+    {
+      "name": "ケースA：ストッキングと靴下の重複を判定できる材料が揃っている",
+      "ok": true
+    },
+    {
+      "name": "生成：空の設計は空文字を返す（壊れた英文を作らない）",
+      "ok": true
+    },
+    {
+      "name": "生成：出力に undefined / null / [object が混ざらない",
+      "ok": true
+    },
+    {
+      "name": "生成：連続カンマ・宙に浮いた接続語・重複ピリオドが無い",
+      "ok": true
+    },
+    {
+      "name": "生成：詳細版は大文字で始まりピリオドで終わる",
+      "ok": true
+    },
+    {
+      "name": "生成：短縮版はカンマ区切りで、衣装の核が先頭に来る",
+      "ok": true
+    },
+    {
+      "name": "生成：手袋は一句へ統合される",
+      "ok": true
+    },
+    {
+      "name": "生成：手袋の一般語と具体語を重複させない",
+      "ok": true
+    },
+    {
+      "name": "生成：種類未選択なら休止中の素材・長さ・指先を出力しない",
+      "ok": true
+    },
+    {
+      "name": "生成：色が1色なら and や accents を作らない",
+      "ok": true
+    },
+    {
+      "name": "生成：色が2色なら and でつなぐ",
+      "ok": true
+    },
+    {
+      "name": "生成：差し色は accents として出る",
+      "ok": true
+    },
+    {
+      "name": "生成：金属色は details として出る",
+      "ok": true
+    },
+    {
+      "name": "生成：宝石色は highlights として出る",
+      "ok": true
+    },
+    {
+      "name": "生成：詳細版の配色は palette の句になる",
+      "ok": true
+    },
+    {
+      "name": "生成：装飾は位置と結びついた句になる",
+      "ok": true
+    },
+    {
+      "name": "生成：位置が未設定なら前置詞句を作らず装飾名だけ出す",
+      "ok": true
+    },
+    {
+      "name": "生成：装飾チェーンは位置とともに出る",
+      "ok": true
+    },
+    {
+      "name": "生成：主テーマは核の修飾語、主役装飾モチーフは装飾側（混ざらない）",
+      "ok": true
+    },
+    {
+      "name": "生成：主役装飾モチーフが装飾の先頭に来る",
+      "ok": true
+    },
+    {
+      "name": "生成：属性エフェクトOFFなら演出語を出さない",
+      "ok": true
+    },
+    {
+      "name": "生成：属性エフェクトONのときだけ演出語を足す",
+      "ok": true
+    },
+    {
+      "name": "生成：属性の強度で演出語の数が変わる",
+      "ok": true
+    },
+    {
+      "name": "生成：初期状態は衣装のみ（背景・ポーズ・物語・品質タグを混ぜない）",
+      "ok": true
+    },
+    {
+      "name": "生成：物語OFFなら拘束チェーンもテーマ語も出さない",
+      "ok": true
+    },
+    {
+      "name": "生成：物語ONなら拘束チェーンとテーマ語が入る",
+      "ok": true
+    },
+    {
+      "name": "生成：装飾チェーンは衣装のみでも残り、拘束チェーンとは別ブロック",
+      "ok": true
+    },
+    {
+      "name": "生成：品質タグはONのときだけ",
+      "ok": true
+    },
+    {
+      "name": "生成：見せ方補助はONのときだけ",
+      "ok": true
+    },
+    {
+      "name": "圧縮：同じ句は1つに、含まれる句は落とす",
+      "ok": true
+    },
+    {
+      "name": "圧縮：関係ない句は残す",
+      "ok": true
+    },
+    {
+      "name": "生成：素材の柄と主素材で同じ語を連打しない",
+      "ok": true
+    },
+    {
+      "name": "冠詞：a / an を音で選ぶ",
+      "ok": true
+    },
+    {
+      "name": "接続：1件なら and を作らない",
+      "ok": true
+    },
+    {
+      "name": "生成：複数形を壊さない",
+      "ok": true
+    },
+    {
+      "name": "生成：詳細版で同じ接続語を続けて使わない",
+      "ok": true
+    },
+    {
+      "name": "生成：ブロックは設計書の区分で取り出せる",
+      "ok": true
+    },
+    {
+      "name": "生成：空ブロックは短縮版にも詳細版にも現れない",
+      "ok": true
+    },
+    {
+      "name": "ケースA：短縮版が成立する",
+      "ok": true
+    },
+    {
+      "name": "ケースA：詳細版が成立する",
+      "ok": true
+    },
+    {
+      "name": "ケースA：頼んでいない靴下を勝手に足さない",
+      "ok": true
+    },
+    {
+      "name": "ケースB：装飾密度に応じた強調語を一つだけ使う",
+      "ok": true
+    },
+    {
+      "name": "ケースB：配色・構造・装飾がこの順に並ぶ",
+      "ok": true
+    },
+    {
+      "name": "ケースB：主役装飾と補助装飾が区別される",
+      "ok": true
+    },
+    {
+      "name": "ケースC：衣装のみでは拘束・物語を除外する",
+      "ok": true
+    },
+    {
+      "name": "ケースD：現代服に神話・属性・過剰語が混ざらない",
+      "ok": true
+    },
+    {
+      "name": "ケースD：現代服として読める語順になる",
+      "ok": true
+    },
+    {
+      "name": "ケースD：役割が形容詞にならない場合は核へ出さない",
+      "ok": true
+    },
+    {
+      "name": "生成：保存→復元しても同じ出力になる",
+      "ok": true
+    },
+    {
+      "name": "生成：JSON往復しても同じ出力になる",
+      "ok": true
+    },
+    {
+      "name": "生成：出力オプションも保存・復元される",
+      "ok": true
+    },
+    {
+      "name": "データ：装飾はすべて位置の前置詞を持つ",
+      "ok": true
+    },
+    {
+      "name": "データ：拘束チェーンは物語テーマ語を持つ",
+      "ok": true
+    },
+    {
+      "name": "rules：すべてのルールに id・severity・kind がある",
+      "ok": true
+    },
+    {
+      "name": "rules：id が重複していない",
+      "ok": true
+    },
+    {
+      "name": "rules：check ルールの参照先が advisor に実在する",
+      "ok": true
+    },
+    {
+      "name": "rules：pair ルールには left と right がある",
+      "ok": true
+    },
+    {
+      "name": "装飾密度：maximalist だけ上限が無く、他は昇順に増える",
+      "ok": true
+    },
+    {
+      "name": "属性：colors / materials / decorations / silhouettes が実在IDを指す",
+      "ok": true
+    },
+    {
+      "name": "tokens：部位・素材・配色を横並びのトークンに均す",
+      "ok": true
+    },
+    {
+      "name": "tokens：レッグウェアは項目ごとに層を持つ",
+      "ok": true
+    },
+    {
+      "name": "tokens：羽織りは外側の層になる",
+      "ok": true
+    },
+    {
+      "name": "tokens：手袋は軸ごとにトークンになる",
+      "ok": true
+    },
+    {
+      "name": "競合：袖なし衣装＋長袖は同じ層で hard",
+      "ok": true
+    },
+    {
+      "name": "競合：袖なし衣装＋長袖カーディガンは別層なので競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：立ち襟＋深い胸元は hard",
+      "ok": true
+    },
+    {
+      "name": "競合：立ち襟＋深い胸元にキーホールの代替案が付く",
+      "ok": true
+    },
+    {
+      "name": "競合：床丈＋マイクロミニは hard",
+      "ok": true
+    },
+    {
+      "name": "競合：床丈だけなら競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：肩紐なし＋肩紐は hard",
+      "ok": true
+    },
+    {
+      "name": "競合：ストッキングと靴下が同じ層なら warning",
+      "ok": true
+    },
+    {
+      "name": "競合：ストッキングと靴下が別層なら競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：ストッキングと靴下に「外側の層にする」案が付く",
+      "ok": true
+    },
+    {
+      "name": "競合：厚い素材＋しっかり透けるは warning",
+      "ok": true
+    },
+    {
+      "name": "競合：厚い素材＋不透明なら競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：巨大な翼＋背面を覆う造りは warning",
+      "ok": true
+    },
+    {
+      "name": "競合：翼が中くらいなら背面を覆っても競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：翼を中くらいにする案で警告が消える",
+      "ok": true
+    },
+    {
+      "name": "競合：ガーターの二重指定は info",
+      "ok": true
+    },
+    {
+      "name": "配色：主色が無く差し色だけなら warning",
+      "ok": true
+    },
+    {
+      "name": "配色：色を1つも選んでいなければ主色未設定の警告は出さない",
+      "ok": true
+    },
+    {
+      "name": "配色：モノクローム指定なのに有彩色が複数あれば warning",
+      "ok": true
+    },
+    {
+      "name": "配色：黒＋銀のモノクロームは警告しない（ケースAの構成）",
+      "ok": true
+    },
+    {
+      "name": "配色：色数が4以上なら info",
+      "ok": true
+    },
+    {
+      "name": "配色：3色なら色数過多にしない",
+      "ok": true
+    },
+    {
+      "name": "密度：重みは件数ではなく装飾ごとの重さで積む",
+      "ok": true
+    },
+    {
+      "name": "密度：restrained に装飾を積むと warning",
+      "ok": true
+    },
+    {
+      "name": "密度：警告文に密度名と重みが入る",
+      "ok": true
+    },
+    {
+      "name": "密度：maximalist なら件数だけでは強く警告しない",
+      "ok": true
+    },
+    {
+      "name": "密度：maximalist でも主役が多すぎれば info",
+      "ok": true
+    },
+    {
+      "name": "密度：主役が2件以下なら focal 警告を出さない",
+      "ok": true
+    },
+    {
+      "name": "密度：装飾が多いのに主役モチーフ未設定なら info",
+      "ok": true
+    },
+    {
+      "name": "密度：密度を上げる案で超過が解ける",
+      "ok": true
+    },
+    {
+      "name": "様式：方向の違う様式を並べると warning",
+      "ok": true
+    },
+    {
+      "name": "様式：主様式へ寄せる案で警告が消える",
+      "ok": true
+    },
+    {
+      "name": "様式：副様式が2つ以上あれば info",
+      "ok": true
+    },
+    {
+      "name": "様式：儀礼的な衣装に仕事の場面なら warning",
+      "ok": true
+    },
+    {
+      "name": "出力：拘束チェーンがあるのに物語OFFなら info",
+      "ok": true
+    },
+    {
+      "name": "出力：装飾チェーンは衣装のみでも警告しない（役割の分離を維持）",
+      "ok": true
+    },
+    {
+      "name": "出力：物語をONにする案で警告が消える",
+      "ok": true
+    },
+    {
+      "name": "出力：属性未設定でエフェクトONなら info",
+      "ok": true
+    },
+    {
+      "name": "判定：重要度順に並ぶ",
+      "ok": true
+    },
+    {
+      "name": "判定：summary が段階ごとに数える",
+      "ok": true
+    },
+    {
+      "name": "判定：無視した警告は集計から外れ、ignored に数える",
+      "ok": true
+    },
+    {
+      "name": "判定：修正案の patch は必ず当てられる",
+      "ok": true
+    },
+    {
+      "name": "判定：修正案を当てても元の設計は変わらない",
+      "ok": true
+    },
+    {
+      "name": "候補：王道モードで候補が3〜6件出る",
+      "ok": true
+    },
+    {
+      "name": "候補：現代の王道にレザーベルトとウールが出る",
+      "ok": true
+    },
+    {
+      "name": "候補：現代の王道に神話装飾・翼・王族装飾を出さない",
+      "ok": true
+    },
+    {
+      "name": "候補：少し意外は差し色や質感で振れる",
+      "ok": true
+    },
+    {
+      "name": "候補：少し意外でも世界観は壊さない",
+      "ok": true
+    },
+    {
+      "name": "候補：両方モードは王道と意外を混ぜて出す",
+      "ok": true
+    },
+    {
+      "name": "候補：未設定の recommended を補完する候補が出る",
+      "ok": true
+    },
+    {
+      "name": "候補：氷属性で ice blue / polished silver / organza / crystal embroidery が出る",
+      "ok": true
+    },
+    {
+      "name": "候補：属性の反映先 silhouette が ON ならシルエット候補を出す",
+      "ok": true
+    },
+    {
+      "name": "候補：属性の反映先 silhouette が OFF ならシルエット候補を出さない",
+      "ok": true
+    },
+    {
+      "name": "候補：属性の反映先 colors が OFF なら属性色を推さない",
+      "ok": true
+    },
+    {
+      "name": "候補：既に選んでいる値は候補に出さない",
+      "ok": true
+    },
+    {
+      "name": "候補：埋まっている項目を上書きする候補は出さない",
+      "ok": true
+    },
+    {
+      "name": "候補：hard競合を生む候補は出さない",
+      "ok": true
+    },
+    {
+      "name": "候補：点数の高い順に並ぶ",
+      "ok": true
+    },
+    {
+      "name": "候補：すべての候補に日本語の理由が付く",
+      "ok": true
+    },
+    {
+      "name": "候補：日本語名・英語表現・追加先を持つ",
+      "ok": true
+    },
+    {
+      "name": "候補：同じ値の候補を並べない",
+      "ok": true
+    },
+    {
+      "name": "候補：同じカテゴリに偏らない",
+      "ok": true
+    },
+    {
+      "name": "候補：suggest を呼んだだけでは設計が変わらない",
+      "ok": true
+    },
+    {
+      "name": "候補：apply して初めて反映される",
+      "ok": true
+    },
+    {
+      "name": "候補：警告があると競合回避の候補が出る",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：対象と維持条件の一覧を持つ",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：初期の維持条件は世界観・主様式・基本衣装",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：配色で3案出る",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：seed が同じなら結果も同じ",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：seed が違えば結果も違う",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：乱数を外から注入できる",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：採用するまで元の設計を変えない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：プレビューは元とは別物",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：やめても設計は変わらない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：採用した案だけが反映される",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：採用しても対象外は変わらない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：維持条件（世界観・主様式・基本衣装）を破らない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：主色を維持ONなら主色が動かない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：主色を維持OFFなら主色も振れる",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：基本衣装を維持ONなら基本衣装ガチャは案を返さない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：属性を維持ONなら属性ガチャは案を返さない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：breaksKeeps が維持条件の破りを見つける",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：hard競合を含む案は出さない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：現在と同じ案は出さない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：同じ案を重ねて出さない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：存在しないIDを含む案は出さない",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：各案に日本語の差分が付く",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：各案に警告判定が付く",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：知らない対象を渡すと空で返る",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：レッグウェアの案は層を持つ",
+      "ok": true
+    },
+    {
+      "name": "ガチャ：makeRng は seed が同じなら同じ列を返す",
+      "ok": true
+    },
+    {
+      "name": "回帰：ケースAの短縮版が Phase 3 と同じ",
+      "ok": true
+    },
+    {
+      "name": "特殊：翼が複合スロットになっている",
+      "ok": true
+    },
+    {
+      "name": "特殊：翼のデータが揃っている（Phase 5B前半：種類10以上・大きさ4・開き方4・質感6）",
+      "ok": true
+    },
+    {
+      "name": "特殊：角・光輪・尾も複合スロット",
+      "ok": true
+    },
+    {
+      "name": "特殊：角10以上・光輪8以上・尾10以上（Phase 5B前半で拡張）",
+      "ok": true
+    },
+    {
+      "name": "特殊：浮遊装飾5・魔法的装飾5",
+      "ok": true
+    },
+    {
+      "name": "特殊：翼の6軸すべてを保持できる",
+      "ok": true
+    },
+    {
+      "name": "特殊：種類未選択なら従属値は休止する",
+      "ok": true
+    },
+    {
+      "name": "特殊：休止中でも値は状態に残る",
+      "ok": true
+    },
+    {
+      "name": "特殊：休止中は英語に出ない",
+      "ok": true
+    },
+    {
+      "name": "特殊：休止中は完成度・警告に混ざらない",
+      "ok": true
+    },
+    {
+      "name": "特殊：種類を選び直すと休止中の値がそのまま戻る",
+      "ok": true
+    },
+    {
+      "name": "特殊：JSON往復で翼の6軸が維持される",
+      "ok": true
+    },
+    {
+      "name": "特殊：JSON往復でチェーン・浮遊・魔法的が維持される",
+      "ok": true
+    },
+    {
+      "name": "特殊：存在しないIDは取り込み時に捨てる",
+      "ok": true
+    },
+    {
+      "name": "特殊：同じチェーンを二重に持たない",
+      "ok": true
+    },
+    {
+      "name": "特殊：Phase 4 の保存データ（翼）が移行する",
+      "ok": true
+    },
+    {
+      "name": "特殊：Phase 4 の保存データ（文字列の角・光輪・尾）が移行する",
+      "ok": true
+    },
+    {
+      "name": "特殊：legacyMap の参照先はすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "特殊：部位スロットIDの旧名（camelCase）が移行する",
+      "ok": true
+    },
+    {
+      "name": "特殊：短縮版が一句にまとまる（一般語と具体語を並べない）",
+      "ok": true
+    },
+    {
+      "name": "特殊：翼に冠詞を付けない（もともと複数形）",
+      "ok": true
+    },
+    {
+      "name": "特殊：一対を選ぶと a pair of が付く",
+      "ok": true
+    },
+    {
+      "name": "特殊：光輪は単数の可算なので冠詞が付く",
+      "ok": true
+    },
+    {
+      "name": "特殊：尾の先端は後置の with 句になる",
+      "ok": true
+    },
+    {
+      "name": "特殊：尾を複数にすると核が複数形になる",
+      "ok": true
+    },
+    {
+      "name": "特殊：光輪の位置は後置される",
+      "ok": true
+    },
+    {
+      "name": "特殊：詳細版で翼が衣装本文の最後へ接続される",
+      "ok": true
+    },
+    {
+      "name": "特殊：詳細版で光輪は crowned by になる",
+      "ok": true
+    },
+    {
+      "name": "特殊：詳細版で角と尾は featuring になる",
+      "ok": true
+    },
+    {
+      "name": "特殊：詳細版で接続語が二重にならない",
+      "ok": true
+    },
+    {
+      "name": "特殊：主色と連動すると衣装の主色が入る",
+      "ok": true
+    },
+    {
+      "name": "特殊：主色を変えると連動先も動く",
+      "ok": true
+    },
+    {
+      "name": "特殊：金属色と連動する",
+      "ok": true
+    },
+    {
+      "name": "特殊：個別指定の色が使える",
+      "ok": true
+    },
+    {
+      "name": "特殊：連動を選んだら colorId は持たない",
+      "ok": true
+    },
+    {
+      "name": "特殊：連動先が未設定なら色を足さない",
+      "ok": true
+    },
+    {
+      "name": "特殊：装飾チェーンは衣装のみ出力でも出る",
+      "ok": true
+    },
+    {
+      "name": "特殊：拘束チェーンは物語OFFなら出ない",
+      "ok": true
+    },
+    {
+      "name": "特殊：拘束チェーンは物語ONで出る",
+      "ok": true
+    },
+    {
+      "name": "特殊：装飾チェーンと拘束チェーンはカテゴリが別",
+      "ok": true
+    },
+    {
+      "name": "特殊：魔法的装飾はエフェクトOFFでも出る（装飾だから）",
+      "ok": true
+    },
+    {
+      "name": "特殊：浮遊装飾はエフェクトOFFでも出る（物だから）",
+      "ok": true
+    },
+    {
+      "name": "競合：巨大な翼 × 背中を覆うケープ は warning",
+      "ok": true
+    },
+    {
+      "name": "競合：翼が中くらいならケープと競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：ケープを肩掛けにする案で警告が消える",
+      "ok": true
+    },
+    {
+      "name": "競合：翼を小さくする案で警告が消える",
+      "ok": true
+    },
+    {
+      "name": "競合：巨大な翼 × 背中の大きな装飾 は warning",
+      "ok": true
+    },
+    {
+      "name": "競合：大きな角 × かさばる頭部装飾 は warning",
+      "ok": true
+    },
+    {
+      "name": "競合：角を小さくする案で警告が消える",
+      "ok": true
+    },
+    {
+      "name": "競合：光輪 × 背の高い冠 は warning",
+      "ok": true
+    },
+    {
+      "name": "競合：光輪を背後へ回せば頭部装飾と競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：光輪の警告は1件にまとまる（軸ごとに増えない）",
+      "ok": true
+    },
+    {
+      "name": "競合：複数の尾 × 引き裾 は warning",
+      "ok": true
+    },
+    {
+      "name": "競合：尾が1本なら引き裾と競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：機械の翼 × 低技術の世界観 は warning（禁止ではない）",
+      "ok": true
+    },
+    {
+      "name": "競合：機械の翼はSFなら競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：羽毛の翼 × 全部が金属の素材 は warning",
+      "ok": true
+    },
+    {
+      "name": "競合：機械の翼なら金属の素材と競合しない",
+      "ok": true
+    },
+    {
+      "name": "競合：飾り鎖だけで他に装飾が無いと info",
+      "ok": true
+    },
+    {
+      "name": "競合：拘束チェーン × 物語OFF は info（競合ではない）",
+      "ok": true
+    },
+    {
+      "name": "競合：休止中の特殊パーツは info で知らせる",
+      "ok": true
+    },
+    {
+      "name": "競合：主テーマと翼が同じことを指すと info",
+      "ok": true
+    },
+    {
+      "name": "競合：闇属性 × 堕天使の翼 は重複と見なさない",
+      "ok": true
+    },
+    {
+      "name": "競合：特殊パーツのルールがすべて解決案か理由を持つ",
+      "ok": true
+    },
+    {
+      "name": "属性：9属性ある",
+      "ok": true
+    },
+    {
+      "name": "属性：9属性すべてが必要な項目を持つ",
+      "ok": true
+    },
+    {
+      "name": "属性：色の参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "属性：素材の参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "属性：装飾の参照先がすべて実在する（柄を含む）",
+      "ok": true
+    },
+    {
+      "name": "属性：シルエットの参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "属性：モチーフの参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "属性：推奨様式の参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "属性：光は天使モチーフと同一視しない",
+      "ok": true
+    },
+    {
+      "name": "属性：闇は悪魔モチーフと同一視しない",
+      "ok": true
+    },
+    {
+      "name": "属性：闇属性だけでは悪魔パーツが付かない",
+      "ok": true
+    },
+    {
+      "name": "属性：光属性だけでは天使パーツが付かない",
+      "ok": true
+    },
+    {
+      "name": "属性：氷と水を混ぜない",
+      "ok": true
+    },
+    {
+      "name": "属性：氷は結晶と鋭さ、水は流れと波",
+      "ok": true
+    },
+    {
+      "name": "属性：自然を緑と花だけにしていない",
+      "ok": true
+    },
+    {
+      "name": "属性：同じ候補を5属性以上で使い回さない",
+      "ok": true
+    },
+    {
+      "name": "属性：avoidTags が王道候補の歯止めになる",
+      "ok": true
+    },
+    {
+      "name": "属性：反映先 applyTo が OFF なら、属性を理由にした候補を出さない",
+      "ok": true
+    },
+    {
+      "name": "属性：反映先 applyTo が ON なら、属性を理由にした候補が出る",
+      "ok": true
+    },
+    {
+      "name": "属性：9属性それぞれで候補が出る",
+      "ok": true
+    },
+    {
+      "name": "属性：エフェクトは includeEffects がONのときだけ",
+      "ok": true
+    },
+    {
+      "name": "属性：エフェクトOFFなら特殊パーツも余計な光を足さない",
+      "ok": true
+    },
+    {
+      "name": "品質：全リストでIDが重複しない",
+      "ok": true
+    },
+    {
+      "name": "品質：部位スロットの選択肢にIDの重複が無い",
+      "ok": true
+    },
+    {
+      "name": "品質：特殊パーツの軸の値にIDの重複が無い",
+      "ok": true
+    },
+    {
+      "name": "品質：すべてのIDが snake_case",
+      "ok": true
+    },
+    {
+      "name": "品質：shortPrompt が空でない（空を許す軸を除く）",
+      "ok": true
+    },
+    {
+      "name": "品質：labelJa が空でない",
+      "ok": true
+    },
+    {
+      "name": "品質：色のhexが正しい",
+      "ok": true
+    },
+    {
+      "name": "品質：複合スロットの requiredAxis が実在する",
+      "ok": true
+    },
+    {
+      "name": "品質：phraseOrder が実在する軸だけを指す",
+      "ok": true
+    },
+    {
+      "name": "品質：色連動の linkTo が実在するパスを指す",
+      "ok": true
+    },
+    {
+      "name": "品質：衣装カテゴリが参照する部位スロットが実在する",
+      "ok": true
+    },
+    {
+      "name": "品質：プリセットの参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "品質：ガチャの対象が実在するパスを指す",
+      "ok": true
+    },
+    {
+      "name": "品質：ガチャの維持条件が実在するパスを指す",
+      "ok": true
+    },
+    {
+      "name": "品質：ルールの selector が実在するパスを指す",
+      "ok": true
+    },
+    {
+      "name": "品質：ルールの action がすべて有効",
+      "ok": true
+    },
+    {
+      "name": "品質：ルールの check が advisor に実装されている",
+      "ok": true
+    },
+    {
+      "name": "品質：ルールの selector が実在するスロットを指す",
+      "ok": true
+    },
+    {
+      "name": "品質：ルールの setPath がすべて届く",
+      "ok": true
+    },
+    {
+      "name": "品質：相性データの参照先が実在する",
+      "ok": true
+    },
+    {
+      "name": "品質：英式綴りが混ざっていない（American へ統一）",
+      "ok": true
+    },
+    {
+      "name": "品質：複合語のハイフンが揃っている",
+      "ok": true
+    },
+    {
+      "name": "品質：複数形で扱う衣類を単数扱いしない",
+      "ok": true
+    },
+    {
+      "name": "品質：不正データは黙って捨てず、テストで見つかる形になっている",
+      "ok": true
+    },
+    {
+      "name": "ケースA：天使 — 翼が一句、光属性と天使が別概念、エフェクトOFFで光らない",
+      "ok": true
+    },
+    {
+      "name": "ケースB：悪魔 — 闇属性だけでは付かず、選んだときだけ出る",
+      "ok": true
+    },
+    {
+      "name": "ケースC：堕天使 — 翼と光輪が共存し、闇属性と重複表現しない",
+      "ok": true
+    },
+    {
+      "name": "ケースD：機械翼 — 歴史ものでは王道にせず、SFなら成立し、光らない",
+      "ok": true
+    },
+    {
+      "name": "ケースE：背面競合 — warning と、翼を小さく／ケープを肩掛けにする案",
+      "ok": true
+    },
+    {
+      "name": "ケースF：頭部競合 — 重なり警告と修正候補",
+      "ok": true
+    },
+    {
+      "name": "修正①：carrying a ... mood を生成しない",
+      "ok": true
+    },
+    {
+      "name": "修正①：短縮版の雰囲気タグは {mood} atmosphere",
+      "ok": true
+    },
+    {
+      "name": "修正①：属性の雰囲気も evoking ... atmosphere",
+      "ok": true
+    },
+    {
+      "name": "修正①：拘束チェーンにも carrying を使わない",
+      "ok": true
+    },
+    {
+      "name": "修正①：with barefoot を生成しない",
+      "ok": true
+    },
+    {
+      "name": "修正①：barefoot and circlet を生成しない",
+      "ok": true
+    },
+    {
+      "name": "修正①：短縮版では barefoot が独立タグ",
+      "ok": true
+    },
+    {
+      "name": "修正①：靴を選べば従来どおり部位として出る",
+      "ok": true
+    },
+    {
+      "name": "修正①：with two-piece を生成しない（核へ統合）",
+      "ok": true
+    },
+    {
+      "name": "修正①：with one-piece を生成しない（核へ統合）",
+      "ok": true
+    },
+    {
+      "name": "修正①：同じ文で two-piece を重複させない",
+      "ok": true
+    },
+    {
+      "name": "修正①：board shorts の詳細版は a pair of",
+      "ok": true
+    },
+    {
+      "name": "修正①：A ... board shorts（単数冠詞）を生成しない",
+      "ok": true
+    },
+    {
+      "name": "修正①：主テーマは -inspired で核へ結ぶ",
+      "ok": true
+    },
+    {
+      "name": "修正①：既に -inspired のテーマへ二重に付けない",
+      "ok": true
+    },
+    {
+      "name": "修正①：副素材は combined with で直結させない",
+      "ok": true
+    },
+    {
+      "name": "修正①：流れる構造がなければ flowing を落とす",
+      "ok": true
+    },
+    {
+      "name": "修正①：流れる構造があれば flowing を残す",
+      "ok": true
+    },
+    {
+      "name": "修正①：主素材の flowing も構造に従う",
+      "ok": true
+    },
+    {
+      "name": "修正①：詳細版に「., 」「,,」を作らない",
+      "ok": true
+    },
+    {
+      "name": "修正①：短縮版の末尾に不要な記号を付けない",
+      "ok": true
+    },
+    {
+      "name": "修正①：追加タグは短縮版の末尾へカンマで続く",
+      "ok": true
+    },
+    {
+      "name": "修正①：追加タグは詳細版のピリオドの後に続く",
+      "ok": true
+    },
+    {
+      "name": "修正①：追加タグそのものは改変しない",
+      "ok": true
+    },
+    {
+      "name": "修正①：追加タグ末尾の余分なカンマは境界で整える",
+      "ok": true
+    },
+    {
+      "name": "修正①：追加タグが空なら何も足さない",
+      "ok": true
+    },
+    {
+      "name": "修正①：customTags が文字列でなければ空に均す",
+      "ok": true
+    },
+    {
+      "name": "修正①：データの説明文に「〜だよ」「〜してね」が残っていない",
+      "ok": true
+    },
+    {
+      "name": "修正①：出力の空状態案内が です・ます 調",
+      "ok": true
+    },
+    {
+      "name": "修正①ケース1：堕天使の水着（受入基準）",
+      "ok": true
+    },
+    {
+      "name": "修正①ケース2：board shorts（受入基準）",
+      "ok": true
+    },
+    {
+      "name": "修正①ケース3：追加タグ（受入基準）",
+      "ok": true
+    },
+    {
+      "name": "文言：ガチャ対象・維持条件の日本語ラベルに「振る」系の言い回しが残っていない",
+      "ok": true
+    },
+    {
+      "name": "文言：ガチャの差分ラベルに「振る」系の言い回しが残っていない",
+      "ok": true
+    },
+    {
+      "name": "データ出力：中身は従来のJSON形式のまま",
+      "ok": true
+    },
+    {
+      "name": "データ出力：書き出したものをそのまま読み戻せる",
+      "ok": true
+    },
+    {
+      "name": "5B：全データセットでIDが重複しない",
+      "ok": true
+    },
+    {
+      "name": "5B：全データセットのIDはsnake_case",
+      "ok": true
+    },
+    {
+      "name": "5B：全データセットでlabelJaが空でない",
+      "ok": true
+    },
+    {
+      "name": "5B：色は120件以上・hexが妥当・recommendedWithの参照先が実在",
+      "ok": true
+    },
+    {
+      "name": "5B：素材は40件以上・全件がmatClassesを持つ",
+      "ok": true
+    },
+    {
+      "name": "5B：柄25以上・装飾40以上・モチーフ30以上",
+      "ok": true
+    },
+    {
+      "name": "5B：基本衣装は60件以上（人魚系を除いても60以上）",
+      "ok": true
+    },
+    {
+      "name": "5B：プリセットは20件以上",
+      "ok": true
+    },
+    {
+      "name": "5B：ブランド名が英語プロンプトに混入しない",
+      "ok": true
+    },
+    {
+      "name": "5B：実在警察機関名が混入しない",
+      "ok": true
+    },
+    {
+      "name": "5B：性別語が英語プロンプトに混入しない",
+      "ok": true
+    },
+    {
+      "name": "5B：学ラン・セーラー・ブレザーの核が互いに混ざらない",
+      "ok": true
+    },
+    {
+      "name": "5B：白衣の核は laboratory coat",
+      "ok": true
+    },
+    {
+      "name": "5B：旗袍は漢服と別の核を持つ",
+      "ok": true
+    },
+    {
+      "name": "5B：バニー2種は互いに区別される",
+      "ok": true
+    },
+    {
+      "name": "5B：必須衣装がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：脚の衣類・靴・素足が出力に混ざらない",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：一本の尾と「人間の脚は無い」が明示される",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：feet の肯定的な言及が無い",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：通常の尾（獣の尾）に人魚の尾が混ざらない",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：merfolkカテゴリは脚系スロットを持たない",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：完成度の母数に尾の形が入り、脚系は入らない",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：ガチャは脚まわりを回さない",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：JSON往復で構造が保たれる",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：旧スキーマ0.1のデータがそのまま読める",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：カテゴリを行き来しても脚の値は保持される",
+      "ok": true
+    },
+    {
+      "name": "5B人魚：警告器は表示外スロットの値に反応しない",
+      "ok": true
+    },
+    {
+      "name": "5B走査：全衣装で短縮・詳細出力が壊れない",
+      "ok": true
+    },
+    {
+      "name": "5B走査：シードを変えたガチャ全対象で出力が壊れない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：condition IDが重複していない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：condition IDはsnake_case",
+      "ok": true
+    },
+    {
+      "name": "5B後半：labelJa・base・groupが空でない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：byClass・avoidClassesのキーが既知の素材分類",
+      "ok": true
+    },
+    {
+      "name": "5B後半：仕様書の必須状態が最低限そろっている",
+      "ok": true
+    },
+    {
+      "name": "5B後半：treatment群はすべてgroup=treatment",
+      "ok": true
+    },
+    {
+      "name": "5B後半：部位に仕様書の最低限（裾〜衣装全体）がある",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態付きプリセットの参照先がすべて実在する",
+      "ok": true
+    },
+    {
+      "name": "5B後半：スキーマ互換を維持して0.4へ更新",
+      "ok": true
+    },
+    {
+      "name": "5B後半：0.1データを読み込める（conditionは空で補完）",
+      "ok": true
+    },
+    {
+      "name": "5B後半：0.2データ（人魚）を読み込める",
+      "ok": true
+    },
+    {
+      "name": "5B後半：condition無し・customTags無しの旧データでも壊れない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：未知のcondition IDは捨てて停止しない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：no_conditionのような疑似IDは保存されない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：severity・extent・placementsは既知値へ丸める",
+      "ok": true
+    },
+    {
+      "name": "5B後半：3件以上は先頭2件に丸める（ケースN相当の保存側保証）",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態付き衣装のJSON往復",
+      "ok": true
+    },
+    {
+      "name": "5B後半：merfolk＋condition のJSON往復",
+      "ok": true
+    },
+    {
+      "name": "5B後半：旧スロットID＋conditionの同時移行",
+      "ok": true
+    },
+    {
+      "name": "5BケースA：裾の泥はね",
+      "ok": true
+    },
+    {
+      "name": "5BケースB：片袖の軽い破れ",
+      "ok": true
+    },
+    {
+      "name": "5BケースC：金属鎧はtorn/frayed/wrinkledにならない",
+      "ok": true
+    },
+    {
+      "name": "5BケースD：雨濡れから透け・密着・露出を自動追加しない",
+      "ok": true
+    },
+    {
+      "name": "5BケースE：白衣の血痕は衣装への付着として出る",
+      "ok": true
+    },
+    {
+      "name": "5BケースF：大量の血濡れも衣装の状態として出る",
+      "ok": true
+    },
+    {
+      "name": "5BケースG：使用感は戦闘描写へ寄らない",
+      "ok": true
+    },
+    {
+      "name": "5BケースH：デニムのダメージ加工は加工のまま出る",
+      "ok": true
+    },
+    {
+      "name": "5BケースI：防水素材は水を吸わない",
+      "ok": true
+    },
+    {
+      "name": "5BケースJ：毛皮は matted / wet / mud-stained 系で出る",
+      "ok": true
+    },
+    {
+      "name": "5BケースK：人魚の水滴は鱗の表現になり脚・靴が出ない",
+      "ok": true
+    },
+    {
+      "name": "5BケースK2：人魚詳細版でmermaid tailが一度しか出ない（重複修正）",
+      "ok": true
+    },
+    {
+      "name": "5BケースL：人魚の傷は鱗の傷になり獣の尾と混同しない",
+      "ok": true
+    },
+    {
+      "name": "5BケースM：状態2件が自然な順序で並び句読点が壊れない",
+      "ok": true
+    },
+    {
+      "name": "5BケースO：treatmentは状態より先に出る（並びの安定）",
+      "ok": true
+    },
+    {
+      "name": "5BケースP：状態文の後に追加タグを無改変で付与",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態が空なら状態ブロックも接続語も出ない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：範囲「全体」で torn at overall のような連結を作らない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：広範囲＋背中は across much of the back になる",
+      "ok": true
+    },
+    {
+      "name": "5B後半：程度副詞はwith句の内側に入る",
+      "ok": true
+    },
+    {
+      "name": "5B監査固定：人魚に脚系部位のconditionが入っても出力しない",
+      "ok": true
+    },
+    {
+      "name": "5B監査固定：人魚以外に尾の部位が入っても出力しない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：破れ＋金属で警告が出る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：しわ＋金属で警告が出る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：水吸い＋防水で情報表示が出る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：毛玉＋金属はhard",
+      "ok": true
+    },
+    {
+      "name": "5B後半：意味重複（加工×状態）の警告が出る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：布素材の泥はねでは金属系警告が出ない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：冒険者服に状態候補が提案される",
+      "ok": true
+    },
+    {
+      "name": "5B後半：補助候補は採用するまで設計を変えない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：夢かわルームウェアには状態候補も血も出さない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態2件のときは追加候補を出さない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：人魚には鱗・水系の候補が出る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：ガチャ対象に「状態・加工」がある",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態ガチャは採用まで元設計を変えない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態ガチャは3件以上を生成しない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：金属素材の状態ガチャに破れ・しわが出ない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：人魚の状態ガチャは専用プールで脚系部位を出さない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：他対象のガチャは血を含むconditionへ触れない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：夢かわ系の状態ガチャに血が出ない",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態ガチャの案の差分ラベルが日本語で出る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：状態付きプリセット8件がすべて生成に通る",
+      "ok": true
+    },
+    {
+      "name": "5B後半：血痕付き白衣プリセットに負傷・goreが出ない",
+      "ok": true
+    },
+    {
+      "name": "最終監査：人魚では人間衣装由来の下半身ボリューム・丈を出さない",
+      "ok": true
+    },
+    {
+      "name": "最終監査：着用役割は動詞句のまま接続し featuring を重ねない",
+      "ok": true
+    },
+    {
+      "name": "最終監査：ランジェリー型の詳細版は冠詞付きの完全な名詞句になる",
+      "ok": true
+    },
+    {
+      "name": "最終監査：一点の可算装飾は単数形になる",
+      "ok": true
+    },
+    {
+      "name": "最終監査：複数の可算装飾は複数形になる",
+      "ok": true
+    },
+    {
+      "name": "最終監査：特殊パーツの詳細版は動詞接続を二重にしない",
+      "ok": true
+    },
+    {
+      "name": "最終監査：宝石色の詳細版で highlights を重複させない",
+      "ok": true
+    },
+    {
+      "name": "5C: silhouette fit data",
+      "ok": true
+    },
+    {
+      "name": "5C: silhouette upperVolume data",
+      "ok": true
+    },
+    {
+      "name": "5C: silhouette lowerVolume data",
+      "ok": true
+    },
+    {
+      "name": "5C: silhouette waist data",
+      "ok": true
+    },
+    {
+      "name": "5C: silhouette length data",
+      "ok": true
+    },
+    {
+      "name": "5C: silhouette symmetry data",
+      "ok": true
+    },
+    {
+      "name": "5C: legacy length IDs remain readable",
+      "ok": true
+    },
+    {
+      "name": "5C: parts neckline data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts collar data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts shoulders data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts sleeves data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts cuffs data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts waist data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts skirt_shape data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts hem data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts bottoms data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts inner_shirt data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: parts vest data and normalization",
+      "ok": true
+    },
+    {
+      "name": "5C: category slots are unique and resolve",
+      "ok": true
+    },
+    {
+      "name": "5C: new slot closure data, round trip and output",
+      "ok": true
+    },
+    {
+      "name": "5C: new slot cutout data, round trip and output",
+      "ok": true
+    },
+    {
+      "name": "5C: new slot construction_detail data, round trip and output",
+      "ok": true
+    },
+    {
+      "name": "5C: new slot asymmetry_detail data, round trip and output",
+      "ok": true
+    },
+    {
+      "name": "5C: merfolk rejects lower structural panels without deleting selections",
+      "ok": true
+    },
+    {
+      "name": "5C: swimwear back is preferred to duplicate imported cutouts",
+      "ok": true
+    },
+    {
+      "name": "5C: styling catalog has complete unique metadata",
+      "ok": true
+    },
+    {
+      "name": "5C: styles retain old IDs and expand to 45–55",
+      "ok": true
+    },
+    {
+      "name": "5C: decorations expand to 80–95 without duplicate English entries",
+      "ok": true
+    },
+    {
+      "name": "5C: migration from 0.1 adds empty styling and preserves condition/custom tags",
+      "ok": true
+    },
+    {
+      "name": "5C: migration from 0.2 adds empty styling and preserves condition/custom tags",
+      "ok": true
+    },
+    {
+      "name": "5C: migration from 0.3 adds empty styling and preserves condition/custom tags",
+      "ok": true
+    },
+    {
+      "name": "5C: migration from 0.4 adds empty styling and preserves condition/custom tags",
+      "ok": true
+    },
+    {
+      "name": "5C: styling normalization discards unknown, pseudo and duplicate IDs, keeps at most two",
+      "ok": true
+    },
+    {
+      "name": "5C: JSON roundtrip 0 styling items",
+      "ok": true
+    },
+    {
+      "name": "5C: JSON roundtrip 1 styling items",
+      "ok": true
+    },
+    {
+      "name": "5C: JSON roundtrip 2 styling items",
+      "ok": true
+    },
+    {
+      "name": "5C: state rejects third styling and allows removing an inactive selection",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 0",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 1",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 2",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 3",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 4",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 5",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 6",
+      "ok": true
+    },
+    {
+      "name": "5C: shared applicability 7",
+      "ok": true
+    },
+    {
+      "name": "5C: merfolk styling ignores dormant human slots and roundtrips with condition",
+      "ok": true
+    },
+    {
+      "name": "5C: K: main 0.3 exports retain every field and generated prompt after migration",
+      "ok": true
+    },
+    {
+      "name": "5C: A: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: B: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: C: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: D: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: E: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: F: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: G: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: H: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: I: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: J: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: L: acceptance",
+      "ok": true
+    },
+    {
+      "name": "5C: G: all three styling choices work in pairs; maximum remains two",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 0: styling_inapplicable",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 1: styling_inapplicable",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 2: styling_inapplicable",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 3: symmetry_detail",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 4: symmetry_detail",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 5: rigid_draping",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 6: swim_cutout_duplicate",
+      "ok": true
+    },
+    {
+      "name": "5C: warning 7: open_back_armor",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha silhouette is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha collar is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha sleeves is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha tailoring is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha cutout is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha styling is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha style is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: gacha decorations is connected, scoped and immutable",
+      "ok": true
+    },
+    {
+      "name": "5C: styling gacha never offers rolled sleeves on a sleeveless main garment",
+      "ok": true
+    },
+    {
+      "name": "5C: merfolk gacha excludes human panels and lower silhouette mutations",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity casual offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity formal offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity punk offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity techwear offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity romantic offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity gothic offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: advisor affinity merfolk offers connected choices",
+      "ok": true
+    },
+    {
+      "name": "5C: audit regression: asymmetric styling suppresses symmetrical English but preserves data",
+      "ok": true
+    },
+    {
+      "name": "5C: crewneck core deduplicates selected crew neck in detailed English",
+      "ok": true
+    },
+    {
+      "name": "5C: dormant armored vest and skirt panels do not affect merfolk structure",
+      "ok": true
+    },
+    {
+      "name": "5C: garment with explicit necktie permits tie styling",
+      "ok": true
+    },
+    {
+      "name": "5C: styling survives library save, duplicate and exported JSON import",
+      "ok": true
+    },
+    {
+      "name": "5C: merfolk decoration placements are filtered consistently without changing stored selections",
+      "ok": true
+    },
+    {
+      "name": "5C: new affinity paths reference existing catalog options",
+      "ok": true
+    },
+    {
+      "name": "5D: categories vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: motifs vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: directions vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: bases vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: placements vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: strengths vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: foodGroups vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: foodApplications vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: regions vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: attires vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: treatments vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: qipaoNecklines vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: qipaoLengths vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: qipaoSlits vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: qipaoDrapes vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: idolStyles vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: artNouveauShapes vocabulary IDs and labels",
+      "ok": true
+    },
+    {
+      "name": "5D: source categories complete",
+      "ok": true
+    },
+    {
+      "name": "5D: all 112 source motifs including 72 extended foods",
+      "ok": true
+    },
+    {
+      "name": "5D: all traditional attires retained",
+      "ok": true
+    },
+    {
+      "name": "5D: all 15 idol and 8 botanical shapes retained",
+      "ok": true
+    },
+    {
+      "name": "5D: motif category and food group references",
+      "ok": true
+    },
+    {
+      "name": "5D: concept explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: fantasy explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: myth explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: food explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: nature explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: living explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: material explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: art explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: stage explicit mappings exist and target real IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: base couture uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base dress uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base gown uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base suit uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base coat uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base robe uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base cape uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base wafuku uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base ritual uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base royal uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base stage uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base idol uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base battle uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base armor uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base bodysuit uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base swim uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base lingerie uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: base layered uses existing garment pool",
+      "ok": true
+    },
+    {
+      "name": "5D: direction mappings use existing styles",
+      "ok": true
+    },
+    {
+      "name": "5D: candidate full object is seed reproducible",
+      "ok": true
+    },
+    {
+      "name": "5D: preview does not mutate source, state, or selection",
+      "ok": true
+    },
+    {
+      "name": "5D: unknown custom concept never guesses colors/materials",
+      "ok": true
+    },
+    {
+      "name": "5D: candidate reasons and warnings use distinct fields",
+      "ok": true
+    },
+    {
+      "name": "5D: preserve mode protects explicit garment palette and tags",
+      "ok": true
+    },
+    {
+      "name": "5D: strength controls applied structural axes",
+      "ok": true
+    },
+    {
+      "name": "5D: selection limits and unknown IDs",
+      "ok": true
+    },
+    {
+      "name": "5D: schema version 0.5",
+      "ok": true
+    },
+    {
+      "name": "5D: 0.1 migration leaves inspiration empty and tags exact",
+      "ok": true
+    },
+    {
+      "name": "5D: 0.2 migration leaves inspiration empty and tags exact",
+      "ok": true
+    },
+    {
+      "name": "5D: 0.3 migration leaves inspiration empty and tags exact",
+      "ok": true
+    },
+    {
+      "name": "5D: 0.4 migration leaves inspiration empty and tags exact",
+      "ok": true
+    },
+    {
+      "name": "5D: all 32 Phase 5C main preset outputs remain byte-identical",
+      "ok": true
+    },
+    {
+      "name": "5D: 0.5 normalized JSON roundtrip retains extended design",
+      "ok": true
+    },
+    {
+      "name": "5D: draft save reload retains concept and tags",
+      "ok": true
+    },
+    {
+      "name": "5D: library save reload retains extended design",
+      "ok": true
+    },
+    {
+      "name": "5D: duplicate retains extended design with independent identity",
+      "ok": true
+    },
+    {
+      "name": "5D: single JSON export import retains all extended fields",
+      "ok": true
+    },
+    {
+      "name": "5D: library JSON export import retains all extended fields",
+      "ok": true
+    },
+    {
+      "name": "5D: unknown inspiration IDs are ignored",
+      "ok": true
+    },
+    {
+      "name": "5D: A first love structured colors, soft cloth, pearls",
+      "ok": true
+    },
+    {
+      "name": "5D: B aurora iridescence and drape",
+      "ok": true
+    },
+    {
+      "name": "5D: C crystal dragon activates required special axes",
+      "ok": true
+    },
+    {
+      "name": "5D: D Art Nouveau no-slit is not overridden by exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: E traditional qipao canonical collar length and closed hem",
+      "ok": true
+    },
+    {
+      "name": "5D: F traditional hanbok has no automatic Chinese fastenings",
+      "ok": true
+    },
+    {
+      "name": "5D: G cream soda is abstracted and no literal food is inserted",
+      "ok": true
+    },
+    {
+      "name": "5D: H custom motif is preserved without customTags pollution",
+      "ok": true
+    },
+    {
+      "name": "5D: I unisex idol has structured tailoring without subject",
+      "ok": true
+    },
+    {
+      "name": "5D: J mermaid tale includes a merfolk and a human outfit",
+      "ok": true
+    },
+    {
+      "name": "5D: K coverage changes construction without body narration",
+      "ok": true
+    },
+    {
+      "name": "5D: L legacy reverse bunny output stays unchanged",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional hanfu stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional qipao stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional hanbok stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional kimono stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional sari stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional lehenga stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional belly_dance stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional kaftan stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional ao_dai stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional flamenco stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional folk stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional kente stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional mariachi stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: traditional carnival stays identifiable at maximum exposure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant frill_mini maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant above_knee maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant volume maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant flare maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant tiered maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant sequin maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant stage maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant ribbons maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant stars maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant future maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant classic_cute maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant cool maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant japanese maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant mens maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: idol variant unisex maps into editable structure",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau long honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau midi honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau mini honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau tunic honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau cape honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau separates honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau no_slit honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: Art Nouveau modest_slit honors shape without automatic high slit",
+      "ok": true
+    },
+    {
+      "name": "5D: qipao classic neckline uses slots",
+      "ok": true
+    },
+    {
+      "name": "5D: qipao halter neckline uses slots",
+      "ok": true
+    },
+    {
+      "name": "5D: qipao open_back neckline uses slots",
+      "ok": true
+    },
+    {
+      "name": "5D: qipao bare_shoulders neckline uses slots",
+      "ok": true
+    },
+    {
+      "name": "5D: food group sweets all candidates retain valid abstractions",
+      "ok": true
+    },
+    {
+      "name": "5D: food group fruits all candidates retain valid abstractions",
+      "ok": true
+    },
+    {
+      "name": "5D: food group drinks all candidates retain valid abstractions",
+      "ok": true
+    },
+    {
+      "name": "5D: food group alcohol all candidates retain valid abstractions",
+      "ok": true
+    },
+    {
+      "name": "5D: food group savory all candidates retain valid abstractions",
+      "ok": true
+    }
+  ]
+}

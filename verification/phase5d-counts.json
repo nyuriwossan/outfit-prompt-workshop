@@ -1,0 +1,49 @@
+{
+  "baselineCommit": "25a50aaec818811925418db5c34a608a365c6e44",
+  "referenceCommit": "f883463e3dd9f00c2de7c5e95c0855f11a0739d2",
+  "schemaVersion": "0.5",
+  "vocabulary": {
+    "categories": 10,
+    "motifs": 112,
+    "directions": 16,
+    "bases": 18,
+    "placements": 12,
+    "strengths": 5,
+    "foodGroups": 5,
+    "foodApplications": 8,
+    "regions": 8,
+    "attires": 14,
+    "treatments": 6,
+    "qipaoNecklines": 4,
+    "qipaoLengths": 4,
+    "qipaoSlits": 3,
+    "qipaoDrapes": 3,
+    "idolStyles": 15,
+    "artNouveauShapes": 8
+  },
+  "motifsIncludingAttires": 126,
+  "foodMotifs": 72,
+  "newGarments": 11,
+  "totalGarments": 94,
+  "newHemOptions": 2,
+  "mappingProfiles": {
+    "motifs": 112,
+    "traditional": 14,
+    "bases": 18,
+    "directions": 16,
+    "directionRecommendations": 3,
+    "details": 37
+  },
+  "mappingTargetReferences": 1656,
+  "presentation": {
+    "presets": 25,
+    "poseMoods": 15,
+    "seats": 21,
+    "backgrounds": 4,
+    "subjects": 5,
+    "paints": 7,
+    "finishes": 5,
+    "lines": 4
+  },
+  "presentationRecords": 86
+}

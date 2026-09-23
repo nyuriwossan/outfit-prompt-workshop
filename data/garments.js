@@ -237,4 +237,217 @@
     { id: 'shell_top_mermaid_set', labelJa: '貝殻トップの人魚装', category: 'merfolk', shortPrompt: 'shell-top mermaid set', detailedPrompt: 'a mermaid set with a seashell top', tags: ['merfolk', 'oceanic'], recommendedWorldviews: ['western_fantasy', 'fairy_tale'], layer: 'main' },
     { id: 'sea_silk_mermaid_outfit', labelJa: '海絹の人魚衣装', category: 'merfolk', shortPrompt: 'sea-silk mermaid outfit', detailedPrompt: 'a mermaid outfit draped in flowing sea silk', tags: ['merfolk', 'oceanic', 'flowing'], recommendedWorldviews: ['western_fantasy', 'fairy_tale'], layer: 'main' }
   ];
+  // Phase 5D: distinct traditional silhouettes, using existing categories.
+  CPW.data.garments = CPW.data.garments.concat([
+  {
+    "id": "hanbok",
+    "labelJa": "韓服（チマチョゴリ）",
+    "category": "top_bottom",
+    "shortPrompt": "hanbok",
+    "detailedPrompt": "a hanbok featuring a short jeogori over a full flowing chima silhouette",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "sari",
+    "labelJa": "サリー",
+    "category": "robe",
+    "shortPrompt": "sari",
+    "detailedPrompt": "a sari featuring continuous wrapped drapery and a sweeping pallu",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "lehenga",
+    "labelJa": "レヘンガ",
+    "category": "top_bottom",
+    "shortPrompt": "lehenga",
+    "detailedPrompt": "a lehenga featuring a fitted choli, expansive skirt, and flowing dupatta",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "belly_dance",
+    "labelJa": "ベリーダンス衣装",
+    "category": "dress",
+    "shortPrompt": "belly dance costume",
+    "detailedPrompt": "a belly dance costume featuring a fitted embellished bodice with fluid hip drapes and a sweeping skirt",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "kaftan",
+    "labelJa": "カフタン",
+    "category": "robe",
+    "shortPrompt": "kaftan",
+    "detailedPrompt": "a kaftan featuring a generous column with broad sleeves and a defined center line",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "ao_dai",
+    "labelJa": "アオザイ",
+    "category": "top_bottom",
+    "shortPrompt": "ao dai",
+    "detailedPrompt": "an ao dai featuring a high-necked fitted tunic with long split panels over flowing trousers",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "flamenco",
+    "labelJa": "フラメンコ衣装",
+    "category": "dress",
+    "shortPrompt": "flamenco dress",
+    "detailedPrompt": "a flamenco dress featuring a fitted torso opening into rhythmic cascading flounces",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "folk",
+    "labelJa": "ヨーロッパ民族衣装",
+    "category": "dress",
+    "shortPrompt": "European folk costume",
+    "detailedPrompt": "a European folk costume featuring a structured folk bodice with layered skirt panels",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "kente",
+    "labelJa": "ケンテ風衣装",
+    "category": "robe",
+    "shortPrompt": "kente-inspired attire",
+    "detailedPrompt": "a kente-inspired attire featuring bold wrapped planes with sculptural asymmetric draping",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "mariachi",
+    "labelJa": "マリアッチ風衣装",
+    "category": "uniform",
+    "shortPrompt": "mariachi-inspired attire",
+    "detailedPrompt": "a mariachi-inspired attire featuring a sharply tailored jacket with high-waisted fitted trousers or a sweeping skirt",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  },
+  {
+    "id": "carnival",
+    "labelJa": "カーニバル衣装",
+    "category": "dress",
+    "shortPrompt": "carnival costume",
+    "detailedPrompt": "a carnival costume featuring a radiant performance silhouette with fan-like back pieces",
+    "tags": [
+      "traditional",
+      "ornate"
+    ],
+    "recommendedWorldviews": [
+      "historical_western",
+      "modern"
+    ],
+    "layer": "main",
+    "requiredSlots": [],
+    "recommendedSlots": [],
+    "culturalNoteJa": "文化的な衣装に着想を得た創作です。特定地域の史実を完全に再現するものではありません。"
+  }
+]);
+  CPW.data.garmentCategories.find(function(c){return c.id==='chinese';}).slots.push('neckline','cover_up');
 })(window);

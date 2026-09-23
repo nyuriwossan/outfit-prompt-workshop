@@ -69,21 +69,6 @@
 
   // 主様式・副様式（7.4「様式」と共通）
   // 見せ方補助（出力オプション「見せ方補助」がONのときだけ使う）
-  CPW.data.presentationFocus = [
-    { id: 'full_outfit', labelJa: '全身', shortPrompt: 'full-body view of the outfit' },
-    { id: 'upper_body', labelJa: '上半身', shortPrompt: 'upper-body view' },
-    { id: 'detail', labelJa: '細部', shortPrompt: 'close-up on the garment details' }
-  ];
-  CPW.data.poseAssist = [
-    { id: 'standing', labelJa: '立ち姿', shortPrompt: 'standing pose' },
-    { id: 'walking', labelJa: '歩く', shortPrompt: 'mid-stride' },
-    { id: 'seated', labelJa: '座る', shortPrompt: 'seated pose' }
-  ];
-  CPW.data.compositionAssist = [
-    { id: 'plain_bg', labelJa: '無地背景', shortPrompt: 'plain background' },
-    { id: 'centered', labelJa: '中央配置', shortPrompt: 'centered composition' },
-    { id: 'low_angle', labelJa: 'あおり', shortPrompt: 'low camera angle' }
-  ];
 
   // 品質タグ（出力オプション「品質タグ」がONのときだけ使う）
   CPW.data.qualityTags = ['masterpiece', 'best quality', 'highly detailed'];

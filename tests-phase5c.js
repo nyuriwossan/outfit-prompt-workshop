@@ -70,7 +70,7 @@
         condition:{items:[{type:'rain_soaked',severity:'moderate',extent:'overall',placements:[]}]},
         output:{customTags:'Exact_CASE (tag:1.2), 保持'}};
       var before=C.generator.short(raw), r=C.schema.migrate(raw);
-      assert(r.ok && r.outfit.version==='0.4'); assert(r.outfit.styling.items.length===0);
+      assert(r.ok && r.outfit.version==='0.5'); assert(r.outfit.styling.items.length===0);
       assert(C.generator.short(r.outfit)===before);
       assert(r.outfit.output.customTags===raw.output.customTags);
     });
@@ -123,6 +123,11 @@
     C.legacy03Fixtures.forEach(function(f) {
       var migrated=C.schema.migrate(f.raw); assert(migrated.ok,f.preset);
       var copy=U.clone(migrated.outfit);copy.version='0.3';delete copy.styling;
+      // Phase 5D adds only empty optional fields when migrating legacy designs.
+      delete copy.concept.inspiration;
+      ['preset','poseMood','seat','background','subject','rendering'].forEach(function(k){delete copy.presentation[k];});
+      delete copy.output.includeBackground;delete copy.output.includeRendering;
+      delete copy.output.scope;
       assert(JSON.stringify(copy)===JSON.stringify(f.raw),f.preset+': saved fields');
       assert(C.generator.short(migrated.outfit)===f.short,f.preset+': short');
       assert(C.generator.detailed(migrated.outfit)===f.detailed,f.preset+': detailed');

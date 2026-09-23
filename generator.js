@@ -114,15 +114,20 @@
    * 部品ごとの句
    * ========================================================== */
   function colorEn(id) { var c = U.byId(D.colors, id); return c ? c.promptEn : null; }
+  function hasInspiration(o){var s=o.concept.inspiration;return !!(s&&(s.motifId||s.customMotif||s.traditional.attireId));}
 
   /* 主色＋副色。1色なら and を作らない。 */
   function baseColorPhrase(o) {
-    return joinAnd([colorEn(o.palette.primary), colorEn(o.palette.secondary)].filter(Boolean));
+    var colors=[colorEn(o.palette.primary),colorEn(o.palette.secondary)].filter(Boolean);
+    return joinAnd(hasInspiration(o)?compress(colors):colors);
   }
 
   /* 差し色・金属色・宝石色 */
   function accentClauses(o) {
     var out = [];
+    var used=[colorEn(o.palette.primary),colorEn(o.palette.secondary)].filter(Boolean);
+    o=U.clone(o);
+    if(hasInspiration(o))['accent','metal','gem'].forEach(function(k){var color=colorEn(o.palette[k]);if(used.indexOf(color)>=0)o.palette[k]=null;else if(color)used.push(color);});
     if (o.palette.accent) out.push({ verb: 'accented with', text: colorEn(o.palette.accent) + ' accents', plain: colorEn(o.palette.accent) });
     if (o.palette.metal) out.push({ verb: 'finished with', text: colorEn(o.palette.metal) + ' details', plain: colorEn(o.palette.metal) + ' details' });
     if (o.palette.gem) out.push({ verb: 'highlighted with', text: colorEn(o.palette.gem) + ' highlights', plain: colorEn(o.palette.gem) });
@@ -238,6 +243,8 @@
     var g = U.byId(D.garments, o.garment.subtype);
     // 詳細版の核は detailedPrompt（冠詞を外して使う）。garments ブロックとは二重にしない。
     var headDetail = g && g.detailedPrompt ? g.detailedPrompt.replace(/^(a|an|the)\s+/i, '') : head;
+    // New concept-selected structures override the legacy qipao template's fixed slit.
+    if(g && g.id==='qipao' && o.concept.inspiration && o.concept.inspiration.traditional.attireId==='qipao') headDetail=head;
     var formAdj = swimFormAdj(o, head);
     if (formAdj) { head = formAdj + ' ' + head; headDetail = formAdj + ' ' + headDetail; }
 
@@ -436,6 +443,7 @@
     var primary = materialName(m.primary, o);
     var secondary = materialName(m.secondary, o);
     var trim = materialName(m.trim, o);
+    if(hasInspiration(o)){if(trim===primary||trim===secondary)trim=null;if(secondary===primary)secondary=null;}
     var sheer = en(D.transparency, m.transparency);
     var surface = en(D.surfaces, m.surface);
     var thick = en(D.thickness, m.thickness);
@@ -586,7 +594,8 @@
   }
 
   function blockDecorations(o, mode) {
-    var items = (o.decorations.items || []).filter(function (i) { return !!i.type; }).map(function (i) {
+    var closure=hasInspiration(o)?en((U.byId(D.partSlots,'closure')||{}).options,o.parts.closure):null;
+    var items = (o.decorations.items || []).filter(function (i) { return !!i.type && !(closure && en(D.decorations,i.type)===closure && !(i.placements||[]).length); }).map(function (i) {
       var copy = U.clone(i);
       copy.placements = (i.placements || []).filter(function (p) { return CPW.decorationPlacementAllowed(o,p); });
       return copy;
@@ -686,6 +695,8 @@
 
       // 複数指定なら核を複数形にする（demon tail → demon tails）
       if (countOpt && countOpt.plural) head = pluralize(head);
+      // Crystal/crystalline describe the same material; preserve the concrete head.
+      if(hasInspiration(o)){mods=dropRedundant(mods,head);if(/crystall?ine|crystal/.test(head))mods=mods.filter(function(m){return !/^(crystal|crystalline)$/.test(m);});}
       var phrase = mods.concat([head]).join(' ');
 
       // 枚数・本数は核の前に置く。冠詞は「単数の可算」のときだけ足す。
@@ -795,6 +806,7 @@
   }
 
   function blockPresentation(o) {
+    if(CPW.presentation)return CPW.presentation.blocks(o).presentation;
     if (!o.output.includePresentation) return { short: [], detailed: [] };
     var out = [
       en(D.presentationFocus, o.presentation.focus),
@@ -810,12 +822,27 @@
     return { short: D.qualityTags.slice(), detailed: [joinAnd(D.qualityTags)] };
   }
 
+  function blockConceptInspiration(o){
+    var s=o.concept.inspiration,F=D.conceptFashion;
+    if(!s||!F)return {short:[],detailed:[]};
+    var m=U.byId(F.motifs,s.motifId),list=[];
+    if(s.customMotif.trim())list.push('custom "'+s.customMotif.trim()+'" concept');
+    else if(m){
+      var aliases={art_nouveau:['style','art_nouveau'],art_deco:['style','art_deco'],gothic_cathedral:['motif','gothic_cathedral'],mermaid_tale:['motif','sea_and_mermaid'],red_hood:['motif','red_hood_forest']},a=aliases[m.id];
+      var represented=a&&(a[0]==='style'?[o.concept.primaryStyle].concat(o.concept.secondaryStyles):[o.concept.primaryThemeMotif].concat(o.concept.secondaryThemeMotifs)).indexOf(a[1])>=0;
+      if(!represented)list.push(m.shortPrompt);
+    }
+    // Treatment is an intentional choice, not a warning or an alternative garment engine.
+    if(s.traditional.attireId&&s.traditional.attireId===o.garment.subtype){var treatment=U.byId(F.treatments,s.traditional.treatmentId);if(treatment)list.push(treatment.shortPrompt);}
+    return {short:list,detailed:list};
+  }
+
   /* ============================================================
    * 公開API
    * ========================================================== */
   var BLOCK_ORDER = [
     'identity', 'palette', 'silhouette', 'garments', 'parts', 'styling', 'wearState', 'merfolk', 'materials',
-    'condition', 'decorations', 'theme', 'specialParts', 'effects', 'presentation', 'optionalNarrative', 'quality'
+    'condition', 'decorations', 'theme', 'conceptInspiration', 'specialParts', 'effects', 'presentation', 'background', 'rendering', 'optionalNarrative', 'quality'
   ];
 
   function blocks(outfit) {
@@ -835,9 +862,12 @@
       condition: blockCondition(o),
       decorations: blockDecorations(o),
       theme: blockTheme(o),
+      conceptInspiration: blockConceptInspiration(o),
       specialParts: blockSpecialParts(o),
       effects: blockEffects(o),
       presentation: blockPresentation(o),
+      background: CPW.presentation?CPW.presentation.blocks(o).background:{short:[],detailed:[]},
+      rendering: CPW.presentation?CPW.presentation.blocks(o).rendering:{short:[],detailed:[]},
       optionalNarrative: blockOptionalNarrative(o),
       quality: blockQuality(o)
     };
@@ -883,9 +913,12 @@
     condition: ['', ''],
     decorations: ['adorned with', 'trimmed with', 'detailed with'],
     theme: ['', ''],
+    conceptInspiration: ['', ''],
     specialParts: ['', ''],
     effects: ['surrounded by', 'wrapped in'],
     presentation: ['shown as', 'framed as'],
+    background: ['set against', ''],
+    rendering: ['', ''],
     optionalNarrative: ['', ''],
     quality: ['', '']
   };

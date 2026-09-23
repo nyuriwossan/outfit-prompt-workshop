@@ -612,4 +612,8 @@
     {"id":"side_focused_design","labelJa":"片側に寄せた構成","shortPrompt":"side-focused design","groupJa":"片側の構造","tags":["asymmetric"],"upperOnlyCompatible":true}
   ] }
   ]);
+  CPW.data.partSlots.find(function(s){return s.id==='hem';}).options.push(
+    {id:'high_slit_hem',labelJa:'高いサイドスリット',shortPrompt:'high side-slit hem',groupJa:'スリット'},
+    {id:'modest_slit_hem',labelJa:'控えめなサイドスリット',shortPrompt:'modest side-slit hem',groupJa:'スリット'}
+  );
 })(window);

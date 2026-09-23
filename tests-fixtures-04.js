@@ -1,0 +1,3645 @@
+/* Actual Phase 5C main output snapshots. */
+window.CPW.phase5dBaseline=[
+  {
+    "id": "daily_casual",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r0o1uld",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.484Z",
+      "updatedAt": "2026-09-22T22:57:29.484Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "daily",
+        "season": null,
+        "role": "commoner",
+        "primaryStyle": "street",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "hoodie_and_cargo",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "footwear": "sneakers"
+      },
+      "materials": {
+        "primary": "linen",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "sand_beige",
+        "secondary": "charcoal_gray",
+        "accent": "sky_blue",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "sand beige and charcoal gray street modern hoodie and cargo pants, with sky blue accents, relaxed fit, slim lower body, natural waistline, sneakers, opaque linen, matte finish",
+    "detailed": "A street modern oversized hoodie worn with cargo pants, built around a sand beige and charcoal gray palette, accented with sky blue, relaxed fit, slim lower body and natural waistline in silhouette, with sneakers, made of opaque linen, matte finish."
+  },
+  {
+    "id": "office_business",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r10hmsb",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.485Z",
+      "updatedAt": "2026-09-22T22:57:29.485Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "work",
+        "season": null,
+        "role": "office_worker",
+        "primaryStyle": "minimal",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "business_suit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": "structured",
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "inner_shirt": "dress_shirt",
+        "collar": "wide_lapel",
+        "sleeves": "fitted_long_sleeves",
+        "footwear": "heeled_pumps"
+      },
+      "materials": {
+        "primary": "wool",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "charcoal_gray",
+        "secondary": "pure_white",
+        "accent": "deep_navy",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "charcoal gray and pure white minimalist modern tailored suit, with deep navy accents, neutral palette with metallic accents, structured shoulders, slim lower body, natural waistline, crisp dress shirt, wide lapels, fitted long sleeves, heeled pumps, opaque wool, matte finish",
+    "detailed": "A minimalist modern sharply tailored business suit, built around a neutral palette with metallic accents charcoal gray and pure white palette, accented with deep navy, tailored, structured shoulders, slim lower body and natural waistline in silhouette, with crisp dress shirt, wide lapels, fitted long sleeves and heeled pumps, made of opaque wool, matte finish."
+  },
+  {
+    "id": "royalty",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r1o5kgi",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.485Z",
+      "updatedAt": "2026-09-22T22:57:29.485Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "ceremonial",
+        "season": null,
+        "role": "royal_prince",
+        "primaryStyle": "royal",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "royal_uniform",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": "structured",
+        "lowerVolume": "slim",
+        "waist": "fitted_waist",
+        "length": null,
+        "symmetry": "mostly_symmetrical"
+      },
+      "parts": {
+        "inner_shirt": "high_collar_shirt",
+        "collar": "high_standing_collar",
+        "shoulders": "epaulettes",
+        "sleeves": "fitted_long_sleeves",
+        "cuffs": "ornate_cuffs",
+        "waist": "royal_sash",
+        "handwear": {
+          "type": "hand_gloves",
+          "material": "cotton_hand",
+          "length": "wrist_length",
+          "fingertips": "full_fingered"
+        },
+        "footwear": "knee_high_boots"
+      },
+      "materials": {
+        "primary": "brocade",
+        "secondary": "silk",
+        "trim": "metallic_thread",
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 3,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "pure_white",
+        "secondary": "deep_navy",
+        "accent": "sapphire_blue",
+        "metal": "polished_silver",
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "pure white and deep navy fantasy royal uniform, with sapphire blue accents and polished silver details, tailored, structured shoulders, slim lower body, fitted waist, mostly symmetrical, high-collar shirt, high standing collar, epaulettes, fitted long sleeves, ornate cuffs, royal sash, wrist-length full-fingered cotton gloves, polished knee-high boots, opaque brocade, silk accents, metallic thread, subtle sheen",
+    "detailed": "A fantasy royal ceremonial uniform, built around a pure white and deep navy palette, accented with sapphire blue, finished with polished silver details, tailored, structured shoulders, slim lower body, fitted waist and mostly symmetrical in silhouette, with high-collar shirt, high standing collar, epaulettes, fitted long sleeves, ornate cuffs, royal sash, wrist-length full-fingered cotton gloves and polished knee-high boots, made of opaque brocade, with silk accents and metallic thread trim, subtle sheen."
+  },
+  {
+    "id": "maid_butler",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r1ygc1s",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.485Z",
+      "updatedAt": "2026-09-22T22:57:29.485Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "historical_western",
+        "era": null,
+        "occasion": "work",
+        "season": null,
+        "role": "maid",
+        "primaryStyle": "victorian",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "dress",
+        "subtype": "maid_dress",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": "flared",
+        "waist": "fitted_waist",
+        "length": "knee",
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "ruffled_collar",
+        "sleeves": "short_sleeves",
+        "cuffs": "lace_cuffs",
+        "waist": "ribbon_tie",
+        "skirt_shape": "a_line_skirt",
+        "hem": "lace_hem",
+        "headwear": "bonnet",
+        "legwear": [
+          {
+            "id": "knee_socks",
+            "layer": "main"
+          }
+        ],
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "wool",
+        "secondary": "lace",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 2,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "pure_white",
+        "accent": "burgundy",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and pure white victorian historical european style maid dress, with burgundy accents, high contrast palette, body-hugging, flared, fitted waist, knee-length, ruffled collar, short sleeves, lace-trimmed cuffs, ribbon tied at the waist, A-line skirt, lace-trimmed hem, knee socks, lace-up boots, bonnet, opaque wool, lace accents, matte finish",
+    "detailed": "A victorian historical european style maid dress with an apron, built around a high contrast jet black and pure white palette, accented with burgundy, body-hugging, flared, fitted waist and knee-length in silhouette, with ruffled collar, short sleeves, lace-trimmed cuffs, ribbon tied at the waist, A-line skirt, lace-trimmed hem, knee socks, lace-up boots and bonnet, made of opaque wool, with lace accents, matte finish."
+  },
+  {
+    "id": "knight",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r2puy8t",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.486Z",
+      "updatedAt": "2026-09-22T22:57:29.486Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "battle",
+        "season": null,
+        "role": "knight",
+        "primaryStyle": "military",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "royal_uniform",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": "structured",
+        "lowerVolume": "slim",
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "shoulders": "structured_shoulders",
+        "sleeves": "fitted_long_sleeves",
+        "cuffs": "buckled_cuffs",
+        "waist": "leather_belt",
+        "handwear": {
+          "type": "hand_gauntlets",
+          "material": "leather_hand",
+          "length": "forearm_length",
+          "fingertips": "full_fingered"
+        },
+        "footwear": "knee_high_boots"
+      },
+      "materials": {
+        "primary": "plate_armor",
+        "secondary": "leather",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "metallic_shine",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 2,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "polished_silver",
+        "secondary": "deep_navy",
+        "accent": "antique_gold",
+        "metal": "polished_silver",
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "polished silver and deep navy military-style fantasy knight royal uniform, with antique gold accents and polished silver details, neutral palette with metallic accents, tailored, structured shoulders, slim lower body, fitted long sleeves, buckled cuffs, leather belt, forearm-length full-fingered leather gauntlets, polished knee-high boots, opaque plate armor, leather accents, metallic shine",
+    "detailed": "A military-style fantasy knight royal ceremonial uniform, built around a neutral palette with metallic accents polished silver and deep navy palette, accented with antique gold, finished with polished silver details, tailored, structured shoulders and slim lower body in silhouette, with structured shoulders, fitted long sleeves, buckled cuffs, leather belt, forearm-length full-fingered leather gauntlets and polished knee-high boots, made of opaque plate armor, with leather accents, metallic shine."
+  },
+  {
+    "id": "mage",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r23ud9n",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.486Z",
+      "updatedAt": "2026-09-22T22:57:29.486Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "ritual",
+        "season": null,
+        "role": "mage",
+        "primaryStyle": "gothic",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "robe",
+        "subtype": "mage_robe",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "draped",
+        "upperVolume": null,
+        "lowerVolume": "flared",
+        "waist": null,
+        "length": "floor",
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "high_standing_collar",
+        "sleeves": "wide_sleeves",
+        "hem": "layered_hem",
+        "headwear": "hood",
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "velvet",
+        "secondary": "organza",
+        "trim": "metallic_thread",
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 3,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "royal_purple",
+        "secondary": "jet_black",
+        "accent": "polished_silver",
+        "metal": "oxidized_silver",
+        "gem": "amethyst_violet",
+        "scheme": "deep_palette"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "royal purple and jet black gothic fantasy mage robe, with polished silver accents, oxidized silver details and amethyst violet highlights, deep rich palette, draped, flared, floor-length, high standing collar, wide flowing sleeves, layered hem, lace-up boots, hood, opaque velvet, organza accents, metallic thread, subtle sheen",
+    "detailed": "A gothic fantasy long mage robe, built around a deep rich royal purple and jet black palette, accented with polished silver, finished with oxidized silver details, highlighted with amethyst violet, draped, flared and floor-length in silhouette, with high standing collar, wide flowing sleeves, layered hem, lace-up boots and hood, made of opaque velvet, with organza accents and metallic thread trim, subtle sheen."
+  },
+  {
+    "id": "gothic",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r2m4fof",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.486Z",
+      "updatedAt": "2026-09-22T22:57:29.486Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": null,
+        "era": null,
+        "occasion": null,
+        "season": null,
+        "role": null,
+        "primaryStyle": "gothic",
+        "secondaryStyles": [
+          "victorian"
+        ],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": null,
+        "subtype": null,
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": null,
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "velvet",
+        "secondary": "lace",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 3,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "burgundy",
+        "accent": "oxidized_silver",
+        "metal": null,
+        "gem": null,
+        "scheme": "deep_palette"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "with oxidized silver accents, deep rich palette, opaque velvet, lace accents, matte finish",
+    "detailed": "Built around a deep rich jet black and burgundy palette, accented with oxidized silver, made of opaque velvet, with lace accents, matte finish."
+  },
+  {
+    "id": "lolita",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r3q8rqf",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.487Z",
+      "updatedAt": "2026-09-22T22:57:29.487Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": null,
+        "era": null,
+        "occasion": null,
+        "season": null,
+        "role": null,
+        "primaryStyle": "lolita",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "dress",
+        "subtype": null,
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": "voluminous",
+        "waist": "fitted_waist",
+        "length": "knee",
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "ruffled_collar",
+        "sleeves": "bell_sleeves",
+        "cuffs": "lace_cuffs",
+        "skirt_shape": "tiered_skirt",
+        "hem": "lace_hem",
+        "headwear": "bonnet"
+      },
+      "materials": {
+        "primary": "satin",
+        "secondary": "lace",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 4,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "pure_white",
+        "accent": "burgundy",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "lavish jet black and pure white lolita dress, with burgundy accents, high contrast palette, body-hugging, voluminous skirt, fitted waist, knee-length, ruffled collar, bell sleeves, lace-trimmed cuffs, tiered skirt, lace-trimmed hem, bonnet, opaque satin, lace accents, subtle sheen",
+    "detailed": "A lavish lolita dress, built around a high contrast jet black and pure white palette, accented with burgundy, body-hugging, voluminous skirt, fitted waist and knee-length in silhouette, with ruffled collar, bell sleeves, lace-trimmed cuffs, tiered skirt, lace-trimmed hem and bonnet, made of opaque satin, with lace accents, subtle sheen."
+  },
+  {
+    "id": "techwear",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r36dwwb",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.487Z",
+      "updatedAt": "2026-09-22T22:57:29.487Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "sci_fi",
+        "era": "near_future",
+        "occasion": null,
+        "season": null,
+        "role": null,
+        "primaryStyle": "techwear",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "hoodie_and_cargo",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "oversized",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "high_standing_collar",
+        "cuffs": "buckled_cuffs",
+        "waist": "leather_belt",
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "leather",
+        "secondary": "linen",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 2,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "charcoal_gray",
+        "secondary": "jet_black",
+        "accent": "polished_silver",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "charcoal gray and jet black techwear futuristic hoodie and cargo pants, with polished silver accents, neutral palette with metallic accents, oversized, slim lower body, high standing collar, buckled cuffs, leather belt, lace-up boots, opaque leather, linen accents, matte finish",
+    "detailed": "A techwear futuristic oversized hoodie worn with cargo pants, built around a neutral palette with metallic accents charcoal gray and jet black palette, accented with polished silver, oversized and slim lower body in silhouette, with high standing collar, buckled cuffs, leather belt and lace-up boots, made of opaque leather, with linen accents, matte finish."
+  },
+  {
+    "id": "gakuran_student",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r3jz6ad",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.487Z",
+      "updatedAt": "2026-09-22T22:57:29.487Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "daily",
+        "season": null,
+        "role": "student",
+        "primaryStyle": "minimal",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "gakuran_uniform",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": "structured",
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "high_standing_collar",
+        "sleeves": "fitted_long_sleeves",
+        "bottoms": "fitted_trousers",
+        "footwear": "sneakers"
+      },
+      "materials": {
+        "primary": "wool",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "pure_white",
+        "accent": "antique_gold",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and pure white minimalist modern school gakuran uniform, with antique gold accents, high contrast palette, tailored, structured shoulders, slim lower body, natural waistline, high standing collar, fitted long sleeves, fitted trousers, sneakers, opaque wool, matte finish",
+    "detailed": "A minimalist modern black stand-collar gakuran school uniform, built around a high contrast jet black and pure white palette, accented with antique gold, tailored, structured shoulders, slim lower body and natural waistline in silhouette, with high standing collar, fitted long sleeves, fitted trousers and sneakers, made of opaque wool, matte finish."
+  },
+  {
+    "id": "sailor_student",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r4d8lwu",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.488Z",
+      "updatedAt": "2026-09-22T22:57:29.488Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "daily",
+        "season": null,
+        "role": "student",
+        "primaryStyle": "minimal",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "sailor_school_uniform",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": "flared",
+        "waist": "natural_waist",
+        "length": "knee",
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "sailor_collar",
+        "sleeves": "short_sleeves",
+        "skirt_shape": "a_line_skirt",
+        "legwear": [
+          {
+            "id": "knee_socks",
+            "layer": "main"
+          }
+        ],
+        "footwear": "sneakers"
+      },
+      "materials": {
+        "primary": "cotton",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "deep_navy",
+        "secondary": "pure_white",
+        "accent": "scarlet",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "deep navy and pure white minimalist modern sailor school uniform, with scarlet accents, relaxed fit, flared, natural waistline, knee-length, sailor collar, short sleeves, knee socks, sneakers, opaque cotton, matte finish",
+    "detailed": "A minimalist modern sailor-collar school uniform, built around a deep navy and pure white palette, accented with scarlet, relaxed fit, flared, natural waistline and knee-length in silhouette, with short sleeves, knee socks and sneakers, made of opaque cotton, matte finish."
+  },
+  {
+    "id": "classic_maid",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r4s83l1",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.488Z",
+      "updatedAt": "2026-09-22T22:57:29.488Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "historical_western",
+        "era": "victorian_era",
+        "occasion": "work",
+        "season": null,
+        "role": "maid",
+        "primaryStyle": "victorian",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "dress",
+        "subtype": "classic_maid_dress",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": "flared",
+        "waist": "fitted_waist",
+        "length": "floor",
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "ruffled_collar",
+        "sleeves": "fitted_long_sleeves",
+        "cuffs": "plain_cuffs",
+        "headwear": "bonnet",
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "cotton",
+        "secondary": "linen",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "pure_white",
+        "accent": "charcoal_gray",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and pure white victorian historical european style classic maid dress, with charcoal gray accents, high contrast palette, body-hugging, flared, fitted waist, floor-length, ruffled collar, fitted long sleeves, plain cuffs, lace-up boots, bonnet, opaque cotton, linen accents, matte finish",
+    "detailed": "A victorian historical european style long classic maid dress with a full apron, built around a high contrast jet black and pure white palette, accented with charcoal gray, body-hugging, flared, fitted waist and floor-length in silhouette, with ruffled collar, fitted long sleeves, plain cuffs, lace-up boots and bonnet, made of opaque cotton, with linen accents, matte finish."
+  },
+  {
+    "id": "gothic_maid",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r4ihv54",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.488Z",
+      "updatedAt": "2026-09-22T22:57:29.488Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "dark_fantasy",
+        "era": null,
+        "occasion": "work",
+        "season": null,
+        "role": "maid",
+        "primaryStyle": "gothic",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "dress",
+        "subtype": "gothic_maid_dress",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": "voluminous",
+        "waist": "corset_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "ruffled_collar",
+        "sleeves": "bell_sleeves",
+        "cuffs": "lace_cuffs",
+        "legwear": [
+          {
+            "id": "thigh_high_stockings",
+            "layer": "main"
+          }
+        ],
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "velvet",
+        "secondary": "lace",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 3,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "wine_red",
+        "accent": "polished_silver",
+        "metal": null,
+        "gem": null,
+        "scheme": "deep_palette"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and wine red dark fantasy gothic maid dress, with polished silver accents, deep rich palette, body-hugging, voluminous skirt, ruffled collar, bell sleeves, lace-trimmed cuffs, thigh-high stockings, lace-up boots, opaque velvet, lace accents, matte finish",
+    "detailed": "A dark fantasy dark gothic maid dress with lace trim, built around a deep rich jet black and wine red palette, accented with polished silver, body-hugging and voluminous skirt in silhouette, with ruffled collar, bell sleeves, lace-trimmed cuffs, thigh-high stockings and lace-up boots, made of opaque velvet, with lace accents, matte finish."
+  },
+  {
+    "id": "modern_basic",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r5c2z15",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.489Z",
+      "updatedAt": "2026-09-22T22:57:29.489Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "daily",
+        "season": null,
+        "role": "commoner",
+        "primaryStyle": "minimal",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "simple_shirt_and_ankle_pants",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "no_collar",
+        "footwear": "sneakers"
+      },
+      "materials": {
+        "primary": "cotton",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "off_white",
+        "secondary": "khaki",
+        "accent": "deep_navy",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "off-white and khaki minimalist modern shirt and ankle pants, with deep navy accents, relaxed fit, slim lower body, natural waistline, collarless, sneakers, opaque cotton, matte finish",
+    "detailed": "A minimalist modern clean shirt worn with cropped ankle pants, built around an off-white and khaki palette, accented with deep navy, relaxed fit, slim lower body and natural waistline in silhouette, with collarless and sneakers, made of opaque cotton, matte finish."
+  },
+  {
+    "id": "dreamy_loungewear",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r5si01f",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.489Z",
+      "updatedAt": "2026-09-22T22:57:29.489Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "rest",
+        "season": null,
+        "role": "commoner",
+        "primaryStyle": "street",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "pastel_fluffy_loungewear",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "oversized",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "sleeves": "wide_sleeves",
+        "footwear": "barefoot"
+      },
+      "materials": {
+        "primary": "fleece",
+        "secondary": "faux_fur",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "pastel_pink",
+        "secondary": "cream_yellow",
+        "accent": "baby_blue",
+        "metal": null,
+        "gem": null,
+        "scheme": "pale_palette"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "pastel pink and cream yellow street modern pastel fluffy loungewear, with baby blue accents, soft pastel palette, oversized, slim lower body, natural waistline, wide flowing sleeves, barefoot, opaque fleece, faux fur accents, matte finish",
+    "detailed": "A street modern pastel fluffy loungewear set, built around a soft pastel pastel pink and cream yellow palette, accented with baby blue, oversized, slim lower body and natural waistline in silhouette, with wide flowing sleeves, worn barefoot, made of opaque fleece, with faux fur accents, matte finish."
+  },
+  {
+    "id": "classic_bunny",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r5flmgp",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.489Z",
+      "updatedAt": "2026-09-22T22:57:29.489Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "party",
+        "season": null,
+        "role": "idol",
+        "primaryStyle": "classical",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "lingerie",
+        "subtype": "classic_bunny_suit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": "fitted_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "cuffs": "plain_cuffs",
+        "collar": "no_collar",
+        "legwear": [
+          {
+            "id": "sheer_tights",
+            "layer": "main"
+          }
+        ],
+        "footwear": "heeled_pumps"
+      },
+      "materials": {
+        "primary": "satin",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "pure_white",
+        "accent": "scarlet",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and pure white classical modern stage classic bunny suit, with scarlet accents, high contrast palette, body-hugging, fitted waist, collarless, plain cuffs, sheer tights, heeled pumps, opaque satin, subtle sheen",
+    "detailed": "A classical modern stage classic strapless bunny suit with cuffs and a collar, built around a high contrast jet black and pure white palette, accented with scarlet, body-hugging and fitted waist in silhouette, with collarless, plain cuffs, sheer tights and heeled pumps, made of opaque satin, subtle sheen."
+  },
+  {
+    "id": "reverse_bunny",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r5iiadg",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.489Z",
+      "updatedAt": "2026-09-22T22:57:29.489Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "party",
+        "season": null,
+        "role": "idol",
+        "primaryStyle": "classical",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "lingerie",
+        "subtype": "reverse_bunny_suit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": "fitted_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "cuffs": "plain_cuffs",
+        "legwear": [
+          {
+            "id": "thigh_high_stockings",
+            "layer": "main"
+          }
+        ],
+        "footwear": "heeled_pumps"
+      },
+      "materials": {
+        "primary": "satin",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "pure_white",
+        "secondary": "jet_black",
+        "accent": "sky_blue",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "pure white and jet black classical modern stage reverse bunny suit, with sky blue accents, high contrast palette, body-hugging, fitted waist, plain cuffs, thigh-high stockings, heeled pumps, opaque satin, subtle sheen",
+    "detailed": "A classical modern stage reverse-cut bunny suit, built around a high contrast pure white and jet black palette, accented with sky blue, body-hugging and fitted waist in silhouette, with plain cuffs, thigh-high stockings and heeled pumps, made of opaque satin, subtle sheen."
+  },
+  {
+    "id": "lab_coat",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r60tjz1",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.490Z",
+      "updatedAt": "2026-09-22T22:57:29.490Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "work",
+        "season": null,
+        "role": "office_worker",
+        "primaryStyle": "minimal",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "robe",
+        "subtype": "laboratory_coat_outfit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "inner_shirt": "dress_shirt",
+        "collar": "wide_lapel",
+        "sleeves": "fitted_long_sleeves",
+        "footwear": "sneakers"
+      },
+      "materials": {
+        "primary": "cotton",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "pure_white",
+        "secondary": "heather_gray",
+        "accent": "sky_blue",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "pure white and heather gray minimalist modern laboratory coat outfit, with sky blue accents, neutral palette with metallic accents, relaxed fit, slim lower body, wide lapels, fitted long sleeves, sneakers, opaque cotton, matte finish",
+    "detailed": "A minimalist modern crisp white laboratory coat worn over daily clothes, built around a neutral palette with metallic accents pure white and heather gray palette, accented with sky blue, relaxed fit and slim lower body in silhouette, with wide lapels, fitted long sleeves and sneakers, made of opaque cotton, matte finish."
+  },
+  {
+    "id": "fictional_police",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r6hv4pa",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.490Z",
+      "updatedAt": "2026-09-22T22:57:29.490Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "work",
+        "season": null,
+        "role": "officer",
+        "primaryStyle": "military",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "fictional_police_uniform",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": "structured",
+        "lowerVolume": "slim",
+        "waist": "leather_belt",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "wide_lapel",
+        "shoulders": "epaulettes",
+        "sleeves": "fitted_long_sleeves",
+        "headwear": "officer_cap",
+        "bottoms": "fitted_trousers",
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "wool",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 2,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "deep_navy",
+        "secondary": "charcoal_gray",
+        "accent": "antique_gold",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "deep navy and charcoal gray military-style modern officer fictional police-style uniform, with antique gold accents, tailored, structured shoulders, slim lower body, wide lapels, epaulettes, fitted long sleeves, fitted trousers, lace-up boots, officer cap, opaque wool, matte finish",
+    "detailed": "A military-style modern officer fictional police-style uniform with generic badges, built around a deep navy and charcoal gray palette, accented with antique gold, tailored, structured shoulders and slim lower body in silhouette, with wide lapels, epaulettes, fitted long sleeves, fitted trousers, lace-up boots and officer cap, made of opaque wool, matte finish."
+  },
+  {
+    "id": "mafia_suit",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r64z9uw",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.490Z",
+      "updatedAt": "2026-09-22T22:57:29.490Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "party",
+        "season": null,
+        "role": "noble",
+        "primaryStyle": "classical",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "mafia_style_suit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": "structured",
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "inner_shirt": "dress_shirt",
+        "collar": "wide_lapel",
+        "sleeves": "fitted_long_sleeves",
+        "bottoms": "fitted_trousers",
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "wool",
+        "secondary": "silk",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "charcoal_gray",
+        "accent": "oxblood",
+        "metal": null,
+        "gem": null,
+        "scheme": "deep_palette"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and charcoal gray classical modern noble mafia-style suit, with oxblood red accents, deep rich palette, tailored, structured shoulders, slim lower body, natural waistline, crisp dress shirt, wide lapels, fitted long sleeves, fitted trousers, lace-up boots, opaque wool, silk accents, subtle sheen",
+    "detailed": "A classical modern noble sharply tailored mafia-style pinstripe suit, built around a deep rich jet black and charcoal gray palette, accented with oxblood red, tailored, structured shoulders, slim lower body and natural waistline in silhouette, with crisp dress shirt, wide lapels, fitted long sleeves, fitted trousers and lace-up boots, made of opaque wool, with silk accents, subtle sheen."
+  },
+  {
+    "id": "qipao_style",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r70mnuw",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.491Z",
+      "updatedAt": "2026-09-22T22:57:29.491Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "chinese",
+        "era": null,
+        "occasion": "party",
+        "season": null,
+        "role": "courtier_cn",
+        "primaryStyle": "classical",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "chinese",
+        "subtype": "qipao",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": "natural_waist",
+        "length": "knee",
+        "symmetry": null
+      },
+      "parts": {
+        "collar": "high_standing_collar",
+        "sleeves": "sleeveless",
+        "footwear": "heeled_pumps"
+      },
+      "materials": {
+        "primary": "silk",
+        "secondary": "brocade",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 2,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "scarlet",
+        "secondary": "jet_black",
+        "accent": "antique_gold",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "scarlet and jet black classical chinese style courtly qipao, with antique gold accents, body-hugging, slim lower body, natural waistline, knee-length, high standing collar, sleeveless, heeled pumps, opaque silk, brocade accents, subtle sheen",
+    "detailed": "A classical chinese style courtly fitted qipao with a high collar and side slit, built around a scarlet and jet black palette, accented with antique gold, body-hugging, slim lower body, natural waistline and knee-length in silhouette, with high standing collar, sleeveless and heeled pumps, made of opaque silk, with brocade accents, subtle sheen."
+  },
+  {
+    "id": "nun_style",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r7cip7r",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.491Z",
+      "updatedAt": "2026-09-22T22:57:29.491Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "historical_western",
+        "era": null,
+        "occasion": "ritual",
+        "season": null,
+        "role": "cleric",
+        "primaryStyle": "classical",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "robe",
+        "subtype": "nun_habit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": "flared",
+        "waist": null,
+        "length": "floor",
+        "symmetry": null
+      },
+      "parts": {
+        "neckline": "high_neckline",
+        "sleeves": "wide_sleeves",
+        "headwear": "hood",
+        "footwear": "lace_up_boots"
+      },
+      "materials": {
+        "primary": "wool",
+        "secondary": "cotton",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "jet_black",
+        "secondary": "pure_white",
+        "accent": "polished_silver",
+        "metal": null,
+        "gem": null,
+        "scheme": "value_contrast"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "jet black and pure white classical historical european style clerical nun habit, with polished silver accents, high contrast palette, relaxed fit, flared, floor-length, high neckline, wide flowing sleeves, lace-up boots, hood, opaque wool, cotton accents, matte finish",
+    "detailed": "A classical historical european style clerical nun habit with a veil, built around a high contrast jet black and pure white palette, accented with polished silver, relaxed fit, flared and floor-length in silhouette, with high neckline, wide flowing sleeves, lace-up boots and hood, made of opaque wool, with cotton accents, matte finish."
+  },
+  {
+    "id": "mermaid",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r71vovz",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.491Z",
+      "updatedAt": "2026-09-22T22:57:29.491Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "fairy_tale",
+        "era": null,
+        "occasion": "ritual",
+        "season": null,
+        "role": "traveler",
+        "primaryStyle": "classical",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": "water",
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "merfolk",
+        "subtype": "mermaid_tail",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": "mostly_symmetrical"
+      },
+      "parts": {
+        "mermaid_tail_form": "classic_scaled_tail",
+        "neckline": "sweetheart_neckline",
+        "waist": "ribbon_tie"
+      },
+      "materials": {
+        "primary": "iridescent_fabric",
+        "secondary": "flowing_chiffon",
+        "trim": null,
+        "transparency": "semi_sheer",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 2,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "turquoise",
+        "secondary": "pearl_white",
+        "accent": "coral_pink",
+        "metal": null,
+        "gem": null,
+        "scheme": "analogous"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "turquoise and pearl white classical fairy tale traveler mermaid tail, with coral pink accents, analogous color palette, body-hugging, mostly symmetrical, sweetheart neckline, ribbon tied at the waist, classic scaled mermaid tail, single fish tail, no human legs, no feet, semi-sheer iridescent fabric, chiffon accents, subtle sheen",
+    "detailed": "A classical fairy tale traveler mermaid tail outfit, built around an analogous turquoise and pearl white palette, accented with coral pink, body-hugging and mostly symmetrical in silhouette, with sweetheart neckline and ribbon tied at the waist, with the lower body ending in a single classic scaled mermaid tail, replacing separate human legs and feet, made of semi-sheer iridescent fabric, with chiffon accents, subtle sheen."
+  },
+  {
+    "id": "cutout_knit",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r87pokd",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.492Z",
+      "updatedAt": "2026-09-22T22:57:29.492Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "daily",
+        "season": null,
+        "role": "commoner",
+        "primaryStyle": "street",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "side_cutout_knitwear",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": "slim",
+        "waist": "high_waist",
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "sleeves": "fitted_long_sleeves",
+        "bottoms": "wide_trousers",
+        "footwear": "sneakers"
+      },
+      "materials": {
+        "primary": "rib_knit",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "heather_gray",
+        "secondary": "jet_black",
+        "accent": "mint",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": []
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "heather gray and jet black street modern side-cutout knitwear, with mint green accents, neutral palette with metallic accents, body-hugging, slim lower body, high waistline, fitted long sleeves, sneakers, opaque rib knit, matte finish",
+    "detailed": "A street modern fitted knit top with side cutouts, built around a neutral palette with metallic accents heather gray and jet black palette, accented with mint green, body-hugging, slim lower body and high waistline in silhouette, with fitted long sleeves and sneakers, made of opaque rib knit, matte finish."
+  },
+  {
+    "id": "battle_worn_combat",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r8e9u4m",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.492Z",
+      "updatedAt": "2026-09-22T22:57:29.492Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "battle",
+        "season": null,
+        "role": null,
+        "primaryStyle": "military",
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "light_combat_outfit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "canvas",
+        "secondary": "leather",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "charcoal_gray",
+        "secondary": "olive",
+        "accent": "steel_blue",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "battle_worn",
+            "group": "state",
+            "severity": "moderate",
+            "extent": "widespread",
+            "placements": []
+          },
+          {
+            "type": "torn_places",
+            "group": "state",
+            "severity": "light",
+            "extent": "scattered",
+            "placements": [
+              "hem",
+              "sleeves"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "charcoal gray and olive green military-style fantasy light combat outfit, with steel blue accents, body-hugging, opaque canvas, leather accents, matte finish, battle-worn, torn in several places",
+    "detailed": "A military-style fantasy light combat outfit built for mobility, built around a charcoal gray and olive green palette, accented with steel blue, body-hugging in silhouette, made of opaque canvas, with leather accents, matte finish, battle-worn across much of the garment and torn in several places across the hem and the sleeves."
+  },
+  {
+    "id": "rain_soaked_uniform",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r8za5p1",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.492Z",
+      "updatedAt": "2026-09-22T22:57:29.492Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "daily",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "uniform",
+        "subtype": "school_blazer_uniform",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "wool",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "deep_navy",
+        "secondary": "pure_white",
+        "accent": "charcoal_gray",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "rain_soaked",
+            "group": "state",
+            "severity": "moderate",
+            "extent": "widespread",
+            "placements": [
+              "shoulders"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "deep navy and pure white modern school blazer uniform, with charcoal gray accents, neutral palette with metallic accents, tailored, opaque wool, matte finish, rain-soaked",
+    "detailed": "A modern school blazer uniform with a necktie, built around a neutral palette with metallic accents deep navy and pure white palette, accented with charcoal gray, tailored in silhouette, made of opaque wool, matte finish, rain-soaked across much of the shoulders."
+  },
+  {
+    "id": "muddy_adventurer",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r82coc9",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.492Z",
+      "updatedAt": "2026-09-22T22:57:29.492Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "travel",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "adventurer_outfit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "canvas",
+        "secondary": "leather",
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "warm_brown",
+        "secondary": "olive",
+        "accent": "sand_beige",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "mud_splattered",
+            "group": "state",
+            "severity": "light",
+            "extent": "localized",
+            "placements": [
+              "hem"
+            ]
+          },
+          {
+            "type": "worn",
+            "group": "state",
+            "severity": "moderate",
+            "extent": "overall",
+            "placements": []
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "warm brown and olive green fantasy adventurer outfit, with sand beige accents, relaxed fit, opaque canvas, leather accents, matte finish, lightly mud-splattered, well-worn",
+    "detailed": "A fantasy practical adventurer outfit with leather accents, built around a warm brown and olive green palette, accented with sand beige, relaxed fit in silhouette, made of opaque canvas, with leather accents, matte finish, lightly mud-splattered along the hem and well-worn throughout."
+  },
+  {
+    "id": "well_worn_workwear",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r9x59w1",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.493Z",
+      "updatedAt": "2026-09-22T22:57:29.493Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "work",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "top_bottom",
+        "subtype": "work_coveralls",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "twill",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "olive",
+        "secondary": "charcoal_gray",
+        "accent": "sand_beige",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "worn",
+            "group": "state",
+            "severity": "moderate",
+            "extent": "overall",
+            "placements": []
+          },
+          {
+            "type": "oil_stained",
+            "group": "state",
+            "severity": "light",
+            "extent": "scattered",
+            "placements": [
+              "front"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "olive green and charcoal gray modern work coveralls, with sand beige accents, neutral palette with metallic accents, relaxed fit, opaque twill fabric, matte finish, well-worn, lightly oil-stained",
+    "detailed": "A pair of modern sturdy one-piece work coveralls, built around a neutral palette with metallic accents olive green and charcoal gray palette, accented with sand beige, relaxed fit in silhouette, made of opaque twill fabric, matte finish, well-worn throughout and lightly oil-stained in several places across the front."
+  },
+  {
+    "id": "bloodstained_labcoat",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r93g4wu",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.493Z",
+      "updatedAt": "2026-09-22T22:57:29.493Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "modern",
+        "era": "contemporary",
+        "occasion": "work",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "robe",
+        "subtype": "laboratory_coat_outfit",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "tailored",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "cotton",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "pure_white",
+        "secondary": "charcoal_gray",
+        "accent": "steel_blue",
+        "metal": null,
+        "gem": null,
+        "scheme": "neutral_metal"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "blood_stain_small",
+            "group": "state",
+            "severity": "light",
+            "extent": "localized",
+            "placements": [
+              "one_sleeve"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "pure white and charcoal gray modern laboratory coat outfit, with steel blue accents, neutral palette with metallic accents, tailored, opaque cotton, matte finish, lightly blood-stained",
+    "detailed": "A modern crisp white laboratory coat worn over daily clothes, built around a neutral palette with metallic accents pure white and charcoal gray palette, accented with steel blue, tailored in silhouette, made of opaque cotton, matte finish, lightly blood-stained at one sleeve."
+  },
+  {
+    "id": "droplet_mermaid",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4r99gogr",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.493Z",
+      "updatedAt": "2026-09-22T22:57:29.493Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "fairy_tale",
+        "era": null,
+        "occasion": "beach",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "merfolk",
+        "subtype": "mermaid_tail",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "fitted",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": null,
+        "symmetry": null
+      },
+      "parts": {
+        "mermaid_tail_form": "classic_scaled_tail"
+      },
+      "materials": {
+        "primary": "iridescent_fabric",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "subtle_sheen",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "turquoise",
+        "secondary": "seafoam_green",
+        "accent": "pure_white",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "water_droplets",
+            "group": "state",
+            "severity": "light",
+            "extent": "localized",
+            "placements": [
+              "mermaid_tail"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "turquoise and seafoam green fairy tale mermaid tail, with pure white accents, body-hugging, classic scaled mermaid tail, single fish tail, no human legs, no feet, opaque iridescent fabric, subtle sheen, water-slick scales, glistening with water",
+    "detailed": "A fairy tale mermaid tail outfit, built around a turquoise and seafoam green palette, accented with pure white, body-hugging in silhouette, with the lower body ending in a single classic scaled mermaid tail, replacing separate human legs and feet, made of opaque iridescent fabric, subtle sheen, with water-slick scales, glistening with water."
+  },
+  {
+    "id": "scorched_mage",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4ram2bgg",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.494Z",
+      "updatedAt": "2026-09-22T22:57:29.494Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "battle",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "robe",
+        "subtype": "mage_robe",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "draped",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": "floor",
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "wool",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 1,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "deep_crimson",
+        "secondary": "charcoal_gray",
+        "accent": "jet_black",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "singed",
+            "group": "state",
+            "severity": "light",
+            "extent": "localized",
+            "placements": [
+              "hem"
+            ]
+          },
+          {
+            "type": "soot_stained",
+            "group": "state",
+            "severity": "light",
+            "extent": "scattered",
+            "placements": [
+              "sleeves"
+            ]
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "deep crimson and charcoal gray fantasy mage robe, with jet black accents, draped, floor-length, opaque wool, matte finish, lightly singed, lightly soot-stained",
+    "detailed": "A fantasy long mage robe, built around a deep crimson and charcoal gray palette, accented with jet black, draped and floor-length in silhouette, made of opaque wool, matte finish, lightly singed along the hem and lightly soot-stained in several places across the sleeves."
+  },
+  {
+    "id": "mended_traveler",
+    "outfit": {
+      "version": "0.4",
+      "id": "outfit_mud9y4radhm64",
+      "name": "",
+      "createdAt": "2026-09-22T22:57:29.494Z",
+      "updatedAt": "2026-09-22T22:57:29.494Z",
+      "entryMode": null,
+      "concept": {
+        "worldview": "western_fantasy",
+        "era": null,
+        "occasion": "travel",
+        "season": null,
+        "role": null,
+        "primaryStyle": null,
+        "secondaryStyles": [],
+        "primaryThemeMotif": null,
+        "secondaryThemeMotifs": [],
+        "attribute": {
+          "id": null,
+          "intensity": "standard",
+          "applyTo": {
+            "colors": true,
+            "materials": true,
+            "decorations": true,
+            "silhouette": false,
+            "effects": false
+          }
+        }
+      },
+      "garment": {
+        "category": "robe",
+        "subtype": "traveling_robe",
+        "wearRole": "main_outfit",
+        "layers": {
+          "base": [],
+          "inner": [],
+          "main": [],
+          "outer": []
+        }
+      },
+      "silhouette": {
+        "fit": "relaxed",
+        "upperVolume": null,
+        "lowerVolume": null,
+        "waist": null,
+        "length": "midi",
+        "symmetry": null
+      },
+      "parts": {},
+      "materials": {
+        "primary": "linen",
+        "secondary": null,
+        "trim": null,
+        "transparency": "opaque",
+        "surface": "matte",
+        "thickness": null,
+        "patterns": []
+      },
+      "decorations": {
+        "density": 0,
+        "focalMotif": null,
+        "items": []
+      },
+      "specialParts": {
+        "wings": {},
+        "horns": {},
+        "halo": {},
+        "tail": {},
+        "decorativeChains": [],
+        "restraintChains": [],
+        "floating": [],
+        "magical": []
+      },
+      "palette": {
+        "primary": "sand_beige",
+        "secondary": "warm_brown",
+        "accent": "olive",
+        "metal": null,
+        "gem": null,
+        "scheme": "base_and_accent"
+      },
+      "presentation": {
+        "focus": "full_outfit",
+        "poseAssist": null,
+        "compositionAssist": null
+      },
+      "styling": {
+        "items": []
+      },
+      "condition": {
+        "items": [
+          {
+            "type": "patched",
+            "group": "state",
+            "severity": "moderate",
+            "extent": "scattered",
+            "placements": [
+              "hem",
+              "sleeves"
+            ]
+          },
+          {
+            "type": "dust_stained",
+            "group": "state",
+            "severity": "light",
+            "extent": "widespread",
+            "placements": []
+          }
+        ]
+      },
+      "output": {
+        "includeNarrative": false,
+        "includeEffects": false,
+        "includePresentation": false,
+        "includeQualityTags": false,
+        "customTags": ""
+      }
+    },
+    "short": "sand beige and warm brown fantasy traveling robe, with olive green accents, relaxed fit, midi length, opaque linen, matte finish, patched, lightly dust-stained",
+    "detailed": "A fantasy weathered traveling robe with a hood, built around a sand beige and warm brown palette, accented with olive green, relaxed fit and midi length in silhouette, made of opaque linen, matte finish, patched in several places across the hem and the sleeves and lightly dust-stained across much of the garment."
+  }
+];
