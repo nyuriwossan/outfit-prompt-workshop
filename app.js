@@ -879,6 +879,7 @@
   }
 
   function renderField(field) {
+    if (!CPW.uiComplexity.visible(field.key,state.outfit)) return ui.el('span',{hidden:'hidden'});
     var wrap = ui.el('div', { class: 'field' });
     var head = ui.el('div', { class: 'field-head' }, [
       ui.el('span', { class: 'field-label', text: field.labelJa }),
@@ -973,6 +974,8 @@
 
   /* cfg: { labelJa, noteJa, optional, fkey, items(), get(), set(id, isSelected), multi, hidden } */
   function selectField(cfg) {
+    var path=cfg.fkey.replace(/^part:/,'parts.');
+    if (/^(concept|garment|silhouette|materials|decorations|palette|parts)\./.test(path) && !CPW.uiComplexity.visible(path,state.outfit)) return ui.el('span',{hidden:'hidden'});
     var wrap = ui.el('div', { class: 'field' });
     wrap.appendChild(ui.el('div', { class: 'field-head' }, [
       ui.el('span', { class: 'field-label', text: cfg.labelJa }),
@@ -1024,6 +1027,7 @@
 
   /* ---------- 部位スロット ---------- */
   function renderSlotField(slot) {
+    if (!CPW.uiComplexity.visible('parts.'+slot.id,state.outfit)) return ui.el('span',{hidden:'hidden'});
     var kind = schema.slotKind(slot);
     if (kind === 'composite') return renderCompositeSlot(slot);
     if (kind === 'multi') return renderMultiSlot(slot);
@@ -1428,7 +1432,7 @@
           labelJa: '基本衣装', fkey: 'garment.subtype',
           items: function () { return D.garments.filter(function (g) { return g.category === o.garment.category; }); },
           get: function () { return o.garment.subtype; },
-          set: function (id, sel) { state.set('garment.subtype', sel ? null : id); }
+          set: function (id, sel) { state.set('garment.subtype', sel ? null : id); draw(); var material=document.getElementById('panel-material');if(material){material.innerHTML='';buildMaterialSection(material);} }
         }));
         panel.appendChild(stateSelectField('garment.wearRole', '着用役割', D.wearRoles, { optional: true }));
       }
@@ -1533,6 +1537,10 @@
       }));
       host.appendChild(dens);
 
+      if(CPW.uiPrefs.get('workshop')==='simple'){
+        host.appendChild(ui.el('p',{class:'p',text:'現在の装飾：'+(items().map(function(x){return util.labelOf(D.decorations,x.type);}).filter(Boolean).join('・')||'なし')}));
+        host.appendChild(ui.el('button',{type:'button',class:'btn',text:'装飾を詳しく設定',onclick:function(){openAdvancedWorkshop('material');}}));return;
+      }
       // 主役装飾モチーフ（任意。装飾があるか、密度が「華やか」以上のときだけ）
       if (items().length > 0 || o.decorations.density >= 3) {
         host.appendChild(selectField({
@@ -1814,6 +1822,7 @@
       panel.appendChild(stateSelectField('palette.scheme', '配色方式', D.colorSchemes, { optional: true }));
 
       D.colorRoles.forEach(function (role) {
+        if(!CPW.uiComplexity.visible('palette.'+role.id,o))return;
         var path = 'palette.' + role.id;
         var c = util.byId(D.colors, o.palette[role.id]);
         var row = ui.el('div', { class: 'color-role' });
@@ -2122,6 +2131,8 @@
     if (!root) return;
     root.innerHTML = '';
     root.appendChild(buildHeaderInner());
+    var summary=document.querySelector('[data-hidden-summary="workshop"]');
+    if(summary)summary.replaceWith(CPW.uiComplexity.summary(state.outfit,'workshop',function(){openAdvancedWorkshop();}));
   }
 
   function buildHeaderInner() {
@@ -2186,6 +2197,11 @@
     return wrap;
   }
 
+  function openAdvancedWorkshop(section){
+    CPW.uiPrefs.set('workshop','advanced');if(section)openSections[section]=true;
+    var y=global.scrollY;CPW.render();var target=section?document.querySelector('[aria-controls="panel-'+section+'"]'):document.querySelector('[data-ui-level="advanced"]');
+    if(target){target.focus({preventScroll:true});if(section)target.scrollIntoView({block:'start'});else global.scrollTo(0,y);}
+  }
   routes['/workshop'] = function () {
     // 戻る先は開始画面。設計は自動保存（下書き）されるので、確認ダイアログは出さない。
     var nav = backBar('開始画面へ戻る', '#/',
@@ -2199,6 +2215,7 @@
     var body = ui.el('div', { class: 'accordion' });
 
     SECTIONS.forEach(function (sec) {
+      if(CPW.uiPrefs.get('workshop')==='simple'&&['styling','condition','special'].indexOf(sec.id)>=0)return;
       var open = !!openSections[sec.id];
       var panelId = 'panel-' + sec.id;
       var btn = ui.el('button', {
@@ -2214,7 +2231,7 @@
         var inspiration=state.outfit.concept.inspiration;
         panel.appendChild(ui.el('a',{class:'btn',href:'#/concept_fashion/edit',text:inspiration && (inspiration.motifId || inspiration.customMotif || inspiration.traditional && inspiration.traditional.attireId) ? 'コンセプトを編集：'+CPW.conceptFashion.label(inspiration) : 'コンセプトから候補を作る'}));
         CONCEPT_FIELDS.forEach(function (f) { panel.appendChild(renderField(f)); });
-        panel.appendChild(renderAttributeField());
+        if(CPW.uiPrefs.get('workshop')==='advanced')panel.appendChild(renderAttributeField());
       } else if (sec.id === 'structure') {
         buildStructureSection(panel);
       } else if (sec.id === 'styling') {
@@ -2255,7 +2272,13 @@
     var suggestLink = ui.el('div', { class: 'workshop-links' }, [
       ui.el('a', { class: 'link-btn', href: '#/suggest', text: '補助候補を見る' })
     ]);
-    return screen('', [nav, header, suggestLink, body, bar]);
+    var level=CPW.uiComplexity.switcher('workshop',function(){CPW.render();});
+    var hidden=CPW.uiPrefs.get('workshop')==='simple'?CPW.uiComplexity.summary(state.outfit,'workshop',function(){openAdvancedWorkshop();}):null;
+    var finish=null;if(CPW.uiPrefs.get('workshop')==='simple'){
+      finish=ui.el('div',{class:'card stack'},[ui.el('h2',{class:'card-title',text:'もっと細かく仕上げる'})]);
+      [['styling','着こなし・着崩し'],['condition','衣装の状態・加工'],['special','特殊パーツ・演出']].forEach(function(pair){var h=CPW.uiComplexity.hiddenSummary(state.outfit,'workshop').groups.filter(function(g){return g.id===pair[0];})[0];finish.appendChild(ui.el('button',{type:'button',class:'btn',text:pair[1]+(h?'（設定あり '+h.count+'件）':''),onclick:function(){openAdvancedWorkshop(pair[0]);}}));});
+    }
+    return screen('', [nav, header, level, hidden, suggestLink, body, finish, bar]);
   };
 
   /* ============================================================

@@ -19,7 +19,7 @@ const server=http.createServer((req,res)=>{
   try{
     for(const width of [375,390,430]){
       const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true}),page=await context.newPage();
-      page.on('pageerror',e=>report.errors.push(e.stack));page.on('dialog',async d=>{report.errors.push('Unexpected native dialog');await d.dismiss();});
+      await page.addInitScript(()=>localStorage.setItem('cpw.uiPrefs.v1',JSON.stringify({workshopLevel:'advanced',conceptLevel:'advanced'})));page.on('pageerror',e=>report.errors.push(e.stack));page.on('dialog',async d=>{report.errors.push('Unexpected native dialog');await d.dismiss();});
       for(const motif of ['mille_feuille','deep_sea'])for(const mode of ['new','preserve'])for(const index of [0,1,2]){
         await page.goto('http://127.0.0.1:'+server.address().port+'/sandbox.html');
         const frame=page.frames().find(f=>f!==page.mainFrame());await frame.waitForFunction(()=>window.CPW?.conceptFashion);

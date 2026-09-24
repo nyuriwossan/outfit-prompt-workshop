@@ -1,0 +1,1989 @@
+{
+  "newMotifs": 160,
+  "mappings": [
+    {
+      "id": "hourglass",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "pocket_watch",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "compass",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "armillary_sphere",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "astrolabe",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "telescope",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "lantern",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "candelabrum",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "chandelier",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "perfume_bottle",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "inkwell",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "quill",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "antique_book",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "letter",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "wax_seal",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "music_box",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "gramophone",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "chess",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "playing_cards",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "dice",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "folding_fan",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "umbrella",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "mask",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "birdcage",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "chain",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "crown",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "goblet",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "bell",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "spool",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "needle",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "scissors",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "picture_frame",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "window",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "door",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "jewel_box",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "annular_eclipse",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "milky_way",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sun_pillar",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "thundercloud",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ice_fog",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "frost",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "water_reflection",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ripple",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sea_foam",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ocean_trench",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sandstorm",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "volcanic_ash",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "geyser",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "tidepool",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "river_delta",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "salt_flat",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "rain_cloud",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "dust_devil",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "morpho_butterfly",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "swallowtail",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "spider_web",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "firefly",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "snow_leopard",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "seahorse",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "betta",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "koi",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "red_spider_lily",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "hydrangea",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "fern",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "nautilus",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "manta_ray",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "protea",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "orchid",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sea_anemone",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "kingfisher",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "octopus",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "pine_cone",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "bamboo",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "opal",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "moonstone",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "labradorite",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "amethyst",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sapphire",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ruby",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "emerald",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "garnet",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "aquamarine",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "black_pearl",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "amber",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "lapis_lazuli",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "obsidian",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "prism",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "cracked_glass",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ink_bleed",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "verdigris",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "magnetic_field",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "bismuth_crystal",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "basalt",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "mica",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "mother_of_pearl",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "rose_window",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "cloister",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ruined_church",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "spiral_staircase",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "arch",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "cloisonne",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "kiriko",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "kumiko",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sashiko",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "lace_craft",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "bookbinding",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "letterpress",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "filigree",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "repousse",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ceramic_glaze",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "fresco",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "tessellation",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "muqarnas",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "paper_marbling",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "embossed_leather",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "woven_basket",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "vaulted_ceiling",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "flying_buttress",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "contract",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "duality",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "fragility",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "balance",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "tension",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "resonance",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "patience",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "curiosity",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "transformation",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "unity",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "lunar_magic",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "solar_magic",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "mirror_magic",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "blessing",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "solar_temple",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "arcane_circle",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "runes",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "enchanted_garden",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "gravity_magic",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "star_gate",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "crystal_forest",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "enchanted_snow",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "star_reader",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "royal_succession",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "exiled_royalty",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "pilgrimage",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "sealed_temple",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "golden_fleece",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ariadne_thread",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "icarus_flight",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "pandoras_box",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "river_styx",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "celestial_bridge",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "tightrope",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "aerial_silk",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ice_show",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "taiko_stage",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "marching_band",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "equestrian_show",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ventriloquist",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "ribbon_dance",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "stilt_performance",
+      "axes": [
+        "colors",
+        "materials",
+        "decorations",
+        "patterns",
+        "parts",
+        "silhouette"
+      ]
+    }
+  ],
+  "diversity": {
+    "sets": 5000,
+    "twoAxes": 5000,
+    "limited": 0,
+    "identicalPairs": 0,
+    "colorOnlyPairs": 0,
+    "exceptions": []
+  },
+  "texts": 100002,
+  "topics": {
+    "hourglass": 105,
+    "pocket_watch": 105,
+    "compass": 105,
+    "armillary_sphere": 105,
+    "astrolabe": 105,
+    "telescope": 105,
+    "lantern": 105,
+    "candelabrum": 105,
+    "chandelier": 105,
+    "perfume_bottle": 105,
+    "inkwell": 105,
+    "quill": 105,
+    "antique_book": 105,
+    "letter": 105,
+    "wax_seal": 105,
+    "music_box": 105,
+    "gramophone": 105,
+    "chess": 105,
+    "playing_cards": 105,
+    "dice": 105,
+    "folding_fan": 105,
+    "umbrella": 105,
+    "mask": 105,
+    "birdcage": 105,
+    "chain": 105,
+    "crown": 105,
+    "goblet": 105,
+    "bell": 105,
+    "spool": 105,
+    "needle": 105,
+    "scissors": 105,
+    "picture_frame": 105,
+    "window": 104,
+    "door": 104,
+    "jewel_box": 104,
+    "annular_eclipse": 104,
+    "milky_way": 104,
+    "sun_pillar": 104,
+    "thundercloud": 104,
+    "ice_fog": 104,
+    "frost": 104,
+    "water_reflection": 104,
+    "ripple": 104,
+    "sea_foam": 104,
+    "ocean_trench": 104,
+    "sandstorm": 103,
+    "volcanic_ash": 104,
+    "geyser": 104,
+    "tidepool": 104,
+    "river_delta": 104,
+    "salt_flat": 104,
+    "rain_cloud": 104,
+    "dust_devil": 104,
+    "morpho_butterfly": 104,
+    "swallowtail": 104,
+    "spider_web": 104,
+    "firefly": 104,
+    "snow_leopard": 104,
+    "seahorse": 104,
+    "betta": 104,
+    "koi": 104,
+    "red_spider_lily": 104,
+    "hydrangea": 104,
+    "fern": 104,
+    "nautilus": 104,
+    "manta_ray": 104,
+    "protea": 104,
+    "orchid": 104,
+    "sea_anemone": 104,
+    "kingfisher": 104,
+    "octopus": 104,
+    "pine_cone": 104,
+    "bamboo": 104,
+    "opal": 104,
+    "moonstone": 104,
+    "labradorite": 104,
+    "amethyst": 104,
+    "sapphire": 104,
+    "ruby": 104,
+    "emerald": 104,
+    "garnet": 104,
+    "aquamarine": 104,
+    "black_pearl": 104,
+    "amber": 104,
+    "lapis_lazuli": 104,
+    "obsidian": 104,
+    "prism": 104,
+    "cracked_glass": 104,
+    "ink_bleed": 104,
+    "verdigris": 104,
+    "magnetic_field": 104,
+    "bismuth_crystal": 104,
+    "basalt": 104,
+    "mica": 104,
+    "mother_of_pearl": 104,
+    "rose_window": 104,
+    "cloister": 104,
+    "ruined_church": 104,
+    "spiral_staircase": 104,
+    "arch": 104,
+    "cloisonne": 104,
+    "kiriko": 104,
+    "kumiko": 104,
+    "sashiko": 104,
+    "lace_craft": 104,
+    "bookbinding": 104,
+    "letterpress": 104,
+    "filigree": 104,
+    "repousse": 104,
+    "ceramic_glaze": 104,
+    "fresco": 104,
+    "tessellation": 104,
+    "muqarnas": 104,
+    "paper_marbling": 104,
+    "embossed_leather": 104,
+    "woven_basket": 103,
+    "vaulted_ceiling": 104,
+    "flying_buttress": 104,
+    "contract": 104,
+    "duality": 104,
+    "fragility": 104,
+    "balance": 104,
+    "tension": 104,
+    "resonance": 104,
+    "patience": 104,
+    "curiosity": 103,
+    "transformation": 104,
+    "unity": 104,
+    "lunar_magic": 104,
+    "solar_magic": 104,
+    "mirror_magic": 104,
+    "blessing": 104,
+    "solar_temple": 104,
+    "arcane_circle": 104,
+    "runes": 104,
+    "enchanted_garden": 104,
+    "gravity_magic": 104,
+    "star_gate": 104,
+    "crystal_forest": 104,
+    "enchanted_snow": 104,
+    "star_reader": 102,
+    "royal_succession": 104,
+    "exiled_royalty": 104,
+    "pilgrimage": 104,
+    "sealed_temple": 104,
+    "golden_fleece": 104,
+    "ariadne_thread": 104,
+    "icarus_flight": 104,
+    "pandoras_box": 104,
+    "river_styx": 104,
+    "celestial_bridge": 104,
+    "tightrope": 104,
+    "aerial_silk": 104,
+    "ice_show": 104,
+    "taiko_stage": 104,
+    "marching_band": 104,
+    "equestrian_show": 104,
+    "ventriloquist": 104,
+    "ribbon_dance": 104,
+    "stilt_performance": 104
+  },
+  "failures": [],
+  "badTextExamples": [],
+  "structuredWordRepetitions": [
+    {
+      "seed": 4895,
+      "motifId": "gold",
+      "format": "short",
+      "phrases": [
+        "gold embroidery",
+        "bright gold",
+        "pale gold",
+        "pale cyan"
+      ],
+      "text": "decorated pale gold and pale cyan gothic adventurer outfit, with bright gold accents, structured fit, fitted upper silhouette, bell-shaped volume, cinched waist, symmetrical, corseted structure, translucent film, organza accents, gold embroidery",
+      "reason": "Distinct selected color names and decoration; not repeated inspiration text."
+    },
+    {
+      "seed": 4895,
+      "motifId": "gold",
+      "format": "detailed",
+      "phrases": [
+        "gold embroidery",
+        "bright gold",
+        "pale gold",
+        "pale cyan"
+      ],
+      "text": "A decorated gothic practical adventurer outfit with leather accents, built around a pale gold and pale cyan palette, accented with bright gold, structured fit, fitted upper silhouette, bell-shaped volume, cinched waist and symmetrical in silhouette, with corseted structure, made of translucent film, with organza accents, adorned with gold embroidery.",
+      "reason": "Distinct selected color names and decoration; not repeated inspiration text."
+    },
+    {
+      "seed": 4895,
+      "motifId": "gold",
+      "format": "short",
+      "phrases": [
+        "gold embroidery",
+        "bright gold",
+        "ink black",
+        "pale gold"
+      ],
+      "text": "ornate ink black and pale gold gothic adventurer outfit, with bright gold accents, oversized, structured shoulders, bell-shaped volume, cinched waist, symmetrical, modular panels, metallic thread, translucent film accents, gold embroidery",
+      "reason": "Distinct selected color names and decoration; not repeated inspiration text."
+    },
+    {
+      "seed": 4895,
+      "motifId": "gold",
+      "format": "detailed",
+      "phrases": [
+        "gold embroidery",
+        "bright gold",
+        "ink black",
+        "pale gold"
+      ],
+      "text": "An ornate gothic practical adventurer outfit with leather accents, built around an ink black and pale gold palette, accented with bright gold, oversized, structured shoulders, bell-shaped volume, cinched waist and symmetrical in silhouette, with modular panels, made of metallic thread, with translucent film accents, adorned with gold embroidery.",
+      "reason": "Distinct selected color names and decoration; not repeated inspiration text."
+    }
+  ],
+  "multiAxisPercent": 100
+}

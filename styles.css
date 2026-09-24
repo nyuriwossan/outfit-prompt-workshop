@@ -583,3 +583,12 @@ html, body {
 
 .presentation-panel > label { display:block; margin-top:12px; }
 .presentation-panel > .btn { display:block; margin-top:12px; }
+
+/* Shared progressive-disclosure controls. */
+.ui-level-switch { display:flex; flex-wrap:wrap; gap:8px; border:0; padding:12px 0; margin:0; min-width:0; }
+.ui-level-switch legend { font-weight:600; }
+.ui-level-switch .btn { flex:1; min-width:120px; min-height:44px; }
+.ui-hidden-summary:not(:empty) { border-left:3px solid var(--accent); padding:10px 14px; margin:12px 0; background:var(--paper); overflow-wrap:anywhere; }
+.cf-search-scope { display:flex; align-items:center; gap:8px; min-height:44px; }
+.cf-search-scope input { width:24px; height:24px; }
+#cf-search-results:empty { display:none; }

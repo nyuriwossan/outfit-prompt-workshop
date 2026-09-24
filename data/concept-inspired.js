@@ -1,0 +1,183 @@
+/* Phase 5F: authored visual translations. Every target is an existing clothing ID. */
+(function(g){
+  'use strict';var D=g.CPW.data,F=D.conceptFashion,M=F.mappings;
+  F.categories.push({id:'object',labelJa:'物品・道具',shortPrompt:'object-inspired clothing'});F.inspired={ids:[]};
+  function add(category,text){text.trim().split('\n').forEach(function(line,index){
+    var r=line.split('|'),p=JSON.parse(JSON.stringify(M.motifs[r[2]]));
+    if(F.motifs.some(function(m){return m.id===r[0]||m.labelJa===r[1];}))throw Error('Duplicate inspired motif: '+r[0]);
+    delete p.specialParts;delete p.motifs;
+    p.colors=r[3].split(',');p.materials=r[4].split(',');p.decorations=r[5].split(',');
+    p.parts.construction_detail=[r[6]];
+    var words=r[0].replace(/_/g,' '),m={id:r[0],labelJa:r[1],category:category,shortPrompt:words+'-inspired clothing',summaryJa:r[7]+'を衣装の色・素材・仕立てへ置き換えます。',fallback:{shape:words+' clothing proportions',detail:'clothing details inspired by '+words},searchKeywords:[r[1],words],featured:index<10,recommended:p};
+    F.motifs.push(m);M.motifs[m.id]=p;F.inspired.ids.push(m.id);
+  });}
+  add('object',`hourglass|砂時計|glass|pale_gold,pale_cyan,ink_black|translucent_film,organza,metallic_thread|bead_fringe,piping|corseted_structure|細い腰と上下に広がる容積、粒状の連なり
+pocket_watch|懐中時計|clock|antique_gold,warm_ivory,deep_navy|brocade,metallic_thread,silk|chain_details,medallions|panel_construction|円形の文字盤と細い鎖の弧
+compass|羅針盤|art_deco|bronze_metal,deep_navy,pearl_white|twill,metallic_thread,silk|medallions,piping|contrast_seams|放射状の目盛りと指針の直線
+armillary_sphere|天球儀|clock|antique_gold,midnight_blue,polished_silver|metallic_thread,mesh,silk|chain_details,star_charms|modular_panels|交差する環と星の軌道
+astrolabe|アストロラーベ|time_magic|bronze_metal,peacock_blue,pale_gold|brocade,metallic_thread,organza|medallions,eyelets|panel_construction|重なる円盤と刻まれた方位線
+telescope|望遠鏡|machine|gunmetal,deep_navy,copper_metal|twill,polished_metal,velvet|grommets,metal_plates|reinforced_structure|伸縮する筒と輪状の境界
+lantern|ランタン|glass|honey_yellow,ink_black,pale_cyan|organza,translucent_film,metallic_thread|piping,dangling_charms|boned_structure|光を包む枠と透明な面
+candelabrum|燭台|baroque_art|antique_gold,warm_ivory,wine_red|brocade,satin,metallic_thread|soutache,gold_embroidery|shaped_seams|枝分かれする曲線と垂直の芯
+chandelier|シャンデリア|rococo|pearl_white,pale_gold,pearl_white|crystal_details,organza,satin|bead_fringe,dangling_charms|layered_panels|段状に広がる透明な粒と弧
+perfume_bottle|香水瓶|glass|rose_quartz,pale_gold,pale_cyan|translucent_film,satin,organza|ornamental_clasps,piping|shaped_seams|丸い胴、細い首、栓とラベルの枠
+inkwell|インク瓶|ink|ink_black,antique_gold,pearl_white|velvet,translucent_film,satin|ornamental_clasps,contrast_embroidery|panel_construction|暗い液面と硬い瓶口
+quill|羽根ペン|swan|pearl_white,ink_black,polished_silver|silk,flowing_chiffon,metallic_thread|pintucks,fringe|pleated_panels|軸から斜めに走る細線
+antique_book|古書|library|warm_brown,antique_gold,warm_ivory|leather,linen,brocade|ornamental_clasps,decorative_topstitching|layered_panels|背表紙の帯と重なる紙の層
+letter|手紙|paper|warm_ivory,dusty_rose,ink_black|linen,muslin,silk|contrast_stitching,ribbon_bow|wrapped_panels|封筒の折り目と便箋の細線
+wax_seal|封蝋|seal|wine_red,antique_gold,warm_ivory|satin,velvet,brocade|medallions,rosettes|gathered_panels|円形の押印と柔らかな外周
+music_box|オルゴール|clock|antique_gold,dusty_lavender,warm_ivory|brocade,velvet,metallic_thread|gear_ornaments,beadwork|modular_panels|箱の境界と歯の細かな反復
+gramophone|蓄音機|art_nouveau|copper_metal,ink_black,warm_brown|taffeta,leather,metallic_thread|piping,soutache|draped_panels|広がるラッパと渦状の線
+chess|チェス|order|jet_black,pearl_white,antique_gold|wool,satin,polished_metal|decorative_buttons,metal_plates|panel_construction|交互の色面と駒の段状輪郭
+playing_cards|トランプ|art_deco|scarlet,jet_black,pearl_white|cotton,satin,jacquard|heart_charms,contrast_embroidery|overlapping_panels|四角い重なりと対称の記号
+dice|サイコロ|geometry|pearl_white,jet_black,scarlet|cotton,vinyl,twill|beadwork,eyelets|panel_construction|角の丸い面と点の規則的配置
+folding_fan|扇|art_nouveau|peacock_blue,antique_gold,pearl_white|silk,organza,metallic_thread|pleated_trim,soutache|pleated_panels|放射状に開く骨と薄い面
+umbrella|傘|jellyfish|deep_navy,pearl_gray,polished_silver|nylon,organza,translucent_film|piping,bead_fringe|gathered_panels|半球の面と放射状の縫い目
+mask|仮面|masquerade|jet_black,antique_gold,wine_red|velvet,brocade,polished_metal|eyelets,ornamental_clasps|shaped_seams|眼窓の曲線と左右の対比
+birdcage|鳥籠|gothic_cathedral|antique_gold,pearl_white,deep_navy|metallic_thread,mesh,organza|piping,chain_details|boned_structure|縦の細い骨と丸い天蓋
+chain|鎖|bondage|gunmetal,oxidized_silver,ink_black|chainmail,leather,mesh|chain_details,grommets|wrapped_panels|連結する輪とたわむ曲線
+crown|王冠|royalty_tale|antique_gold,ruby_red,pearl_white|brocade,velvet,metallic_thread|gem_settings,gold_embroidery|boned_structure|上向きの尖端と環状の土台
+goblet|杯|grail|pale_gold,wine_red,warm_ivory|satin,polished_metal,organza|soutache,beadwork|shaped_seams|細い脚と広がる口縁
+bell|鐘|clock|bronze_metal,verdigris_metal,warm_ivory|taffeta,metallic_thread,brocade|bell_ornaments,braided_trim|gathered_panels|裾に広がる曲面と環状の縁
+spool|糸巻き|weaving|warm_ivory,coral_pink,warm_brown|cotton,linen,silk|pintucks,braided_trim|wrapped_panels|巻き重なる細線と上下の円盤
+needle|針|machine|polished_silver,ink_black,scarlet|metallic_thread,silk,twill|eyelets,contrast_stitching|shaped_seams|細長い軸と端の小さな開口
+scissors|はさみ|machine|polished_silver,jet_black,copper_metal|polished_metal,leather,twill|ornamental_clasps,rivets|overlapping_panels|交差する刃と二つの輪
+picture_frame|額縁|baroque_art|antique_gold,wine_red,warm_ivory|brocade,velvet,metallic_thread|soutache,piping|panel_construction|中央を囲う装飾的な枠
+window|窓|stained_glass|pale_cyan,ink_black,pearl_white|translucent_film,organza,silk|piping,eyelets|panel_construction|透明な矩形と格子の線
+door|扉|fortress|warm_brown,bronze_metal,ink_black|leather,twill,brocade|ornamental_clasps,rivets|reinforced_structure|厚い面と蝶番の反復
+jewel_box|宝石箱|rococo|amethyst_violet,antique_gold,pearl_white|velvet,brocade,satin|gem_settings,ornamental_clasps|layered_panels|箱の縁と内側の柔らかな層`);
+  add('nature',`annular_eclipse|金環日食|eclipse|jet_black,pale_gold,honey_yellow|satin,metallic_thread,organza|piping,medallions|panel_construction|暗い中心を囲む細い光の環
+milky_way|天の川|galaxy|deep_navy,pearl_white,lilac|flowing_chiffon,organza,iridescent_fabric|beadwork,star_charms|draped_panels|斜めに流れる微細な光点の帯
+sun_pillar|太陽柱|dawn|honey_yellow,blush_pink,pale_cyan|organza,silk,metallic_thread|pintucks,sequins|pleated_panels|縦に伸びる淡い光の柱
+thundercloud|雷雲|storm|charcoal_gray,deep_navy,polished_silver|taffeta,organza,nylon|piping,metal_studs|gathered_panels|重い雲の膨らみと鋭い稲光
+ice_fog|氷霧|fog|ice_blue,pearl_white,pearl_gray|gauze,organza,translucent_film|crystal_embroidery,beadwork|layered_panels|薄い白い層と微細な結晶
+frost|霜|ice_crystal|pearl_white,pale_cyan,polished_silver|lace,organza,metallic_thread|silver_embroidery,pintucks|pleated_panels|枝状の微細な線と白い縁
+water_reflection|水面反射|wave|aqua,pearl_white,cobalt_blue|satin,iridescent_fabric,silk|sequins,draped_trim|draped_panels|揺れる横線と分断された光
+ripple|波紋|droplet|pale_cyan,peacock_blue,polished_silver|silk,organza,satin|pintucks,beadwork|gathered_panels|中心から広がる同心円
+sea_foam|海泡|wave|seafoam_green,pearl_white,aqua|lace,gauze,organza|ruching,beadwork|gathered_panels|不規則な白い泡と薄い縁
+ocean_trench|海溝|deep_sea|ink_black,deep_navy,teal|velvet,organza,satin|piping,bead_fringe|overlapping_panels|深い縦の割れ目と暗い層
+sandstorm|砂嵐|desert|sand_beige,warm_brown,honey_yellow|linen,gauze,suede|fringe,contrast_stitching|wrapped_panels|渦を巻く砂粒と覆う布の層
+volcanic_ash|火山灰|volcano|ash_gray,charcoal_gray,vermilion|tweed,mesh,linen|beadwork,contrast_embroidery|layered_panels|細かな灰粒と熾火の差し色
+geyser|間欠泉|steam|pearl_white,aqua,warm_ivory|organza,flowing_chiffon,satin|bead_fringe,ruched_trim|gathered_panels|上へ噴き上がる層と流れる縁
+tidepool|潮だまり|sea|teal,seafoam_green,honey_yellow|translucent_film,silk,organza|shell_ornaments,beadwork|overlapping_panels|小さな透明面と岩の曲線
+river_delta|三角州|wave|teal,sand_beige,pearl_gray|linen,silk,twill|piping,contrast_stitching|panel_construction|枝分かれする線と三角の面
+salt_flat|塩原|snowfield|chalk_white,pearl_gray,pale_cyan|linen,organza,crystal_details|piping,crystal_embroidery|panel_construction|白い多角形と浅い反射
+rain_cloud|雨雲|rain|slate_gray,pearl_gray,deep_navy|gauze,nylon,organza|bead_fringe,piping|draped_panels|柔らかな雲の層と垂直の雨筋
+dust_devil|つむじ風|storm|sand_beige,warm_ivory,warm_brown|gauze,flowing_chiffon,linen|fringe,draped_trim|wrapped_panels|螺旋状に巻き上がる細い帯`);
+  add('living',`morpho_butterfly|モルフォ蝶|butterfly|cobalt_blue,ink_black,peacock_blue|iridescent_fabric,organza,silk|piping,sequins|panel_construction|青い偏光面と黒い翅脈
+swallowtail|アゲハ蝶|butterfly|cream_yellow,ink_black,scarlet|silk,organza,taffeta|piping,contrast_embroidery|layered_panels|黒い縁と細く伸びる翅の端
+spider_web|蜘蛛の巣|spider|polished_silver,ink_black,pearl_gray|mesh,lace,metallic_thread|eyelets,beadwork|panel_construction|放射線と同心状の細い糸
+firefly|蛍|star|lime_green,ink_black,cream_yellow|velvet,organza,iridescent_fabric|sequins,beadwork|unstructured|暗い面に散る小さな発光点
+snow_leopard|雪豹|cat|pearl_gray,chalk_white,charcoal_gray|faux_fur,suede,wool|contrast_embroidery,piping|shaped_seams|淡い斑紋と流れる体の輪郭
+seahorse|タツノオトシゴ|deep_sea_fish|honey_yellow,teal,seafoam_green|jacquard,silk,organza|beadwork,piping|wrapped_panels|節状の面と巻いた曲線
+betta|ベタ|deep_sea_fish|cobalt_blue,scarlet,amethyst_violet|organza,flowing_chiffon,silk|pleated_trim,bead_fringe|draped_panels|扇状に広がる薄いひれ
+koi|錦鯉|deep_sea_fish|pearl_white,vermilion,ink_black|silk,jacquard,satin|applique,beadwork|panel_construction|流れる大きな色斑と鱗の反復
+red_spider_lily|彼岸花|rose|scarlet,ink_black,forest_green|silk,organza,metallic_thread|bead_fringe,soutache|draped_panels|反り返る細い弧と放射する線
+hydrangea|紫陽花|flower|periwinkle,lilac,ice_blue|organza,silk,taffeta|rosettes,beadwork|gathered_panels|小さな四弁の面が集まる球形
+fern|シダ|ivy|forest_green,young_leaf_green,bronze_metal|linen,silk,jacquard|pintucks,contrast_embroidery|pleated_panels|軸から並ぶ葉の細かな反復
+nautilus|オウムガイ|pearl|warm_ivory,warm_brown,pearl_white|satin,organza,iridescent_fabric|piping,beadwork|wrapped_panels|螺旋の区画と殻の明暗
+manta_ray|マンタ|deep_sea_fish|deep_navy,pearl_white,slate_gray|neoprene,silk,flowing_chiffon|piping,draped_trim|draped_panels|横に広がる翼状の柔らかな面
+protea|プロテア|flower|dusty_rose,warm_ivory,forest_green|taffeta,silk,organza|pleated_trim,rosettes|layered_panels|尖った苞葉の重なりと密な中心
+orchid|蘭|iris|lilac,pearl_white,magenta|silk,satin,organza|draped_trim,beadwork|shaped_seams|左右の広い花弁と中央の折り目
+sea_anemone|イソギンチャク|jellyfish|seafoam_green,lilac,rose_quartz|organza,flowing_chiffon,mesh|fringe,bead_fringe|gathered_panels|細い触手状の反復と放射する輪郭
+kingfisher|翡翠鳥|peacock|peacock_blue,vermilion,pearl_white|silk,iridescent_fabric,satin|piping,contrast_embroidery|shaped_seams|鋭い流線と青橙の色面
+octopus|蛸|jellyfish|wine_red,eggplant,pearl_gray|jersey,silk,mesh|eyelets,beadwork|wrapped_panels|曲がる腕状の帯と吸盤状の反復
+pine_cone|松ぼっくり|ancient_tree|warm_brown,bronze_metal,warm_ivory|suede,jacquard,linen|applique,decorative_buttons|overlapping_panels|鱗片状の層と螺旋の配置
+bamboo|竹|bamboo_princess|young_leaf_green,forest_green,warm_ivory|linen,silk,brocade|piping,knot_details|panel_construction|縦の幹と等間隔の節`);
+  add('material',`opal|オパール|iridescence|opal_white,rose_quartz,aqua|iridescent_fabric,organza,translucent_film|beadwork,sequins|layered_panels|淡い地色の内側で分かれる遊色
+moonstone|ムーンストーン|pearl|pearl_white,ice_blue,polished_silver|organza,satin,translucent_film|pearl_details,beadwork|draped_panels|青白い光を含む丸い透明層
+labradorite|ラブラドライト|iridescence|slate_gray,peacock_blue,honey_yellow|iridescent_fabric,silk,velvet|sequins,piping|overlapping_panels|暗い面から覗く青緑の反射
+amethyst|アメジスト|quartz|amethyst_violet,lilac,pearl_white|crystal_details,organza,satin|crystal_embroidery,piping|panel_construction|紫の濃淡と柱状の結晶面
+sapphire|サファイア|gemstone|sapphire_blue,deep_navy,polished_silver|silk,crystal_details,satin|beadwork,piping|shaped_seams|深い青の反射と鋭い面
+ruby|ルビー|gemstone|ruby_red,wine_red,pale_gold|satin,velvet,crystal_details|beadwork,gold_embroidery|panel_construction|赤い透明層と角張る反射
+emerald|エメラルド|gemstone|emerald_green,forest_green,antique_gold|silk,crystal_details,organza|beadwork,piping|panel_construction|緑の柱状面と金の細い縁
+garnet|ガーネット|gemstone|wine_red,burgundy,bronze_metal|velvet,satin,crystal_details|beadwork,medallions|shaped_seams|暗い赤の多面体と粒状の反復
+aquamarine|アクアマリン|glass|aqua,pale_cyan,polished_silver|translucent_film,organza,silk|crystal_embroidery,beadwork|panel_construction|水色の透過面と長い結晶線
+black_pearl|黒真珠|pearl|charcoal_gray,peacock_blue,oxidized_silver|satin,iridescent_fabric,silk|pearl_details,beadwork|gathered_panels|暗い球面に沿う青緑の光
+amber|琥珀|glass|honey_yellow,warm_brown,pale_gold|translucent_film,satin,organza|beadwork,dangling_charms|layered_panels|蜂蜜色の透明な層
+lapis_lazuli|瑠璃|gemstone|cobalt_blue,antique_gold,deep_navy|velvet,silk,metallic_thread|gold_embroidery,beadwork|panel_construction|深い青に散る金の小点
+obsidian|黒曜石|glass|obsidian_black,ink_black,slate_gray|vinyl,polished_metal,satin|metal_plates,piping|overlapping_panels|黒い光沢面と鋭い割れ目
+prism|プリズム|stained_glass|pale_cyan,rose_quartz,cream_yellow|translucent_film,iridescent_fabric,organza|piping,crystal_embroidery|panel_construction|細い透明面を境に分かれる色
+cracked_glass|ひび割れガラス|glass|pale_cyan,pearl_white,ink_black|translucent_film,organza,mesh|contrast_stitching,piping|panel_construction|不規則に枝分かれする割れ目
+ink_bleed|インクのにじみ|ink|ink_black,slate_gray,pearl_gray|gauze,silk,linen|contrast_embroidery,draped_trim|layered_panels|輪郭がほどける濃淡の境界
+verdigris|緑青|copper|verdigris_metal,copper_metal,teal|metallic_thread,brocade,suede|rivets,contrast_embroidery|overlapping_panels|緑と銅の斑状の表面
+magnetic_field|磁力線|machine|gunmetal,polished_silver,ink_black|metallic_thread,mesh,twill|piping,beadwork|shaped_seams|両極を結ぶ弧状の細線
+bismuth_crystal|ビスマス結晶|iridescence|peacock_blue,magenta,honey_yellow|iridescent_fabric,polished_metal,holographic_fabric|metal_plates,piping|modular_panels|階段状に重なる四角い縁
+basalt|玄武岩|ore|charcoal_gray,slate_gray,ink_black|wool,tweed,suede|piping,metal_studs|panel_construction|六角の柱と硬い面の並び
+mica|雲母|ore|pearl_gray,pale_gold,polished_silver|organza,metallic_thread,iridescent_fabric|sequins,pleated_trim|layered_panels|薄い鉱物片の重なりと反射
+mother_of_pearl|螺鈿の貝層|pearl|opal_white,seafoam_green,rose_quartz|iridescent_fabric,satin,organza|shell_ornaments,beadwork|overlapping_panels|薄い貝片の層と柔らかな偏光`);
+  add('art',`rose_window|バラ窓|stained_glass|ruby_red,cobalt_blue,ink_black|translucent_film,organza,metallic_thread|piping,beadwork|pleated_panels|放射状の区画と中心の輪
+cloister|回廊|gothic_cathedral|warm_ivory,pearl_gray,antique_gold|linen,brocade,wool|piping,pintucks|panel_construction|連続するアーチと縦柱
+ruined_church|廃教会|ruins|ash_gray,ink_black,verdigris_metal|lace,linen,velvet|contrast_stitching,chain_details|layered_panels|途切れたアーチと風化した重なり
+spiral_staircase|螺旋階段|geometry|polished_silver,deep_navy,pearl_white|metallic_thread,twill,organza|piping,pleated_trim|wrapped_panels|上昇する螺旋と段の反復
+arch|アーチ|gothic_cathedral|warm_ivory,antique_gold,pearl_gray|brocade,wool,silk|piping,soutache|shaped_seams|曲線の頂点と縦に続く支え
+cloisonne|七宝|stained_glass|cobalt_blue,ruby_red,antique_gold|satin,metallic_thread,crystal_details|piping,beadwork|panel_construction|細い金線で区切る鮮やかな面
+kiriko|切子|glass|cobalt_blue,pearl_white,pale_cyan|translucent_film,crystal_details,organza|crystal_embroidery,piping|pleated_panels|斜めに交差する透明な切断面
+kumiko|組子|geometry|warm_ivory,warm_brown,antique_gold|linen,mesh,metallic_thread|piping,braided_trim|panel_construction|細い桟が組む幾何学の隙間
+sashiko|刺し子|weaving|deep_navy,pearl_white,denim_blue|cotton,denim,linen|contrast_stitching,quilting|quilted_panels|白い短線の連続と布の補強
+lace_craft|レース工芸|embroidery_craft|warm_ivory,pearl_white,dusty_rose|lace,mesh,organza|lace_panels,pintucks|layered_panels|透かしの穴と細い糸の曲線
+bookbinding|製本|library|warm_brown,wine_red,antique_gold|leather,linen,brocade|contrast_stitching,ornamental_clasps|layered_panels|背の縫い目と折り重なる面
+letterpress|活版印刷|paper|ink_black,warm_ivory,scarlet|linen,cotton,twill|contrast_embroidery,decorative_topstitching|panel_construction|押された文字の枠と整列する矩形
+filigree|細線金工|art_nouveau|antique_gold,pearl_white,teal|metallic_thread,lace,silk|soutache,braided_trim|draped_panels|細い金属線の巻きと空隙
+repousse|打ち出し金工|relief|copper_metal,bronze_metal,ink_black|polished_metal,leather,metallic_thread|metal_plates,rivets|shaped_seams|浮き上がる面と丸い凹凸
+ceramic_glaze|陶釉|porcelain|pearl_white,teal,warm_brown|satin,vinyl,silk|beadwork,piping|shaped_seams|艶の流れと縁に溜まる色
+fresco|フレスコ壁画|baroque_art|terracotta,warm_ivory,sky_blue|linen,brocade,suede|contrast_embroidery,applique|panel_construction|淡い色面と壁のざらつき
+tessellation|連続充填文様|geometry|cobalt_blue,pearl_white,antique_gold|jacquard,twill,satin|piping,contrast_stitching|panel_construction|隙間なく反復する多角形
+muqarnas|ムカルナス|palace|antique_gold,warm_ivory,teal|brocade,organza,metallic_thread|bead_fringe,pleated_trim|layered_panels|蜂の巣状に段を重ねる小さな面
+paper_marbling|マーブル染紙|paper|teal,wine_red,warm_ivory|silk,satin,organza|draped_trim,contrast_embroidery|wrapped_panels|流れて絡み合う色の筋
+embossed_leather|革の型押し|relief|warm_brown,bronze_metal,ink_black|leather,suede,brocade|decorative_topstitching,metal_studs|panel_construction|押し込まれた輪郭と鈍い光沢
+woven_basket|籠編み|weaving|sand_beige,warm_brown,warm_ivory|linen,canvas,mesh|braided_trim,knot_details|wrapped_panels|交互に渡る帯と細かな隙間
+vaulted_ceiling|ヴォールト天井|gothic_cathedral|pearl_gray,deep_navy,antique_gold|brocade,organza,metallic_thread|piping,gold_embroidery|boned_structure|交差する曲線の骨と上向きの面
+flying_buttress|飛梁|gothic_cathedral|pearl_gray,warm_ivory,ink_black|wool,mesh,leather|piping,ornamental_clasps|reinforced_structure|外へ張り出す弧と支える線`);
+  add('concept',`contract|契約|promise|wine_red,warm_ivory,antique_gold|brocade,linen,leather|knot_details,medallions|wrapped_panels|結ばれた線と封じた枠
+duality|二面性|boundary|jet_black,pearl_white,polished_silver|satin,velvet,silk|piping,contrast_embroidery|panel_construction|左右で対照をなす色と質感
+fragility|儚さ|glass|pale_cyan,pearl_white,dusty_rose|gauze,organza,translucent_film|bead_fringe,lace_trim|layered_panels|薄い層と途切れそうな細線
+balance|均衡|order|pearl_gray,deep_navy,pale_gold|wool,silk,satin|piping,medallions|shaped_seams|左右の重さを釣り合わせる配置
+tension|緊張|bondage|ink_black,scarlet,polished_silver|leather,mesh,twill|grommets,ribbon_lacing|reinforced_structure|張った斜線と留め点
+resonance|共鳴|wave|teal,pearl_white,polished_silver|silk,organza,metallic_thread|pintucks,beadwork|pleated_panels|繰り返す波形と共通の間隔
+patience|忍耐|ancient_tree|warm_brown,forest_green,warm_ivory|linen,wool,twill|contrast_stitching,braided_trim|quilted_panels|積み重なる静かな層と補強線
+curiosity|好奇心|star|sky_blue,honey_yellow,warm_ivory|cotton,silk,organza|eyelets,dangling_charms|detachable_panels|開閉する小面と覗く差し色
+transformation|変容|butterfly|amethyst_violet,seafoam_green,pearl_white|organza,iridescent_fabric,silk|pleated_trim,beadwork|modular_panels|形を変える分割面と重なる輪郭
+unity|連帯|bondage|warm_ivory,teal,antique_gold|linen,silk,jacquard|knot_details,braided_trim|wrapped_panels|異なる帯が交わる結び目`);
+  add('fantasy',`lunar_magic|月魔法|moon_witch|ice_blue,pearl_white,midnight_blue|organza,silk,metallic_thread|moon_charms,silver_embroidery|draped_panels|弧状の光と薄い重なり
+solar_magic|太陽魔法|sun_deity|honey_yellow,vermilion,pale_gold|taffeta,metallic_thread,satin|gold_embroidery,pleated_trim|pleated_panels|中心から伸びる放射線
+mirror_magic|鏡魔法|mirror_world|polished_silver,amethyst_violet,ink_black|polished_metal,translucent_film,satin|metal_plates,piping|modular_panels|分割された反射面と二重の輪郭
+blessing|祝福|celestial|warm_ivory,pale_gold,blush_pink|organza,silk,brocade|gold_embroidery,beadwork|draped_panels|包み込む光の弧と柔らかな層
+solar_temple|太陽の神殿|palace|sand_beige,bright_gold,vermilion|linen,brocade,metallic_thread|medallions,piping|panel_construction|柱状の縦線と太陽の円盤
+arcane_circle|魔法陣|summoning|amethyst_violet,polished_silver,midnight_blue|silk,metallic_thread,organza|piping,medallions|panel_construction|同心円と交差する記号の線
+runes|ルーン|seal|ink_black,ice_blue,polished_silver|linen,leather,metallic_thread|silver_embroidery,contrast_stitching|panel_construction|角張った短線と刻まれた境界
+enchanted_garden|魔法の庭|fairy|young_leaf_green,lilac,rose_quartz|organza,silk,lace|soutache,beadwork|layered_panels|曲がる蔓と淡い光点の層
+gravity_magic|重力魔法|void|deep_navy,ink_black,polished_silver|wool,mesh,metallic_thread|chain_details,metal_plates|wrapped_panels|中心へ引き込む曲線と重い縁
+star_gate|星の門|star_magic|midnight_blue,pale_gold,amethyst_violet|organza,metallic_thread,translucent_film|star_charms,piping|boned_structure|輪状の枠と内側へ続く星の帯
+crystal_forest|結晶の森|crystal_palace|ice_blue,forest_green,opal_white|crystal_details,organza,iridescent_fabric|crystal_embroidery,pintucks|pleated_panels|細長い結晶柱の林立
+enchanted_snow|魔法の雪|ice_crystal|pearl_white,lilac,ice_blue|organza,lace,metallic_thread|snowflake_motif,sequins|layered_panels|雪片の反復と浮かぶ薄い層`);
+  add('myth',`star_reader|星を読む者|scholar_tale|midnight_blue,pale_gold,pearl_white|wool,silk,metallic_thread|star_charms,piping|layered_panels|星図の細線と学術的な重なり
+royal_succession|王位継承|royalty_tale|royal_purple,antique_gold,warm_ivory|brocade,velvet,silk|medallions,gold_embroidery|panel_construction|引き継がれる徽章と整った輪郭
+exiled_royalty|追放された王族|fallen_kingdom|wine_red,ash_gray,antique_gold|velvet,linen,suede|contrast_stitching,ornamental_clasps|layered_panels|格式の残る縁と旅の重ね着
+pilgrimage|巡礼|grail|sand_beige,warm_brown,warm_ivory|linen,wool,canvas|knot_details,medallions|wrapped_panels|歩行を支える簡素な重なり
+sealed_temple|封印された神殿|sanctuary|pearl_gray,bronze_metal,deep_navy|brocade,linen,metallic_thread|knot_details,piping|reinforced_structure|閉じた門の縦線と結ばれた境界
+golden_fleece|金羊毛|sun_deity|bright_gold,warm_ivory,honey_yellow|faux_fur,metallic_thread,silk|braided_trim,beadwork|gathered_panels|金色の細かな巻き毛と柔らかな量感
+ariadne_thread|アリアドネの糸|labyrinth|scarlet,pearl_gray,warm_ivory|linen,silk,metallic_thread|piping,knot_details|wrapped_panels|迷路を抜ける一本の連続線
+icarus_flight|イカロスの飛翔|valkyrie|warm_ivory,honey_yellow,sky_blue|organza,flowing_chiffon,silk|pleated_trim,fringe|layered_panels|上へ開く薄い面とほどける縁
+pandoras_box|パンドラの箱|forbidden_book|ink_black,antique_gold,amethyst_violet|velvet,brocade,organza|ornamental_clasps,dangling_charms|modular_panels|閉じた箱から覗く異なる色面
+river_styx|ステュクスの川|underworld|ink_black,slate_gray,oxidized_silver|velvet,flowing_chiffon,silk|chain_details,draped_trim|draped_panels|暗い流れと細い渡し綱
+celestial_bridge|天上の橋|celestial|sky_blue,pearl_white,pale_gold|organza,metallic_thread,silk|piping,bead_fringe|boned_structure|空へ渡る弧と細い吊り線`);
+  add('stage',`tightrope|綱渡り|circus|scarlet,pearl_white,jet_black|jersey,satin,twill|piping,braided_trim|shaped_seams|均衡を保つ細い縦線
+aerial_silk|エアリアルシルク|dance|cobalt_blue,magenta,pearl_white|silk,flowing_chiffon,spandex|draped_trim,ribbon_lacing|wrapped_panels|空中へ伸びる長い布の帯
+ice_show|アイスショー|ballet|ice_blue,pearl_white,polished_silver|spandex,organza,iridescent_fabric|crystal_embroidery,sequins|shaped_seams|滑る流線と氷の光点
+taiko_stage|和太鼓舞台|festival|jet_black,vermilion,antique_gold|cotton,linen,brocade|braided_trim,knot_details|wrapped_panels|太い帯と反復する打面の円
+marching_band|マーチングバンド|parade|deep_navy,scarlet,bright_gold|wool,twill,metallic_thread|brass_buttons,aiguillettes|reinforced_structure|整列する留め具と対称の縦線
+equestrian_show|馬術演舞|concert|jet_black,warm_ivory,antique_gold|wool,leather,satin|piping,brass_buttons|shaped_seams|身体に沿う曲線と硬い縁
+ventriloquist|腹話術舞台|puppetry|wine_red,jet_black,warm_ivory|velvet,wool,satin|decorative_buttons,ribbon_bow|panel_construction|小さな礼装の対称と明確な関節線
+ribbon_dance|リボンダンス|dance|rose_quartz,sky_blue,pearl_white|silk,organza,spandex|ribbon_bow,draped_trim|draped_panels|長く流れる帯と回転の弧
+stilt_performance|高足舞台|circus|royal_purple,honey_yellow,pearl_white|taffeta,twill,satin|pintucks,tassels|pleated_panels|誇張した縦長の線と高い重心`);
+  // Concrete object proportions survive the strategy-specific fit variations.
+  Object.assign(M.motifs.hourglass.silhouette,{waist:['cinched_waist'],upperVolume:['rounded_upper'],lowerVolume:['bell_volume'],symmetry:['symmetrical']});
+  Object.assign(M.motifs.perfume_bottle.silhouette,{fit:['cocoon_fit'],waist:['fitted_waist'],length:['midi']});
+  M.motifs.perfume_bottle.parts.collar=['stand_collar'];M.motifs.perfume_bottle.parts.closure=['clasp_closure'];
+  var profileMotifs={dark:['ruined_church','obsidian','black_pearl','mask','birdcage','chain','inkwell'],fantasy:['hourglass','armillary_sphere','perfume_bottle','opal','jellyfish','aurora'],cute:['music_box','letter','jewel_box'],elegant:['perfume_bottle','folding_fan','chandelier','crown','goblet','jellyfish','peacock'],dreamlike:['hourglass','music_box','perfume_bottle','opal'],unusual:['astrolabe','armillary_sphere','birdcage','scissors','magnetic_field'],stage:['mask','folding_fan','bell'],practical:['compass','pocket_watch','needle','spool','umbrella','scissors'],ceremonial:['crown','goblet','candelabrum','bell'],sharp:['needle','scissors','compass','pocket_watch']};
+  Object.keys(profileMotifs).forEach(function(profile){profileMotifs[profile].forEach(function(id){var m=F.motifs.filter(function(x){return x.id===id;})[0];if(!m)throw Error('Unknown random motif '+id);(m.randomProfiles||(m.randomProfiles=[])).push(profile);});});
+  // Aliases are metadata, not duplicate motifs and never prompt fragments.
+  var aliases={aurora:['northern lights','極光'],stained_glass:['色ガラス','stained glass','ステンド'],jellyfish:['くらげ','海月'],peacock:['くじゃく','孔雀の羽'],iridescence:['玉虫色','偏光'],mirror:['鏡面'],kintsugi:['金繕い'],runway:['ランウェイ'],masquerade:['仮面舞踏会'],ballet:['バレエ'],opera:['オペラ']};
+  F.motifs.forEach(function(m,index){m.searchKeywords=(m.searchKeywords||[m.labelJa,m.id.replace(/_/g,' ')]).concat(aliases[m.id]||[]);if(m.featured==null)m.featured=F.motifs.filter(function(x){return x.category===m.category&&(m.category!=='food'||x.groupId===m.groupId);}).indexOf(m)<10;});
+})(typeof window!=='undefined'?window:global);

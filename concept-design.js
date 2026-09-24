@@ -188,7 +188,7 @@
   E.randomSelection=function(profileId,seed){
     var rng=C.gacha.makeRng({seed:Number(seed)>>>0}),profile=one(F.randomProfiles,profileId)||'all';function pick(a){return a[Math.floor(rng()*a.length)];}
     var table={dark:['concept','fantasy','myth'],fantasy:['fantasy','myth'],cute:['living','food'],elegant:['art','material'],dreamlike:['nature','fantasy'],unusual:['material','art'],stage:['stage'],practical:['nature','art'],ceremonial:['myth','art'],sharp:['material','art']};
-    var pool=F.motifs.filter(function(m){return !table[profile]||table[profile].indexOf(m.category)>=0;}),m=pick(pool),s=E.normalizeSelection({categoryId:m.category,motifId:m.id,foodGroupId:m.groupId});
+    var pool=F.motifs.filter(function(m){return !table[profile]||table[profile].indexOf(m.category)>=0||(m.randomProfiles||[]).indexOf(profile)>=0;}),m=pick(pool),s=E.normalizeSelection({categoryId:m.category,motifId:m.id,foodGroupId:m.groupId});
     if(rng()<0.65){var secondary=pick(F.motifs.filter(function(x){return x.id!==m.id;}));s.secondary={categoryId:secondary.category,motifId:secondary.id,customMotif:''};s.blendMode=pick(F.blendModes).id;}
     s.context={worldviewId:pick(D.worldviews).id,eraId:pick(D.eras).id,roleId:pick(D.roles).id,occasionId:pick(D.occasions).id,storyStateIds:[pick(F.storyStates).id]};
     var directions={dark:'dark',fantasy:'fantastical',cute:'cute',elegant:'elegant',dreamlike:'mystical',unusual:'avant',stage:'stage',practical:'practical',ceremonial:'ceremonial',sharp:'strict'};

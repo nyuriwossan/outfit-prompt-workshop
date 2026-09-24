@@ -1,0 +1,52 @@
+{
+  "engine": "webkit",
+  "widths": [
+    {
+      "width": 375,
+      "independentPreferences": true,
+      "reloadPreferences": true,
+      "noStateOrAutosaveMutation": true,
+      "hiddenSettings": true,
+      "secondDirectionRetained": true,
+      "colorPickers": true,
+      "decorationLink": true,
+      "semanticSteps": true,
+      "simpleRandomDefaults": true,
+      "noKeywordLeak": true,
+      "simpleStainedGlassMysticalDress": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "independentPreferences": true,
+      "reloadPreferences": true,
+      "noStateOrAutosaveMutation": true,
+      "hiddenSettings": true,
+      "secondDirectionRetained": true,
+      "colorPickers": true,
+      "decorationLink": true,
+      "semanticSteps": true,
+      "simpleRandomDefaults": true,
+      "noKeywordLeak": true,
+      "simpleStainedGlassMysticalDress": true,
+      "noOverflow": true
+    },
+    {
+      "width": 430,
+      "independentPreferences": true,
+      "reloadPreferences": true,
+      "noStateOrAutosaveMutation": true,
+      "hiddenSettings": true,
+      "secondDirectionRetained": true,
+      "colorPickers": true,
+      "decorationLink": true,
+      "semanticSteps": true,
+      "simpleRandomDefaults": true,
+      "noKeywordLeak": true,
+      "simpleStainedGlassMysticalDress": true,
+      "noOverflow": true
+    }
+  ],
+  "errors": [],
+  "storageDeniedFallback": true
+}

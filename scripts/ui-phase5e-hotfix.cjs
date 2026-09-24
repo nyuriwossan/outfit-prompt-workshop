@@ -15,7 +15,7 @@ const server=http.createServer((req,res)=>{
   try{
     for(const width of [375,390,430]){
       const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true}),page=await context.newPage();
-      page.on('dialog',async d=>{report.errors.push('Unexpected native dialog: '+d.message());await d.dismiss();});page.on('pageerror',e=>report.errors.push(e.stack));
+      await page.addInitScript(()=>localStorage.setItem('cpw.uiPrefs.v1',JSON.stringify({workshopLevel:'advanced',conceptLevel:'advanced'})));page.on('dialog',async d=>{report.errors.push('Unexpected native dialog: '+d.message());await d.dismiss();});page.on('pageerror',e=>report.errors.push(e.stack));
       const home='http://127.0.0.1:'+server.address().port+'/';
       const noOverflow=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'horizontal overflow '+width);
       const prepare=async(spec,mode,seed,conflict)=>{

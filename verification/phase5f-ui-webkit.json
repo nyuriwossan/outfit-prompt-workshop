@@ -1,0 +1,764 @@
+{
+  "engine": "webkit",
+  "cases": [
+    {
+      "width": 375,
+      "name": "entry"
+    },
+    {
+      "width": 375,
+      "name": "simple workshop"
+    },
+    {
+      "width": 375,
+      "name": "advanced workshop"
+    },
+    {
+      "width": 375,
+      "name": "simple merfolk"
+    },
+    {
+      "width": 375,
+      "name": "hidden concept preview"
+    },
+    {
+      "width": 375,
+      "name": "search object"
+    },
+    {
+      "width": 375,
+      "name": "two-stage food"
+    },
+    {
+      "width": 375,
+      "name": "advanced qipao"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new mille_feuille 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new mille_feuille 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new mille_feuille 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new hourglass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new hourglass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new hourglass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new stained_glass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new stained_glass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple false new stained_glass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new mille_feuille 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new mille_feuille 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new mille_feuille 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new hourglass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new hourglass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new hourglass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new stained_glass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new stained_glass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true new stained_glass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve mille_feuille 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve mille_feuille 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve mille_feuille 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve hourglass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve hourglass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve hourglass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve stained_glass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve stained_glass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt simple true preserve stained_glass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new mille_feuille 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new mille_feuille 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new mille_feuille 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new hourglass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new hourglass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new hourglass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new stained_glass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new stained_glass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced false new stained_glass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new mille_feuille 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new mille_feuille 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new mille_feuille 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new hourglass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new hourglass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new hourglass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new stained_glass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new stained_glass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true new stained_glass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve mille_feuille 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve mille_feuille 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve mille_feuille 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve hourglass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve hourglass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve hourglass 2"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve stained_glass 0"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve stained_glass 1"
+    },
+    {
+      "width": 375,
+      "name": "adopt advanced true preserve stained_glass 2"
+    },
+    {
+      "width": 375,
+      "name": "44px targets"
+    },
+    {
+      "width": 390,
+      "name": "entry"
+    },
+    {
+      "width": 390,
+      "name": "simple workshop"
+    },
+    {
+      "width": 390,
+      "name": "advanced workshop"
+    },
+    {
+      "width": 390,
+      "name": "simple merfolk"
+    },
+    {
+      "width": 390,
+      "name": "hidden concept preview"
+    },
+    {
+      "width": 390,
+      "name": "search object"
+    },
+    {
+      "width": 390,
+      "name": "two-stage food"
+    },
+    {
+      "width": 390,
+      "name": "advanced qipao"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new mille_feuille 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new mille_feuille 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new mille_feuille 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new hourglass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new hourglass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new hourglass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new stained_glass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new stained_glass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple false new stained_glass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new mille_feuille 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new mille_feuille 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new mille_feuille 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new hourglass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new hourglass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new hourglass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new stained_glass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new stained_glass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true new stained_glass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve mille_feuille 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve mille_feuille 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve mille_feuille 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve hourglass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve hourglass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve hourglass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve stained_glass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve stained_glass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt simple true preserve stained_glass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new mille_feuille 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new mille_feuille 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new mille_feuille 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new hourglass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new hourglass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new hourglass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new stained_glass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new stained_glass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced false new stained_glass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new mille_feuille 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new mille_feuille 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new mille_feuille 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new hourglass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new hourglass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new hourglass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new stained_glass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new stained_glass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true new stained_glass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve mille_feuille 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve mille_feuille 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve mille_feuille 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve hourglass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve hourglass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve hourglass 2"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve stained_glass 0"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve stained_glass 1"
+    },
+    {
+      "width": 390,
+      "name": "adopt advanced true preserve stained_glass 2"
+    },
+    {
+      "width": 390,
+      "name": "44px targets"
+    },
+    {
+      "width": 430,
+      "name": "entry"
+    },
+    {
+      "width": 430,
+      "name": "simple workshop"
+    },
+    {
+      "width": 430,
+      "name": "advanced workshop"
+    },
+    {
+      "width": 430,
+      "name": "simple merfolk"
+    },
+    {
+      "width": 430,
+      "name": "hidden concept preview"
+    },
+    {
+      "width": 430,
+      "name": "search object"
+    },
+    {
+      "width": 430,
+      "name": "two-stage food"
+    },
+    {
+      "width": 430,
+      "name": "advanced qipao"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new mille_feuille 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new mille_feuille 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new mille_feuille 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new hourglass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new hourglass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new hourglass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new stained_glass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new stained_glass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple false new stained_glass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new mille_feuille 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new mille_feuille 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new mille_feuille 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new hourglass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new hourglass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new hourglass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new stained_glass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new stained_glass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true new stained_glass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve mille_feuille 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve mille_feuille 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve mille_feuille 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve hourglass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve hourglass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve hourglass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve stained_glass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve stained_glass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt simple true preserve stained_glass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new mille_feuille 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new mille_feuille 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new mille_feuille 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new hourglass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new hourglass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new hourglass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new stained_glass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new stained_glass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced false new stained_glass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new mille_feuille 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new mille_feuille 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new mille_feuille 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new hourglass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new hourglass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new hourglass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new stained_glass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new stained_glass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true new stained_glass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve mille_feuille 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve mille_feuille 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve mille_feuille 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve hourglass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve hourglass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve hourglass 2"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve stained_glass 0"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve stained_glass 1"
+    },
+    {
+      "width": 430,
+      "name": "adopt advanced true preserve stained_glass 2"
+    },
+    {
+      "width": 430,
+      "name": "44px targets"
+    }
+  ],
+  "errors": [],
+  "nativeIPhone": false,
+  "browser": "26.5"
+}

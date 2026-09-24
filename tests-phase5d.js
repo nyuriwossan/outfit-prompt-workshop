@@ -7,7 +7,7 @@
   Object.keys(F).filter(function(k){return Array.isArray(F[k]);}).forEach(function(k){
     test(k+' vocabulary IDs and labels',function(){var ids={};F[k].forEach(function(o){assert(/^[a-z][a-z0-9_]*$/.test(o.id),o.id);assert(!ids[o.id],o.id);ids[o.id]=true;assert(o.labelJa&&o.shortPrompt,o.id);});});
   });
-  test('source categories complete',function(){assert(F.categories.length===10);});
+  test('source categories complete',function(){assert(F.categories.length===11);});
   test('all 112 source motifs including 72 extended foods',function(){assert(F.motifs.length>=112);assert(F.motifs.filter(function(m){return m.category==='food';}).length===72);});
   test('all traditional attires retained',function(){assert(F.attires.length===14);});
   test('all 15 idol and 8 botanical shapes retained',function(){assert(F.idolStyles.length===15&&F.artNouveauShapes.length===8);});
