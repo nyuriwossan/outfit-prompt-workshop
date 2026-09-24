@@ -1,0 +1,13 @@
+{
+  "engine": "chromium",
+  "cases": [
+    "save then output dismisses without changing outfit",
+    "duplicate redraw keeps success notification",
+    "import redraw keeps success notification",
+    "gacha adoption applies outfit and dismisses on workshop navigation",
+    "zero design clears old notification and retains saved library",
+    "browser back dismisses notification",
+    "new notification still expires automatically"
+  ],
+  "errors": []
+}

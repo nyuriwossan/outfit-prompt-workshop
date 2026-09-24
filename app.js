@@ -792,6 +792,14 @@
       clearTimeout(ui._toastTimer);
       ui._toastTimer = setTimeout(function () { t.classList.remove('is-visible'); }, 2200);
     },
+    dismissToast: function () {
+      clearTimeout(ui._toastTimer);
+      ui._toastTimer = null;
+      var t = document.getElementById('toast');
+      if (!t) return;
+      t.classList.remove('is-visible');
+      t.textContent = '';
+    },
     confirm: function (message) { return global.confirm(message); }
   });
 
@@ -2918,7 +2926,11 @@
         if (focused && focused.indexOf('styling:') === 0) focusBack(panel, focused);
       }
     });
-    global.addEventListener('hashchange', render);
+    global.addEventListener('hashchange', function () {
+      // Same-screen redraws must retain save/import/duplicate feedback.
+      ui.dismissToast();
+      render();
+    });
     global.addEventListener('beforeunload', function () { if (autosave.pending()) store.saveDraft(state.outfit); });
     render();
   }
