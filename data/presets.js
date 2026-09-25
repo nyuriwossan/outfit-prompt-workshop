@@ -222,16 +222,16 @@
       }
     },
     {
-      id: 'reverse_bunny', group: 'style', labelJa: '逆バニー',
-      summaryJa: '逆さの切替が主役の舞台衣装',
+      id: 'reverse_bunny', group: 'style', labelJa: '前開き逆バニー',
+      summaryJa: '黒を基調にした前開きバニースーツ・うさ耳と手首カフス',
       patch: {
         concept: { worldview: 'modern', era: 'contemporary', occasion: 'party', role: 'idol', primaryStyle: 'classical' },
-        garment: { category: 'lingerie', subtype: 'reverse_bunny_suit', wearRole: 'main_outfit' },
+        garment: { category: 'lingerie', subtype: 'open_front_reverse_bunny_suit', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', waist: 'fitted_waist' },
-        parts: { cuffs: 'plain_cuffs', legwear: [{ id: 'thigh_high_stockings', layer: 'main' }], footwear: 'heeled_pumps' },
+        parts: { legwear: [{ id: 'thigh_high_stockings', layer: 'main' }], footwear: 'heeled_pumps' },
         materials: { primary: 'satin', transparency: 'opaque', surface: 'subtle_sheen' },
         decorations: { density: 1 },
-        palette: { primary: 'pure_white', secondary: 'jet_black', accent: 'sky_blue', scheme: 'value_contrast' }
+        palette: { primary: 'jet_black', secondary: null, accent: 'sky_blue', scheme: 'base_and_accent' }
       }
     },
     {
@@ -313,13 +313,13 @@
       }
     },
     {
-      id: 'cutout_knit', group: 'modern', labelJa: 'カットアウトニット',
-      summaryJa: '切替が効いたニット・現代の街着',
+      id: 'cutout_knit', group: 'modern', labelJa: '童貞を殺すセーター',
+      summaryJa: '背中が大きく開いたノースリーブのリブニット・首の後ろでリボン結び',
       patch: {
         concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'commoner', primaryStyle: 'street' },
-        garment: { category: 'top_bottom', subtype: 'side_cutout_knitwear', wearRole: 'main_outfit' },
+        garment: { category: 'top_bottom', subtype: 'virgin_killer_sweater', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', lowerVolume: 'slim', waist: 'high_waist' },
-        parts: { sleeves: 'fitted_long_sleeves', bottoms: 'wide_trousers', footwear: 'sneakers' },
+        parts: { neckline: 'high_neckline', sleeves: 'sleeveless', bottoms: 'wide_trousers', footwear: 'sneakers' },
         materials: { primary: 'rib_knit', transparency: 'opaque', surface: 'matte' },
         decorations: { density: 0 },
         palette: { primary: 'heather_gray', secondary: 'jet_black', accent: 'mint', scheme: 'neutral_metal' }

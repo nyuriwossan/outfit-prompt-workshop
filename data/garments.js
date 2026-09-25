@@ -168,6 +168,7 @@
     // バニー衣装（性別制限なし）
     { id: 'classic_bunny_suit', labelJa: 'クラシックバニー', category: 'lingerie', shortPrompt: 'classic bunny suit', detailedPrompt: 'a classic strapless bunny suit with cuffs and a collar', tags: ['fitted', 'stage'], recommendedWorldviews: ['modern'], layer: 'main', requiredSlots: [], recommendedSlots: ['legwear', 'cuffs', 'collar'] },
     { id: 'reverse_bunny_suit', labelJa: '逆バニー', category: 'lingerie', shortPrompt: 'reverse bunny suit', detailedPrompt: 'a reverse-cut bunny suit', tags: ['fitted', 'stage'], recommendedWorldviews: ['modern'], layer: 'main', requiredSlots: [], recommendedSlots: ['legwear', 'cuffs', 'collar'] },
+    { id: 'open_front_reverse_bunny_suit', labelJa: '前開き逆バニー', category: 'lingerie', shortPrompt: 'reverse bunny suit with an open front bunnysuit design, rabbit ear hairband and wrist cuffs', detailedPrompt: 'a reverse bunny suit with an open front bunnysuit design, worn with a rabbit ear hairband and wrist cuffs', tags: ['fitted', 'stage'], recommendedWorldviews: ['modern'], layer: 'main', requiredSlots: [], recommendedSlots: ['legwear', 'collar'] },
 
     // 白衣
     { id: 'laboratory_coat_outfit', labelJa: '白衣', category: 'robe', shortPrompt: 'laboratory coat outfit', detailedPrompt: 'a crisp white laboratory coat worn over daily clothes', tags: ['work', 'plain'], recommendedWorldviews: ['modern', 'sci_fi'], layer: 'outer' },
@@ -190,6 +191,7 @@
     // カットアウトニット（性別を問わない）
     { id: 'side_cutout_knitwear', labelJa: 'サイドカットアウトニット', category: 'top_bottom', shortPrompt: 'side-cutout knitwear', detailedPrompt: 'a fitted knit top with side cutouts', tags: ['fitted', 'modern'], recommendedWorldviews: ['modern'], layer: 'main' },
     { id: 'open_back_cutout_knitwear', labelJa: 'オープンバックニット', category: 'top_bottom', shortPrompt: 'open-back cutout knitwear', detailedPrompt: 'a knit top with an open-back cutout', tags: ['fitted', 'modern', 'open_back'], recommendedWorldviews: ['modern'], layer: 'main' },
+    { id: 'virgin_killer_sweater', labelJa: '童貞を殺すセーター', category: 'top_bottom', shortPrompt: 'virgin killer sweater with a completely open back and a ribbon tie at the nape', detailedPrompt: 'a fitted virgin killer sweater with a high neckline, a completely open back, and a ribbon tie at the nape', tags: ['fitted', 'modern', 'open_back'], recommendedWorldviews: ['modern'], layer: 'main' },
 
     // ドレス拡充
     { id: 'cocktail_dress', labelJa: 'カクテルドレス', category: 'dress', shortPrompt: 'cocktail dress', detailedPrompt: 'a knee-length cocktail dress', tags: ['formal', 'party'], recommendedWorldviews: ['modern'], layer: 'main' },
