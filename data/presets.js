@@ -231,7 +231,7 @@
         parts: { legwear: [{ id: 'thigh_high_stockings', layer: 'main' }], footwear: 'heeled_pumps' },
         materials: { primary: 'satin', transparency: 'opaque', surface: 'subtle_sheen' },
         decorations: { density: 1 },
-        palette: { primary: 'jet_black', secondary: null, accent: 'sky_blue', scheme: 'base_and_accent' }
+        palette: { primary: 'jet_black', secondary: null, accent: 'pure_white', scheme: 'base_and_accent' }
       }
     },
     {
@@ -316,13 +316,13 @@
       id: 'cutout_knit', group: 'modern', labelJa: '童貞を殺すセーター',
       summaryJa: '背中が大きく開いたノースリーブのリブニット・首の後ろでリボン結び',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'commoner', primaryStyle: 'street' },
+        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'commoner', primaryStyle: null },
         garment: { category: 'top_bottom', subtype: 'virgin_killer_sweater', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', lowerVolume: 'slim', waist: 'high_waist' },
-        parts: { neckline: 'high_neckline', sleeves: 'sleeveless', bottoms: 'wide_trousers', footwear: 'sneakers' },
+        parts: { neckline: 'high_neckline', sleeves: 'sleeveless', bottoms: 'wide_trousers' },
         materials: { primary: 'rib_knit', transparency: 'opaque', surface: 'matte' },
         decorations: { density: 0 },
-        palette: { primary: 'heather_gray', secondary: 'jet_black', accent: 'mint', scheme: 'neutral_metal' }
+        palette: { primary: 'heather_gray', secondary: 'jet_black', accent: null, scheme: null }
       }
     }
 ,
