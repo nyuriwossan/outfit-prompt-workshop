@@ -592,3 +592,16 @@ html, body {
 .cf-search-scope { display:flex; align-items:center; gap:8px; min-height:44px; }
 .cf-search-scope input { width:24px; height:24px; }
 #cf-search-results:empty { display:none; }
+/* Preset and pose discovery: mobile-first, readable cards and visible focus. */
+.discovery { display:flex; flex-direction:column; gap:14px; }
+.discovery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:12px; }
+.discovery-grid > * { min-width:0; text-align:left; overflow-wrap:anywhere; }
+.discovery .btn, .discovery select, .discovery input, .discovery .back-btn { min-height:44px; max-width:100%; }
+.discovery .card { white-space:normal; }
+.discovery .is-selected { outline:2px solid var(--accent,#765442); outline-offset:-2px; }
+.discovery button:disabled { opacity:.65; cursor:not-allowed; }
+.discovery :focus-visible { outline:3px solid #2768ad; outline-offset:3px; }
+.discovery-swatches { display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:12px; }
+.discovery-swatch { display:inline-block; width:20px; height:20px; flex-shrink:0; border:1px solid #999; border-radius:50%; }
+.discovery .prompt-text { overflow-wrap:anywhere; }
+.discovery .tabs { flex-wrap:wrap; }

@@ -1981,8 +1981,14 @@
         ui.el('p', { class: 'hero-sub', text: 'パーツを組み合わせて、一着の英語プロンプトを仕立てる。' })
       ]),
       ui.el('div', { class: 'stack' }, [
-        ui.el('a', { class: 'btn btn--primary', href: '#/entry', text: '細かく選んで作る' }),
+        ui.el('a', { class: 'btn btn--primary', href: '#/presets', text: 'プリセットから遊ぶ' }),
+        ui.el('p', {class:'p p--note',text:'完成した衣装を選んで、自分好みにアレンジ'}),
         ui.el('a', {class:'btn',href:'#/concept_fashion',text:'コンセプトから作る'}),
+        ui.el('p', {class:'p p--note',text:'題材や世界観から衣装のアイデアを作る'}),
+        ui.el('a', {class:'btn',href:'#/entry',text:'細かく選んで作る'}),
+        ui.el('p', {class:'p p--note',text:'服の形・素材・配色を選んで設計する'})
+      ]),
+      ui.el('div', {class:'card stack', role:'group', 'aria-label':'続きと保存した衣装'}, [
         draft ? ui.el('a', { class: 'btn', href: '#/workshop', text: '前回の続き' + (draft.name ? '（' + draft.name + '）' : '') }) : null,
         ui.el('a', { class: 'btn', href: '#/library', text: '保存した衣装（' + lib.length + '）' })
       ]),
@@ -2029,6 +2035,7 @@
   /* ---------- 初期設定 ---------- */
   routes['/setup'] = function (params) {
     var mode = params[0] || 'zero';
+    if(mode==='preset'&&CPW.presetCatalog)return CPW.presetCatalog.view();
     var body = ui.el('div', { class: 'stack' });
     var draft = schema.createOutfit();
     draft.entryMode = mode;
@@ -2069,22 +2076,6 @@
         });
         card.appendChild(row);
         body.appendChild(card);
-      });
-    }
-
-    if (mode === 'preset') {
-      body.appendChild(ui.el('p', { class: 'p p--lead', text: '整合の取れた初期値をまとめて読み込みます。読み込み後もすべて変更できます。' }));
-      D.presetGroups.forEach(function (g) {
-        body.appendChild(ui.el('p', { class: 'chip-group-label', text: g.labelJa }));
-        D.presets.filter(function (p) { return p.group === g.id; }).forEach(function (p) {
-          body.appendChild(ui.el('button', {
-            class: 'card card--tap', type: 'button',
-            onclick: function () { start(util.deepMerge(p.patch, { name: p.labelJa })); }
-          }, [
-            ui.el('h2', { class: 'card-title', text: p.labelJa }),
-            ui.el('p', { class: 'p', text: p.summaryJa })
-          ]));
-        });
       });
     }
 
@@ -2286,7 +2277,7 @@
       finish=ui.el('div',{class:'card stack'},[ui.el('h2',{class:'card-title',text:'もっと細かく仕上げる'})]);
       [['styling','着こなし・着崩し'],['condition','衣装の状態・加工'],['special','特殊パーツ・演出']].forEach(function(pair){var h=CPW.uiComplexity.hiddenSummary(state.outfit,'workshop').groups.filter(function(g){return g.id===pair[0];})[0];finish.appendChild(ui.el('button',{type:'button',class:'btn',text:pair[1]+(h?'（設定あり '+h.count+'件）':''),onclick:function(){openAdvancedWorkshop(pair[0]);}}));});
     }
-    return screen('', [nav, header, level, hidden, suggestLink, body, finish, bar]);
+    return screen('', [nav, header, CPW.presentationChoices?CPW.presentationChoices.link():null, level, hidden, suggestLink, body, finish, bar]);
   };
 
   /* ============================================================
@@ -2756,6 +2747,7 @@
       tagCard.appendChild(tagInput);
       host.appendChild(tagCard);
 
+      if(CPW.presentationChoices)host.appendChild(CPW.presentationChoices.link());
       if(CPW.presentation)host.appendChild(CPW.presentation.controls(o,draw));
       var opts_ = ui.el('div', { class: 'card card--quiet' }, [
         ui.el('h2', { class: 'card-title', text: '出力に足すもの' }),
