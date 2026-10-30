@@ -1,0 +1,1721 @@
+{
+ "generatedBy": "scripts/expansion-ledger.cjs",
+ "note": "ガチャ174件のA/B/C/D判定は、新規172候補の existing_reproducibility とは別集合・別集計。",
+ "summary": {
+  "total": 174,
+  "byClassification": {
+   "A": 53,
+   "B": 44,
+   "C": 68,
+   "D": 9
+  },
+  "byStatus": {
+   "existing": 53,
+   "recipe_preset": 32,
+   "implemented": 25,
+   "existing_preset_with_alias": 12,
+   "existing_alternative": 9,
+   "deferred": 43
+  }
+ },
+ "rows": [
+  {
+   "gachaId": "three_piece",
+   "nameJa": "スリーピーススーツ",
+   "gachaCategory": "suit",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:business_suit",
+    "p:three_piece_butler"
+   ]
+  },
+  {
+   "gachaId": "slim_suit",
+   "nameJa": "細身のスーツ",
+   "gachaCategory": "suit",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_slim_suit"
+   ]
+  },
+  {
+   "gachaId": "open_collar_suit",
+   "nameJa": "ノーネクタイのスーツ",
+   "gachaCategory": "suit",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_open_collar_suit"
+   ]
+  },
+  {
+   "gachaId": "double_breasted",
+   "nameJa": "ダブルのスーツ",
+   "gachaCategory": "suit",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_double_breasted"
+   ]
+  },
+  {
+   "gachaId": "tuxedo",
+   "nameJa": "タキシード",
+   "gachaCategory": "suit",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:tuxedo_formal",
+    "g:tuxedo"
+   ]
+  },
+  {
+   "gachaId": "waistcoat_shirt",
+   "nameJa": "ベストとシャツ",
+   "gachaCategory": "suit",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:business_suit",
+    "p:cafe_waistcoat"
+   ]
+  },
+  {
+   "gachaId": "trench_suit",
+   "nameJa": "トレンチコートとスーツ",
+   "gachaCategory": "suit",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_trench_suit"
+   ]
+  },
+  {
+   "gachaId": "chester_coat",
+   "nameJa": "チェスターコート",
+   "gachaCategory": "suit",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:winter_long_coat"
+   ]
+  },
+  {
+   "gachaId": "mafia_coat",
+   "nameJa": "肩掛けコートのマフィア",
+   "gachaCategory": "suit",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "p:mafia_suit",
+    "o:cover_up.full_back_cape"
+   ]
+  },
+  {
+   "gachaId": "butler",
+   "nameJa": "執事服",
+   "gachaCategory": "suit",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:tailcoat_suit",
+    "p:court_tailcoat"
+   ]
+  },
+  {
+   "gachaId": "tailcoat_evening",
+   "nameJa": "燕尾服",
+   "gachaCategory": "suit",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:tailcoat_suit",
+    "p:court_tailcoat"
+   ]
+  },
+  {
+   "gachaId": "knit_coat",
+   "nameJa": "ニットとロングコート",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:winter_long_coat"
+   ]
+  },
+  {
+   "gachaId": "white_shirt",
+   "nameJa": "白シャツとスラックス",
+   "gachaCategory": "casual",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:shirt_and_trousers"
+   ]
+  },
+  {
+   "gachaId": "linen_shirt",
+   "nameJa": "リネンシャツ",
+   "gachaCategory": "casual",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:linen_shirt_wide_trousers",
+    "p:summer_linen"
+   ]
+  },
+  {
+   "gachaId": "cardigan",
+   "nameJa": "カーディガンとシャツ",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_cardigan"
+   ]
+  },
+  {
+   "gachaId": "turtleneck_jacket",
+   "nameJa": "タートルネックとジャケット",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_turtleneck_jacket"
+   ]
+  },
+  {
+   "gachaId": "hoodie_street",
+   "nameJa": "パーカーのストリート",
+   "gachaCategory": "casual",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:hoodie_and_cargo",
+    "p:daily_casual"
+   ]
+  },
+  {
+   "gachaId": "leather_jacket",
+   "nameJa": "レザージャケット",
+   "gachaCategory": "casual",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:biker_leather"
+   ]
+  },
+  {
+   "gachaId": "denim_jacket",
+   "nameJa": "デニムジャケット",
+   "gachaCategory": "casual",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:denim_jacket_daily"
+   ]
+  },
+  {
+   "gachaId": "mods_coat",
+   "nameJa": "モッズコート",
+   "gachaCategory": "casual",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:mods_parka"
+   ]
+  },
+  {
+   "gachaId": "sweater_scarf",
+   "nameJa": "セーターとマフラー",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_sweater_scarf"
+   ]
+  },
+  {
+   "gachaId": "techwear",
+   "nameJa": "テックウェア",
+   "gachaCategory": "casual",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:hoodie_and_cargo",
+    "p:techwear"
+   ]
+  },
+  {
+   "gachaId": "sportswear",
+   "nameJa": "スポーツウェア",
+   "gachaCategory": "casual",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:track_suit_sport"
+   ]
+  },
+  {
+   "gachaId": "aloha",
+   "nameJa": "開襟アロハシャツ",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_aloha"
+   ]
+  },
+  {
+   "gachaId": "punk",
+   "nameJa": "パンクファッション",
+   "gachaCategory": "casual",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "mode_black",
+   "nameJa": "モードな黒装束",
+   "gachaCategory": "casual",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:long_coat",
+    "p:asymmetric_mode"
+   ]
+  },
+  {
+   "gachaId": "oversized_tee_wide",
+   "nameJa": "オーバーサイズTシャツとワイドパンツ",
+   "gachaCategory": "daily",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_oversized_tee_wide"
+   ]
+  },
+  {
+   "gachaId": "crewneck_knit",
+   "nameJa": "ゆるいクルーネックニットとスラックス",
+   "gachaCategory": "daily",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:crewneck_knit_and_chinos"
+   ]
+  },
+  {
+   "gachaId": "zip_hoodie_tee",
+   "nameJa": "ジップパーカーと無地のTシャツ",
+   "gachaCategory": "daily",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_zip_hoodie_tee"
+   ]
+  },
+  {
+   "gachaId": "camp_collar_shirt",
+   "nameJa": "開襟シャツとTシャツ",
+   "gachaCategory": "daily",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_camp_collar_shirt"
+   ]
+  },
+  {
+   "gachaId": "jacket_tee",
+   "nameJa": "シンプルなジャケットとTシャツ",
+   "gachaCategory": "daily",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "drape_shirt_wide",
+   "nameJa": "落ち感のあるシャツとワイドスラックス",
+   "gachaCategory": "daily",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:linen_shirt_wide_trousers",
+    "p:summer_linen"
+   ]
+  },
+  {
+   "gachaId": "half_zip_knit",
+   "nameJa": "ハーフジップニットとストレートパンツ",
+   "gachaCategory": "daily",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "sweat_easy",
+   "nameJa": "スウェットとイージーパンツ",
+   "gachaCategory": "daily",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:sweatshirt_and_joggers"
+   ]
+  },
+  {
+   "gachaId": "sheer_shirt",
+   "nameJa": "シアーシャツとインナー",
+   "gachaCategory": "daily",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "short_blouson",
+   "nameJa": "短丈ブルゾンと無地のインナー",
+   "gachaCategory": "daily",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "p:bomber_jacket"
+   ]
+  },
+  {
+   "gachaId": "royal_uniform",
+   "nameJa": "王族の礼装",
+   "gachaCategory": "court",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:royal_uniform",
+    "p:royalty"
+   ]
+  },
+  {
+   "gachaId": "aristocrat_coat",
+   "nameJa": "高襟の貴族服",
+   "gachaCategory": "court",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "g:frock_coat_suit"
+   ]
+  },
+  {
+   "gachaId": "prince_cape",
+   "nameJa": "マントの王子服",
+   "gachaCategory": "court",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:royal_uniform",
+    "p:prince_half_cape"
+   ]
+  },
+  {
+   "gachaId": "emperor_robe",
+   "nameJa": "戴冠の皇帝衣",
+   "gachaCategory": "court",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "rococo",
+   "nameJa": "ロココの貴公子",
+   "gachaCategory": "court",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "regency",
+   "nameJa": "リージェンシーの燕尾",
+   "gachaCategory": "court",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:tailcoat_suit",
+    "p:court_tailcoat"
+   ]
+  },
+  {
+   "gachaId": "victorian_frock",
+   "nameJa": "ヴィクトリアンのフロックコート",
+   "gachaCategory": "court",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "g:frock_coat_suit"
+   ]
+  },
+  {
+   "gachaId": "vampire_noble",
+   "nameJa": "吸血鬼の夜会服",
+   "gachaCategory": "court",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:gothic_tailcoat"
+   ]
+  },
+  {
+   "gachaId": "riding_habit",
+   "nameJa": "乗馬服",
+   "gachaCategory": "court",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "military_dress",
+   "nameJa": "軍の礼装",
+   "gachaCategory": "military",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_military_dress"
+   ]
+  },
+  {
+   "gachaId": "officer_coat",
+   "nameJa": "将校のロングコート",
+   "gachaCategory": "military",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "g:long_coat",
+    "o:shoulders.epaulettes"
+   ]
+  },
+  {
+   "gachaId": "field_uniform",
+   "nameJa": "野戦服",
+   "gachaCategory": "military",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_field_uniform"
+   ]
+  },
+  {
+   "gachaId": "naval_uniform",
+   "nameJa": "海軍士官服",
+   "gachaCategory": "military",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_naval_uniform"
+   ]
+  },
+  {
+   "gachaId": "gakuran_retro",
+   "nameJa": "詰襟の学生服風",
+   "gachaCategory": "military",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:gakuran_uniform",
+    "p:gakuran_student"
+   ]
+  },
+  {
+   "gachaId": "police_detective",
+   "nameJa": "刑事のコート",
+   "gachaCategory": "military",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_police_detective"
+   ]
+  },
+  {
+   "gachaId": "pilot_jacket",
+   "nameJa": "フライトジャケット",
+   "gachaCategory": "military",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:bomber_jacket"
+   ]
+  },
+  {
+   "gachaId": "plate_armor",
+   "nameJa": "騎士の甲冑",
+   "gachaCategory": "armor",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "light_armor",
+   "nameJa": "軽装の騎士服",
+   "gachaCategory": "armor",
+   "classification": "D",
+   "status": "existing_alternative",
+   "refs": [
+    "g:lamellar_armor_set",
+    "g:quilted_gambeson"
+   ]
+  },
+  {
+   "gachaId": "holy_knight",
+   "nameJa": "聖騎士の白銀鎧",
+   "gachaCategory": "armor",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "dark_knight",
+   "nameJa": "黒騎士の鎧",
+   "gachaCategory": "armor",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "mercenary",
+   "nameJa": "傭兵の装備",
+   "gachaCategory": "armor",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "ranger",
+   "nameJa": "森の狩人",
+   "gachaCategory": "armor",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "gladiator",
+   "nameJa": "剣闘士",
+   "gachaCategory": "armor",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "viking",
+   "nameJa": "北方の戦士",
+   "gachaCategory": "armor",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "assassin",
+   "nameJa": "暗殺者の装束",
+   "gachaCategory": "armor",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "p:shinobi"
+   ]
+  },
+  {
+   "gachaId": "pirate",
+   "nameJa": "海賊船長",
+   "gachaCategory": "armor",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:pirate_captain"
+   ]
+  },
+  {
+   "gachaId": "mage_robe",
+   "nameJa": "魔術師のローブ",
+   "gachaCategory": "mage",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:mage_robe",
+    "p:mage"
+   ]
+  },
+  {
+   "gachaId": "archmage",
+   "nameJa": "大魔導師の外套",
+   "gachaCategory": "mage",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:mage_robe",
+    "p:star_astronomer"
+   ]
+  },
+  {
+   "gachaId": "witch_hunter",
+   "nameJa": "魔女狩りの外套",
+   "gachaCategory": "mage",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:witch_hunter_tabard"
+   ]
+  },
+  {
+   "gachaId": "priest_cassock",
+   "nameJa": "神父のカソック",
+   "gachaCategory": "mage",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:priest_cassock"
+   ]
+  },
+  {
+   "gachaId": "cardinal",
+   "nameJa": "高位聖職者の法衣",
+   "gachaCategory": "mage",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:priest_robe",
+    "p:ritual_priest"
+   ]
+  },
+  {
+   "gachaId": "oracle",
+   "nameJa": "神託の白衣",
+   "gachaCategory": "mage",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "necromancer",
+   "nameJa": "死霊術師の装束",
+   "gachaCategory": "mage",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "alchemist",
+   "nameJa": "錬金術師のコート",
+   "gachaCategory": "mage",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "fallen_angel",
+   "nameJa": "堕天の装束",
+   "gachaCategory": "mage",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_fallen_angel"
+   ]
+  },
+  {
+   "gachaId": "kimono_haori",
+   "nameJa": "着物と羽織",
+   "gachaCategory": "japanese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:kimono"
+   ]
+  },
+  {
+   "gachaId": "montsuki",
+   "nameJa": "紋付袴",
+   "gachaCategory": "japanese",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:haori_student"
+   ]
+  },
+  {
+   "gachaId": "samurai",
+   "nameJa": "侍の装束",
+   "gachaCategory": "japanese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:hakama_outfit"
+   ]
+  },
+  {
+   "gachaId": "yukata",
+   "nameJa": "浴衣",
+   "gachaCategory": "japanese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:yukata"
+   ]
+  },
+  {
+   "gachaId": "loose_kimono",
+   "nameJa": "着崩した着物",
+   "gachaCategory": "japanese",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_loose_kimono"
+   ]
+  },
+  {
+   "gachaId": "kariginu",
+   "nameJa": "狩衣（陰陽師）",
+   "gachaCategory": "japanese",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:onmyoji_kariginu"
+   ]
+  },
+  {
+   "gachaId": "sokutai",
+   "nameJa": "束帯（平安装束）",
+   "gachaCategory": "japanese",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "shinobi",
+   "nameJa": "忍装束",
+   "gachaCategory": "japanese",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:shinobi"
+   ]
+  },
+  {
+   "gachaId": "taisho_shosei",
+   "nameJa": "大正の書生",
+   "gachaCategory": "japanese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:haori_hakama",
+    "p:haori_student"
+   ]
+  },
+  {
+   "gachaId": "monk_kesa",
+   "nameJa": "僧衣と袈裟",
+   "gachaCategory": "japanese",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "ronin",
+   "nameJa": "浪人の旅装",
+   "gachaCategory": "japanese",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "ryukyu_kariyushi",
+   "nameJa": "かりゆし",
+   "gachaCategory": "japanese",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_ryukyu_kariyushi"
+   ]
+  },
+  {
+   "gachaId": "hanfu_scholar",
+   "nameJa": "書生の漢服",
+   "gachaCategory": "chinese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:hanfu"
+   ]
+  },
+  {
+   "gachaId": "hanfu_noble",
+   "nameJa": "宮廷の華服",
+   "gachaCategory": "chinese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:eastern_cloak_robe",
+    "p:eastern_long_coat"
+   ]
+  },
+  {
+   "gachaId": "dragon_robe",
+   "nameJa": "龍袍",
+   "gachaCategory": "chinese",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_dragon_robe"
+   ]
+  },
+  {
+   "gachaId": "wuxia_swordsman",
+   "nameJa": "武侠の剣客",
+   "gachaCategory": "chinese",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "changshan",
+   "nameJa": "長衫",
+   "gachaCategory": "chinese",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:changshan"
+   ]
+  },
+  {
+   "gachaId": "taoist",
+   "nameJa": "道士の道袍",
+   "gachaCategory": "chinese",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "hanbok_dopo",
+   "nameJa": "道袍（韓服）",
+   "gachaCategory": "chinese",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "mongol_deel",
+   "nameJa": "デール（草原の装束）",
+   "gachaCategory": "chinese",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:steppe_deel"
+   ]
+  },
+  {
+   "gachaId": "sherwani",
+   "nameJa": "シェルワニ",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:sherwani_formal"
+   ]
+  },
+  {
+   "gachaId": "kurta",
+   "nameJa": "クルタ",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:kurta_casual"
+   ]
+  },
+  {
+   "gachaId": "desert_prince",
+   "nameJa": "砂漠の王子",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "bisht",
+   "nameJa": "ビシュト",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "persian_prince",
+   "nameJa": "ペルシアの貴公子",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "ottoman_kaftan",
+   "nameJa": "オスマンのカフタン",
+   "gachaCategory": "world",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_ottoman_kaftan"
+   ]
+  },
+  {
+   "gachaId": "silk_road",
+   "nameJa": "シルクロードの旅装",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "burnous",
+   "nameJa": "フード付きバーヌース",
+   "gachaCategory": "world",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:traveling_robe",
+    "p:desert_traveler"
+   ]
+  },
+  {
+   "gachaId": "agbada",
+   "nameJa": "アグバダ",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "g:boubou"
+   ]
+  },
+  {
+   "gachaId": "kente_stole",
+   "nameJa": "ケンテ織りのストール",
+   "gachaCategory": "world",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_kente_stole"
+   ]
+  },
+  {
+   "gachaId": "shuka_beads",
+   "nameJa": "シュカとビーズ装飾",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "batik_shirt",
+   "nameJa": "バティックシャツ",
+   "gachaCategory": "world",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_batik_shirt"
+   ]
+  },
+  {
+   "gachaId": "slavic_kaftan",
+   "nameJa": "スラヴの刺繍カフタン",
+   "gachaCategory": "world",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_slavic_kaftan"
+   ]
+  },
+  {
+   "gachaId": "celtic_cloak",
+   "nameJa": "ケルトのマント",
+   "gachaCategory": "world",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_celtic_cloak"
+   ]
+  },
+  {
+   "gachaId": "norse_tunic",
+   "nameJa": "北欧の刺繍チュニック",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "greek_himation",
+   "nameJa": "ヒマティオン",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:greek_chiton"
+   ]
+  },
+  {
+   "gachaId": "andean_poncho",
+   "nameJa": "アンデスのポンチョ",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:andean_poncho"
+   ]
+  },
+  {
+   "gachaId": "feather_regalia",
+   "nameJa": "羽飾りの儀礼装束",
+   "gachaCategory": "world",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "gothic_coat",
+   "nameJa": "ゴシックロングコート",
+   "gachaCategory": "dark",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:tailcoat_suit",
+    "p:gothic_tailcoat"
+   ]
+  },
+  {
+   "gachaId": "host_suit",
+   "nameJa": "ホストのスーツ",
+   "gachaCategory": "dark",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:mafia_suit"
+   ]
+  },
+  {
+   "gachaId": "bartender",
+   "nameJa": "バーテンダー",
+   "gachaCategory": "dark",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:business_suit",
+    "p:cafe_waistcoat"
+   ]
+  },
+  {
+   "gachaId": "cloak_mystery",
+   "nameJa": "黒い外套の旅人",
+   "gachaCategory": "dark",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:traveling_robe"
+   ]
+  },
+  {
+   "gachaId": "masquerade",
+   "nameJa": "仮面舞踏会の装い",
+   "gachaCategory": "dark",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:gothic_tailcoat"
+   ]
+  },
+  {
+   "gachaId": "demon_lord",
+   "nameJa": "魔王の装束",
+   "gachaCategory": "dark",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "cyber_jacket",
+   "nameJa": "サイバーパンクのジャケット",
+   "gachaCategory": "sf",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "android_bodysuit",
+   "nameJa": "アンドロイドの衣装",
+   "gachaCategory": "sf",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "space_captain",
+   "nameJa": "宇宙艦長の制服",
+   "gachaCategory": "sf",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_space_captain"
+   ]
+  },
+  {
+   "gachaId": "pilot_suit",
+   "nameJa": "パイロットスーツ",
+   "gachaCategory": "sf",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:flight_suit",
+    "p:pilot_flight"
+   ]
+  },
+  {
+   "gachaId": "scavenger",
+   "nameJa": "終末の放浪者",
+   "gachaCategory": "sf",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "lab_coat",
+   "nameJa": "白衣",
+   "gachaCategory": "sf",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:laboratory_coat_outfit",
+    "p:lab_coat"
+   ]
+  },
+  {
+   "gachaId": "hacker",
+   "nameJa": "ハッカーの部屋着",
+   "gachaCategory": "sf",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:hoodie_and_cargo",
+    "p:daily_casual"
+   ]
+  },
+  {
+   "gachaId": "chef",
+   "nameJa": "シェフコート",
+   "gachaCategory": "work",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:chef_whites"
+   ]
+  },
+  {
+   "gachaId": "barista",
+   "nameJa": "カフェエプロン",
+   "gachaCategory": "work",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:apron_shirt_outfit",
+    "p:florist_apron"
+   ]
+  },
+  {
+   "gachaId": "doctor_scrubs",
+   "nameJa": "医師のスクラブ",
+   "gachaCategory": "work",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:lab_coat"
+   ]
+  },
+  {
+   "gachaId": "firefighter",
+   "nameJa": "消防服",
+   "gachaCategory": "work",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:firefighter"
+   ]
+  },
+  {
+   "gachaId": "artist_smock",
+   "nameJa": "画家のスモック",
+   "gachaCategory": "work",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:apron_shirt_outfit",
+    "p:painter_workwear"
+   ]
+  },
+  {
+   "gachaId": "tailor_vest",
+   "nameJa": "仕立て屋のベスト",
+   "gachaCategory": "work",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:business_suit",
+    "p:cafe_waistcoat"
+   ]
+  },
+  {
+   "gachaId": "idol_stage",
+   "nameJa": "アイドルの衣装",
+   "gachaCategory": "stage",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:sequin_stage_suit"
+   ]
+  },
+  {
+   "gachaId": "rock_star",
+   "nameJa": "ロックスター",
+   "gachaCategory": "stage",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "p:biker_leather"
+   ]
+  },
+  {
+   "gachaId": "ringmaster",
+   "nameJa": "サーカスの団長",
+   "gachaCategory": "stage",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:tailcoat_suit",
+    "p:circus_ringmaster"
+   ]
+  },
+  {
+   "gachaId": "magician",
+   "nameJa": "奇術師の燕尾",
+   "gachaCategory": "stage",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:stage_magician_outfit",
+    "p:cape_magician"
+   ]
+  },
+  {
+   "gachaId": "dancer",
+   "nameJa": "舞踊家の衣装",
+   "gachaCategory": "stage",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "noh_actor",
+   "nameJa": "能楽師の装束",
+   "gachaCategory": "stage",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "bard",
+   "nameJa": "吟遊詩人",
+   "gachaCategory": "stage",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:doublet_bard"
+   ]
+  },
+  {
+   "gachaId": "adventurer",
+   "nameJa": "冒険者の旅装",
+   "gachaCategory": "armor",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:adventurer_outfit",
+    "p:dust_travel_clothes"
+   ]
+  },
+  {
+   "gachaId": "detective_inverness",
+   "nameJa": "インバネスコートの探偵",
+   "gachaCategory": "suit",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "steampunk_engineer",
+   "nameJa": "スチームパンクの機関士",
+   "gachaCategory": "sf",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:business_suit",
+    "p:clockwork_suit"
+   ]
+  },
+  {
+   "gachaId": "sky_pirate",
+   "nameJa": "空賊の外套",
+   "gachaCategory": "sf",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "winter_noble",
+   "nameJa": "毛皮の外套",
+   "gachaCategory": "court",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:long_coat",
+    "p:snow_winter_coat"
+   ]
+  },
+  {
+   "gachaId": "pajamas",
+   "nameJa": "くつろぎの部屋着",
+   "gachaCategory": "casual",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:buttoned_pajama_set",
+    "p:silk_pajamas"
+   ]
+  },
+  {
+   "gachaId": "bathrobe",
+   "nameJa": "バスローブ",
+   "gachaCategory": "casual",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:bathrobe_rest"
+   ]
+  },
+  {
+   "gachaId": "maid_classic",
+   "nameJa": "メイド服（ロング）",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:classic_maid_dress",
+    "p:classic_maid"
+   ]
+  },
+  {
+   "gachaId": "maid_mini",
+   "nameJa": "ミニスカメイド",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:cafe_maid_outfit"
+   ]
+  },
+  {
+   "gachaId": "bikini",
+   "nameJa": "ビキニ",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:bikini"
+   ]
+  },
+  {
+   "gachaId": "string_bikini",
+   "nameJa": "紐ビキニ",
+   "gachaCategory": "cosplay",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_string_bikini"
+   ]
+  },
+  {
+   "gachaId": "swim_trunks",
+   "nameJa": "水着と開襟シャツ",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:swim_trunks"
+   ]
+  },
+  {
+   "gachaId": "nurse_mini",
+   "nameJa": "ミニスカナース",
+   "gachaCategory": "cosplay",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:nurse_costume"
+   ]
+  },
+  {
+   "gachaId": "sailor_suit",
+   "nameJa": "ミニスカセーラー服",
+   "gachaCategory": "cosplay",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:sailor_student"
+   ]
+  },
+  {
+   "gachaId": "bunny_boy",
+   "nameJa": "バニーボーイ",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:classic_bunny_suit",
+    "p:classic_bunny"
+   ]
+  },
+  {
+   "gachaId": "reverse_bunny",
+   "nameJa": "逆バニー",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:reverse_bunny_suit",
+    "p:reverse_bunny"
+   ]
+  },
+  {
+   "gachaId": "china_mini",
+   "nameJa": "ミニスカチャイナ",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:qipao",
+    "p:qipao_style"
+   ]
+  },
+  {
+   "gachaId": "police_mini",
+   "nameJa": "ミニスカポリス",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:fictional_police_uniform",
+    "p:fictional_police"
+   ]
+  },
+  {
+   "gachaId": "santa_mini",
+   "nameJa": "ミニスカサンタ",
+   "gachaCategory": "cosplay",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:santa_skirt"
+   ]
+  },
+  {
+   "gachaId": "cheerleader",
+   "nameJa": "チアリーダー",
+   "gachaCategory": "cosplay",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:cheerleader"
+   ]
+  },
+  {
+   "gachaId": "harness_shirt",
+   "nameJa": "ハーネスと開襟シャツ",
+   "gachaCategory": "cosplay",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_harness_shirt"
+   ]
+  },
+  {
+   "gachaId": "ringleader",
+   "nameJa": "サーカス団長",
+   "gachaCategory": "cosplay",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:tailcoat_suit",
+    "p:circus_ringmaster"
+   ]
+  },
+  {
+   "gachaId": "chore_workwear",
+   "nameJa": "チョアジャケットのワークウェア",
+   "gachaCategory": "work",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "canvas_apron",
+   "nameJa": "厚手のエプロンと作業着",
+   "gachaCategory": "work",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:apron_shirt_outfit"
+   ]
+  },
+  {
+   "gachaId": "utility_vest",
+   "nameJa": "都会派ユーティリティベスト",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_utility_vest"
+   ]
+  },
+  {
+   "gachaId": "knit_polo",
+   "nameJa": "上質なニットポロ",
+   "gachaCategory": "daily",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "minimal_blazer",
+   "nameJa": "ミニマルなジャケットの装い",
+   "gachaCategory": "daily",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_minimal_blazer"
+   ]
+  },
+  {
+   "gachaId": "tweed_sports_coat",
+   "nameJa": "ツイードのジャケット",
+   "gachaCategory": "casual",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:dark_academia_coat"
+   ]
+  },
+  {
+   "gachaId": "open_three_piece",
+   "nameJa": "ノーネクタイの三つ揃い",
+   "gachaCategory": "suit",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:three_piece_butler"
+   ]
+  },
+  {
+   "gachaId": "wool_overcoat_scarf",
+   "nameJa": "長いウールコートとマフラー",
+   "gachaCategory": "suit",
+   "classification": "A",
+   "status": "existing",
+   "refs": [
+    "g:long_coat",
+    "p:winter_long_coat"
+   ]
+  },
+  {
+   "gachaId": "belle_epoque_suit",
+   "nameJa": "ベル・エポックのスーツ",
+   "gachaCategory": "suit",
+   "classification": "C",
+   "status": "existing_alternative",
+   "refs": [
+    "g:frock_coat_suit"
+   ]
+  },
+  {
+   "gachaId": "renaissance_doublet",
+   "nameJa": "ルネサンスのダブレット",
+   "gachaCategory": "court",
+   "classification": "C",
+   "status": "implemented",
+   "refs": [
+    "p:doublet_bard"
+   ]
+  },
+  {
+   "gachaId": "art_nouveau_formal",
+   "nameJa": "曲線意匠の礼服",
+   "gachaCategory": "court",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_art_nouveau_formal"
+   ]
+  },
+  {
+   "gachaId": "bandhgala",
+   "nameJa": "バンドガラ",
+   "gachaCategory": "world",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_bandhgala"
+   ]
+  },
+  {
+   "gachaId": "woven_coastal_cloak",
+   "nameJa": "織りのマントと重ねたチュニック",
+   "gachaCategory": "world",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "dieselpunk_flight",
+   "nameJa": "ディーゼルパンクの飛行服",
+   "gachaCategory": "military",
+   "classification": "B",
+   "status": "existing_preset_with_alias",
+   "refs": [
+    "p:pilot_flight"
+   ]
+  },
+  {
+   "gachaId": "solarpunk_utility",
+   "nameJa": "ソーラーパンクの作業服",
+   "gachaCategory": "sf",
+   "classification": "C",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "deep_sea_suit",
+   "nameJa": "深海探査隊の制服",
+   "gachaCategory": "sf",
+   "classification": "D",
+   "status": "deferred",
+   "refs": []
+  },
+  {
+   "gachaId": "orbital_diplomat",
+   "nameJa": "軌道都市の外交官礼装",
+   "gachaCategory": "sf",
+   "classification": "B",
+   "status": "recipe_preset",
+   "refs": [
+    "p:recipe_orbital_diplomat"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,8468 @@
+{
+ "generatedBy": "scripts/expansion-ledger.cjs",
+ "sourceCommitOfResearch": "185380d5ff087a92d7452c7c9a73f4c193adc395",
+ "summary": {
+  "total": 172,
+  "byFinalStatus": {
+   "implemented": 111,
+   "existing_alternative": 26,
+   "deferred": 26,
+   "merged": 9
+  },
+  "byReproducibility": {
+   "A": 82,
+   "B": 29,
+   "C": 45,
+   "D": 16
+  },
+  "targetKinds": {
+   "basic_garment": 31,
+   "part": 3,
+   "special_feature": 2,
+   "preset": 7,
+   "existing_base_sufficient": 9,
+   "new_base_required": 33,
+   "structured_recipe": 46,
+   "new_garment_text": 36,
+   "new_category_candidate": 5
+  },
+  "priorityScales": {
+   "high/medium": 42,
+   "P0-P3": 130
+  },
+  "reproducibilityTargetConflicts": 71,
+  "unresolvedIdReferences": []
+ },
+ "candidates": [
+  {
+   "provisionalId": "cosplay_heraldic_tabard",
+   "nameJa": "抽象紋章のタバード",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "layered_ritual_robes",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:tabard_tunic",
+    "p:heraldic_tabard",
+    "d:heraldic_panels"
+   ],
+   "reasonJa": "短いT字外衣を基本衣装化し、紋章パネルを装飾として追加"
+  },
+  {
+   "provisionalId": "cosplay_scale_panel_mantle",
+   "nameJa": "鱗パネルの肩マント",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "scale_armor",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:cape_coat",
+    "m:scale_armor"
+   ],
+   "reasonJa": "ケープコート＋鱗鎧素材で再現。独立構造の差が小さい"
+  },
+  {
+   "provisionalId": "cosplay_wayfinder_split_coat",
+   "nameJa": "分割前身頃の道案内人コート",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:traveling_robe",
+    "g:long_coat"
+   ],
+   "reasonJa": "旅装ローブ／ロングコートと非対称部位で再現"
+  },
+  {
+   "provisionalId": "cosplay_runeweaver_stole_tunic",
+   "nameJa": "二重ストールの術式チュニック",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "mage_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "priest_robe",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:mage_robe",
+    "g:priest_robe"
+   ],
+   "reasonJa": "既存ローブ＋羽織りで再現"
+  },
+  {
+   "provisionalId": "cosplay_citadel_paneled_cape",
+   "nameJa": "八枚パネルの城塞肩ケープ",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "part",
+    "raw": "part"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "school_cape",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "八枚パネルのケープは新しい羽織り構造が必要。今回は保留"
+  },
+  {
+   "provisionalId": "cosplay_thorn_guard_gambeson",
+   "nameJa": "茨守りのキルティング胴着",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:quilted_gambeson",
+    "p:gambeson_guard"
+   ],
+   "reasonJa": "キルティング胴着を基本衣装化（fantasy_quilted_gambeson と統合）"
+  },
+  {
+   "provisionalId": "cosplay_crystal_cage_overskirt",
+   "nameJa": "結晶格子オーバースカート",
+   "category": "ファンタジー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "special_feature",
+    "raw": "special_feature"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "layered_ritual_robes",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "結晶格子のオーバースカートは新しい特殊構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_apiary_veil_smock",
+   "nameJa": "ベールフードの養蜂作業スモック",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "forest_herbalist",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:beekeeping_suit",
+    "p:beekeeper"
+   ],
+   "reasonJa": "ベール付きフードの養蜂作業着（beekeeping_veil_suit と統合）"
+  },
+  {
+   "provisionalId": "cosplay_forge_split_apron_suit",
+   "nameJa": "分割前垂れの鍛冶作業スーツ",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:blacksmith_workwear",
+    "p:blacksmith"
+   ],
+   "reasonJa": "分割前垂れの鍛冶作業着"
+  },
+  {
+   "provisionalId": "cosplay_market_pastry_uniform",
+   "nameJa": "市場菓子職人のショートコート制服",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "preset"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cafe_waistcoat",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:pastry_chef_uniform",
+    "p:chef_whites"
+   ],
+   "reasonJa": "パティシエ制服を基本衣装化"
+  },
+  {
+   "provisionalId": "cosplay_field_archivist_coat",
+   "nameJa": "現地記録官の文書ポケットコート",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "laboratory_coat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "dark_academia_coat",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:laboratory_coat_outfit",
+    "p:dark_academia_coat"
+   ],
+   "reasonJa": "白衣／ダークアカデミアのコートで再現"
+  },
+  {
+   "provisionalId": "cosplay_weather_observer_anorak",
+   "nameJa": "気象観測員の計器ハーネスアノラック",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "techwear",
+      "kinds": [
+       "preset",
+       "style"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:technical_anorak"
+   ],
+   "reasonJa": "テクニカルアノラックを基本衣装化（計器ハーネスは装飾・部位で近似）"
+  },
+  {
+   "provisionalId": "cosplay_parcel_courier_sash_tunic",
+   "nameJa": "交差鞄帯の配達人チュニック",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "preset"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "suspender_shirt_trousers",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "交差鞄帯の専用部位が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_lamplighter_cape_vest",
+   "nameJa": "灯火係の肩ケープベスト",
+   "category": "職業・制服",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "prince_half_cape",
+      "kinds": [
+       "preset"
+      ]
+     },
+     {
+      "id": "long_vest_attendant",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "p:long_vest_attendant",
+    "o:cover_up.shoulder_cape"
+   ],
+   "reasonJa": "ロングベストの従者＋肩ケープで再現"
+  },
+  {
+   "provisionalId": "cosplay_harlequin_panel_jumpsuit",
+   "nameJa": "菱形パネルの道化舞台服",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "circus_ringmaster",
+      "kinds": [
+       "preset"
+      ]
+     },
+     {
+      "id": "asymmetric_mode",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:costume_jumpsuit",
+    "d:harlequin_diamonds",
+    "p:harlequin_jester"
+   ],
+   "reasonJa": "仮装ジャンプスーツ＋菱形パネル"
+  },
+  {
+   "provisionalId": "cosplay_plate_tutu_costume",
+   "nameJa": "平板ネットの舞台チュチュ衣装",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "idol_stage_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:classical_tutu",
+    "p:ballet_tutu"
+   ],
+   "reasonJa": "平板チュチュ（classical_ballet_tutu と統合）"
+  },
+  {
+   "provisionalId": "cosplay_lantern_parade_robe",
+   "nameJa": "灯籠パネルの行列ローブ",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "floating_sash_dance",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "layered_ritual_robes",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "灯籠パネルの行列ローブは発光演出との境界が未整理。保留"
+  },
+  {
+   "provisionalId": "cosplay_puppetmaster_tail_waistcoat",
+   "nameJa": "操り糸リボンのテールベスト",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "stage_magician_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:tailcoat_suit",
+    "p:cape_magician"
+   ],
+   "reasonJa": "燕尾服・マジシャン衣装で再現"
+  },
+  {
+   "provisionalId": "cosplay_aerialist_unitard_capelet",
+   "nameJa": "ケープレット付き空中演技ユニタード",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "lace_bodysuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "idol_stage_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:stage_unitard",
+    "p:aerialist_unitard"
+   ],
+   "reasonJa": "ステージユニタード＋肩ケープ（aerial_acrobat_unitard と統合）"
+  },
+  {
+   "provisionalId": "cosplay_drum_major_stage_coat",
+   "nameJa": "飾り組紐のドラムメジャー舞台コート",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "preset"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "sequin_stage_suit",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:marching_band_uniform",
+    "p:drum_major_coat"
+   ],
+   "reasonJa": "マーチングバンド制服を基本衣装化し、ドラムメジャーはプリセット"
+  },
+  {
+   "provisionalId": "cosplay_pantomime_bolero_set",
+   "nameJa": "二色ボレロのパントマイムセット",
+   "category": "ステージ・ショー",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "lace_bodysuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "stage_magician_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "二色ボレロの専用構造が未整理。保留"
+  },
+  {
+   "provisionalId": "cosplay_storybook_card_tabard",
+   "nameJa": "絵本トランプの前後タバード",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "clock_and_cards",
+      "kinds": [
+       "motif"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:tabard_tunic",
+    "mt:clock_and_cards"
+   ],
+   "reasonJa": "タバード＋主テーマ「時計とトランプ」で再現（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "cosplay_cloud_shepherd_pelerine",
+   "nameJa": "雲牧人のペルリーヌスモック",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "folk",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "ペルリーヌの専用構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_patchwork_scarecrow_overalls",
+   "nameJa": "つぎはぎ案山子のオーバーオール",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "preset"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "mended_traveler",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:bib_overalls",
+    "p:scarecrow_overalls"
+   ],
+   "reasonJa": "オーバーオール＋つぎ当ての状態"
+  },
+  {
+   "provisionalId": "cosplay_gingerbread_baker_bolero",
+   "nameJa": "菓子の家風ベーカーボレロ",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "sweets_and_witch",
+      "kinds": [
+       "motif"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "菓子の家風ボレロは食品題材の扱いが未整理。保留"
+  },
+  {
+   "provisionalId": "cosplay_windmill_miller_smock",
+   "nameJa": "風車番の袖分割スモック",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "folk",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "kaftan",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "袖分割スモックの専用構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_glasshouse_pannier_overskirt",
+   "nameJa": "温室のパニエオーバースカート",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "part",
+    "raw": "part"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "glass_and_ball",
+      "kinds": [
+       "motif"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:pannier_court_gown"
+   ],
+   "reasonJa": "パニエのコートガウンで近似"
+  },
+  {
+   "provisionalId": "cosplay_clocktower_caretaker_coat",
+   "nameJa": "時計塔管理人の段違いコート",
+   "category": "童話・物語",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "clockwork_suit",
+      "kinds": [
+       "preset"
+      ]
+     },
+     {
+      "id": "asymmetric_mode",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "p:clockwork_suit",
+    "p:asymmetric_mode"
+   ],
+   "reasonJa": "歯車金具のスチームパンク服・非対称コートで再現"
+  },
+  {
+   "provisionalId": "cosplay_cooling_tube_undersuit",
+   "nameJa": "冷却チューブの宇宙作業アンダースーツ",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "techwear",
+      "kinds": [
+       "preset",
+       "style"
+      ]
+     },
+     {
+      "id": "competition_swimsuit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:cooling_undersuit",
+    "p:space_undersuit"
+   ],
+   "reasonJa": "冷却チューブの宇宙アンダースーツ"
+  },
+  {
+   "provisionalId": "cosplay_ring_joint_pressure_shell",
+   "nameJa": "環状関節の圧力シェルスーツ",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "flight_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "techwear",
+      "kinds": [
+       "preset",
+       "style"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:pressure_suit",
+    "p:pressure_suit_astronaut"
+   ],
+   "reasonJa": "環状関節の圧力スーツ"
+  },
+  {
+   "provisionalId": "cosplay_solar_sail_fold_cape",
+   "nameJa": "折り畳みソーラーセイルケープ",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "retro_future",
+      "kinds": [
+       "worldview"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "折り畳み帆のケープは新しい構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_orbital_hard_torso_vest",
+   "nameJa": "軌道整備士の硬質トルソーベスト",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "part",
+    "raw": "part"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "techwear",
+      "kinds": [
+       "preset",
+       "style"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:pressure_suit"
+   ],
+   "reasonJa": "圧力スーツの硬質胴シェルで近似"
+  },
+  {
+   "provisionalId": "cosplay_data_courier_modular_poncho",
+   "nameJa": "データ運びのモジュラーポンチョ",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "preset"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cyber_multi_belt",
+      "kinds": [
+       "preset"
+      ]
+     },
+     {
+      "id": "techwear",
+      "kinds": [
+       "preset",
+       "style"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "着脱パネルのポンチョは新しい部位が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_relay_antenna_jacket",
+   "nameJa": "中継アンテナ襟の通信ジャケット",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cyber_multi_belt",
+      "kinds": [
+       "preset"
+      ]
+     },
+     {
+      "id": "flight_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "アンテナ襟の専用部位が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_survival_cocoon_poncho",
+   "nameJa": "緊急コクーンポンチョ",
+   "category": "SF・未来",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "snow_winter_coat",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "繭形ポンチョの専用構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_animal_playsack",
+   "nameJa": "抽象動物プレイサック",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:creature_sack_tunic"
+   ],
+   "reasonJa": "袋形の動物チュニック（着ぐるみ・顔出し）"
+  },
+  {
+   "provisionalId": "cosplay_pufferfish_inflatable_cape",
+   "nameJa": "フグ風ふくらみケープ",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ocean_shell_coral",
+      "kinds": [
+       "motif"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "フグの題材と膨らむケープ構造が未整理。保留"
+  },
+  {
+   "provisionalId": "cosplay_beetle_shell_backpack_overall",
+   "nameJa": "甲虫殻バックパックのオーバーオール",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "special_feature",
+    "raw": "special_feature"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "carnival",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "甲虫殻バックパックは背面特殊構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_fortune_cookie_tabard",
+   "nameJa": "フォーチュンクッキーの折りタバード",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "sweets_and_witch",
+      "kinds": [
+       "motif"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:tabard_tunic"
+   ],
+   "reasonJa": "タバードで近似（食品の形の表現は保留）"
+  },
+  {
+   "provisionalId": "cosplay_popcorn_box_tunic",
+   "nameJa": "ポップコーン箱チュニック",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "箱形チュニックは物体型仮装の扱いが未整理。保留"
+  },
+  {
+   "provisionalId": "cosplay_teacup_hoop_overskirt",
+   "nameJa": "ティーカップ輪郭のフープオーバースカート",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "medium",
+    "scale": "high/medium",
+    "tier": "medium",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "basic_garment",
+    "raw": "basic_garment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tea_party",
+      "kinds": [
+       "occasion"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "ティーカップ輪郭のフープは新しい構造が必要。保留"
+  },
+  {
+   "provisionalId": "cosplay_houseplant_pot_apron",
+   "nameJa": "鉢植えハウスプラントのエプロン衣装",
+   "category": "食品・日用品・動物の一般化仮装",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "high",
+    "scale": "high/medium",
+    "tier": "high",
+    "comparableRank": null,
+    "note": "P0-P3と別尺度。換算せず needs_review"
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "preset"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plants_and_vines",
+      "kinds": [
+       "motif"
+      ]
+     },
+     {
+      "id": "florist_apron",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "鉢形エプロンは新しい構造が必要。保留"
+  },
+  {
+   "provisionalId": "hanami_layered_haori",
+   "nameJa": "花見レイヤード羽織スタイル",
+   "category": "wafuku",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "modern_kimono_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "kimono",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "p:haori_student",
+    "g:modern_kimono_outfit"
+   ],
+   "reasonJa": "羽織袴・現代和装で再現"
+  },
+  {
+   "provisionalId": "furisode_hanami_ensemble",
+   "nameJa": "花見振袖アンサンブル",
+   "category": "wafuku",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "kimono",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "modern_kimono_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:furisode",
+    "p:hanami_furisode"
+   ],
+   "reasonJa": "振袖を基本衣装化"
+  },
+  {
+   "provisionalId": "easter_pinafore_bonnet_set",
+   "nameJa": "イースター・ピナフォアボンネットセット",
+   "category": "dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "maid_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "classic_maid_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:pinafore_dress",
+    "p:easter_pinafore"
+   ],
+   "reasonJa": "ピナフォアドレス＋ボンネット"
+  },
+  {
+   "provisionalId": "easter_rabbit_tailcoat_recipe",
+   "nameJa": "イースターラビット燕尾服レシピ",
+   "category": "uniform",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "classic_bunny_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:easter_rabbit_tailcoat",
+    "o:headwear.bunny_ear_headband",
+    "d:pom_pom_tail"
+   ],
+   "reasonJa": "燕尾服＋うさ耳＋ポンポン尾のプリセット"
+  },
+  {
+   "provisionalId": "spring_festival_happi_coat",
+   "nameJa": "春祭り法被コート",
+   "category": "wafuku",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "yukata",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "kimono",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:happi_coat",
+    "p:spring_happi"
+   ],
+   "reasonJa": "法被を基本衣装化"
+  },
+  {
+   "provisionalId": "maypole_folk_apron_dress",
+   "nameJa": "春祭ポールダンス民俗エプロンドレス",
+   "category": "dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "folk",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "maid_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:maypole_dirndl",
+    "g:dirndl"
+   ],
+   "reasonJa": "ディアンドル＋花冠のプリセット"
+  },
+  {
+   "provisionalId": "jinbei_set",
+   "nameJa": "甚平セット",
+   "category": "wafuku",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "yukata",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "linen_shirt_wide_trousers",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:jinbei",
+    "p:summer_jinbei"
+   ],
+   "reasonJa": "甚平を基本衣装化"
+  },
+  {
+   "provisionalId": "fireworks_yukata_recipe",
+   "nameJa": "花火浴衣レシピ",
+   "category": "wafuku",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "yukata",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:fireworks_yukata"
+   ],
+   "reasonJa": "浴衣のプリセット"
+  },
+  {
+   "provisionalId": "tanabata_tanzaku_tabard",
+   "nameJa": "七夕短冊タバード衣装",
+   "category": "top_bottom",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "haori_hakama",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "layered_ritual_robes",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:tanabata_tabard",
+    "d:tanzaku_strips"
+   ],
+   "reasonJa": "タバード＋短冊飾りのプリセット"
+  },
+  {
+   "provisionalId": "beach_cabana_set_recipe",
+   "nameJa": "海辺カバナセットレシピ",
+   "category": "top_bottom",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "linen_shirt_wide_trousers",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "swim_trunks",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "p:summer_linen"
+   ],
+   "reasonJa": "リネンシャツとワイドパンツで再現"
+  },
+  {
+   "provisionalId": "guayabera_resort_set",
+   "nameJa": "グアヤベラ・リゾートセット",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "linen_shirt_wide_trousers",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "shirt_and_trousers",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:guayabera_set",
+    "p:guayabera_resort"
+   ],
+   "reasonJa": "グアヤベラシャツの装い"
+  },
+  {
+   "provisionalId": "sarong_swim_wrap_set",
+   "nameJa": "サロン水着ラップセット",
+   "category": "swimwear",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "bikini",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "swim_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:sarong_swim_set"
+   ],
+   "reasonJa": "ビキニ＋サロン（既存の羽織り）のプリセット"
+  },
+  {
+   "provisionalId": "surf_change_poncho",
+   "nameJa": "サーフチェンジポンチョ",
+   "category": "robe",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:towel_change_poncho",
+    "p:surf_towel_poncho"
+   ],
+   "reasonJa": "タオル地の着替えポンチョ"
+  },
+  {
+   "provisionalId": "tropical_utility_romper",
+   "nameJa": "南国ユーティリティロンパース",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:utility_romper"
+   ],
+   "reasonJa": "ユーティリティロンパース（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "halloween_witch_coat_dress",
+   "nameJa": "ハロウィン魔女コートドレス",
+   "category": "dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "gothic_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "mage_robe",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:witch_coat_dress",
+    "p:halloween_witch"
+   ],
+   "reasonJa": "魔女のコートドレス"
+  },
+  {
+   "provisionalId": "halloween_witch_hunter_tabard",
+   "nameJa": "ハロウィン魔女狩りタバード",
+   "category": "uniform",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:witch_hunter_tabard"
+   ],
+   "reasonJa": "タバード＋三角帽のプリセット"
+  },
+  {
+   "provisionalId": "pumpkin_patch_overalls",
+   "nameJa": "パンプキンパッチ・オーバーオール",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "suspender_shirt_trousers",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:pumpkin_patch_overalls"
+   ],
+   "reasonJa": "オーバーオールのプリセット"
+  },
+  {
+   "provisionalId": "skeleton_bone_jumpsuit",
+   "nameJa": "スケルトンボーン・ジャンプスーツ",
+   "category": "uniform",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "flight_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:skeleton_jumpsuit",
+    "d:bone_print"
+   ],
+   "reasonJa": "仮装ジャンプスーツ＋骨格プリント"
+  },
+  {
+   "provisionalId": "scarecrow_smok_overalls",
+   "nameJa": "かかしスモック・オーバーオール",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "p:scarecrow_overalls"
+   ],
+   "reasonJa": "cosplay_patchwork_scarecrow_overalls と同一構造として統合"
+  },
+  {
+   "provisionalId": "harvest_dirndl",
+   "nameJa": "収穫祭ディアンドル",
+   "category": "dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "folk",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "maid_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:dirndl",
+    "p:harvest_dirndl"
+   ],
+   "reasonJa": "ディアンドルを基本衣装化"
+  },
+  {
+   "provisionalId": "lederhosen_harvest_set",
+   "nameJa": "収穫祭レーダーホーゼンセット",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "suspender_shirt_trousers",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "shirt_and_trousers",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:lederhosen_set",
+    "p:harvest_lederhosen"
+   ],
+   "reasonJa": "レーダーホーゼンを基本衣装化"
+  },
+  {
+   "provisionalId": "momiji_haori_recipe",
+   "nameJa": "紅葉羽織レシピ",
+   "category": "wafuku",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "haori_hakama",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hakama_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "p:haori_student"
+   ],
+   "reasonJa": "羽織袴＋配色で再現"
+  },
+  {
+   "provisionalId": "santa_fur_trim_suit",
+   "nameJa": "サンタ衣装",
+   "category": "uniform",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:santa_suit",
+    "p:santa_classic",
+    "p:santa_skirt"
+   ],
+   "reasonJa": "毛皮縁のサンタ衣装を基本衣装化"
+  },
+  {
+   "provisionalId": "christmas_tailored_suit_recipe",
+   "nameJa": "クリスマス風スーツレシピ",
+   "category": "uniform",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "business_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:christmas_tailored_suit"
+   ],
+   "reasonJa": "ビジネススーツ＋ヒイラギのプリセット"
+  },
+  {
+   "provisionalId": "christmas_elf_tunic",
+   "nameJa": "クリスマスエルフ・チュニック",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:elf_tunic_tights",
+    "p:christmas_elf"
+   ],
+   "reasonJa": "エルフのチュニック＋タイツ"
+  },
+  {
+   "provisionalId": "reindeer_hooded_onesie",
+   "nameJa": "トナカイ・フード付き着ぐるみ",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:reindeer_onesie"
+   ],
+   "reasonJa": "動物パジャマつなぎ＋題材トナカイ"
+  },
+  {
+   "provisionalId": "snowman_hooded_onesie",
+   "nameJa": "雪だるま・フード付き着ぐるみ",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:snowman_onesie"
+   ],
+   "reasonJa": "動物パジャマつなぎ＋題材雪だるま"
+  },
+  {
+   "provisionalId": "nutcracker_parade_uniform",
+   "nameJa": "くるみ割り人形パレード制服",
+   "category": "uniform",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "stand_collar_service_uniform",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:nutcracker_parade"
+   ],
+   "reasonJa": "マーチングバンド制服のプリセット"
+  },
+  {
+   "provisionalId": "advent_choir_robe",
+   "nameJa": "アドベント聖歌隊ローブ",
+   "category": "robe",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "priest_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "nun_habit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:choir_robe",
+    "p:advent_choir"
+   ],
+   "reasonJa": "聖歌隊ローブ"
+  },
+  {
+   "provisionalId": "down_parka_bib_set",
+   "nameJa": "ダウンパーカ＋ビブパンツ",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "snow_winter_coat",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:puffer_snow_bib_set",
+    "p:winter_puffer_bib"
+   ],
+   "reasonJa": "ダウン＋スノービブ（quilted_puffer_bib_set / ski_shell_bib_set と統合）"
+  },
+  {
+   "provisionalId": "ski_racing_suit",
+   "nameJa": "スキーレーシングスーツ",
+   "category": "uniform",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "flight_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:ski_race_suit"
+   ],
+   "reasonJa": "スキーレーシングスーツ（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "miko_new_year_ensemble",
+   "nameJa": "初詣巫女アンサンブル",
+   "category": "wafuku",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hakama_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "haori_hakama",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:miko_outfit",
+    "p:new_year_miko"
+   ],
+   "reasonJa": "巫女装束を基本衣装化"
+  },
+  {
+   "provisionalId": "montsuki_haori_hakama_recipe",
+   "nameJa": "年始紋付羽織袴レシピ",
+   "category": "wafuku",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "haori_hakama",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hakama_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:new_year_montsuki"
+   ],
+   "reasonJa": "羽織袴のプリセット"
+  },
+  {
+   "provisionalId": "valentine_chocolatier_uniform",
+   "nameJa": "バレンタイン・ショコラティエ制服",
+   "category": "uniform",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "stand_collar_service_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:valentine_chocolatier"
+   ],
+   "reasonJa": "パティシエ制服のプリセット"
+  },
+  {
+   "provisionalId": "valentine_heart_lolita_recipe",
+   "nameJa": "バレンタイン・ハートロリータレシピ",
+   "category": "dress",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "lolita_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:valentine_heart_lolita"
+   ],
+   "reasonJa": "ロリータドレス＋ハート柄"
+  },
+  {
+   "provisionalId": "white_day_gift_wrap_tabard",
+   "nameJa": "ホワイトデー・ギフトラップタバード",
+   "category": "top_bottom",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "suspender_shirt_trousers",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:tabard_tunic",
+    "d:ribbon_bow"
+   ],
+   "reasonJa": "タバード＋リボンで近似（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "white_day_service_tailcoat_recipe",
+   "nameJa": "ホワイトデー給仕燕尾服レシピ",
+   "category": "uniform",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "existing_base_sufficient",
+    "raw": "existing_base_sufficient"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:white_day_tailcoat"
+   ],
+   "reasonJa": "燕尾服のプリセット"
+  },
+  {
+   "provisionalId": "cupid_letter_carrier_tunic",
+   "nameJa": "バレンタイン・キューピッド配達チュニック",
+   "category": "top_bottom",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "郵便鞄・翼の組合せが特殊パーツと重なるため保留"
+  },
+  {
+   "provisionalId": "birthday_cake_apron_dress",
+   "nameJa": "誕生日ケーキエプロンドレス",
+   "category": "dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "maid_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "lolita_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:birthday_cake_apron"
+   ],
+   "reasonJa": "ピナフォアドレスのプリセット"
+  },
+  {
+   "provisionalId": "birthday_party_overall",
+   "nameJa": "誕生日パーティー・オーバーオール",
+   "category": "top_bottom",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "suspender_shirt_trousers",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:bib_overalls"
+   ],
+   "reasonJa": "オーバーオールで再現（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "pannier_ballroom_gown",
+   "nameJa": "パニエ支え舞踏会ガウン",
+   "category": "dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "masquerade_gown",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:pannier_court_gown"
+   ],
+   "reasonJa": "パニエのコートガウン（robe_a_la_francaise と統合）"
+  },
+  {
+   "provisionalId": "venetian_bauta_cloak",
+   "nameJa": "ヴェネツィア・バウタクローク",
+   "category": "robe",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "new_base_required",
+    "raw": "new_base_required"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "masquerade_gown",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:venetian_carnival_cloak",
+    "p:venetian_carnival",
+    "o:headwear.venetian_full_face_mask",
+    "o:headwear.tricorn_hat"
+   ],
+   "reasonJa": "タバロのクロークと、顔を覆う仮面を別の選択肢として追加"
+  },
+  {
+   "provisionalId": "rabbit_ear_pom_tail_accessory",
+   "nameJa": "ウサギ耳＋ポンポン尻尾アクセサリー",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存バニー衣装プリセットの派生",
+    "reuseExistingIds": [
+     "classic_bunny_suit",
+     "open_front_reverse_bunny_suit"
+    ],
+    "newSchema": [
+     "animal_ears.headband",
+     "tail_attachment.clip_on"
+    ],
+    "raw": {
+     "scope": "既存バニー衣装プリセットの派生",
+     "reuse_existing_ids": [
+      "classic_bunny_suit",
+      "open_front_reverse_bunny_suit"
+     ],
+     "new_schema": [
+      "animal_ears.headband",
+      "tail_attachment.clip_on"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "classic_bunny_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "open_front_reverse_bunny_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "classic_bunny_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "open_front_reverse_bunny_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:bunny_ear_lounge",
+    "o:headwear.bunny_ear_headband",
+    "d:pom_pom_tail"
+   ],
+   "reasonJa": "耳・尾のアクセサリー（顔出し）"
+  },
+  {
+   "provisionalId": "cat_ear_tail_street_set",
+   "nameJa": "ネコ耳＋尻尾ストリートセット",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存カジュアル衣装＋尾特殊パーツ",
+    "reuseExistingIds": [
+     "hoodie_and_cargo",
+     "tail_cat"
+    ],
+    "newSchema": [
+     "animal_ears.beanie",
+     "animal_paw_gloves"
+    ],
+    "raw": {
+     "scope": "既存カジュアル衣装＋尾特殊パーツ",
+     "reuse_existing_ids": [
+      "hoodie_and_cargo",
+      "tail_cat"
+     ],
+     "new_schema": [
+      "animal_ears.beanie",
+      "animal_paw_gloves"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tail_cat",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:cat_ear_street",
+    "o:headwear.cat_ear_beanie",
+    "d:clip_on_plush_tail"
+   ],
+   "reasonJa": "耳・尾のアクセサリー（顔出し）"
+  },
+  {
+   "provisionalId": "dog_ear_collar_tail_accessory",
+   "nameJa": "イヌ耳・首輪・尻尾アクセサリー",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規 animal_accessory_set",
+    "reuseExistingIds": [
+     "work_coveralls"
+    ],
+    "newSchema": [
+     "animal_ears.cap",
+     "animal_tail.dog_short",
+     "animal_paw_mitts"
+    ],
+    "raw": {
+     "scope": "新規 animal_accessory_set",
+     "reuse_existing_ids": [
+      "work_coveralls"
+     ],
+     "new_schema": [
+      "animal_ears.cap",
+      "animal_tail.dog_short",
+      "animal_paw_mitts"
+     ],
+     "safety_note": "首輪は装飾的な布製で、拘束具・鎖を出力しない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "o:headwear.animal_ear_headband",
+    "d:clip_on_plush_tail"
+   ],
+   "reasonJa": "動物耳カチューシャ＋飾り尾で再現（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "fox_ear_tail_stole_set",
+   "nameJa": "キツネ耳＋尾ストールセット",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存アウターと fox tail の組合せ",
+    "reuseExistingIds": [
+     "fur_coat",
+     "long_coat",
+     "tail_fox"
+    ],
+    "newSchema": [
+     "animal_ears.headband",
+     "tail_attachment.shoulder_stole"
+    ],
+    "raw": {
+     "scope": "既存アウターと fox tail の組合せ",
+     "reuse_existing_ids": [
+      "fur_coat",
+      "long_coat",
+      "tail_fox"
+     ],
+     "new_schema": [
+      "animal_ears.headband",
+      "tail_attachment.shoulder_stole"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "fur_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "fur_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tail_fox",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:fox_ear_stole"
+   ],
+   "reasonJa": "ファーコート＋耳・尾"
+  },
+  {
+   "provisionalId": "wolf_ear_tail_hood_accessory",
+   "nameJa": "オオカミ耳フード＋尾アクセサリー",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存フード付きローブの拡張",
+    "reuseExistingIds": [
+     "traveling_robe",
+     "tail_wolf"
+    ],
+    "newSchema": [
+     "animal_ears.integrated_hood",
+     "animal_claw_gloves"
+    ],
+    "raw": {
+     "scope": "既存フード付きローブの拡張",
+     "reuse_existing_ids": [
+      "traveling_robe",
+      "tail_wolf"
+     ],
+     "new_schema": [
+      "animal_ears.integrated_hood",
+      "animal_claw_gloves"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tail_wolf",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:animal_hood_capelet",
+    "c:wolf"
+   ],
+   "reasonJa": "動物フードケープ＋題材オオカミで再現"
+  },
+  {
+   "provisionalId": "bear_ear_beret_paw_set",
+   "nameJa": "クマ耳ベレー＋肉球ミトンセット",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規アクセサリー群をルームウェアへ追加",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set"
+    ],
+    "newSchema": [
+     "animal_ears.beret",
+     "animal_paw_mitts",
+     "tail_attachment.back_pin"
+    ],
+    "raw": {
+     "scope": "新規アクセサリー群をルームウェアへ追加",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set"
+     ],
+     "new_schema": [
+      "animal_ears.beret",
+      "animal_paw_mitts",
+      "tail_attachment.back_pin"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:bear_ear_beret_set",
+    "o:headwear.bear_ear_beret"
+   ],
+   "reasonJa": "クマ耳ベレー"
+  },
+  {
+   "provisionalId": "panda_ear_patch_accessory",
+   "nameJa": "パンダ耳＋アイパッチアクセサリー",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存ルームウェア派生",
+    "reuseExistingIds": [
+     "pastel_fluffy_loungewear"
+    ],
+    "newSchema": [
+     "animal_ears.headband",
+     "animal_face_applique",
+     "animal_paw_warmers"
+    ],
+    "raw": {
+     "scope": "既存ルームウェア派生",
+     "reuse_existing_ids": [
+      "pastel_fluffy_loungewear"
+     ],
+     "new_schema": [
+      "animal_ears.headband",
+      "animal_face_applique",
+      "animal_paw_warmers"
+     ],
+     "exclusions": [
+      "顔全体を覆うパンダ頭部",
+      "黒いアイマスク"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "pastel_fluffy_loungewear",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "pastel_fluffy_loungewear",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "o:headwear.animal_ear_headband",
+    "c:panda"
+   ],
+   "reasonJa": "動物耳カチューシャ／題材パンダで再現"
+  },
+  {
+   "provisionalId": "tanuki_ear_striped_tail_accessory",
+   "nameJa": "タヌキ耳＋縞尾アクセサリー",
+   "category": "animal_motif_accessory",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規動物尾の柄バリエーション",
+    "reuseExistingIds": [
+     "modern_kimono_outfit",
+     "tail_animal"
+    ],
+    "newSchema": [
+     "animal_ears.headband",
+     "animal_tail.tanuki_ringed"
+    ],
+    "raw": {
+     "scope": "新規動物尾の柄バリエーション",
+     "reuse_existing_ids": [
+      "modern_kimono_outfit",
+      "tail_animal"
+     ],
+     "new_schema": [
+      "animal_ears.headband",
+      "animal_tail.tanuki_ringed"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "modern_kimono_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "modern_kimono_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tail_animal",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "c:tanuki",
+    "g:animal_hood_jacket"
+   ],
+   "reasonJa": "題材タヌキの動物フードで再現"
+  },
+  {
+   "provisionalId": "shark_fin_hooded_poncho",
+   "nameJa": "サメ背びれフードポンチョ",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規 hooded_poncho サブタイプ",
+    "reuseExistingIds": [
+     "hoodie_and_cargo",
+     "rash_guard_set"
+    ],
+    "newSchema": [
+     "animal_hood.shark",
+     "back_fin",
+     "hood_face_opening"
+    ],
+    "raw": {
+     "scope": "新規 hooded_poncho サブタイプ",
+     "reuse_existing_ids": [
+      "hoodie_and_cargo",
+      "rash_guard_set"
+     ],
+     "new_schema": [
+      "animal_hood.shark",
+      "back_fin",
+      "hood_face_opening"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:animal_hood_poncho",
+    "p:shark_hood_poncho"
+   ],
+   "reasonJa": "動物フードポンチョ＋題材サメ"
+  },
+  {
+   "provisionalId": "penguin_hooded_cape_jacket",
+   "nameJa": "ペンギンフードケープジャケット",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "ケープコートを動物フード型へ派生",
+    "reuseExistingIds": [
+     "cape_coat"
+    ],
+    "newSchema": [
+     "animal_hood.penguin",
+     "animal_sleeves.flipper"
+    ],
+    "raw": {
+     "scope": "ケープコートを動物フード型へ派生",
+     "reuse_existing_ids": [
+      "cape_coat"
+     ],
+     "new_schema": [
+      "animal_hood.penguin",
+      "animal_sleeves.flipper"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:animal_hood_capelet",
+    "p:penguin_hood_capelet"
+   ],
+   "reasonJa": "動物フードケープ＋題材ペンギン"
+  },
+  {
+   "provisionalId": "seal_whisker_hooded_fleece",
+   "nameJa": "アザラシひげフードフリース",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存プラッシュフーディセットの動物フード派生",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set"
+    ],
+    "newSchema": [
+     "animal_hood.seal",
+     "animal_pocket_mitts"
+    ],
+    "raw": {
+     "scope": "既存プラッシュフーディセットの動物フード派生",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set"
+     ],
+     "new_schema": [
+      "animal_hood.seal",
+      "animal_pocket_mitts"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:animal_hood_jacket",
+    "c:seal"
+   ],
+   "reasonJa": "動物フードジャケット＋題材アザラシで再現"
+  },
+  {
+   "provisionalId": "dinosaur_spine_hooded_jacket",
+   "nameJa": "恐竜背びれフードジャケット",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規 animal_hooded_jacket",
+    "reuseExistingIds": [
+     "hoodie_and_cargo",
+     "quilted_panels"
+    ],
+    "newSchema": [
+     "animal_hood.dinosaur",
+     "back_spines.soft"
+    ],
+    "raw": {
+     "scope": "新規 animal_hooded_jacket",
+     "reuse_existing_ids": [
+      "hoodie_and_cargo",
+      "quilted_panels"
+     ],
+     "new_schema": [
+      "animal_hood.dinosaur",
+      "back_spines.soft"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "quilted_panels",
+      "kinds": [
+       "part_option"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:animal_hood_jacket",
+    "p:dinosaur_hood_jacket"
+   ],
+   "reasonJa": "動物フードジャケット＋題材恐竜"
+  },
+  {
+   "provisionalId": "dragon_horn_hooded_cloak",
+   "nameJa": "ドラゴン角フードクローク",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存フードローブと dragon horn・wing を衣装部品化",
+    "reuseExistingIds": [
+     "traveling_robe",
+     "horn_dragon",
+     "dragon_wings"
+    ],
+    "newSchema": [
+     "animal_hood.dragon",
+     "wing_panels.folded"
+    ],
+    "raw": {
+     "scope": "既存フードローブと dragon horn・wing を衣装部品化",
+     "reuse_existing_ids": [
+      "traveling_robe",
+      "horn_dragon",
+      "dragon_wings"
+     ],
+     "new_schema": [
+      "animal_hood.dragon",
+      "wing_panels.folded"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "horn_dragon",
+      "kinds": [
+       "special_part"
+      ]
+     },
+     {
+      "id": "dragon_wings",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:dragon_hood_cloak"
+   ],
+   "reasonJa": "動物フードケープ＋題材ドラゴン"
+  },
+  {
+   "provisionalId": "sheep_wool_hooded_vest",
+   "nameJa": "ヒツジ毛糸フードベスト",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存のふわふわカーディガンをフードベストに転用",
+    "reuseExistingIds": [
+     "fuzzy_cardigan_lounge_set"
+    ],
+    "newSchema": [
+     "animal_hood.sheep",
+     "animal_ears.soft_tabs"
+    ],
+    "raw": {
+     "scope": "既存のふわふわカーディガンをフードベストに転用",
+     "reuse_existing_ids": [
+      "fuzzy_cardigan_lounge_set"
+     ],
+     "new_schema": [
+      "animal_hood.sheep",
+      "animal_ears.soft_tabs"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "fuzzy_cardigan_lounge_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "fuzzy_cardigan_lounge_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:animal_hood_cardigan",
+    "p:sheep_hood_cardigan"
+   ],
+   "reasonJa": "ベストではなくカーディガン型で実装（袖の有無は部位で調整）"
+  },
+  {
+   "provisionalId": "reindeer_antler_hooded_cardigan",
+   "nameJa": "トナカイ枝角フードカーディガン",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存ふわふわカーディガンと既存枝角概念の季節派生",
+    "reuseExistingIds": [
+     "fuzzy_cardigan_lounge_set",
+     "horn_antler"
+    ],
+    "newSchema": [
+     "animal_hood.reindeer",
+     "soft_antlers"
+    ],
+    "raw": {
+     "scope": "既存ふわふわカーディガンと既存枝角概念の季節派生",
+     "reuse_existing_ids": [
+      "fuzzy_cardigan_lounge_set",
+      "horn_antler"
+     ],
+     "new_schema": [
+      "animal_hood.reindeer",
+      "soft_antlers"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "fuzzy_cardigan_lounge_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "fuzzy_cardigan_lounge_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "horn_antler",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:animal_hood_cardigan",
+    "c:reindeer"
+   ],
+   "reasonJa": "動物フードカーディガン＋題材トナカイで再現"
+  },
+  {
+   "provisionalId": "red_panda_ringed_hoodie",
+   "nameJa": "レッサーパンダ縞尾フーディ",
+   "category": "animal_hooded_garment",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存フーディの派生",
+    "reuseExistingIds": [
+     "hoodie_and_cargo"
+    ],
+    "newSchema": [
+     "animal_hood.red_panda",
+     "flat_tail_panel"
+    ],
+    "raw": {
+     "scope": "既存フーディの派生",
+     "reuse_existing_ids": [
+      "hoodie_and_cargo"
+     ],
+     "new_schema": [
+      "animal_hood.red_panda",
+      "flat_tail_panel"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:red_panda_hoodie"
+   ],
+   "reasonJa": "動物フードジャケット＋題材レッサーパンダ"
+  },
+  {
+   "provisionalId": "rabbit_flannel_sleep_onesie",
+   "nameJa": "ウサギフランネル寝つなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存パジャマの一体服派生",
+    "reuseExistingIds": [
+     "buttoned_pajama_set",
+     "dreamy_pastel_pajamas"
+    ],
+    "newSchema": [
+     "pajama_onesie",
+     "animal_hood.rabbit",
+     "tail_attachment.sewn"
+    ],
+    "raw": {
+     "scope": "既存パジャマの一体服派生",
+     "reuse_existing_ids": [
+      "buttoned_pajama_set",
+      "dreamy_pastel_pajamas"
+     ],
+     "new_schema": [
+      "pajama_onesie",
+      "animal_hood.rabbit",
+      "tail_attachment.sewn"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "dreamy_pastel_pajamas",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "dreamy_pastel_pajamas",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:animal_onesie",
+    "p:rabbit_onesie"
+   ],
+   "reasonJa": "動物パジャマつなぎ"
+  },
+  {
+   "provisionalId": "cat_zip_fleece_onesie",
+   "nameJa": "ネコ前ファスナーフリースつなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存つなぎをパジャマ向けに軟質化",
+    "reuseExistingIds": [
+     "work_coveralls",
+     "tail_cat"
+    ],
+    "newSchema": [
+     "pajama_onesie",
+     "animal_hood.cat",
+     "tail_attachment.sewn"
+    ],
+    "raw": {
+     "scope": "既存つなぎをパジャマ向けに軟質化",
+     "reuse_existing_ids": [
+      "work_coveralls",
+      "tail_cat"
+     ],
+     "new_schema": [
+      "pajama_onesie",
+      "animal_hood.cat",
+      "tail_attachment.sewn"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tail_cat",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:cat_onesie"
+   ],
+   "reasonJa": "動物パジャマつなぎ＋肉球の足先"
+  },
+  {
+   "provisionalId": "dog_footed_flannel_onesie",
+   "nameJa": "イヌ足付きフランネルつなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "足部一体パジャマの新規サブタイプ",
+    "reuseExistingIds": [
+     "buttoned_pajama_set"
+    ],
+    "newSchema": [
+     "pajama_onesie.footed",
+     "animal_hood.dog",
+     "paw_foot_covers"
+    ],
+    "raw": {
+     "scope": "足部一体パジャマの新規サブタイプ",
+     "reuse_existing_ids": [
+      "buttoned_pajama_set"
+     ],
+     "new_schema": [
+      "pajama_onesie.footed",
+      "animal_hood.dog",
+      "paw_foot_covers"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:animal_onesie",
+    "c:dog",
+    "o:kigurumi_feet.integrated_footies"
+   ],
+   "reasonJa": "つなぎ＋題材イヌ＋足先一体で再現"
+  },
+  {
+   "provisionalId": "fox_dropseat_sleep_onesie",
+   "nameJa": "キツネ尻尾穴つき寝つなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "尾穴と後ろ開閉を備える新規一体服",
+    "reuseExistingIds": [
+     "buttoned_pajama_set",
+     "tail_fox"
+    ],
+    "newSchema": [
+     "pajama_onesie.drop_seat",
+     "tail_port.reinforced"
+    ],
+    "raw": {
+     "scope": "尾穴と後ろ開閉を備える新規一体服",
+     "reuse_existing_ids": [
+      "buttoned_pajama_set",
+      "tail_fox"
+     ],
+     "new_schema": [
+      "pajama_onesie.drop_seat",
+      "tail_port.reinforced"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tail_fox",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:fox_onesie"
+   ],
+   "reasonJa": "キツネのつなぎ（後ろ開閉の構造は表現しない）"
+  },
+  {
+   "provisionalId": "bear_loose_lounge_onesie",
+   "nameJa": "クマゆったりルームつなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存プラッシュフーディを一体ルームウェアに拡張",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set"
+    ],
+    "newSchema": [
+     "pajama_onesie",
+     "animal_hood.bear"
+    ],
+    "raw": {
+     "scope": "既存プラッシュフーディを一体ルームウェアに拡張",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set"
+     ],
+     "new_schema": [
+      "pajama_onesie",
+      "animal_hood.bear"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:animal_onesie",
+    "c:bear"
+   ],
+   "reasonJa": "つなぎ＋題材クマで再現"
+  },
+  {
+   "provisionalId": "panda_patch_pocket_onesie",
+   "nameJa": "パンダ配色ポケットつなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規配色一体パジャマ",
+    "reuseExistingIds": [
+     "pastel_fluffy_loungewear"
+    ],
+    "newSchema": [
+     "pajama_onesie",
+     "animal_hood.panda",
+     "animal_color_blocking"
+    ],
+    "raw": {
+     "scope": "新規配色一体パジャマ",
+     "reuse_existing_ids": [
+      "pastel_fluffy_loungewear"
+     ],
+     "new_schema": [
+      "pajama_onesie",
+      "animal_hood.panda",
+      "animal_color_blocking"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "pastel_fluffy_loungewear",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "pastel_fluffy_loungewear",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:panda_onesie"
+   ],
+   "reasonJa": "パンダ配色のつなぎ"
+  },
+  {
+   "provisionalId": "dinosaur_spined_sleepers",
+   "nameJa": "恐竜背びれスリーパーつなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "背びれ連続型の新規パジャマサブタイプ",
+    "reuseExistingIds": [
+     "work_coveralls",
+     "quilted_panels"
+    ],
+    "newSchema": [
+     "pajama_onesie",
+     "back_spines.continuous_soft"
+    ],
+    "raw": {
+     "scope": "背びれ連続型の新規パジャマサブタイプ",
+     "reuse_existing_ids": [
+      "work_coveralls",
+      "quilted_panels"
+     ],
+     "new_schema": [
+      "pajama_onesie",
+      "back_spines.continuous_soft"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "quilted_panels",
+      "kinds": [
+       "part_option"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:dinosaur_sleeper"
+   ],
+   "reasonJa": "背びれの足付きつなぎ"
+  },
+  {
+   "provisionalId": "axolotl_gill_frill_onesie",
+   "nameJa": "ウーパールーパーえら襟つなぎ",
+   "category": "animal_pajama_onesie",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "水生生物用の新規一体服",
+    "reuseExistingIds": [
+     "work_coveralls"
+    ],
+    "newSchema": [
+     "animal_hood.axolotl",
+     "gill_frills",
+     "flat_fin_tail_panel"
+    ],
+    "raw": {
+     "scope": "水生生物用の新規一体服",
+     "reuse_existing_ids": [
+      "work_coveralls"
+     ],
+     "new_schema": [
+      "animal_hood.axolotl",
+      "gill_frills",
+      "flat_fin_tail_panel"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:axolotl_onesie",
+    "c:axolotl"
+   ],
+   "reasonJa": "えらフリルの題材を追加"
+  },
+  {
+   "provisionalId": "koala_padded_plush_suit",
+   "nameJa": "コアラ腹パッドぬいぐるみスーツ",
+   "category": "plush_padded_suit",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "顔出しパッドスーツの新規サブタイプ",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set",
+     "plush_fabric"
+    ],
+    "newSchema": [
+     "padded_suit.belly",
+     "animal_hood.koala",
+     "soft_boot_covers"
+    ],
+    "raw": {
+     "scope": "顔出しパッドスーツの新規サブタイプ",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set",
+      "plush_fabric"
+     ],
+     "new_schema": [
+      "padded_suit.belly",
+      "animal_hood.koala",
+      "soft_boot_covers"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:plush_padded_suit",
+    "p:koala_plush_suit"
+   ],
+   "reasonJa": "ぬいぐるみ風スーツ（顔出し）"
+  },
+  {
+   "provisionalId": "otter_belly_plush_suit",
+   "nameJa": "カワウソ腹ポケットぬいぐるみスーツ",
+   "category": "plush_padded_suit",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新規ぬいぐるみ風ボディスーツ",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set"
+    ],
+    "newSchema": [
+     "padded_suit.light_body",
+     "animal_hood.otter",
+     "tail_attachment.sewn"
+    ],
+    "raw": {
+     "scope": "新規ぬいぐるみ風ボディスーツ",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set"
+     ],
+     "new_schema": [
+      "padded_suit.light_body",
+      "animal_hood.otter",
+      "tail_attachment.sewn"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:plush_padded_suit",
+    "c:otter"
+   ],
+   "reasonJa": "ぬいぐるみ風スーツ＋題材カワウソで再現"
+  },
+  {
+   "provisionalId": "capybara_boxy_plush_suit",
+   "nameJa": "カピバラ箱形ぬいぐるみスーツ",
+   "category": "plush_padded_suit",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "箱形パッドを持つ新規ぬいぐるみ風スーツ",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set"
+    ],
+    "newSchema": [
+     "padded_suit.boxy",
+     "animal_hood.capybara",
+     "hoof_mitts"
+    ],
+    "raw": {
+     "scope": "箱形パッドを持つ新規ぬいぐるみ風スーツ",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set"
+     ],
+     "new_schema": [
+      "padded_suit.boxy",
+      "animal_hood.capybara",
+      "hoof_mitts"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:capybara_plush_suit",
+    "o:kigurumi_padding.boxy_body_padding"
+   ],
+   "reasonJa": "箱形の詰め物"
+  },
+  {
+   "provisionalId": "bumblebee_padded_plush_suit",
+   "nameJa": "マルハナバチ羽根付きぬいぐるみスーツ",
+   "category": "plush_padded_suit",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "昆虫用の顔出しぬいぐるみスーツ",
+    "reuseExistingIds": [
+     "oversized_plush_hoodie_set",
+     "insect_wings"
+    ],
+    "newSchema": [
+     "padded_suit.belly",
+     "soft_antennae",
+     "wing_panels.small"
+    ],
+    "raw": {
+     "scope": "昆虫用の顔出しぬいぐるみスーツ",
+     "reuse_existing_ids": [
+      "oversized_plush_hoodie_set",
+      "insect_wings"
+     ],
+     "new_schema": [
+      "padded_suit.belly",
+      "soft_antennae",
+      "wing_panels.small"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "insect_wings",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:bumblebee_plush_suit"
+   ],
+   "reasonJa": "丸いお腹＋羽根形の袖"
+  },
+  {
+   "provisionalId": "rabbit_full_head_mascot",
+   "nameJa": "ウサギ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_mascot_suit",
+    "p:rabbit_mascot",
+    "c:rabbit"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "wolf_full_head_mascot",
+   "nameJa": "オオカミ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_mascot_suit",
+    "p:wolf_mascot",
+    "c:wolf"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "shark_full_head_mascot",
+   "nameJa": "サメ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_mascot_suit",
+    "p:shark_mascot",
+    "c:shark"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "penguin_full_head_mascot",
+   "nameJa": "ペンギン完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_mascot_suit",
+    "p:penguin_mascot",
+    "c:penguin"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "dragon_full_head_mascot",
+   "nameJa": "ドラゴン完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_mascot_suit",
+    "p:dragon_mascot",
+    "c:dragon"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "elephant_full_head_mascot",
+   "nameJa": "ゾウ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_mascot_suit",
+    "p:elephant_mascot",
+    "c:elephant"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "strawberry_full_head_mascot",
+   "nameJa": "イチゴ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:object_mascot_suit",
+    "p:strawberry_mascot",
+    "c:strawberry"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "pumpkin_full_head_mascot",
+   "nameJa": "カボチャ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:object_mascot_suit",
+    "p:pumpkin_mascot",
+    "c:pumpkin"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "hamburger_full_head_mascot",
+   "nameJa": "ハンバーガー完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:object_mascot_suit",
+    "p:hamburger_mascot",
+    "c:hamburger"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "sushi_full_head_mascot",
+   "nameJa": "にぎり寿司完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:object_mascot_suit",
+    "p:sushi_mascot",
+    "c:sushi"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "cupcake_full_head_mascot",
+   "nameJa": "カップケーキ完全マスコットスーツ",
+   "category": "full_mascot",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+    "reuseExistingIds": [
+     "plush_fabric",
+     "faux_fur",
+     "mesh"
+    ],
+    "newSchema": [
+     "mascot_head",
+     "mascot_body",
+     "mascot_hands",
+     "mascot_feet",
+     "mascot_vision_mesh",
+     "mascot_ventilation"
+    ],
+    "raw": {
+     "scope": "新設する mascot カテゴリ、専用頭部・胴体・手足コンポーネント、部品別プロンプト結合",
+     "new_schema": [
+      "mascot_head",
+      "mascot_body",
+      "mascot_hands",
+      "mascot_feet",
+      "mascot_vision_mesh",
+      "mascot_ventilation"
+     ],
+     "reuse_existing_ids": [
+      "plush_fabric",
+      "faux_fur",
+      "mesh"
+     ],
+     "why_not_current": "現行の headwear は顔出しの衣装部品であり、独立したフルヘッド、視界メッシュ、換気、別体の足手部を表現・排他制御できない。"
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "plush_fabric",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "faux_fur",
+      "kinds": [
+       "material"
+      ]
+     },
+     {
+      "id": "mesh",
+      "kinds": [
+       "material"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:object_mascot_suit",
+    "p:cupcake_mascot",
+    "c:cupcake"
+   ],
+   "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+  },
+  {
+   "provisionalId": "reindeer_tailored_winter_coat",
+   "nameJa": "トナカイ枝角ボタンの冬コート",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P0",
+    "scale": "P0-P3",
+    "tier": "P0",
+    "comparableRank": 0
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存ロングコートの意匠派生",
+    "reuseExistingIds": [
+     "long_coat",
+     "fur_coat",
+     "horn_antler"
+    ],
+    "newSchema": [
+     "animal_inspired_hardware.antler_button"
+    ],
+    "raw": {
+     "scope": "既存ロングコートの意匠派生",
+     "reuse_existing_ids": [
+      "long_coat",
+      "fur_coat",
+      "horn_antler"
+     ],
+     "new_schema": [
+      "animal_inspired_hardware.antler_button"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "fur_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "fur_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "horn_antler",
+      "kinds": [
+       "special_part"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:reindeer_antler_coat"
+   ],
+   "reasonJa": "ロングコート＋装飾ボタン（ファッション再解釈）"
+  },
+  {
+   "provisionalId": "serpent_scale_techwear_set",
+   "nameJa": "ヘビ鱗テックウェアセット",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存テックウェア風上下の表面派生",
+    "reuseExistingIds": [
+     "hoodie_and_cargo",
+     "cyber_multi_belt"
+    ],
+    "newSchema": [
+     "animal_surface.scale_panels"
+    ],
+    "raw": {
+     "scope": "既存テックウェア風上下の表面派生",
+     "reuse_existing_ids": [
+      "hoodie_and_cargo",
+      "cyber_multi_belt"
+     ],
+     "new_schema": [
+      "animal_surface.scale_panels"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cyber_multi_belt",
+      "kinds": [
+       "preset"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cyber_multi_belt",
+      "kinds": [
+       "preset"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:serpent_scale_techwear",
+    "pt:snake_scale_print"
+   ],
+   "reasonJa": "ヘビ鱗柄を追加"
+  },
+  {
+   "provisionalId": "butterfly_pleated_cape_dress",
+   "nameJa": "チョウ羽根プリーツケープドレス",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存ドレス・ケープの配色パネル派生",
+    "reuseExistingIds": [
+     "idol_stage_outfit",
+     "cape_coat"
+    ],
+    "newSchema": [
+     "animal_color_panels.butterfly"
+    ],
+    "raw": {
+     "scope": "既存ドレス・ケープの配色パネル派生",
+     "reuse_existing_ids": [
+      "idol_stage_outfit",
+      "cape_coat"
+     ],
+     "new_schema": [
+      "animal_color_panels.butterfly"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "idol_stage_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "idol_stage_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:butterfly_cape_dress"
+   ],
+   "reasonJa": "ドレス＋背面ケープ"
+  },
+  {
+   "provisionalId": "frog_rain_utility_set",
+   "nameJa": "カエル雨具ユーティリティセット",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存つなぎ／ラッシュガードの耐水意匠派生",
+    "reuseExistingIds": [
+     "work_coveralls",
+     "rash_guard_set"
+    ],
+    "newSchema": [
+     "animal_inspired_pockets.rounded",
+     "water_resistant_panel"
+    ],
+    "raw": {
+     "scope": "既存つなぎ／ラッシュガードの耐水意匠派生",
+     "reuse_existing_ids": [
+      "work_coveralls",
+      "rash_guard_set"
+     ],
+     "new_schema": [
+      "animal_inspired_pockets.rounded",
+      "water_resistant_panel"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:frog_rain_set"
+   ],
+   "reasonJa": "アノラック＋レインブーツ"
+  },
+  {
+   "provisionalId": "peacock_fan_panel_eveningwear",
+   "nameJa": "クジャク扇パネルのイブニングウェア",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存ボールガウンの扇パネル派生",
+    "reuseExistingIds": [
+     "ball_gown",
+     "feather_trim"
+    ],
+    "newSchema": [
+     "animal_inspired_panels.fan"
+    ],
+    "raw": {
+     "scope": "既存ボールガウンの扇パネル派生",
+     "reuse_existing_ids": [
+      "ball_gown",
+      "feather_trim"
+     ],
+     "new_schema": [
+      "animal_inspired_panels.fan"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "feather_trim",
+      "kinds": [
+       "decoration"
+      ]
+     },
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "feather_trim",
+      "kinds": [
+       "decoration"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:peacock_fan_gown"
+   ],
+   "reasonJa": "ボールガウン＋羽根飾り"
+  },
+  {
+   "provisionalId": "koi_wave_wrap_outfit",
+   "nameJa": "コイ波柄ラップ衣装",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存創作和装の文様・裏地派生",
+    "reuseExistingIds": [
+     "modern_kimono_outfit",
+     "wave_pattern"
+    ],
+    "newSchema": [
+     "animal_surface.koi_scale_jacquard"
+    ],
+    "raw": {
+     "scope": "既存創作和装の文様・裏地派生",
+     "reuse_existing_ids": [
+      "modern_kimono_outfit",
+      "wave_pattern"
+     ],
+     "new_schema": [
+      "animal_surface.koi_scale_jacquard"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "modern_kimono_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "wave_pattern",
+      "kinds": [
+       "pattern"
+      ]
+     },
+     {
+      "id": "modern_kimono_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "wave_pattern",
+      "kinds": [
+       "pattern"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:koi_wave_wrap"
+   ],
+   "reasonJa": "創作和装＋波柄"
+  },
+  {
+   "provisionalId": "zebra_stripe_tailored_suit",
+   "nameJa": "シマウマ縞テーラードスーツ",
+   "category": "animal_fashion_reinterpretation",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "structured_recipe",
+    "scope": "既存スーツの織柄派生",
+    "reuseExistingIds": [
+     "business_suit",
+     "vertical_stripes"
+    ],
+    "newSchema": [
+     "animal_pattern.zebra_irregular_stripes"
+    ],
+    "raw": {
+     "scope": "既存スーツの織柄派生",
+     "reuse_existing_ids": [
+      "business_suit",
+      "vertical_stripes"
+     ],
+     "new_schema": [
+      "animal_pattern.zebra_irregular_stripes"
+     ]
+    }
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "business_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "vertical_stripes",
+      "kinds": [
+       "pattern"
+      ]
+     },
+     {
+      "id": "business_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "vertical_stripes",
+      "kinds": [
+       "pattern"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "p:zebra_tailored_suit",
+    "pt:zebra_stripe"
+   ],
+   "reasonJa": "ゼブラ柄を追加"
+  },
+  {
+   "provisionalId": "denim_bib_overalls",
+   "nameJa": "デニムのビブオーバーオール",
+   "category": "modern_fashion",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom（ビブ／肩ひもを必須構造に追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:bib_overalls"
+   ],
+   "reasonJa": "オーバーオールを基本衣装化"
+  },
+  {
+   "provisionalId": "technical_anorak_shell",
+   "nameJa": "テクニカルアノラックシェル",
+   "category": "modern_fashion",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe。新部位候補: hood_integrated、weather_seam_tape、front_pocket_layout"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "trench_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:technical_anorak"
+   ],
+   "reasonJa": "テクニカルアノラック"
+  },
+  {
+   "provisionalId": "quilted_puffer_bib_set",
+   "nameJa": "キルティングパファー・ビブセット",
+   "category": "modern_fashion",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: quilt_baffle、insulation_fill、bib_pants"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:puffer_snow_bib_set"
+   ],
+   "reasonJa": "down_parka_bib_set と統合"
+  },
+  {
+   "provisionalId": "leather_biker_jacket_set",
+   "nameJa": "レザーバイカージャケットセット",
+   "category": "modern_fashion",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom（asymmetric moto closureを必須化）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "mafia_style_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:biker_jacket_set",
+    "p:biker_leather"
+   ],
+   "reasonJa": "ライダースジャケット"
+  },
+  {
+   "provisionalId": "wrap_panel_dress",
+   "nameJa": "ラップパネルドレス",
+   "category": "modern_fashion",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "dress",
+    "raw": "新規garment: dress（wrap_overlap構造を必須化）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "shirt_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "slip_dress_outer",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cocktail_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:wrap_dress"
+   ],
+   "reasonJa": "ラップドレス（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "mongolian_deel_documented",
+   "nameJa": "モンゴルのデール（史実・伝統服）",
+   "category": "traditional_ethnic",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe（heritage_documentedフラグと文化・時期メタデータを必須化）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "kaftan",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "changshan",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "eastern_cloak_robe",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:deel",
+    "p:steppe_deel"
+   ],
+   "reasonJa": "文化注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "scottish_kilt_documented",
+   "nameJa": "スコティッシュ・キルト（史実・伝統服）",
+   "category": "traditional_ethnic",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom（kilt_wrapとback_pleatsを必須化）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "folk",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "suspender_shirt_trousers",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:kilt_set"
+   ],
+   "reasonJa": "文化注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "sarong_kebaya_documented",
+   "nameJa": "サロン・クバヤ（史実・文化服）",
+   "category": "traditional_ethnic",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom（heritage_documentedフラグ、kebaya_top、tubular_sarongを追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ao_dai",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "sari",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "qipao",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:kebaya_sarong"
+   ],
+   "reasonJa": "文化注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "west_african_boubou_documented",
+   "nameJa": "西アフリカのブーブー（史実・伝統服）",
+   "category": "traditional_ethnic",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe（heritage_documentedフラグ、rectangular_panel_cutを追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "kaftan",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "sari",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:boubou"
+   ],
+   "reasonJa": "文化注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "ancient_greek_chiton_himation",
+   "nameJa": "古代ギリシアのキトンとヒマティオン（史実衣装）",
+   "category": "historical_dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe（historical_documentedフラグ、rectangle_drapeとshoulder_pinを追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "sari",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "layered_ritual_robes",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "kaftan",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:chiton_himation",
+    "p:greek_chiton"
+   ],
+   "reasonJa": "史実注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "robe_a_la_francaise_documented",
+   "nameJa": "ローブ・ア・ラ・フランセーズ（史実衣装）",
+   "category": "historical_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "dress",
+    "raw": "新規garment: dress。新部位候補: pannier_support、stomacher、watteau_back_pleat"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "victorian_maid_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "gothic_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:pannier_court_gown"
+   ],
+   "reasonJa": "pannier_ballroom_gown と統合"
+  },
+  {
+   "provisionalId": "renaissance_doublet_trunk_hose",
+   "nameJa": "ルネサンス期ダブレットとトランクホーズ（史実衣装）",
+   "category": "historical_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform。新部位候補: trunk_hose、hose_points、slashed_sleeve_panes"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "stage_magician_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:doublet_and_hose",
+    "p:doublet_bard"
+   ],
+   "reasonJa": "史実注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "medieval_houppelande_documented",
+   "nameJa": "中世ウップランド（史実衣装）",
+   "category": "historical_dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe（historical_documentedフラグ、funnel_sleeveとgored_bodyを追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "mage_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "nun_habit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "traveling_robe",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:houppelande"
+   ],
+   "reasonJa": "史実注記付きの基本衣装"
+  },
+  {
+   "provisionalId": "sixties_paper_shift_dress",
+   "nameJa": "1960年代ペーパーシフトドレス（史実衣装）",
+   "category": "historical_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P3",
+    "scale": "P0-P3",
+    "tier": "P3",
+    "comparableRank": 3
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "dress",
+    "raw": "新規garment: dress。新素材候補: paper_textile、tear_behaviorメタデータ"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "tshirt_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cocktail_dress",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:mod_shift_dress"
+   ],
+   "reasonJa": "シフトドレスとして実装。紙素材（paper textile）は保留"
+  },
+  {
+   "provisionalId": "firefighter_turnout_gear",
+   "nameJa": "消防用ターンアウトギア",
+   "category": "occupational_dress",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_category_candidate",
+    "category": "protective_occupational",
+    "raw": "新規garment category候補: protective_occupational。新部位候補: PPE_layer_stack、reflective_band、protective_helmet"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "flight_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:firefighter_turnout",
+    "p:firefighter",
+    "d:reflective_tape"
+   ],
+   "reasonJa": "新カテゴリではなく制服カテゴリの基本衣装として実装"
+  },
+  {
+   "provisionalId": "beekeeping_veil_suit",
+   "nameJa": "養蜂用ベールスーツ",
+   "category": "occupational_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: mesh_veil_hood、sealed_cuff、glove_interface"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:beekeeping_suit"
+   ],
+   "reasonJa": "cosplay_apiary_veil_smock と統合"
+  },
+  {
+   "provisionalId": "surgical_scrub_gown_set",
+   "nameJa": "手術用スクラブとラップガウン",
+   "category": "occupational_dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform（scrub_setとwrap_back_gownを構造化）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "laboratory_coat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:scrub_suit",
+    "p:scrubs_medical"
+   ],
+   "reasonJa": "スクラブ上下として実装。後ろ合わせのガウンは保留"
+  },
+  {
+   "provisionalId": "high_visibility_construction_set",
+   "nameJa": "高視認性コンストラクションセット",
+   "category": "occupational_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform。新部位候補: high_visibility_vest、retroreflective_strip、protective_helmet"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "apron_shirt_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:high_visibility_workwear"
+   ],
+   "reasonJa": "高視認性作業服（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "hazmat_encapsulating_suit",
+   "nameJa": "密閉型ハズマットスーツ",
+   "category": "occupational_dress",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_category_candidate",
+    "category": "protective_occupational",
+    "raw": "新規garment category候補: protective_occupational。新部位候補: sealed_hood_visor、glove_ring、air_hose_port"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "work_coveralls",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "flight_suit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "laboratory_coat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:sealed_hazmat_suit",
+    "p:hazmat_worker"
+   ],
+   "reasonJa": "透明バイザーで顔が見える防護服として実装"
+  },
+  {
+   "provisionalId": "cycling_bib_kit",
+   "nameJa": "サイクリング・ビブキット",
+   "category": "sports_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: bib_strap、chamois_panel、rear_jersey_pocket、leg_gripper"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "competition_swimsuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:cycling_kit"
+   ],
+   "reasonJa": "サイクルジャージ＋ビブショーツ"
+  },
+  {
+   "provisionalId": "martial_arts_gi_set",
+   "nameJa": "武道着セット",
+   "category": "sports_dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom（sports_wrap_jacketとreinforced_lapelを追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "kimono",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "hakama_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "haori_hakama",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:martial_arts_gi"
+   ],
+   "reasonJa": "武道着"
+  },
+  {
+   "provisionalId": "fencing_whites",
+   "nameJa": "フェンシング・ホワイト",
+   "category": "sports_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform。新部位候補: asymmetric_plastron、mask_compatible_collar、fencing_breeches"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "business_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:fencing_uniform",
+    "p:fencing_whites"
+   ],
+   "reasonJa": "フェンシングウェア"
+  },
+  {
+   "provisionalId": "ski_shell_bib_set",
+   "nameJa": "スキーシェル・ビブセット",
+   "category": "sports_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: powder_skirt、underarm_vent、boot_gaiter、helmet_compatible_hood"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:puffer_snow_bib_set"
+   ],
+   "reasonJa": "down_parka_bib_set と統合"
+  },
+  {
+   "provisionalId": "full_wetsuit",
+   "nameJa": "フルウェットスーツ",
+   "category": "sports_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "swimwear",
+    "raw": "新規garment: swimwear。新部位候補: full_neoprene_panel、sealed_cuff、back_entry_zipper"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "competition_swimsuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "rash_guard_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "classic_one_piece",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:full_wetsuit",
+    "p:wetsuit_diver"
+   ],
+   "reasonJa": "フルウェットスーツ"
+  },
+  {
+   "provisionalId": "fantasy_quilted_gambeson",
+   "nameJa": "ファンタジー・キルテッドガンベソン",
+   "category": "fantasy_dress",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform（padded_armor構造を追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "adventurer_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:quilted_gambeson"
+   ],
+   "reasonJa": "cosplay_thorn_guard_gambeson と統合"
+  },
+  {
+   "provisionalId": "fantasy_lamellar_harness",
+   "nameJa": "ファンタジー・ラメラーアーマーハーネス",
+   "category": "fantasy_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform。新部位候補: lamellar_plate_row、armor_lacing、articulated_hip_panel"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:lamellar_armor_set"
+   ],
+   "reasonJa": "ラメラーアーマー（専用プリセットなし）"
+  },
+  {
+   "provisionalId": "wing_portal_surcoat",
+   "nameJa": "翼ポータル付きサーコート",
+   "category": "fantasy_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe。既存specialParts.wingsとの接続メタデータとback_portal部位を追加"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "mage_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "翼の開口は特殊パーツとの接続仕様が必要。保留"
+  },
+  {
+   "provisionalId": "fae_petal_mantle",
+   "nameJa": "フェイ・ペタルマントル",
+   "category": "fantasy_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe。新部位候補: petal_panel、shoulder_yoke_capelet、floating_edge_support"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "mage_robe",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "floating_sash_dance",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "花弁パネルの専用構造が必要。保留"
+  },
+  {
+   "provisionalId": "classical_ballet_tutu",
+   "nameJa": "クラシックバレエ・チュチュ",
+   "category": "stage_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "dress",
+    "raw": "新規garment: dress。新部位候補: basque、tutu_disk、tulle_layer_stack"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "lace_bodysuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "belly_dance",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:classical_tutu"
+   ],
+   "reasonJa": "cosplay_plate_tutu_costume と統合"
+  },
+  {
+   "provisionalId": "aerial_acrobat_unitard",
+   "nameJa": "エアリアルアクロバット・ユニタード",
+   "category": "stage_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: articulated_stretch_panel、reinforced_flat_seam、low_profile_closure"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "lace_bodysuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "competition_swimsuit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "classic_bunny_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:stage_unitard"
+   ],
+   "reasonJa": "cosplay_aerialist_unitard_capelet と統合"
+  },
+  {
+   "provisionalId": "marching_band_uniform",
+   "nameJa": "マーチングバンド制服",
+   "category": "stage_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform。新部位候補: braid_layout、diagonal_sash、shako_headwear、epaulet_tab"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "stage_magician_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:marching_band_uniform"
+   ],
+   "reasonJa": "基本衣装として実装"
+  },
+  {
+   "provisionalId": "quick_change_stage_costume",
+   "nameJa": "クイックチェンジ舞台衣装",
+   "category": "stage_dress",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "dress",
+    "raw": "新規garment: dress / uniform。新部位候補: quick_change_panel、concealed_magnet、reset_tab"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "stage_magician_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "idol_stage_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "tailcoat_suit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "早替え構造は画像として表現しにくいため保留"
+  },
+  {
+   "provisionalId": "punk_webbing_harness_ensemble",
+   "nameJa": "パンク・ウェビングハーネスアンサンブル",
+   "category": "subculture_fashion",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: external_webbing_harness、detachable_tab、hardware_map"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "side_cutout_knitwear",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "existing_alternative",
+   "finalStatusJa": "既存で代替",
+   "implementedRefs": [
+    "g:biker_jacket_set",
+    "o:waist.waist_harness"
+   ],
+   "reasonJa": "ライダース＋腰のハーネスで近似"
+  },
+  {
+   "provisionalId": "mod_fishtail_parka",
+   "nameJa": "モッズ・フィッシュテールパーカ",
+   "category": "subculture_fashion",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe（fishtail_hem、detachable_liner、hood_drawcordを追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "trench_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:fishtail_parka",
+    "p:mods_parka"
+   ],
+   "reasonJa": "モッズパーカ"
+  },
+  {
+   "provisionalId": "decora_layered_preset",
+   "nameJa": "デコラ風レイヤードプリセット",
+   "category": "subculture_fashion",
+   "existingReproducibility": "B",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "preset",
+    "raw": "新規presetのみ: subculture_decora。既存garment・装飾・レッグウェアを組み合わせ、基本衣装は新設しない。"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "hoodie_and_cargo",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "pastel_fluffy_loungewear",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "simple_tshirt_and_jeans",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "大量の小物を重ねる指定は装飾件数の上限設計が必要。保留"
+  },
+  {
+   "provisionalId": "footed_sleep_onesie",
+   "nameJa": "フッテッド・スリープワンジー",
+   "category": "loungewear_sleep",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "top_bottom",
+    "raw": "新規garment: top_bottom。新部位候補: integrated_sock_foot、drop_seat_panel、sleep_zipper_guard"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "oversized_plush_hoodie_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "buttoned_pajama_set",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "dreamy_pastel_pajamas",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "merged",
+   "finalStatusJa": "実装（他候補と統合）",
+   "implementedRefs": [
+    "g:animal_onesie",
+    "o:kigurumi_feet.integrated_footies"
+   ],
+   "reasonJa": "動物パジャマつなぎの足元部位として統合"
+  },
+  {
+   "provisionalId": "hooded_bathrobe",
+   "nameJa": "フード付きバスローブ",
+   "category": "loungewear_sleep",
+   "existingReproducibility": "A",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe（hooded_bathwearとabsorbent_textile用途を追加）"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "yukata",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "kaftan",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": true,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:hooded_bathrobe",
+    "p:bathrobe_rest"
+   ],
+   "reasonJa": "フード付きバスローブ"
+  },
+  {
+   "provisionalId": "weighted_blanket_poncho",
+   "nameJa": "ウェイテッドブランケット・ポンチョ",
+   "category": "loungewear_sleep",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P3",
+    "scale": "P0-P3",
+    "tier": "P3",
+    "comparableRank": 3
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "robe",
+    "raw": "新規garment: robe。新部位候補: weighted_channel、hand_opening、removable_weight_insert"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "pastel_fluffy_loungewear",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "fuzzy_cardigan_lounge_set",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "重さは画像で表現できないため保留"
+  },
+  {
+   "provisionalId": "printed_lattice_shell",
+   "nameJa": "3Dプリント・ラティスシェル",
+   "category": "special_material_structure",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_category_candidate",
+    "category": "experimental_structure",
+    "raw": "新規garment category候補: experimental_structure。新素材・構造候補: printed_lattice、hinge_zone、textile_shell_attachment"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "side_cutout_knitwear",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "monokini",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "実験的構造カテゴリが必要。保留"
+  },
+  {
+   "provisionalId": "origami_pleat_transformer",
+   "nameJa": "オリガミ・プリーツ変形衣装",
+   "category": "special_material_structure",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_category_candidate",
+    "category": "experimental_structure",
+    "raw": "新規garment category候補: experimental_structure。新部位候補: engineered_fold_grid、snap_fold_panel、convertible_hem"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "ball_gown",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "shirt_dress",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "modern_chinese_outfit",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "変形構造は保留"
+  },
+  {
+   "provisionalId": "inflatable_air_cell_coat",
+   "nameJa": "インフレータブル・エアセルコート",
+   "category": "special_material_structure",
+   "existingReproducibility": "D",
+   "priority": {
+    "raw": "P2",
+    "scale": "P0-P3",
+    "tier": "P2",
+    "comparableRank": 2
+   },
+   "implementationTarget": {
+    "kind": "new_category_candidate",
+    "category": "experimental_structure",
+    "raw": "新規garment category候補: experimental_structure。新素材・部位候補: sealed_air_cell、valve_tab、bonded_seam"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "fur_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "long_coat",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "cape_coat",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "deferred",
+   "finalStatusJa": "保留・未実装",
+   "implementedRefs": [],
+   "reasonJa": "空気室の構造は保留"
+  },
+  {
+   "provisionalId": "chainmail_mesh_tunic",
+   "nameJa": "チェーンメイル・メッシュチュニック",
+   "category": "special_material_structure",
+   "existingReproducibility": "C",
+   "priority": {
+    "raw": "P1",
+    "scale": "P0-P3",
+    "tier": "P1",
+    "comparableRank": 1
+   },
+   "implementationTarget": {
+    "kind": "new_garment_text",
+    "category": "uniform",
+    "raw": "新規garment: uniform。新部位候補: ring_mesh_drape、metal_weight_distribution、bound_neckline"
+   },
+   "idCheck": {
+    "resolved": [
+     {
+      "id": "light_combat_outfit",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "royal_uniform",
+      "kinds": [
+       "garment"
+      ]
+     },
+     {
+      "id": "mage_robe",
+      "kinds": [
+       "garment"
+      ]
+     }
+    ],
+    "unresolved": []
+   },
+   "reproducibilityTargetConflict": false,
+   "finalStatus": "implemented",
+   "finalStatusJa": "実装",
+   "implementedRefs": [
+    "g:chainmail_tunic"
+   ],
+   "reasonJa": "チェーンメイルのチュニック（専用プリセットなし）"
+  }
+ ]
+}

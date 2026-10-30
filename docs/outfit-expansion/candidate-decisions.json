@@ -1,0 +1,1262 @@
+{
+ "cosplay_heraldic_tabard": {
+  "status": "implemented",
+  "refs": [
+   "g:tabard_tunic",
+   "p:heraldic_tabard",
+   "d:heraldic_panels"
+  ],
+  "reasonJa": "短いT字外衣を基本衣装化し、紋章パネルを装飾として追加"
+ },
+ "cosplay_scale_panel_mantle": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:cape_coat",
+   "m:scale_armor"
+  ],
+  "reasonJa": "ケープコート＋鱗鎧素材で再現。独立構造の差が小さい"
+ },
+ "cosplay_wayfinder_split_coat": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:traveling_robe",
+   "g:long_coat"
+  ],
+  "reasonJa": "旅装ローブ／ロングコートと非対称部位で再現"
+ },
+ "cosplay_runeweaver_stole_tunic": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:mage_robe",
+   "g:priest_robe"
+  ],
+  "reasonJa": "既存ローブ＋羽織りで再現"
+ },
+ "cosplay_citadel_paneled_cape": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "八枚パネルのケープは新しい羽織り構造が必要。今回は保留"
+ },
+ "cosplay_thorn_guard_gambeson": {
+  "status": "implemented",
+  "refs": [
+   "g:quilted_gambeson",
+   "p:gambeson_guard"
+  ],
+  "reasonJa": "キルティング胴着を基本衣装化（fantasy_quilted_gambeson と統合）"
+ },
+ "cosplay_crystal_cage_overskirt": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "結晶格子のオーバースカートは新しい特殊構造が必要。保留"
+ },
+ "cosplay_apiary_veil_smock": {
+  "status": "implemented",
+  "refs": [
+   "g:beekeeping_suit",
+   "p:beekeeper"
+  ],
+  "reasonJa": "ベール付きフードの養蜂作業着（beekeeping_veil_suit と統合）"
+ },
+ "cosplay_forge_split_apron_suit": {
+  "status": "implemented",
+  "refs": [
+   "g:blacksmith_workwear",
+   "p:blacksmith"
+  ],
+  "reasonJa": "分割前垂れの鍛冶作業着"
+ },
+ "cosplay_market_pastry_uniform": {
+  "status": "implemented",
+  "refs": [
+   "g:pastry_chef_uniform",
+   "p:chef_whites"
+  ],
+  "reasonJa": "パティシエ制服を基本衣装化"
+ },
+ "cosplay_field_archivist_coat": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:laboratory_coat_outfit",
+   "p:dark_academia_coat"
+  ],
+  "reasonJa": "白衣／ダークアカデミアのコートで再現"
+ },
+ "cosplay_weather_observer_anorak": {
+  "status": "implemented",
+  "refs": [
+   "g:technical_anorak"
+  ],
+  "reasonJa": "テクニカルアノラックを基本衣装化（計器ハーネスは装飾・部位で近似）"
+ },
+ "cosplay_parcel_courier_sash_tunic": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "交差鞄帯の専用部位が必要。保留"
+ },
+ "cosplay_lamplighter_cape_vest": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:long_vest_attendant",
+   "o:cover_up.shoulder_cape"
+  ],
+  "reasonJa": "ロングベストの従者＋肩ケープで再現"
+ },
+ "cosplay_harlequin_panel_jumpsuit": {
+  "status": "implemented",
+  "refs": [
+   "g:costume_jumpsuit",
+   "d:harlequin_diamonds",
+   "p:harlequin_jester"
+  ],
+  "reasonJa": "仮装ジャンプスーツ＋菱形パネル"
+ },
+ "cosplay_plate_tutu_costume": {
+  "status": "implemented",
+  "refs": [
+   "g:classical_tutu",
+   "p:ballet_tutu"
+  ],
+  "reasonJa": "平板チュチュ（classical_ballet_tutu と統合）"
+ },
+ "cosplay_lantern_parade_robe": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "灯籠パネルの行列ローブは発光演出との境界が未整理。保留"
+ },
+ "cosplay_puppetmaster_tail_waistcoat": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:tailcoat_suit",
+   "p:cape_magician"
+  ],
+  "reasonJa": "燕尾服・マジシャン衣装で再現"
+ },
+ "cosplay_aerialist_unitard_capelet": {
+  "status": "implemented",
+  "refs": [
+   "g:stage_unitard",
+   "p:aerialist_unitard"
+  ],
+  "reasonJa": "ステージユニタード＋肩ケープ（aerial_acrobat_unitard と統合）"
+ },
+ "cosplay_drum_major_stage_coat": {
+  "status": "implemented",
+  "refs": [
+   "g:marching_band_uniform",
+   "p:drum_major_coat"
+  ],
+  "reasonJa": "マーチングバンド制服を基本衣装化し、ドラムメジャーはプリセット"
+ },
+ "cosplay_pantomime_bolero_set": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "二色ボレロの専用構造が未整理。保留"
+ },
+ "cosplay_storybook_card_tabard": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:tabard_tunic",
+   "mt:clock_and_cards"
+  ],
+  "reasonJa": "タバード＋主テーマ「時計とトランプ」で再現（専用プリセットなし）"
+ },
+ "cosplay_cloud_shepherd_pelerine": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "ペルリーヌの専用構造が必要。保留"
+ },
+ "cosplay_patchwork_scarecrow_overalls": {
+  "status": "implemented",
+  "refs": [
+   "g:bib_overalls",
+   "p:scarecrow_overalls"
+  ],
+  "reasonJa": "オーバーオール＋つぎ当ての状態"
+ },
+ "cosplay_gingerbread_baker_bolero": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "菓子の家風ボレロは食品題材の扱いが未整理。保留"
+ },
+ "cosplay_windmill_miller_smock": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "袖分割スモックの専用構造が必要。保留"
+ },
+ "cosplay_glasshouse_pannier_overskirt": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:pannier_court_gown"
+  ],
+  "reasonJa": "パニエのコートガウンで近似"
+ },
+ "cosplay_clocktower_caretaker_coat": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:clockwork_suit",
+   "p:asymmetric_mode"
+  ],
+  "reasonJa": "歯車金具のスチームパンク服・非対称コートで再現"
+ },
+ "cosplay_cooling_tube_undersuit": {
+  "status": "implemented",
+  "refs": [
+   "g:cooling_undersuit",
+   "p:space_undersuit"
+  ],
+  "reasonJa": "冷却チューブの宇宙アンダースーツ"
+ },
+ "cosplay_ring_joint_pressure_shell": {
+  "status": "implemented",
+  "refs": [
+   "g:pressure_suit",
+   "p:pressure_suit_astronaut"
+  ],
+  "reasonJa": "環状関節の圧力スーツ"
+ },
+ "cosplay_solar_sail_fold_cape": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "折り畳み帆のケープは新しい構造が必要。保留"
+ },
+ "cosplay_orbital_hard_torso_vest": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:pressure_suit"
+  ],
+  "reasonJa": "圧力スーツの硬質胴シェルで近似"
+ },
+ "cosplay_data_courier_modular_poncho": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "着脱パネルのポンチョは新しい部位が必要。保留"
+ },
+ "cosplay_relay_antenna_jacket": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "アンテナ襟の専用部位が必要。保留"
+ },
+ "cosplay_survival_cocoon_poncho": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "繭形ポンチョの専用構造が必要。保留"
+ },
+ "cosplay_animal_playsack": {
+  "status": "implemented",
+  "refs": [
+   "g:creature_sack_tunic"
+  ],
+  "reasonJa": "袋形の動物チュニック（着ぐるみ・顔出し）"
+ },
+ "cosplay_pufferfish_inflatable_cape": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "フグの題材と膨らむケープ構造が未整理。保留"
+ },
+ "cosplay_beetle_shell_backpack_overall": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "甲虫殻バックパックは背面特殊構造が必要。保留"
+ },
+ "cosplay_fortune_cookie_tabard": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:tabard_tunic"
+  ],
+  "reasonJa": "タバードで近似（食品の形の表現は保留）"
+ },
+ "cosplay_popcorn_box_tunic": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "箱形チュニックは物体型仮装の扱いが未整理。保留"
+ },
+ "cosplay_teacup_hoop_overskirt": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "ティーカップ輪郭のフープは新しい構造が必要。保留"
+ },
+ "cosplay_houseplant_pot_apron": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "鉢形エプロンは新しい構造が必要。保留"
+ },
+ "hanami_layered_haori": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:haori_student",
+   "g:modern_kimono_outfit"
+  ],
+  "reasonJa": "羽織袴・現代和装で再現"
+ },
+ "furisode_hanami_ensemble": {
+  "status": "implemented",
+  "refs": [
+   "g:furisode",
+   "p:hanami_furisode"
+  ],
+  "reasonJa": "振袖を基本衣装化"
+ },
+ "easter_pinafore_bonnet_set": {
+  "status": "implemented",
+  "refs": [
+   "g:pinafore_dress",
+   "p:easter_pinafore"
+  ],
+  "reasonJa": "ピナフォアドレス＋ボンネット"
+ },
+ "easter_rabbit_tailcoat_recipe": {
+  "status": "implemented",
+  "refs": [
+   "p:easter_rabbit_tailcoat",
+   "o:headwear.bunny_ear_headband",
+   "d:pom_pom_tail"
+  ],
+  "reasonJa": "燕尾服＋うさ耳＋ポンポン尾のプリセット"
+ },
+ "spring_festival_happi_coat": {
+  "status": "implemented",
+  "refs": [
+   "g:happi_coat",
+   "p:spring_happi"
+  ],
+  "reasonJa": "法被を基本衣装化"
+ },
+ "maypole_folk_apron_dress": {
+  "status": "implemented",
+  "refs": [
+   "p:maypole_dirndl",
+   "g:dirndl"
+  ],
+  "reasonJa": "ディアンドル＋花冠のプリセット"
+ },
+ "jinbei_set": {
+  "status": "implemented",
+  "refs": [
+   "g:jinbei",
+   "p:summer_jinbei"
+  ],
+  "reasonJa": "甚平を基本衣装化"
+ },
+ "fireworks_yukata_recipe": {
+  "status": "implemented",
+  "refs": [
+   "p:fireworks_yukata"
+  ],
+  "reasonJa": "浴衣のプリセット"
+ },
+ "tanabata_tanzaku_tabard": {
+  "status": "implemented",
+  "refs": [
+   "p:tanabata_tabard",
+   "d:tanzaku_strips"
+  ],
+  "reasonJa": "タバード＋短冊飾りのプリセット"
+ },
+ "beach_cabana_set_recipe": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:summer_linen"
+  ],
+  "reasonJa": "リネンシャツとワイドパンツで再現"
+ },
+ "guayabera_resort_set": {
+  "status": "implemented",
+  "refs": [
+   "g:guayabera_set",
+   "p:guayabera_resort"
+  ],
+  "reasonJa": "グアヤベラシャツの装い"
+ },
+ "sarong_swim_wrap_set": {
+  "status": "implemented",
+  "refs": [
+   "p:sarong_swim_set"
+  ],
+  "reasonJa": "ビキニ＋サロン（既存の羽織り）のプリセット"
+ },
+ "surf_change_poncho": {
+  "status": "implemented",
+  "refs": [
+   "g:towel_change_poncho",
+   "p:surf_towel_poncho"
+  ],
+  "reasonJa": "タオル地の着替えポンチョ"
+ },
+ "tropical_utility_romper": {
+  "status": "implemented",
+  "refs": [
+   "g:utility_romper"
+  ],
+  "reasonJa": "ユーティリティロンパース（専用プリセットなし）"
+ },
+ "halloween_witch_coat_dress": {
+  "status": "implemented",
+  "refs": [
+   "g:witch_coat_dress",
+   "p:halloween_witch"
+  ],
+  "reasonJa": "魔女のコートドレス"
+ },
+ "halloween_witch_hunter_tabard": {
+  "status": "implemented",
+  "refs": [
+   "p:witch_hunter_tabard"
+  ],
+  "reasonJa": "タバード＋三角帽のプリセット"
+ },
+ "pumpkin_patch_overalls": {
+  "status": "implemented",
+  "refs": [
+   "p:pumpkin_patch_overalls"
+  ],
+  "reasonJa": "オーバーオールのプリセット"
+ },
+ "skeleton_bone_jumpsuit": {
+  "status": "implemented",
+  "refs": [
+   "p:skeleton_jumpsuit",
+   "d:bone_print"
+  ],
+  "reasonJa": "仮装ジャンプスーツ＋骨格プリント"
+ },
+ "scarecrow_smok_overalls": {
+  "status": "merged",
+  "refs": [
+   "p:scarecrow_overalls"
+  ],
+  "reasonJa": "cosplay_patchwork_scarecrow_overalls と同一構造として統合"
+ },
+ "harvest_dirndl": {
+  "status": "implemented",
+  "refs": [
+   "g:dirndl",
+   "p:harvest_dirndl"
+  ],
+  "reasonJa": "ディアンドルを基本衣装化"
+ },
+ "lederhosen_harvest_set": {
+  "status": "implemented",
+  "refs": [
+   "g:lederhosen_set",
+   "p:harvest_lederhosen"
+  ],
+  "reasonJa": "レーダーホーゼンを基本衣装化"
+ },
+ "momiji_haori_recipe": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:haori_student"
+  ],
+  "reasonJa": "羽織袴＋配色で再現"
+ },
+ "santa_fur_trim_suit": {
+  "status": "implemented",
+  "refs": [
+   "g:santa_suit",
+   "p:santa_classic",
+   "p:santa_skirt"
+  ],
+  "reasonJa": "毛皮縁のサンタ衣装を基本衣装化"
+ },
+ "christmas_tailored_suit_recipe": {
+  "status": "implemented",
+  "refs": [
+   "p:christmas_tailored_suit"
+  ],
+  "reasonJa": "ビジネススーツ＋ヒイラギのプリセット"
+ },
+ "christmas_elf_tunic": {
+  "status": "implemented",
+  "refs": [
+   "g:elf_tunic_tights",
+   "p:christmas_elf"
+  ],
+  "reasonJa": "エルフのチュニック＋タイツ"
+ },
+ "reindeer_hooded_onesie": {
+  "status": "implemented",
+  "refs": [
+   "p:reindeer_onesie"
+  ],
+  "reasonJa": "動物パジャマつなぎ＋題材トナカイ"
+ },
+ "snowman_hooded_onesie": {
+  "status": "implemented",
+  "refs": [
+   "p:snowman_onesie"
+  ],
+  "reasonJa": "動物パジャマつなぎ＋題材雪だるま"
+ },
+ "nutcracker_parade_uniform": {
+  "status": "implemented",
+  "refs": [
+   "p:nutcracker_parade"
+  ],
+  "reasonJa": "マーチングバンド制服のプリセット"
+ },
+ "advent_choir_robe": {
+  "status": "implemented",
+  "refs": [
+   "g:choir_robe",
+   "p:advent_choir"
+  ],
+  "reasonJa": "聖歌隊ローブ"
+ },
+ "down_parka_bib_set": {
+  "status": "implemented",
+  "refs": [
+   "g:puffer_snow_bib_set",
+   "p:winter_puffer_bib"
+  ],
+  "reasonJa": "ダウン＋スノービブ（quilted_puffer_bib_set / ski_shell_bib_set と統合）"
+ },
+ "ski_racing_suit": {
+  "status": "implemented",
+  "refs": [
+   "g:ski_race_suit"
+  ],
+  "reasonJa": "スキーレーシングスーツ（専用プリセットなし）"
+ },
+ "miko_new_year_ensemble": {
+  "status": "implemented",
+  "refs": [
+   "g:miko_outfit",
+   "p:new_year_miko"
+  ],
+  "reasonJa": "巫女装束を基本衣装化"
+ },
+ "montsuki_haori_hakama_recipe": {
+  "status": "implemented",
+  "refs": [
+   "p:new_year_montsuki"
+  ],
+  "reasonJa": "羽織袴のプリセット"
+ },
+ "valentine_chocolatier_uniform": {
+  "status": "implemented",
+  "refs": [
+   "p:valentine_chocolatier"
+  ],
+  "reasonJa": "パティシエ制服のプリセット"
+ },
+ "valentine_heart_lolita_recipe": {
+  "status": "implemented",
+  "refs": [
+   "p:valentine_heart_lolita"
+  ],
+  "reasonJa": "ロリータドレス＋ハート柄"
+ },
+ "white_day_gift_wrap_tabard": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:tabard_tunic",
+   "d:ribbon_bow"
+  ],
+  "reasonJa": "タバード＋リボンで近似（専用プリセットなし）"
+ },
+ "white_day_service_tailcoat_recipe": {
+  "status": "implemented",
+  "refs": [
+   "p:white_day_tailcoat"
+  ],
+  "reasonJa": "燕尾服のプリセット"
+ },
+ "cupid_letter_carrier_tunic": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "郵便鞄・翼の組合せが特殊パーツと重なるため保留"
+ },
+ "birthday_cake_apron_dress": {
+  "status": "implemented",
+  "refs": [
+   "p:birthday_cake_apron"
+  ],
+  "reasonJa": "ピナフォアドレスのプリセット"
+ },
+ "birthday_party_overall": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:bib_overalls"
+  ],
+  "reasonJa": "オーバーオールで再現（専用プリセットなし）"
+ },
+ "pannier_ballroom_gown": {
+  "status": "implemented",
+  "refs": [
+   "g:pannier_court_gown"
+  ],
+  "reasonJa": "パニエのコートガウン（robe_a_la_francaise と統合）"
+ },
+ "venetian_bauta_cloak": {
+  "status": "implemented",
+  "refs": [
+   "g:venetian_carnival_cloak",
+   "p:venetian_carnival",
+   "o:headwear.venetian_full_face_mask",
+   "o:headwear.tricorn_hat"
+  ],
+  "reasonJa": "タバロのクロークと、顔を覆う仮面を別の選択肢として追加"
+ },
+ "rabbit_ear_pom_tail_accessory": {
+  "status": "implemented",
+  "refs": [
+   "p:bunny_ear_lounge",
+   "o:headwear.bunny_ear_headband",
+   "d:pom_pom_tail"
+  ],
+  "reasonJa": "耳・尾のアクセサリー（顔出し）"
+ },
+ "cat_ear_tail_street_set": {
+  "status": "implemented",
+  "refs": [
+   "p:cat_ear_street",
+   "o:headwear.cat_ear_beanie",
+   "d:clip_on_plush_tail"
+  ],
+  "reasonJa": "耳・尾のアクセサリー（顔出し）"
+ },
+ "dog_ear_collar_tail_accessory": {
+  "status": "existing_alternative",
+  "refs": [
+   "o:headwear.animal_ear_headband",
+   "d:clip_on_plush_tail"
+  ],
+  "reasonJa": "動物耳カチューシャ＋飾り尾で再現（専用プリセットなし）"
+ },
+ "fox_ear_tail_stole_set": {
+  "status": "implemented",
+  "refs": [
+   "p:fox_ear_stole"
+  ],
+  "reasonJa": "ファーコート＋耳・尾"
+ },
+ "wolf_ear_tail_hood_accessory": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:animal_hood_capelet",
+   "c:wolf"
+  ],
+  "reasonJa": "動物フードケープ＋題材オオカミで再現"
+ },
+ "bear_ear_beret_paw_set": {
+  "status": "implemented",
+  "refs": [
+   "p:bear_ear_beret_set",
+   "o:headwear.bear_ear_beret"
+  ],
+  "reasonJa": "クマ耳ベレー"
+ },
+ "panda_ear_patch_accessory": {
+  "status": "existing_alternative",
+  "refs": [
+   "o:headwear.animal_ear_headband",
+   "c:panda"
+  ],
+  "reasonJa": "動物耳カチューシャ／題材パンダで再現"
+ },
+ "tanuki_ear_striped_tail_accessory": {
+  "status": "existing_alternative",
+  "refs": [
+   "c:tanuki",
+   "g:animal_hood_jacket"
+  ],
+  "reasonJa": "題材タヌキの動物フードで再現"
+ },
+ "shark_fin_hooded_poncho": {
+  "status": "implemented",
+  "refs": [
+   "g:animal_hood_poncho",
+   "p:shark_hood_poncho"
+  ],
+  "reasonJa": "動物フードポンチョ＋題材サメ"
+ },
+ "penguin_hooded_cape_jacket": {
+  "status": "implemented",
+  "refs": [
+   "g:animal_hood_capelet",
+   "p:penguin_hood_capelet"
+  ],
+  "reasonJa": "動物フードケープ＋題材ペンギン"
+ },
+ "seal_whisker_hooded_fleece": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:animal_hood_jacket",
+   "c:seal"
+  ],
+  "reasonJa": "動物フードジャケット＋題材アザラシで再現"
+ },
+ "dinosaur_spine_hooded_jacket": {
+  "status": "implemented",
+  "refs": [
+   "g:animal_hood_jacket",
+   "p:dinosaur_hood_jacket"
+  ],
+  "reasonJa": "動物フードジャケット＋題材恐竜"
+ },
+ "dragon_horn_hooded_cloak": {
+  "status": "implemented",
+  "refs": [
+   "p:dragon_hood_cloak"
+  ],
+  "reasonJa": "動物フードケープ＋題材ドラゴン"
+ },
+ "sheep_wool_hooded_vest": {
+  "status": "implemented",
+  "refs": [
+   "g:animal_hood_cardigan",
+   "p:sheep_hood_cardigan"
+  ],
+  "reasonJa": "ベストではなくカーディガン型で実装（袖の有無は部位で調整）"
+ },
+ "reindeer_antler_hooded_cardigan": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:animal_hood_cardigan",
+   "c:reindeer"
+  ],
+  "reasonJa": "動物フードカーディガン＋題材トナカイで再現"
+ },
+ "red_panda_ringed_hoodie": {
+  "status": "implemented",
+  "refs": [
+   "p:red_panda_hoodie"
+  ],
+  "reasonJa": "動物フードジャケット＋題材レッサーパンダ"
+ },
+ "rabbit_flannel_sleep_onesie": {
+  "status": "implemented",
+  "refs": [
+   "g:animal_onesie",
+   "p:rabbit_onesie"
+  ],
+  "reasonJa": "動物パジャマつなぎ"
+ },
+ "cat_zip_fleece_onesie": {
+  "status": "implemented",
+  "refs": [
+   "p:cat_onesie"
+  ],
+  "reasonJa": "動物パジャマつなぎ＋肉球の足先"
+ },
+ "dog_footed_flannel_onesie": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:animal_onesie",
+   "c:dog",
+   "o:kigurumi_feet.integrated_footies"
+  ],
+  "reasonJa": "つなぎ＋題材イヌ＋足先一体で再現"
+ },
+ "fox_dropseat_sleep_onesie": {
+  "status": "implemented",
+  "refs": [
+   "p:fox_onesie"
+  ],
+  "reasonJa": "キツネのつなぎ（後ろ開閉の構造は表現しない）"
+ },
+ "bear_loose_lounge_onesie": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:animal_onesie",
+   "c:bear"
+  ],
+  "reasonJa": "つなぎ＋題材クマで再現"
+ },
+ "panda_patch_pocket_onesie": {
+  "status": "implemented",
+  "refs": [
+   "p:panda_onesie"
+  ],
+  "reasonJa": "パンダ配色のつなぎ"
+ },
+ "dinosaur_spined_sleepers": {
+  "status": "implemented",
+  "refs": [
+   "p:dinosaur_sleeper"
+  ],
+  "reasonJa": "背びれの足付きつなぎ"
+ },
+ "axolotl_gill_frill_onesie": {
+  "status": "implemented",
+  "refs": [
+   "p:axolotl_onesie",
+   "c:axolotl"
+  ],
+  "reasonJa": "えらフリルの題材を追加"
+ },
+ "koala_padded_plush_suit": {
+  "status": "implemented",
+  "refs": [
+   "g:plush_padded_suit",
+   "p:koala_plush_suit"
+  ],
+  "reasonJa": "ぬいぐるみ風スーツ（顔出し）"
+ },
+ "otter_belly_plush_suit": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:plush_padded_suit",
+   "c:otter"
+  ],
+  "reasonJa": "ぬいぐるみ風スーツ＋題材カワウソで再現"
+ },
+ "capybara_boxy_plush_suit": {
+  "status": "implemented",
+  "refs": [
+   "p:capybara_plush_suit",
+   "o:kigurumi_padding.boxy_body_padding"
+  ],
+  "reasonJa": "箱形の詰め物"
+ },
+ "bumblebee_padded_plush_suit": {
+  "status": "implemented",
+  "refs": [
+   "p:bumblebee_plush_suit"
+  ],
+  "reasonJa": "丸いお腹＋羽根形の袖"
+ },
+ "rabbit_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:full_mascot_suit",
+   "p:rabbit_mascot",
+   "c:rabbit"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "wolf_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:full_mascot_suit",
+   "p:wolf_mascot",
+   "c:wolf"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "shark_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:full_mascot_suit",
+   "p:shark_mascot",
+   "c:shark"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "penguin_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:full_mascot_suit",
+   "p:penguin_mascot",
+   "c:penguin"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "dragon_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:full_mascot_suit",
+   "p:dragon_mascot",
+   "c:dragon"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "elephant_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:full_mascot_suit",
+   "p:elephant_mascot",
+   "c:elephant"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "strawberry_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:object_mascot_suit",
+   "p:strawberry_mascot",
+   "c:strawberry"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "pumpkin_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:object_mascot_suit",
+   "p:pumpkin_mascot",
+   "c:pumpkin"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "hamburger_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:object_mascot_suit",
+   "p:hamburger_mascot",
+   "c:hamburger"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "sushi_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:object_mascot_suit",
+   "p:sushi_mascot",
+   "c:sushi"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "cupcake_full_head_mascot": {
+  "status": "implemented",
+  "refs": [
+   "g:object_mascot_suit",
+   "p:cupcake_mascot",
+   "c:cupcake"
+  ],
+  "reasonJa": "完全マスコットの共通構造＋題材。視界メッシュ・通気口は任意の明示選択"
+ },
+ "reindeer_tailored_winter_coat": {
+  "status": "implemented",
+  "refs": [
+   "p:reindeer_antler_coat"
+  ],
+  "reasonJa": "ロングコート＋装飾ボタン（ファッション再解釈）"
+ },
+ "serpent_scale_techwear_set": {
+  "status": "implemented",
+  "refs": [
+   "p:serpent_scale_techwear",
+   "pt:snake_scale_print"
+  ],
+  "reasonJa": "ヘビ鱗柄を追加"
+ },
+ "butterfly_pleated_cape_dress": {
+  "status": "implemented",
+  "refs": [
+   "p:butterfly_cape_dress"
+  ],
+  "reasonJa": "ドレス＋背面ケープ"
+ },
+ "frog_rain_utility_set": {
+  "status": "implemented",
+  "refs": [
+   "p:frog_rain_set"
+  ],
+  "reasonJa": "アノラック＋レインブーツ"
+ },
+ "peacock_fan_panel_eveningwear": {
+  "status": "implemented",
+  "refs": [
+   "p:peacock_fan_gown"
+  ],
+  "reasonJa": "ボールガウン＋羽根飾り"
+ },
+ "koi_wave_wrap_outfit": {
+  "status": "implemented",
+  "refs": [
+   "p:koi_wave_wrap"
+  ],
+  "reasonJa": "創作和装＋波柄"
+ },
+ "zebra_stripe_tailored_suit": {
+  "status": "implemented",
+  "refs": [
+   "p:zebra_tailored_suit",
+   "pt:zebra_stripe"
+  ],
+  "reasonJa": "ゼブラ柄を追加"
+ },
+ "denim_bib_overalls": {
+  "status": "implemented",
+  "refs": [
+   "g:bib_overalls"
+  ],
+  "reasonJa": "オーバーオールを基本衣装化"
+ },
+ "technical_anorak_shell": {
+  "status": "implemented",
+  "refs": [
+   "g:technical_anorak"
+  ],
+  "reasonJa": "テクニカルアノラック"
+ },
+ "quilted_puffer_bib_set": {
+  "status": "merged",
+  "refs": [
+   "g:puffer_snow_bib_set"
+  ],
+  "reasonJa": "down_parka_bib_set と統合"
+ },
+ "leather_biker_jacket_set": {
+  "status": "implemented",
+  "refs": [
+   "g:biker_jacket_set",
+   "p:biker_leather"
+  ],
+  "reasonJa": "ライダースジャケット"
+ },
+ "wrap_panel_dress": {
+  "status": "implemented",
+  "refs": [
+   "g:wrap_dress"
+  ],
+  "reasonJa": "ラップドレス（専用プリセットなし）"
+ },
+ "mongolian_deel_documented": {
+  "status": "implemented",
+  "refs": [
+   "g:deel",
+   "p:steppe_deel"
+  ],
+  "reasonJa": "文化注記付きの基本衣装"
+ },
+ "scottish_kilt_documented": {
+  "status": "implemented",
+  "refs": [
+   "g:kilt_set"
+  ],
+  "reasonJa": "文化注記付きの基本衣装"
+ },
+ "sarong_kebaya_documented": {
+  "status": "implemented",
+  "refs": [
+   "g:kebaya_sarong"
+  ],
+  "reasonJa": "文化注記付きの基本衣装"
+ },
+ "west_african_boubou_documented": {
+  "status": "implemented",
+  "refs": [
+   "g:boubou"
+  ],
+  "reasonJa": "文化注記付きの基本衣装"
+ },
+ "ancient_greek_chiton_himation": {
+  "status": "implemented",
+  "refs": [
+   "g:chiton_himation",
+   "p:greek_chiton"
+  ],
+  "reasonJa": "史実注記付きの基本衣装"
+ },
+ "robe_a_la_francaise_documented": {
+  "status": "merged",
+  "refs": [
+   "g:pannier_court_gown"
+  ],
+  "reasonJa": "pannier_ballroom_gown と統合"
+ },
+ "renaissance_doublet_trunk_hose": {
+  "status": "implemented",
+  "refs": [
+   "g:doublet_and_hose",
+   "p:doublet_bard"
+  ],
+  "reasonJa": "史実注記付きの基本衣装"
+ },
+ "medieval_houppelande_documented": {
+  "status": "implemented",
+  "refs": [
+   "g:houppelande"
+  ],
+  "reasonJa": "史実注記付きの基本衣装"
+ },
+ "sixties_paper_shift_dress": {
+  "status": "implemented",
+  "refs": [
+   "g:mod_shift_dress"
+  ],
+  "reasonJa": "シフトドレスとして実装。紙素材（paper textile）は保留"
+ },
+ "firefighter_turnout_gear": {
+  "status": "implemented",
+  "refs": [
+   "g:firefighter_turnout",
+   "p:firefighter",
+   "d:reflective_tape"
+  ],
+  "reasonJa": "新カテゴリではなく制服カテゴリの基本衣装として実装"
+ },
+ "beekeeping_veil_suit": {
+  "status": "merged",
+  "refs": [
+   "g:beekeeping_suit"
+  ],
+  "reasonJa": "cosplay_apiary_veil_smock と統合"
+ },
+ "surgical_scrub_gown_set": {
+  "status": "implemented",
+  "refs": [
+   "g:scrub_suit",
+   "p:scrubs_medical"
+  ],
+  "reasonJa": "スクラブ上下として実装。後ろ合わせのガウンは保留"
+ },
+ "high_visibility_construction_set": {
+  "status": "implemented",
+  "refs": [
+   "g:high_visibility_workwear"
+  ],
+  "reasonJa": "高視認性作業服（専用プリセットなし）"
+ },
+ "hazmat_encapsulating_suit": {
+  "status": "implemented",
+  "refs": [
+   "g:sealed_hazmat_suit",
+   "p:hazmat_worker"
+  ],
+  "reasonJa": "透明バイザーで顔が見える防護服として実装"
+ },
+ "cycling_bib_kit": {
+  "status": "implemented",
+  "refs": [
+   "g:cycling_kit"
+  ],
+  "reasonJa": "サイクルジャージ＋ビブショーツ"
+ },
+ "martial_arts_gi_set": {
+  "status": "implemented",
+  "refs": [
+   "g:martial_arts_gi"
+  ],
+  "reasonJa": "武道着"
+ },
+ "fencing_whites": {
+  "status": "implemented",
+  "refs": [
+   "g:fencing_uniform",
+   "p:fencing_whites"
+  ],
+  "reasonJa": "フェンシングウェア"
+ },
+ "ski_shell_bib_set": {
+  "status": "merged",
+  "refs": [
+   "g:puffer_snow_bib_set"
+  ],
+  "reasonJa": "down_parka_bib_set と統合"
+ },
+ "full_wetsuit": {
+  "status": "implemented",
+  "refs": [
+   "g:full_wetsuit",
+   "p:wetsuit_diver"
+  ],
+  "reasonJa": "フルウェットスーツ"
+ },
+ "fantasy_quilted_gambeson": {
+  "status": "merged",
+  "refs": [
+   "g:quilted_gambeson"
+  ],
+  "reasonJa": "cosplay_thorn_guard_gambeson と統合"
+ },
+ "fantasy_lamellar_harness": {
+  "status": "implemented",
+  "refs": [
+   "g:lamellar_armor_set"
+  ],
+  "reasonJa": "ラメラーアーマー（専用プリセットなし）"
+ },
+ "wing_portal_surcoat": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "翼の開口は特殊パーツとの接続仕様が必要。保留"
+ },
+ "fae_petal_mantle": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "花弁パネルの専用構造が必要。保留"
+ },
+ "classical_ballet_tutu": {
+  "status": "merged",
+  "refs": [
+   "g:classical_tutu"
+  ],
+  "reasonJa": "cosplay_plate_tutu_costume と統合"
+ },
+ "aerial_acrobat_unitard": {
+  "status": "merged",
+  "refs": [
+   "g:stage_unitard"
+  ],
+  "reasonJa": "cosplay_aerialist_unitard_capelet と統合"
+ },
+ "marching_band_uniform": {
+  "status": "implemented",
+  "refs": [
+   "g:marching_band_uniform"
+  ],
+  "reasonJa": "基本衣装として実装"
+ },
+ "quick_change_stage_costume": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "早替え構造は画像として表現しにくいため保留"
+ },
+ "punk_webbing_harness_ensemble": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:biker_jacket_set",
+   "o:waist.waist_harness"
+  ],
+  "reasonJa": "ライダース＋腰のハーネスで近似"
+ },
+ "mod_fishtail_parka": {
+  "status": "implemented",
+  "refs": [
+   "g:fishtail_parka",
+   "p:mods_parka"
+  ],
+  "reasonJa": "モッズパーカ"
+ },
+ "decora_layered_preset": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "大量の小物を重ねる指定は装飾件数の上限設計が必要。保留"
+ },
+ "footed_sleep_onesie": {
+  "status": "merged",
+  "refs": [
+   "g:animal_onesie",
+   "o:kigurumi_feet.integrated_footies"
+  ],
+  "reasonJa": "動物パジャマつなぎの足元部位として統合"
+ },
+ "hooded_bathrobe": {
+  "status": "implemented",
+  "refs": [
+   "g:hooded_bathrobe",
+   "p:bathrobe_rest"
+  ],
+  "reasonJa": "フード付きバスローブ"
+ },
+ "weighted_blanket_poncho": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "重さは画像で表現できないため保留"
+ },
+ "printed_lattice_shell": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "実験的構造カテゴリが必要。保留"
+ },
+ "origami_pleat_transformer": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "変形構造は保留"
+ },
+ "inflatable_air_cell_coat": {
+  "status": "deferred",
+  "refs": [],
+  "reasonJa": "空気室の構造は保留"
+ },
+ "chainmail_mesh_tunic": {
+  "status": "implemented",
+  "refs": [
+   "g:chainmail_tunic"
+  ],
+  "reasonJa": "チェーンメイルのチュニック（専用プリセットなし）"
+ }
+}

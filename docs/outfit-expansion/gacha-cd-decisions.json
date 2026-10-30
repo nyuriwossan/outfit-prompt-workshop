@@ -1,0 +1,382 @@
+{
+ "tuxedo": {
+  "status": "implemented",
+  "refs": [
+   "p:tuxedo_formal",
+   "g:tuxedo"
+  ]
+ },
+ "mafia_coat": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:mafia_suit",
+   "o:cover_up.full_back_cape"
+  ]
+ },
+ "leather_jacket": {
+  "status": "implemented",
+  "refs": [
+   "p:biker_leather"
+  ]
+ },
+ "denim_jacket": {
+  "status": "implemented",
+  "refs": [
+   "p:denim_jacket_daily"
+  ]
+ },
+ "mods_coat": {
+  "status": "implemented",
+  "refs": [
+   "p:mods_parka"
+  ]
+ },
+ "sportswear": {
+  "status": "implemented",
+  "refs": [
+   "p:track_suit_sport"
+  ]
+ },
+ "punk": {
+  "status": "deferred",
+  "refs": []
+ },
+ "jacket_tee": {
+  "status": "deferred",
+  "refs": []
+ },
+ "half_zip_knit": {
+  "status": "deferred",
+  "refs": []
+ },
+ "sheer_shirt": {
+  "status": "deferred",
+  "refs": []
+ },
+ "short_blouson": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:bomber_jacket"
+  ]
+ },
+ "aristocrat_coat": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:frock_coat_suit"
+  ]
+ },
+ "emperor_robe": {
+  "status": "deferred",
+  "refs": []
+ },
+ "rococo": {
+  "status": "deferred",
+  "refs": []
+ },
+ "victorian_frock": {
+  "status": "implemented",
+  "refs": [
+   "g:frock_coat_suit"
+  ]
+ },
+ "riding_habit": {
+  "status": "deferred",
+  "refs": []
+ },
+ "officer_coat": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:long_coat",
+   "o:shoulders.epaulettes"
+  ]
+ },
+ "pilot_jacket": {
+  "status": "implemented",
+  "refs": [
+   "p:bomber_jacket"
+  ]
+ },
+ "plate_armor": {
+  "status": "deferred",
+  "refs": []
+ },
+ "light_armor": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:lamellar_armor_set",
+   "g:quilted_gambeson"
+  ]
+ },
+ "holy_knight": {
+  "status": "deferred",
+  "refs": []
+ },
+ "dark_knight": {
+  "status": "deferred",
+  "refs": []
+ },
+ "mercenary": {
+  "status": "deferred",
+  "refs": []
+ },
+ "ranger": {
+  "status": "deferred",
+  "refs": []
+ },
+ "gladiator": {
+  "status": "deferred",
+  "refs": []
+ },
+ "viking": {
+  "status": "deferred",
+  "refs": []
+ },
+ "assassin": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:shinobi"
+  ]
+ },
+ "pirate": {
+  "status": "implemented",
+  "refs": [
+   "p:pirate_captain"
+  ]
+ },
+ "witch_hunter": {
+  "status": "implemented",
+  "refs": [
+   "p:witch_hunter_tabard"
+  ]
+ },
+ "priest_cassock": {
+  "status": "implemented",
+  "refs": [
+   "p:priest_cassock"
+  ]
+ },
+ "oracle": {
+  "status": "deferred",
+  "refs": []
+ },
+ "necromancer": {
+  "status": "deferred",
+  "refs": []
+ },
+ "alchemist": {
+  "status": "deferred",
+  "refs": []
+ },
+ "kariginu": {
+  "status": "implemented",
+  "refs": [
+   "p:onmyoji_kariginu"
+  ]
+ },
+ "sokutai": {
+  "status": "deferred",
+  "refs": []
+ },
+ "shinobi": {
+  "status": "implemented",
+  "refs": [
+   "p:shinobi"
+  ]
+ },
+ "monk_kesa": {
+  "status": "deferred",
+  "refs": []
+ },
+ "ronin": {
+  "status": "deferred",
+  "refs": []
+ },
+ "wuxia_swordsman": {
+  "status": "deferred",
+  "refs": []
+ },
+ "taoist": {
+  "status": "deferred",
+  "refs": []
+ },
+ "hanbok_dopo": {
+  "status": "deferred",
+  "refs": []
+ },
+ "mongol_deel": {
+  "status": "implemented",
+  "refs": [
+   "p:steppe_deel"
+  ]
+ },
+ "sherwani": {
+  "status": "implemented",
+  "refs": [
+   "p:sherwani_formal"
+  ]
+ },
+ "kurta": {
+  "status": "implemented",
+  "refs": [
+   "p:kurta_casual"
+  ]
+ },
+ "desert_prince": {
+  "status": "deferred",
+  "refs": []
+ },
+ "bisht": {
+  "status": "deferred",
+  "refs": []
+ },
+ "persian_prince": {
+  "status": "deferred",
+  "refs": []
+ },
+ "silk_road": {
+  "status": "deferred",
+  "refs": []
+ },
+ "agbada": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:boubou"
+  ]
+ },
+ "shuka_beads": {
+  "status": "deferred",
+  "refs": []
+ },
+ "norse_tunic": {
+  "status": "deferred",
+  "refs": []
+ },
+ "greek_himation": {
+  "status": "implemented",
+  "refs": [
+   "p:greek_chiton"
+  ]
+ },
+ "andean_poncho": {
+  "status": "implemented",
+  "refs": [
+   "p:andean_poncho"
+  ]
+ },
+ "feather_regalia": {
+  "status": "deferred",
+  "refs": []
+ },
+ "demon_lord": {
+  "status": "deferred",
+  "refs": []
+ },
+ "cyber_jacket": {
+  "status": "deferred",
+  "refs": []
+ },
+ "android_bodysuit": {
+  "status": "deferred",
+  "refs": []
+ },
+ "scavenger": {
+  "status": "deferred",
+  "refs": []
+ },
+ "chef": {
+  "status": "implemented",
+  "refs": [
+   "p:chef_whites"
+  ]
+ },
+ "firefighter": {
+  "status": "implemented",
+  "refs": [
+   "p:firefighter"
+  ]
+ },
+ "rock_star": {
+  "status": "existing_alternative",
+  "refs": [
+   "p:biker_leather"
+  ]
+ },
+ "dancer": {
+  "status": "deferred",
+  "refs": []
+ },
+ "noh_actor": {
+  "status": "deferred",
+  "refs": []
+ },
+ "bard": {
+  "status": "implemented",
+  "refs": [
+   "p:doublet_bard"
+  ]
+ },
+ "detective_inverness": {
+  "status": "deferred",
+  "refs": []
+ },
+ "sky_pirate": {
+  "status": "deferred",
+  "refs": []
+ },
+ "bathrobe": {
+  "status": "implemented",
+  "refs": [
+   "p:bathrobe_rest"
+  ]
+ },
+ "nurse_mini": {
+  "status": "implemented",
+  "refs": [
+   "p:nurse_costume"
+  ]
+ },
+ "santa_mini": {
+  "status": "implemented",
+  "refs": [
+   "p:santa_skirt"
+  ]
+ },
+ "cheerleader": {
+  "status": "implemented",
+  "refs": [
+   "p:cheerleader"
+  ]
+ },
+ "chore_workwear": {
+  "status": "deferred",
+  "refs": []
+ },
+ "knit_polo": {
+  "status": "deferred",
+  "refs": []
+ },
+ "belle_epoque_suit": {
+  "status": "existing_alternative",
+  "refs": [
+   "g:frock_coat_suit"
+  ]
+ },
+ "renaissance_doublet": {
+  "status": "implemented",
+  "refs": [
+   "p:doublet_bard"
+  ]
+ },
+ "woven_coastal_cloak": {
+  "status": "deferred",
+  "refs": []
+ },
+ "solarpunk_utility": {
+  "status": "deferred",
+  "refs": []
+ },
+ "deep_sea_suit": {
+  "status": "deferred",
+  "refs": []
+ }
+}
