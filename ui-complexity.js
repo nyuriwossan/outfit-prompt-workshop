@@ -5,7 +5,7 @@
   try{var saved=JSON.parse(g.localStorage.getItem(key)||'{}');Object.keys(prefs).forEach(function(k){if(valid(saved[k]))prefs[k]=saved[k];});}catch(e){}
   C.uiPrefs={key:key,get:function(surface){return prefs[surface+'Level']||'simple';},set:function(surface,level){if(!Object.prototype.hasOwnProperty.call(prefs,surface+'Level')||!valid(level))return;prefs[surface+'Level']=level;try{g.localStorage.setItem(key,JSON.stringify(prefs));}catch(e){}},snapshot:function(){return U.clone(prefs);}};
   var simpleFields=['concept.worldview','concept.primaryStyle','concept.primaryThemeMotif','garment.category','garment.subtype','silhouette.fit','silhouette.length','materials.primary','materials.patterns','decorations.density','palette.primary','palette.secondary','palette.accent'];
-  var simpleSlots=['neckline','collar','sleeves','skirt_shape','bottoms','footwear','headwear','swim_form','straps','lingerie_form','top_structure','bottom_structure','mermaid_tail_form'];
+  var simpleSlots=['neckline','collar','sleeves','skirt_shape','bottoms','footwear','headwear','swim_form','straps','lingerie_form','top_structure','bottom_structure','mermaid_tail_form','creature_motif','animal_hood','kigurumi_hands','kigurumi_feet','mascot_head','mascot_body','mascot_hands','mascot_feet'];
   function simpleField(path,o){
     var cat=U.byId(D.garmentCategories,o.garment.category)||{},sub=U.byId(D.garments,o.garment.subtype)||{};
     if(simpleFields.indexOf(path)>=0||(cat.requiredFields||[]).concat(sub.requiredFields||[]).indexOf(path)>=0)return true;

@@ -109,7 +109,7 @@
       // A blocked garment is replaced only inside an explicitly selected base pool.
       var garmentViolations=E.constraintViolations(o,s.exclusions).filter(function(v){return v.path==='garment.subtype';});
       if(garmentViolations.length&&!preserve){
-        var pool=s.traditional.attireId?[s.traditional.attireId]:s.baseId?F.mappings.bases[s.baseId]:D.garments.map(function(x){return x.id;});
+        var pool=s.traditional.attireId?[s.traditional.attireId]:s.baseId?F.mappings.bases[s.baseId]:D.garments.filter(function(x){return !x.specialStructure;}).map(function(x){return x.id;});
         if(o.garment.category==='merfolk')pool=D.garments.filter(function(x){return x.category==='merfolk';}).map(function(x){return x.id;});
         var replacement=pool.filter(function(id){return !s.exclusions.some(function(ex){return contains(F.exclusionRules[ex].garments,id);});})[0];
         if(!replacement)return;

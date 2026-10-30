@@ -154,12 +154,30 @@
     return adj;
   }
 
+  /* 着ぐるみ・完全マスコットの題材（共通の構造化モチーフ）。
+   * 題材ごとの専用ロジックは持たず、テンプレートへ名詞と特徴を差し込むだけにする。 */
+  function creatureOf(o) {
+    var cat = U.byId(D.garmentCategories, o.garment.category);
+    if (!cat || cat.slots.indexOf('creature_motif') < 0) return null;
+    var slot = U.byId(D.partSlots, 'creature_motif');
+    return slot ? U.byId(slot.options, o.parts.creature_motif) : null;
+  }
+  function fillCreature(template, c, mascot) {
+    if (!template) return '';
+    var t = template;
+    if (!c) t = t.replace(/\s*with \{f\}/g, '').replace(/\{c\}-/g, 'character-').replace(/\{c\}\s*/g, '');
+    return t.replace(/\{c\}/g, c ? c.shortPrompt : '').replace(/\{f\}/g, c ? (mascot ? c.mascotFeatureEn : c.featureEn) : '').replace(/\s{2,}/g, ' ').trim();
+  }
+  CPW.generator.fillCreature = fillCreature;
+
   function garmentHead(o) {
     var g = U.byId(D.garments, o.garment.subtype);
+    var creature = creatureOf(o);
+    if (g && g.creatureShort && creature) return fillCreature(g.creatureShort, creature);
     if (g) return g.shortPrompt;
     var c = U.byId(D.garmentCategories, o.garment.category);
     if (!c) return null;
-    return { top_bottom: 'outfit', dress: 'dress', uniform: 'uniform', robe: 'robe', wafuku: 'kimono', chinese: 'hanfu', swimwear: 'swimsuit', lingerie: 'lingerie set', merfolk: 'mermaid outfit' }[c.id] || 'outfit';
+    return { top_bottom: 'outfit', dress: 'dress', uniform: 'uniform', robe: 'robe', wafuku: 'kimono', chinese: 'hanfu', swimwear: 'swimsuit', lingerie: 'lingerie set', merfolk: 'mermaid outfit', kigurumi: 'animal costume', full_mascot: 'mascot costume' }[c.id] || 'outfit';
   }
 
   /* 手袋などの複合スロットは必ず一句へ */
@@ -242,7 +260,9 @@
     if (!head) return { short: [], detailed: [] };
     var g = U.byId(D.garments, o.garment.subtype);
     // 詳細版の核は detailedPrompt（冠詞を外して使う）。garments ブロックとは二重にしない。
-    var headDetail = g && g.detailedPrompt ? g.detailedPrompt.replace(/^(a|an|the)\s+/i, '') : head;
+    var creature = creatureOf(o);
+    var detailSrc = g && g.creatureDetailed && creature ? fillCreature(g.creatureDetailed, creature) : (g && g.detailedPrompt);
+    var headDetail = detailSrc ? detailSrc.replace(/^(a|an|the)\s+/i, '') : head;
     // New concept-selected structures override the legacy qipao template's fixed slit.
     if(g && g.id==='qipao' && o.concept.inspiration && o.concept.inspiration.traditional.attireId==='qipao') headDetail=head;
     var formAdj = swimFormAdj(o, head);
@@ -268,10 +288,27 @@
     // board shorts のような複数形の核に "A ... shorts" と冠詞を付けない
     var detailCore = g && g.plural ? 'a pair of ' + detailPhrase : withArticle(detailPhrase);
     return {
-      short: [shortMods.concat([head]).join(' ')],
+      short: [shortCore(shortMods, head, baseColorPhrase(o))],
       detailed: [detailCore]
     };
   }
+
+  /* 短縮版の核。色名の末語と次の語が同じになる場合（"garnet red red panda" / "dusty rose rose-and-slumber"）だけ、
+   * 色を核の後ろへ回して "red panda sack tunic in garnet red" とする。それ以外は従来どおり前置きのまま。 */
+  function shortCore(mods, head, color) {
+    var words = mods.concat([head]);
+    var i = color ? words.indexOf(color) : -1;
+    if (i >= 0) {
+      var last = color.split(' ').pop().toLowerCase();
+      var next = String(words[i + 1] || '').split(/[\s-]/)[0].toLowerCase();
+      if (last && last === next) {
+        var rest = words.slice(0, i).concat(words.slice(i + 1));
+        return rest.join(' ') + ' in ' + color;
+      }
+    }
+    return words.join(' ');
+  }
+  CPW.generator.shortCore = shortCore;
 
   function blockPalette(o) {
     var base = baseColorPhrase(o);
@@ -332,6 +369,7 @@
     cat.slots.forEach(function (slotId) {
       if (slotId === 'swim_form') return;   // 水着の型は核へ統合済み（blockIdentity）
       if (slotId === 'mermaid_tail_form') return;   // 尾の形は blockMerfolk へ統合（重複修正・仕様書§10）
+      if ((D.creatureSlotIds || []).indexOf(slotId) >= 0) return;   // 着ぐるみ系は blockCreature で題材と組み合わせる
       var slot = U.byId(D.partSlots, slotId);
       if (!slot) return;
       var v = o.parts[slotId];
@@ -420,6 +458,46 @@
       short: sh,
       detailed: ['with the lower body ending in a single ' + tail + ', replacing separate human legs and feet']
     };
+  }
+
+  /* 着ぐるみ（顔出し）と完全マスコット。
+   *   kigurumi    … 顔が見えるフード（open-face / hood worn down）を明示する。
+   *   full_mascot … 頭部が頭全体を覆い、人の顔は見えないことを必ず明示する（人魚の否定句と同じ扱い）。
+   *                 視界メッシュ・通気口は明示選択したときだけ出す。 */
+  function slotText(o, slotId, creature, mascot) {
+    var slot = U.byId(D.partSlots, slotId);
+    var opt = slot ? U.byId(slot.options, o.parts[slotId]) : null;
+    return opt && opt.shortPrompt ? fillCreature(opt.shortPrompt, creature, mascot) : null;
+  }
+  function blockCreature(o) {
+    var cat = o.garment.category;
+    if (cat !== 'kigurumi' && cat !== 'full_mascot') return { short: [], detailed: [] };
+    var creature = creatureOf(o), g = U.byId(D.garments, o.garment.subtype);
+    if (cat === 'kigurumi') {
+      var hood = slotText(o, 'animal_hood', creature);
+      if (!hood && g && g.hasHood) hood = fillCreature('open-face {c} hood with {f}', creature);
+      var list = [hood, slotText(o, 'kigurumi_padding', creature), slotText(o, 'kigurumi_hands', creature),
+        slotText(o, 'kigurumi_feet', creature), slotText(o, 'costume_tail', creature)].filter(Boolean);
+      return { short: list, detailed: list.length ? ['featuring ' + joinAnd(list.map(withArticleIfCountable))] : [] };
+    }
+    var headOpt = U.byId(U.byId(D.partSlots, 'mascot_head').options, o.parts.mascot_head);
+    var head = slotText(o, 'mascot_head', creature, true) || fillCreature('oversized {c} mascot head with {f}', creature, true);
+    var body = slotText(o, 'mascot_body', creature, true) || (headOpt && headOpt.id === 'merged_head_body' ? null : 'padded mascot body');
+    var hands = slotText(o, 'mascot_hands', creature, true) || 'matching mascot gloves';
+    var feet = slotText(o, 'mascot_feet', creature, true) || 'matching mascot feet';
+    var vision = slotText(o, 'mascot_vision', creature, true);
+    var tail = slotText(o, 'costume_tail', creature, true);
+    var sh = [head, 'head fully enclosed', 'no human face visible', body, hands, feet, tail, vision].filter(Boolean);
+    var rest = [body, hands, feet, tail, vision].filter(Boolean).map(withArticleIfCountable);
+    return {
+      short: sh,
+      detailed: ['featuring ' + withArticle(head) + ' that encloses the wearer\'s entire head, so no human face is visible' + (rest.length ? ', together with ' + joinAnd(rest) : '')]
+    };
+  }
+  /* 複数形の句（gloves / feet / footies / slippers / sleeves / mitts）には冠詞を付けない。 */
+  function withArticleIfCountable(p) {
+    var head = p.split(/ (?:on|inside|with|at|around) /)[0].split(' ').pop();
+    return /(s|feet)$/.test(head) ? p : withArticle(p);
   }
 
   /* 「流れる構造」が選ばれているか。flowing という語は、
@@ -848,7 +926,7 @@
    * 公開API
    * ========================================================== */
   var BLOCK_ORDER = [
-    'identity', 'palette', 'silhouette', 'garments', 'parts', 'styling', 'wearState', 'merfolk', 'materials',
+    'identity', 'palette', 'silhouette', 'garments', 'parts', 'styling', 'wearState', 'merfolk', 'creature', 'materials',
     'condition', 'decorations', 'theme', 'conceptInspiration', 'specialParts', 'effects', 'presentation', 'background', 'rendering', 'optionalNarrative', 'quality'
   ];
 
@@ -865,6 +943,7 @@
       styling: blockStyling(o),
       wearState: blockWearState(o),
       merfolk: blockMerfolk(o),
+      creature: blockCreature(o),
       materials: blockMaterials(o),
       condition: blockCondition(o),
       decorations: blockDecorations(o),
@@ -916,6 +995,7 @@
     garments: ['', ''],
     parts: ['with', 'paired with', 'completed with'],
     merfolk: ['', ''],
+    creature: ['', ''],
     materials: ['', ''],
     condition: ['', ''],
     decorations: ['adorned with', 'trimmed with', 'detailed with'],

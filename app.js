@@ -507,7 +507,10 @@
     var mat = util.byId(D.materials,o.materials.primary);
     var rigid = !!mat && (mat.matClasses || mat.tags || []).some(function (t) { return t === 'rigid' || t === 'metallic'; });
     var garment = util.byId(D.garments,o.garment.subtype);
-    return { asymmetric: has('asymmetric') || CPW.styling.active(o).some(function (opt) { return opt.id === 'asymmetrically_worn'; }), draped: has('draped'), rigid: rigid,
+    // 基本衣装そのものが非対称（ケンテ風の非対称ドレープ、斜めジップのライダース等）なら、
+    // 「左右対称」を英文に並べて矛盾させない（選択値は保持）。
+    var garmentAsym = !!garment && ((garment.tags || []).indexOf('asymmetric') >= 0 || /\basymmetric/.test(garment.detailedPrompt || ''));
+    return { asymmetric: garmentAsym || has('asymmetric') || CPW.styling.active(o).some(function (opt) { return opt.id === 'asymmetrically_worn'; }), draped: has('draped'), rigid: rigid,
       openBack: has('open_back') || !!garment && (garment.tags || []).indexOf('open_back') >= 0,
       rigidBack: rigid && (has('covered_back') || !!cat && cat.slots.indexOf('vest') >= 0 && o.parts.vest === 'armored_vest') };
   };
@@ -888,28 +891,36 @@
 
   function renderField(field) {
     if (!CPW.uiComplexity.visible(field.key,state.outfit)) return ui.el('span',{hidden:'hidden'});
-    var wrap = ui.el('div', { class: 'field' });
-    var head = ui.el('div', { class: 'field-head' }, [
-      ui.el('span', { class: 'field-label', text: field.labelJa }),
-      field.optional ? ui.el('span', { class: 'tag-optional', text: '任意' }) : null
-    ]);
-    wrap.appendChild(head);
-    if (field.noteJa) wrap.appendChild(ui.el('p', { class: 'field-note', text: field.noteJa }));
-    var body = ui.el('div', { class: 'field-body' });
+    var shell = foldShell({
+      key: field.key, labelJa: field.labelJa, noteJa: field.noteJa, path: field.key,
+      badgeJa: field.type === 'multi' ? '複数可' : (field.optional ? '任意' : null),
+      status: function () {
+        var v = util.getPath(state.outfit, field.key), list = field.options();
+        var ids = field.type === 'multi' ? (Array.isArray(v) ? v : []) : (v ? [v] : []);
+        return { filled: ids.length > 0, summaryJa: summarizeLabels(ids.map(function (id) { return util.labelOf(list, id, id); })) };
+      },
+      onClear: function () { state.set(field.key, field.type === 'multi' ? [] : null); renderChips(field, body); }
+    });
+    var body = shell.content;
     renderChips(field, body);
-    wrap.appendChild(body);
-    return wrap;
+    // renderChips は選択のたびに body を描き直す。要約はその後で更新する。
+    body.addEventListener('click', function () { shell.refresh(); });
+    shell.refresh();
+    return shell.el;
   }
 
   function renderAttributeField() {
-    var wrap = ui.el('div', { class: 'field' });
-    wrap.appendChild(ui.el('div', { class: 'field-head' }, [
-      ui.el('span', { class: 'field-label', text: '属性' }),
-      ui.el('span', { class: 'tag-optional', text: '任意' })
-    ]));
-
-    var body = ui.el('div', { class: 'field-body' });
-    var draw = function () {
+    var shell = foldShell({
+      key: 'concept.attribute.id', labelJa: '属性', badgeJa: '任意', path: 'concept.attribute.id',
+      status: function () {
+        var attr = state.outfit.concept.attribute;
+        return { filled: !!attr.id, summaryJa: attr.id ? util.labelOf(D.attributes, attr.id) + '（' + util.labelOf(D.attributeIntensities, attr.intensity, '標準') + '）' : '' };
+      },
+      onClear: function () { state.set('concept.attribute.id', null); draw(); }
+    });
+    var wrap = shell.el;
+    var body = shell.content;
+    var drawInner = function () {
       body.innerHTML = '';
       var attr = state.outfit.concept.attribute;
 
@@ -967,8 +978,8 @@
       });
       body.appendChild(trow);
     };
+    var draw = function () { drawInner(); shell.refresh(); };
     draw();
-    wrap.appendChild(body);
     return wrap;
   }
 
@@ -980,17 +991,124 @@
     if (el) el.focus();
   }
 
+  /* ---------- 細項目の折りたたみ（衣装拡張 Phase 1） ----------
+   * 大セクション（openSections）の内側で、各項目を「見出し＋要約」に畳む。
+   *   - 開閉は表示状態だけ。state.outfit・dirty・updatedAt・下書き・英文には触れない。
+   *   - 畳んでも値は保持し、出力にも反映する。値を消すのは「設定を解除」を押したときだけ。
+   *   - 開閉状態はセッション中だけ保持し、再描画・カテゴリ変更・画面移動をまたいで維持する。
+   *   - 入れ子は「大セクション → 項目」の2階層まで。 */
+  var openFields = {};
+  CPW._openFields = openFields;
+
+  function fieldTier(path) {
+    if (CORE_REQUIRED.some(function (f) { return f.path === path; })) return 'required';
+    var plan = slotPlan(state.outfit);
+    if (plan.requiredFields.indexOf(path) >= 0) return 'required';
+    if (path.indexOf('parts.') === 0) return CPW.slotTier(state.outfit, path.slice(6));
+    if (CORE_RECOMMENDED.some(function (f) { return f.path === path; }) || plan.recommendedFields.indexOf(path) >= 0) return 'recommended';
+    return 'optional';
+  }
+  CPW.fieldTier = fieldTier;
+
+  /* 日本語の要約。複数選択は件数と代表2件。 */
+  function summarizeLabels(labels) {
+    labels = labels.filter(Boolean);
+    if (!labels.length) return '';
+    if (labels.length === 1) return labels[0];
+    return labels.length + '件：' + labels.slice(0, 2).join('・') + (labels.length > 2 ? ' ほか' : '');
+  }
+  CPW.summarizeLabels = summarizeLabels;
+
+  var FOLD_STATE_JA = { filled: '設定済み', required: '必須・未設定', recommended: '未設定（おすすめ）', optional: '未設定' };
+
+  /* cfg: { key, labelJa, noteJa, badgeJa, path, status() → {filled, summaryJa, dormantJa}, onClear(), openWhenEmpty } */
+  function foldShell(cfg) {
+    var first = !Object.prototype.hasOwnProperty.call(openFields, cfg.key);
+    var st0 = cfg.status();
+    if (first) openFields[cfg.key] = !!(cfg.openWhenEmpty && !st0.filled);
+    // 大分類・基本衣装は「未選択なら必ず見つかる」ことを優先し、空に戻ったときも開く。
+    else if (cfg.openWhenEmpty && !st0.filled) openFields[cfg.key] = true;
+    var panelId = 'fold-' + String(cfg.key).replace(/[^A-Za-z0-9_-]/g, '-');
+    var wrap = ui.el('div', { class: 'field field--fold', 'data-field': cfg.key });
+    var stateEl = ui.el('span', { class: 'fold-state' });
+    var summaryEl = ui.el('span', { class: 'fold-summary' });
+    var head = ui.el('button', {
+      type: 'button', class: 'fold-head', 'aria-controls': panelId, 'data-fold': cfg.key,
+      'aria-expanded': openFields[cfg.key] ? 'true' : 'false'
+    }, [
+      ui.el('span', { class: 'fold-line' }, [
+        ui.el('span', { class: 'field-label', text: cfg.labelJa }),
+        cfg.badgeJa ? ui.el('span', { class: 'tag-optional', text: cfg.badgeJa }) : null,
+        stateEl,
+        ui.el('span', { class: 'acc-mark', 'aria-hidden': 'true' })
+      ]),
+      summaryEl
+    ]);
+    var body = ui.el('div', { class: 'fold-body', id: panelId, hidden: openFields[cfg.key] ? null : 'hidden' });
+    if (cfg.noteJa) body.appendChild(ui.el('p', { class: 'field-note', text: cfg.noteJa }));
+    var content = ui.el('div', { class: 'field-body' });
+    body.appendChild(content);
+    var clearRow = ui.el('div', { class: 'fold-clear' });
+    body.appendChild(clearRow);
+
+    head.addEventListener('click', function () {
+      var now = !openFields[cfg.key];
+      openFields[cfg.key] = now;
+      head.setAttribute('aria-expanded', now ? 'true' : 'false');
+      if (now) body.removeAttribute('hidden'); else body.setAttribute('hidden', 'hidden');
+    });
+
+    function refresh() {
+      var st = cfg.status();
+      var tier = cfg.path ? fieldTier(cfg.path) : 'optional';
+      var key = st.filled ? 'filled' : tier;
+      wrap.className = 'field field--fold is-' + key;
+      stateEl.textContent = st.dormantJa ? '休止中' : FOLD_STATE_JA[key];
+      summaryEl.textContent = st.filled ? st.summaryJa : (st.dormantJa || (tier === 'required' ? '選ぶと基本設計が進みます' : 'タップで選択'));
+      head.setAttribute('aria-label', cfg.labelJa + '：' + (st.filled ? st.summaryJa : (st.dormantJa ? '休止中' : FOLD_STATE_JA[key])) + (openFields[cfg.key] ? '（開いています）' : ''));
+      clearRow.innerHTML = '';
+      if (st.filled && cfg.onClear) {
+        clearRow.appendChild(ui.el('button', {
+          type: 'button', class: 'link-btn', 'data-fold-clear': cfg.key,
+          'aria-label': cfg.labelJa + 'の設定を解除', text: '設定を解除',
+          onclick: function () {
+            cfg.onClear();
+            if (cfg.afterClear) cfg.afterClear(); else refresh();
+            var target = head.isConnected ? head : document.querySelector('[data-fold="' + cfg.key + '"]');
+            if (target) target.focus();
+          }
+        }));
+      }
+    }
+    wrap.appendChild(head);
+    wrap.appendChild(body);
+    return { el: wrap, content: content, refresh: refresh, head: head };
+  }
+  CPW.foldShell = foldShell;
+
   /* cfg: { labelJa, noteJa, optional, fkey, items(), get(), set(id, isSelected), multi, hidden } */
   function selectField(cfg) {
     var path=cfg.fkey.replace(/^part:/,'parts.');
     if (/^(concept|garment|silhouette|materials|decorations|palette|parts)\./.test(path) && !CPW.uiComplexity.visible(path,state.outfit)) return ui.el('span',{hidden:'hidden'});
-    var wrap = ui.el('div', { class: 'field' });
-    wrap.appendChild(ui.el('div', { class: 'field-head' }, [
-      ui.el('span', { class: 'field-label', text: cfg.labelJa }),
-      cfg.optional ? ui.el('span', { class: 'tag-optional', text: '任意' }) : null
-    ]));
-    if (cfg.noteJa) wrap.appendChild(ui.el('p', { class: 'field-note', text: cfg.noteJa }));
-    var body = ui.el('div', { class: 'field-body' });
+    var shell = foldShell({
+      key: cfg.fkey, labelJa: cfg.labelJa, noteJa: cfg.noteJa,
+      badgeJa: cfg.multi ? '複数可' : (cfg.optional ? '任意' : null),
+      path: cfg.fkey === 'styling' ? 'styling.items' : path,
+      openWhenEmpty: cfg.openWhenEmpty,
+      status: function () {
+        var val = cfg.get(), all = cfg.items(), ids = cfg.multi ? (Array.isArray(val) ? val : []) : (val ? [val] : []);
+        return { filled: ids.length > 0, summaryJa: summarizeLabels(ids.map(function (id) { var o = util.byId(all, id) || (cfg.lookup && cfg.lookup(id)); return o ? o.labelJa : id; })) };
+      },
+      onClear: function () {
+        var val = cfg.get();
+        if (cfg.multi) (Array.isArray(val) ? val.slice() : []).forEach(function (id) { cfg.set(id, true); });
+        else if (val) cfg.set(val, true);
+        draw();
+      },
+      afterClear: cfg.afterClear
+    });
+    var wrap = shell.el;
+    var body = shell.content;
 
     function draw() {
       body.innerHTML = '';
@@ -1014,9 +1132,9 @@
         row.appendChild(b);
       });
       body.appendChild(row);
+      shell.refresh();
     }
     draw();
-    wrap.appendChild(body);
     return wrap;
   }
 
@@ -1049,13 +1167,16 @@
 
   /* 複数選択スロット：選んだものごとに層（内側／主衣装／外側）を指定できる */
   function renderMultiSlot(slot) {
-    var wrap = ui.el('div', { class: 'field' });
-    wrap.appendChild(ui.el('div', { class: 'field-head' }, [
-      ui.el('span', { class: 'field-label', text: slot.labelJa }),
-      ui.el('span', { class: 'tag-optional', text: '複数可' })
-    ]));
-    if (slot.noteJa) wrap.appendChild(ui.el('p', { class: 'field-note', text: slot.noteJa }));
-    var body = ui.el('div', { class: 'field-body' });
+    var shell = foldShell({
+      key: 'part:' + slot.id, labelJa: slot.labelJa, noteJa: slot.noteJa, badgeJa: '複数可', path: 'parts.' + slot.id,
+      status: function () {
+        var val = state.outfit.parts[slot.id] || [];
+        return { filled: val.length > 0, summaryJa: summarizeLabels(val.map(function (v) { return util.labelOf(slot.options, v.id, v.id); })) };
+      },
+      onClear: function () { state.setPart(slot.id, []); draw(); }
+    });
+    var wrap = shell.el;
+    var body = shell.content;
 
     function current() { return state.outfit.parts[slot.id] || []; }
     function draw() {
@@ -1113,20 +1234,31 @@
       });
       body.appendChild(ui.el('p', { class: 'field-note', text: '同じ層に似たものを重ねると重複として警告するよ（Phase 4）。層を分ければ重ね着として扱う。' }));
     }
+    var drawBody = draw;
+    draw = function () { drawBody(); shell.refresh(); };
     draw();
-    wrap.appendChild(body);
     return wrap;
   }
 
   /* 複合スロット（手袋）：関連する4項目をひとまとまりで見せる */
   function renderCompositeSlot(slot) {
-    var wrap = ui.el('div', { class: 'field' });
-    wrap.appendChild(ui.el('div', { class: 'field-head' }, [
-      ui.el('span', { class: 'field-label', text: slot.labelJa }),
-      ui.el('span', { class: 'tag-optional', text: '任意' })
-    ]));
-    var body = ui.el('div', { class: 'field-body' });
     var reqKey = slot.requiredAxis || 'type';
+    var shell = foldShell({
+      key: 'part:' + slot.id, labelJa: slot.labelJa, badgeJa: '任意', path: 'parts.' + slot.id,
+      status: function () {
+        var v = state.outfit.parts[slot.id] || {}, active = schema.activeComposite(slot, v);
+        if (!active) {
+          var held = slot.axes.filter(function (a) { return a.key !== reqKey && v[a.key]; }).length;
+          return { filled: false, dormantJa: held ? '種類が未選択のため休止中（' + held + '件保持）' : '' };
+        }
+        var head = util.labelOf(schema.axisOf(slot, reqKey).options, active[reqKey]);
+        var mods = slot.axes.filter(function (a) { return a.key !== reqKey && active[a.key]; }).map(function (a) { return util.labelOf(a.options, active[a.key]); });
+        return { filled: true, summaryJa: mods.length ? head + '（' + mods.join('・') + '）' : head };
+      },
+      onClear: function () { state.setPart(slot.id, null); draw(); }
+    });
+    var wrap = shell.el;
+    var body = shell.content;
 
     function value() {
       var v = state.outfit.parts[slot.id];
@@ -1177,9 +1309,9 @@
           body.appendChild(ui.el('p', { class: 'field-note field-note--data', text: '休止中：' + dormant.join('・') + '。種類を選び直すと、この指定がそのまま戻ります。出力には含めません。' }));
         }
       }
+      shell.refresh();
     }
     draw();
-    wrap.appendChild(body);
     return wrap;
   }
 
@@ -1372,12 +1504,16 @@
   /* 複数追加できるもの */
   function renderSpecialList(def, redraw) {
     var list = state.outfit.specialParts[def.key] || [];
-    var wrap = ui.el('div', { class: 'field' });
-    wrap.appendChild(ui.el('div', { class: 'field-head' }, [
-      ui.el('span', { class: 'field-label', text: def.labelJa }),
-      ui.el('span', { class: 'tag-optional', text: '複数可' })
-    ]));
-    if (def.noteJa) wrap.appendChild(ui.el('p', { class: 'field-note', text: def.noteJa }));
+    var shell = foldShell({
+      key: 'sp-list:' + def.key, labelJa: def.labelJa, noteJa: def.noteJa, badgeJa: '複数可',
+      status: function () {
+        var cur = state.outfit.specialParts[def.key] || [];
+        return { filled: cur.length > 0, summaryJa: summarizeLabels(cur.map(function (id) { return util.labelOf(def.pool, id, id); })) };
+      },
+      onClear: function () { var patch = { specialParts: {} }; patch.specialParts[def.key] = []; state.applyPatch(patch); },
+      afterClear: function () { redraw(); }
+    });
+    var wrap = shell.content;
 
     if (def.gatedBy && !state.outfit.output[def.gatedBy] && list.length) {
       wrap.appendChild(ui.el('p', {
@@ -1406,7 +1542,8 @@
       row.appendChild(b);
     });
     wrap.appendChild(row);
-    return wrap;
+    shell.refresh();
+    return shell.el;
   }
 
   /* ---------- 2. 衣装構造 ---------- */
@@ -1416,7 +1553,7 @@
       var o = state.outfit;
 
       panel.appendChild(selectField({
-        labelJa: '大分類', fkey: 'garment.category',
+        labelJa: '大分類', fkey: 'garment.category', openWhenEmpty: true,
         noteJa: '選んだ大分類に応じて、下に表示する部位が切り替わります。',
         items: function () { return D.garmentCategories; },
         get: function () { return o.garment.category; },
@@ -1437,8 +1574,10 @@
 
       if (o.garment.category) {
         panel.appendChild(selectField({
-          labelJa: '基本衣装', fkey: 'garment.subtype',
+          labelJa: '基本衣装', fkey: 'garment.subtype', openWhenEmpty: true,
+          noteJa: CPW.garmentCategoryNoteJa ? CPW.garmentCategoryNoteJa(o.garment.category) : null,
           items: function () { return D.garments.filter(function (g) { return g.category === o.garment.category; }); },
+          lookup: function (id) { return util.byId(D.garments, id); },
           get: function () { return o.garment.subtype; },
           set: function (id, sel) { state.set('garment.subtype', sel ? null : id); draw(); var material=document.getElementById('panel-material');if(material){material.innerHTML='';buildMaterialSection(material);} }
         }));
@@ -1463,8 +1602,40 @@
         var slot = util.byId(D.partSlots, slotId);
         if (slot) panel.appendChild(renderSlotField(slot));
       });
+      var dormant = dormantNotice(o, draw);
+      if (dormant) panel.appendChild(dormant);
     }
     draw();
+  }
+
+  /* 現在の大分類では使わない部位に値が残っているとき（例：完全マスコットに切り替えた後の靴・頭部）。
+   * 値は消さずに休止として保持し、出力・完成度・警告には混ぜない。消すのは明示操作のときだけ。 */
+  function dormantParts(o) {
+    var cat = util.byId(D.garmentCategories, o.garment.category);
+    if (!cat) return [];
+    return Object.keys(o.parts).filter(function (id) {
+      var slot = util.byId(D.partSlots, id);
+      return slot && cat.slots.indexOf(id) < 0 && schema.isSlotFilled(slot, o.parts[id]);
+    }).map(function (id) { return util.byId(D.partSlots, id); });
+  }
+  CPW.dormantParts = dormantParts;
+
+  function dormantNotice(o, redraw) {
+    var list = dormantParts(o);
+    if (!list.length) return null;
+    var box = ui.el('div', { class: 'dormant-note', 'data-dormant-parts': String(list.length) });
+    box.appendChild(ui.el('p', { class: 'field-note field-note--data', text: '現在の大分類では適用外の設定が' + list.length + '件あります（保持中・出力しません）：' + list.map(function (s) { return s.labelJa; }).join('・') + '。大分類を戻すと、そのまま復帰します。' }));
+    var confirmRow = ui.el('div', { class: 'chips', hidden: 'hidden' });
+    var ask = ui.el('button', { type: 'button', class: 'link-btn', 'data-fkey': 'dormant:clear', text: '適用外の設定を解除する' });
+    ask.addEventListener('click', function () { confirmRow.removeAttribute('hidden'); ask.setAttribute('hidden', 'hidden'); confirmRow.querySelector('button').focus(); });
+    confirmRow.appendChild(ui.el('button', { type: 'button', class: 'btn btn--sm btn--danger', 'data-fkey': 'dormant:confirm', text: list.length + '件を解除する', onclick: function () {
+      var next = util.clone(state.outfit.parts);
+      list.forEach(function (s) { delete next[s.id]; });
+      state.outfit.parts = next; state.touch(); redraw(); ui.toast('適用外の設定を解除しました。');
+    } }));
+    confirmRow.appendChild(ui.el('button', { type: 'button', class: 'btn btn--sm', text: 'キャンセル', onclick: function () { confirmRow.setAttribute('hidden', 'hidden'); ask.removeAttribute('hidden'); ask.focus(); } }));
+    box.appendChild(ask); box.appendChild(confirmRow);
+    return box;
   }
 
   function buildStylingSection(panel) {
@@ -1522,9 +1693,12 @@
       host.innerHTML = '';
       var o = state.outfit;
 
-      // 装飾密度
-      var dens = ui.el('div', { class: 'field' });
-      dens.appendChild(ui.el('div', { class: 'field-head' }, [ui.el('span', { class: 'field-label', text: '装飾密度' })]));
+      // 装飾密度（常に値を持つ。畳んだ見出しで現在の密度を示す）
+      var densShell = foldShell({
+        key: 'decorations.density', labelJa: '装飾密度', path: 'decorations.density',
+        status: function () { var d = D.decorationDensity[state.outfit.decorations.density]; return { filled: true, summaryJa: d ? d.labelJa : '' }; }
+      });
+      var dens = densShell.content;
       var drow = ui.el('div', { class: 'chips' });
       D.decorationDensity.forEach(function (d) {
         var sel = o.decorations.density === d.level;
@@ -1543,7 +1717,8 @@
         class: 'field-note' + (used > budget ? ' field-note--over' : ''),
         text: '選んだ装飾の量：' + used + ' / この密度の目安：' + budget + (used > budget ? '（目安を超えています）' : '')
       }));
-      host.appendChild(dens);
+      densShell.refresh();
+      host.appendChild(densShell.el);
 
       if(CPW.uiPrefs.get('workshop')==='simple'){
         host.appendChild(ui.el('p',{class:'p',text:'現在の装飾：'+(items().map(function(x){return util.labelOf(D.decorations,x.type);}).filter(Boolean).join('・')||'なし')}));
@@ -1561,12 +1736,15 @@
       }
 
       // 装飾は一件ごとに位置と紐付ける
-      var list = ui.el('div', { class: 'field' });
-      list.appendChild(ui.el('div', { class: 'field-head' }, [
-        ui.el('span', { class: 'field-label', text: '装飾の中身' }),
-        ui.el('span', { class: 'tag-optional', text: '一件ずつ' })
-      ]));
-      list.appendChild(ui.el('p', { class: 'field-note', text: '装飾は一件ごとに「種類」と「位置」を紐付けて登録します。' }));
+      var listShell = foldShell({
+        key: 'decorations.items', labelJa: '装飾の中身', badgeJa: '一件ずつ', path: 'decorations.items',
+        noteJa: '装飾は一件ごとに「種類」と「位置」を紐付けて登録します。',
+        status: function () {
+          var its = items();
+          return { filled: its.length > 0, summaryJa: its.length ? '装飾' + its.length + '件：' + its.slice(0, 2).map(function (x) { return util.labelOf(D.decorations, x.type, '種類未選択'); }).join('・') + (its.length > 2 ? ' ほか' : '') : '' };
+        }
+      });
+      var list = listShell.content;
 
       items().forEach(function (item, idx) {
         var card = ui.el('div', { class: 'deco-item' });
@@ -1655,7 +1833,8 @@
           draw();
         }
       }));
-      host.appendChild(list);
+      listShell.refresh();
+      host.appendChild(listShell.el);
     }
     draw();
   }
@@ -2130,6 +2309,7 @@
     if (!root) return;
     root.innerHTML = '';
     root.appendChild(buildHeaderInner());
+    refreshSectionSummaries();
     var summary=document.querySelector('[data-hidden-summary="workshop"]');
     if(summary)summary.replaceWith(CPW.uiComplexity.summary(state.outfit,'workshop',function(){openAdvancedWorkshop();}));
   }
@@ -2196,6 +2376,47 @@
     return wrap;
   }
 
+  /* 大セクション見出しの要約（畳んだまま中身が分かるように）。日本語のみ。 */
+  function sectionSummaryJa(id, o) {
+    var L = util.labelOf, out = [];
+    if (id === 'concept') {
+      [[D.worldviews, o.concept.worldview], [D.styles, o.concept.primaryStyle], [D.motifs, o.concept.primaryThemeMotif]].forEach(function (p) { var t = L(p[0], p[1]); if (t) out.push(t); });
+      if (o.concept.season) out.push(L(D.seasons, o.concept.season));
+    } else if (id === 'structure') {
+      var g = util.byId(D.garments, o.garment.subtype);
+      out.push(g ? g.labelJa : (L(D.garmentCategories, o.garment.category) || ''));
+      var cat = util.byId(D.garmentCategories, o.garment.category), n = 0;
+      if (cat) cat.slots.forEach(function (sid) { var sl = util.byId(D.partSlots, sid); if (sl && schema.isSlotFilled(sl, o.parts[sid])) n++; });
+      if (n) out.push('部位' + n + '件');
+      if (o.silhouette.fit) out.push(L(D.silhouette.fit, o.silhouette.fit));
+    } else if (id === 'styling') {
+      if (o.styling.items.length) out.push(summarizeLabels(o.styling.items.map(function (x) { return L(D.styling, x); })));
+    } else if (id === 'material') {
+      if (o.materials.primary) out.push('主素材：' + L(D.materials, o.materials.primary));
+      var di = o.decorations.items.filter(function (x) { return x.type; }).length;
+      if (di) out.push('装飾' + di + '件');
+    } else if (id === 'condition') {
+      if (o.condition.items.length) out.push(summarizeLabels(o.condition.items.map(function (x) { return L(D.conditions, x.type); })));
+    } else if (id === 'palette') {
+      ['primary', 'secondary', 'accent'].forEach(function (k) { var t = L(D.colors, o.palette[k]); if (t) out.push(t); });
+    } else if (id === 'special') {
+      var act = schema.activeSpecialParts(o).map(function (x) { return x.slot.labelJa; });
+      ['decorativeChains', 'restraintChains', 'floating', 'magical'].forEach(function (k) { if ((o.specialParts[k] || []).length) act.push(k === 'decorativeChains' ? '装飾チェーン' : k === 'restraintChains' ? '拘束チェーン' : k === 'floating' ? '浮遊装飾' : '魔法的装飾'); });
+      if (act.length) out.push(act.join('・'));
+    }
+    out = out.filter(Boolean);
+    return out.length ? out.join('／') : '未設定';
+  }
+  CPW.sectionSummaryJa = sectionSummaryJa;
+
+  function refreshSectionSummaries() {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-acc-summary]'), function (node) {
+      var text = sectionSummaryJa(node.getAttribute('data-acc-summary'), state.outfit);
+      node.textContent = text;
+      node.classList.toggle('is-empty', text === '未設定');
+    });
+  }
+
   function openAdvancedWorkshop(section){
     CPW.uiPrefs.set('workshop','advanced');if(section)openSections[section]=true;
     var y=global.scrollY;CPW.render();var target=section?document.querySelector('[aria-controls="panel-'+section+'"]'):document.querySelector('[data-ui-level="advanced"]');
@@ -2220,8 +2441,10 @@
       var btn = ui.el('button', {
         class: 'acc-head', type: 'button', 'aria-expanded': open ? 'true' : 'false', 'aria-controls': panelId
       }, [
-        ui.el('span', { class: 'acc-title', text: sec.labelJa }),
-        sec.phase > 1 ? ui.el('span', { class: 'tag-phase', text: 'Phase ' + sec.phase }) : null,
+        ui.el('span', { class: 'acc-headline' }, [
+          ui.el('span', { class: 'acc-title', text: sec.labelJa }),
+          (function () { var t = sectionSummaryJa(sec.id, state.outfit); return ui.el('span', { class: 'acc-summary' + (t === '未設定' ? ' is-empty' : ''), 'data-acc-summary': sec.id, text: t }); })()
+        ]),
         ui.el('span', { class: 'acc-mark', 'aria-hidden': 'true' })
       ]);
       var panel = ui.el('div', { class: 'acc-panel', id: panelId, hidden: open ? null : 'hidden' });
