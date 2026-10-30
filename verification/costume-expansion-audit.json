@@ -1,0 +1,8 @@
+{
+ "cases": 30000,
+ "texts": 60000,
+ "newGarments": 75,
+ "problemCounts": {},
+ "samples": [],
+ "hardInSampledTenth": 2
+}

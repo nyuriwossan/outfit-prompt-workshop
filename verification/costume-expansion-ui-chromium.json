@@ -1,0 +1,47 @@
+{
+ "engine": "chromium",
+ "browser": "153.0.8010.12",
+ "widths": [
+  {
+   "width": 375,
+   "closedDefaults": true,
+   "toggleImmutable": true,
+   "selectAndFold": true,
+   "explicitClear": true,
+   "levelSwitch": true,
+   "mascotCategory": true,
+   "tap44": true,
+   "bottomBar": true,
+   "reload": true,
+   "presetThemes": true
+  },
+  {
+   "width": 390,
+   "closedDefaults": true,
+   "toggleImmutable": true,
+   "selectAndFold": true,
+   "explicitClear": true,
+   "levelSwitch": true,
+   "mascotCategory": true,
+   "tap44": true,
+   "bottomBar": true,
+   "reload": true,
+   "presetThemes": true
+  },
+  {
+   "width": 430,
+   "closedDefaults": true,
+   "toggleImmutable": true,
+   "selectAndFold": true,
+   "explicitClear": true,
+   "levelSwitch": true,
+   "mascotCategory": true,
+   "tap44": true,
+   "bottomBar": true,
+   "reload": true,
+   "presetThemes": true
+  }
+ ],
+ "errors": [],
+ "note": "Automated emulation; not an iPhone Safari device test."
+}
