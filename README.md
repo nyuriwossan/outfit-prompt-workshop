@@ -5,6 +5,12 @@
 服の基本形・シルエット・部位・素材・装飾・配色・世界観・モチーフ・属性を選び、整合性のある英語の衣装プロンプトを生成する静的Webアプリ。**プリセットをアレンジする入口と、部品から一着を設計する入口**を備えています。
 
 
+## 英語 Markdown 出力
+
+出力画面の「Markdown」を選ぶと、衣装本体、配色、素材、装飾などを見出し別に確認できます。「Markdownをコピー」で見出しと箇条書きを含む本文をコピーできます。出力範囲と各オプションは他の英語出力と共通で、追加タグは末尾に表示します。タブ選択は画面内の状態で、衣装の保存形式は 0.6 のままです。
+
+生成 API は `CPW.generator.markdown(outfit)` です。空の衣装は空文字列を返します。生成テストは `node scripts/test.cjs`、スマートフォン幅のコピー・表示検証はローカル HTTP サーバー起動後に `node scripts/ui-markdown.cjs http://127.0.0.1:8000` で実行できます（開発用 Playwright / Chromium）。
+
 ## 衣装拡張：コスプレ・季節イベント・着ぐるみ／項目の折りたたみ（2026-10-30）
 
 実装基準は GitHub main `185380d5ff087a92d7452c7c9a73f4c193adc395`。Manusの調査資料（新規候補172件・ガチャ比較174件）を `docs/outfit-expansion/research/` に原本のまま置き、`node scripts/expansion-ledger.cjs` で現行コードと照合した台帳 [LEDGER.md](docs/outfit-expansion/LEDGER.md) を生成しています。
