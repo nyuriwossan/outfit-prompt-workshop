@@ -2909,8 +2909,8 @@
       var o = state.outfit;
       var gen = CPW.generator;
 
-      var tabs = ui.el('div', { class: 'tabs' });
-      [['short', '短縮版'], ['detailed', '詳細版'], ['structure', '日本語構造一覧']].forEach(function (t) {
+      var tabs = ui.el('div', { class: 'tabs output-tabs' });
+      [['short', '短縮版'], ['detailed', '詳細版'], ['structure', '日本語構造一覧'], ['markdown', 'Markdown']].forEach(function (t) {
         var on = outputTab === t[0];
         tabs.appendChild(ui.el('button', {
           type: 'button', class: 'tab' + (on ? ' is-active' : ''),
@@ -2939,15 +2939,16 @@
           }
         }));
       } else {
-        var text = outputTab === 'short' ? gen.short(o) : gen.detailed(o);
+        var text = gen[outputTab](o);
+        var label = { short: '短縮版', detailed: '詳細版', markdown: 'Markdown' }[outputTab];
         var box = ui.el('div', { class: 'card' });
-        if (text) box.appendChild(ui.el('p', { class: 'prompt-text', id: 'prompt-text', text: text }));
+        if (text) box.appendChild(ui.el(outputTab === 'markdown' ? 'pre' : 'p', { class: 'prompt-text', id: 'prompt-text', text: text }));
         else box.appendChild(ui.el('p', { class: 'p p--note', text: gen.EMPTY_JA }));
         host.appendChild(box);
         host.appendChild(ui.el('button', {
           type: 'button', class: 'btn btn--primary', 'data-fkey': 'copy:' + outputTab,
-          text: (outputTab === 'short' ? '短縮版' : '詳細版') + 'をコピー',
-          onclick: function () { copyText(text, outputTab === 'short' ? '短縮版' : '詳細版'); }
+          text: label + 'をコピー',
+          onclick: function () { copyText(text, label); }
         }));
       }
 

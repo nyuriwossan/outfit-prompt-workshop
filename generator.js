@@ -359,7 +359,7 @@
     return { short: [w.promptEn], detailed: [w.promptEn] };
   }
 
-  function blockParts(o, headWords) {
+  function blockParts(o, headWords, individual) {
     var plan = CPW.slotPlan(o);
     var cat = plan.category;
     if (!cat) return { short: [], detailed: [] };
@@ -376,9 +376,14 @@
       if (!S.isSlotFilled(slot, v)) return;
       var kind = S.slotKind(slot);
 
+      function record(text, detail) {
+        out.push(text);
+        detailOut.push(individual ? slotId.replace(/_/g, ' ') + ': ' + text : detail);
+      }
+
       if (kind === 'composite') {
         var p = compositePhrase(slot, v);
-        if (p) { out.push(p); detailOut.push(p); }
+        if (p) record(p, p);
         return;
       }
       if (kind === 'multi') {
@@ -389,8 +394,7 @@
           if (!text) return;
           var layer = U.byId(D.partLayers, item.layer);
           if (layer && layer.promptEn) text = text + ' ' + layer.promptEn;
-          out.push(text);
-          detailOut.push(text);
+          record(text, text);
         });
         return;
       }
@@ -401,10 +405,10 @@
       if (!t) return;
       // barefoot は衣装パーツではなく着用状態。blockWearState が別に扱う。
       if (opt.wearState) return;
-      out.push(t);
-      detailOut.push(opt.detailedPrompt || t);
+      record(t, opt.detailedPrompt || t);
     });
     if (!out.length) return { short: [], detailed: [] };
+    if (individual) return { short: out, detailed: detailOut };
     var forDetail = compress(detailOut).filter(function (p) { return !containsWords(headWords || [], words(p)); });
     return { short: out, detailed: forDetail.length ? [joinAnd(forDetail)] : [] };
   }
@@ -657,7 +661,7 @@
     return loc ? core + ' ' + loc : core;
   }
 
-  function blockCondition(o) {
+  function blockCondition(o, individual) {
     var items = (o.condition && Array.isArray(o.condition.items)) ? o.condition.items : [];
     if (!items.length) return { short: [], detailed: [] };
 
@@ -670,10 +674,10 @@
     var sh = ordered.map(function (i) { return conditionPhrase(o, i, { short: true }); }).filter(Boolean);
     var de = ordered.map(function (i) { return conditionPhrase(o, i); }).filter(Boolean);
     if (!de.length && !sh.length) return { short: [], detailed: [] };
-    return { short: sh, detailed: de.length ? [joinAnd(de)] : [] };
+    return { short: sh, detailed: individual ? de : (de.length ? [joinAnd(de)] : []) };
   }
 
-  function blockDecorations(o, mode) {
+  function blockDecorations(o, individual) {
     var closure=hasInspiration(o)?en((U.byId(D.partSlots,'closure')||{}).options,o.parts.closure):null;
     var items = (o.decorations.items || []).filter(function (i) { return !!i.type && !(closure && en(D.decorations,i.type)===closure && !(i.placements||[]).length); }).map(function (i) {
       var copy = U.clone(i);
@@ -700,7 +704,7 @@
       de.unshift(focal.shortPrompt);
     }
     if (!sh.length) return { short: [], detailed: [] };
-    return { short: sh, detailed: [joinAnd(de)] };
+    return { short: sh, detailed: individual ? de : [joinAnd(de)] };
   }
 
   function blockTheme(o) {
@@ -931,7 +935,10 @@
   ];
 
   function blocks(outfit) {
-    var o = S.normalize(outfit);
+    return outfitBlocks(S.normalize(outfit));
+  }
+
+  function outfitBlocks(o, individual) {
     var identity = blockIdentity(o);
     var headWords = words((identity.detailed[0] || '') + ' ' + (identity.short[0] || ''));
     return {
@@ -939,14 +946,14 @@
       palette: blockPalette(o),
       silhouette: blockSilhouette(o),
       garments: blockGarments(o),
-      parts: blockParts(o, headWords),
+      parts: blockParts(o, headWords, individual),
       styling: blockStyling(o),
       wearState: blockWearState(o),
       merfolk: blockMerfolk(o),
       creature: blockCreature(o),
       materials: blockMaterials(o),
-      condition: blockCondition(o),
-      decorations: blockDecorations(o),
+      condition: blockCondition(o, individual),
+      decorations: blockDecorations(o, individual),
       theme: blockTheme(o),
       conceptInspiration: blockConceptInspiration(o),
       specialParts: blockSpecialParts(o),
@@ -1035,6 +1042,68 @@
     return extra ? s + ' ' + extra : s;
   }
 
+  function markdown(outfit) {
+    var o = S.normalize(outfit);
+    var b = outfitBlocks(o, true);
+    var sections = [];
+    function field(label, value) { return value ? label + ': ' + value : null; }
+    function section(title, rows) {
+      var items = rows.filter(function (row, index) { return row && rows.indexOf(row) === index; });
+      if (items.length) sections.push('## ' + title + '\n' + items.map(function (row) { return '- ' + row; }).join('\n'));
+    }
+
+    var head = garmentHead(o);
+    var concept = o.concept;
+    var styles = [concept.primaryStyle].concat(concept.secondaryStyles).map(function (id) { return en(D.styles, id); });
+    section('Concept / Style', [
+      field('Style', joinAnd(styles)), field('Setting', en(D.worldviews, concept.worldview)),
+      field('Era', en(D.eras, concept.era)), field('Occasion', en(D.occasions, concept.occasion)),
+      field('Season', en(D.seasons, concept.season)), field('Role', en(D.roles, concept.role)),
+      field('Theme', en(D.motifs, concept.primaryThemeMotif))
+    ].concat(b.theme.short, b.conceptInspiration.short));
+    section('Base Garment', [field('Type', [swimFormAdj(o, head || ''), head].filter(Boolean).join(' '))].concat(b.garments.short));
+    section('Silhouette', b.silhouette.short);
+    var palette = o.palette;
+    section('Colors', [
+      field('Primary', colorEn(palette.primary)), field('Secondary', colorEn(palette.secondary)),
+      field('Accent', colorEn(palette.accent)), field('Metal', colorEn(palette.metal)),
+      field('Gem', colorEn(palette.gem)), field('Garment color scheme', en(D.colorSchemes, palette.scheme))
+    ]);
+    var m = o.materials;
+    section('Materials', [
+      field('Main fabric', materialName(m.primary, o)), field('Secondary material', materialName(m.secondary, o)),
+      field('Trim', materialName(m.trim, o)), field('Transparency', en(D.transparency, m.transparency)),
+      field('Surface', en(D.surfaces, m.surface)), field('Thickness', en(D.thickness, m.thickness)),
+      field('Pattern', joinAnd(m.patterns.map(function (id) { return en(D.patterns, id); })))
+    ]);
+    // Creature blocks in prose can supply default gloves, feet and padding.
+    // Here each component must come from a selected slot.
+    var creature = creatureOf(o);
+    var category = U.byId(D.garmentCategories, o.garment.category);
+    var creatureParts = (D.creatureSlotIds || []).filter(function (id) {
+      return category && category.slots.indexOf(id) >= 0 && id !== 'creature_motif';
+    }).map(function (id) { return slotText(o, id, creature, category.id === 'full_mascot'); });
+    if (creature && !(head || '').includes(creature.shortPrompt)) creatureParts.unshift(field('Creature motif', creature.shortPrompt));
+    var tail = null;
+    if (o.garment.category === 'merfolk') {
+      var form = slotText(o, 'mermaid_tail_form');
+      tail = field('Lower body', 'single ' + (form || 'fish tail') + ', no human legs or feet');
+    }
+    section('Garment Details', b.parts.detailed.concat(tail, creatureParts));
+    section('Styling', b.styling.short.concat(b.wearState.short));
+    section('Decorations', [field('Density', densityAdj(o))].concat(b.decorations.detailed));
+    section('Special Parts', b.specialParts.short);
+    section('Condition', b.condition.detailed.map(function (phrase) { return phrase.replace(/^with /, ''); }));
+    section('Effects', b.effects.short);
+    section('Atmosphere / Story', b.optionalNarrative.short);
+    section('Pose / Presentation', b.presentation.short);
+    section('Background', b.background.short);
+    section('Rendering', b.rendering.short.concat(b.quality.short));
+    section('Additional Tags', [userTags(o)]);
+    return sections.length ? '# Outfit\n\n' + sections.join('\n\n') : '';
+  }
+
+  CPW.generator.markdown = markdown;
   /* 日本語構造一覧は app.js の表示用。ここでは英語生成のみ扱う。 */
   CPW.generator.blocks = blocks;
   CPW.generator.short = short;

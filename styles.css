@@ -303,6 +303,9 @@ html, body {
   background: var(--surface); color: var(--muted);
   font-family: inherit; font-size: 13px; cursor: pointer;
 }
+.output-tabs { flex-wrap: wrap; }
+.output-tabs .tab { flex: 1 1 8em; min-height: 44px; }
+pre.prompt-text { white-space: pre-wrap; overflow-wrap: anywhere; }
 .tab.is-active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-deep); font-weight: 600; }
 .tab[disabled] { opacity: .4; cursor: default; }
 
