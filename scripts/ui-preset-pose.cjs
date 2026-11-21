@@ -18,13 +18,19 @@ await page.locator('#preset-category').selectOption('service');await page.locato
 await page.locator('#preset-search').fill(await page.evaluate(()=>CPW.util.byId(CPW.data.presets,'cape_magician').labelJa));await page.locator('[data-preset="cape_magician"]').scrollIntoViewIfNeeded();const scroll=await page.evaluate(()=>scrollY);await page.locator('[data-preset="cape_magician"]').click();await page.getByRole('button',{name:'一覧に戻る',exact:true}).click();await page.locator('#preset-search').waitFor();await page.waitForFunction(y=>Math.abs(scrollY-y)<5,scroll);await check('search filters random scroll return');
 await page.locator('[data-preset="cape_magician"]').click();await page.locator('[data-preset-adopt]').click();await page.locator('[data-preset-confirm]').click();assert(await page.evaluate(()=>CPW.state.outfit.garment.subtype==='stage_magician_outfit'&&CPW.state.outfit.output.customTags===''&&!CPW.state.outfit.condition.items.length),'adopt is fresh base');await page.getByRole('link',{name:'完成画面で見せ方を選ぶ'}).click();
 const select=(id,v)=>page.locator('#'+id).selectOption(v);
-await select('pose-choice','arms_chair_back');await select('pose-seat','throne');
+const findPose=async id=>{
+  const label=await page.evaluate(key=>CPW.util.byId(CPW.data.presentation.poseChoices,key).labelJa,id);
+  await page.locator('#pose-search').fill(label);
+  return page.locator('#pose-card-'+id);
+};
+const pick=async id=>{await (await findPose(id)).click();};
+await pick('arms_chair_back');await select('pose-seat','throne');
 assert(await page.locator('#pose-seat').evaluate(n=>n!==document.activeElement),'seat auto refocus');
 assert(await page.locator('#pose-seat option[value="floor"]').count()===0,'floor for backrest');
-await select('pose-choice','floor_knee_up');assert(await page.evaluate(()=>CPW.state.outfit.presentation.seat===null),'invalid seat retained');
+await pick('floor_knee_up');assert(await page.evaluate(()=>CPW.state.outfit.presentation.seat===null),'invalid seat retained');
 assert((await page.locator('#studio-message').innerText()).includes('解除'),'seat clear explained');
-await select('pose-choice','supine_arm');await select('pose-seat','bed');
-await page.getByText('ポーズを検索・分類',{exact:true}).click();await select('pose-category','stand');
+await pick('supine_arm');await select('pose-seat','bed');
+await select('pose-category','stand');
 assert(await page.evaluate(()=>CPW.state.outfit.presentation.poseId==='supine_arm'),'filter cleared pose');
 await page.locator('#open-camera').click();await select('camera-distance','face');await select('camera-angle','back');
 await page.locator('#open-mood').click();await select('pr-presentation-poseMood','cool');
@@ -43,13 +49,15 @@ assert(await page.evaluate(()=>CPW.state.outfit.output.scope==='all'),'pose edit
 await route('#/setup/preset');await page.locator('#preset-search').waitFor();await check('old preset route');
 await route('#/workshop');await page.locator('#outfit-sample').waitFor();assert(await page.getByRole('link',{name:'完成画面で見せ方を選ぶ'}).count()===1,'workshop shortcut');
 await page.evaluate(()=>{CPW.state.load(CPW.presetCatalog.create('mermaid'));location.hash='#/presentation';});
-await page.locator('#pose-choice').waitFor();
-for(const id of ['seiza_hands','climb_stairs','lift_cape'])assert(await page.locator('#pose-choice option[value="'+id+'"]').isDisabled(),'incompatible pose '+id);
+await page.locator('#pose-cards').waitFor();
+for(const id of ['seiza_hands','climb_stairs','lift_cape'])assert(await (await findPose(id)).isDisabled(),'incompatible pose '+id);
 await check('merfolk and required garment disabled reasons');
-await page.getByText('ポーズを検索・分類',{exact:true}).click();await page.locator('#pose-search').fill('胸元');
-await page.locator('#pose-choice').focus();await page.keyboard.press('End');await page.keyboard.press('Enter');
-assert(await page.locator('#pose-choice').inputValue()==='hand_chest','keyboard pose selection');
-const box=await page.locator('#pose-choice').boundingBox();assert(box.height>=44&&box.width>=44,'tap size');
+await page.locator('#pose-search').fill('胸元');
+const chest=page.locator('#pose-card-hand_chest');
+await chest.focus();await page.keyboard.press('Enter');
+assert(await chest.getAttribute('aria-pressed')==='true','keyboard pose selection');
+assert(await chest.evaluate(el=>el===document.activeElement),'pose card lost focus');
+const box=await chest.boundingBox();assert(box.height>=44&&box.width>=44,'tap size');
 await check('keyboard focus accessible selection');
 if(output&&width===375){await page.screenshot({path:output.replace(/\.json$/,'.png'),fullPage:true});}
 await context.close();}assert(!report.errors.length,report.errors.join('\n'));if(output)fs.writeFileSync(output,JSON.stringify(report,null,2));console.log(JSON.stringify({engine,cases:report.cases.length,errors:report.errors}));}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});

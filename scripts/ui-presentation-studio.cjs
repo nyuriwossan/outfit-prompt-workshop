@@ -252,7 +252,7 @@ async function main() {
         CPW.state.load(CPW.presetCatalog.create('mermaid'));
         location.hash = '#/presentation';
       });
-      await page.locator('#pose-choice').waitFor();
+      await page.locator('#pose-cards').waitFor();
       await page.getByText('目的から見せ方を選ぶ', {
         exact: true
       }).click();

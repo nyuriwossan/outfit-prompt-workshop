@@ -62,32 +62,6 @@
     return U.byId(P.poseChoices, id);
   }
 
-  function scopeOf(out) {
-    if (out.includePresentation && out.includeBackground && out.includeRendering) return 'all';
-    if (!out.includeBackground && !out.includeRendering) return out.includePresentation ? 'pose' : 'outfit';
-    return 'custom';
-  }
-  // A null scope is a valid legacy representation, including independently enabled blocks.
-  // Preserve its plain-background semantics as well as unrelated flags on a single-field edit.
-  function include(o, flag) {
-    if (o.output[flag]) return;
-    if (o.output.scope) {
-      C.presentation.setScope(o, flag === 'includePresentation' && scopeOf(o.output) === 'outfit' ? 'pose' :
-        'all');
-    } else o.output[flag] = true;
-  }
-
-  function includePlainBackground(o) {
-    if (o.output.scope || (o.presentation.layoutVersion !== 1 && o.presentation.preset)) {
-      C.presentation.setScope(o, 'all');
-    } else {
-      // Without a named scope, the generator emits plain_bg in the pose block.
-      // Enable those two blocks independently, retaining the saved art setting.
-      o.output.includePresentation = true;
-      o.output.includeBackground = true;
-    }
-  }
-
   function applyRecipe(o, recipe) {
     var reason = choices.reason(o, poseFor(recipe.pose));
     if (reason) return reason;
@@ -101,9 +75,9 @@
     p.compositionAssist = recipe.plain ? 'plain_bg' : null;
     if (!choices.seats(poseFor(p.poseId)).includes(p.seat)) p.seat = null;
     o.presentation = C.presentation.normalize(p);
-    include(o, 'includePresentation');
-    if (recipe.plain) includePlainBackground(o);
-    else if (recipe.background) include(o, 'includeBackground');
+    var flags = {includePresentation:true};
+    if (recipe.plain || recipe.background) flags.includeBackground = true;
+    C.presentationScope.setFlags(o, flags, true);
     return '';
   }
 
@@ -151,9 +125,15 @@
         record('camera', name(D.presentationFocus, p.focus), old ? '旧セットの構図が優先されます。' : off);
       if (old && p.poseAssist) record('pose', name(D.poseAssist, p.poseAssist), '旧セットの姿勢が優先されます。');
     }
-    if (p.compositionAssist === 'plain_bg')
-      record('scene', !out.scope && blocks.presentation.short.includes('plain background') ? '無地背景（ポーズと一緒に出力）' : '無地背景', out.scope ? noScene : !modern && old ? '旧撮影セットの無地背景は「全部」で出力できます。' : off);
-    else if (p.compositionAssist)
+    if (p.compositionAssist === 'plain_bg') {
+      var plainInPose = !out.scope && blocks.presentation.short.includes('plain background');
+      var plainReason = noScene;
+      if (!out.scope) {
+        if (!modern && old) plainReason = '旧撮影セットの無地背景は、出力範囲に「全部」を選ぶと反映されます。';
+        else plainReason = plainInPose ? '' : '個別指定の無地背景はポーズと一緒に出力されます。ポーズ・構図をオンにすると反映されます。';
+      }
+      record('scene', plainInPose ? '無地背景（ポーズと一緒に出力）' : '無地背景', plainReason);
+    } else if (p.compositionAssist)
       record('camera', name(D.compositionAssist, p.compositionAssist), modern || old ? '個別構図または旧セットが優先されます。' :
         off);
     record('scene', name(P.backgrounds, p.background), p.background === 'none' ? '背景を描写しない指定です。' : noScene);
@@ -200,14 +180,28 @@
       'aria-labelledby': 'studio-title'
     });
 
+    var pendingScope = null;
+    function setFlag(flag, value, individual) {
+      var patch = {};
+      patch[flag] = value;
+      var note = C.presentationScope.setFlags(o, patch, false, individual);
+      if (note) pendingScope = {patch:patch, note:note, individual:individual};
+    }
+
     function changed(message) {
+      view.pendingScope = pendingScope;
       view.confirmRecipe = null;
       view.message = message || '';
       C.state.touch();
       redraw();
+      if (pendingScope) {
+        var notice = document.getElementById('scope-notice');
+        notice.focus({preventScroll:true});
+        notice.scrollIntoView({block:'center'});
+      }
     }
 
-    function select(parent, id, label, rows, value, onChange, placeholder, reason, groupBy) {
+    function select(parent, id, label, rows, value, onChange, placeholder, reason) {
       var field = E('div', {
           class: 'studio-field'
         }),
@@ -219,18 +213,9 @@
         value: '',
         text: placeholder || '指定しない'
       }));
-      var groups = new Map();
       rows.forEach(function(row) {
         var why = reason && reason(row);
-        var parent = node;
-        if (groupBy) {
-          var group = groupBy(row);
-          if (!groups.has(group)) groups.set(group, node.appendChild(E('optgroup', {
-            label: group
-          })));
-          parent = groups.get(group);
-        }
-        parent.appendChild(E('option', {
+        node.appendChild(E('option', {
           value: row.id,
           disabled: !!why,
           text: row.labelJa + (why ? ' — ' + why : '')
@@ -268,8 +253,7 @@
         U.setPath(p, key, v);
         if (v && !(key === 'background' && v === 'none')) {
           if (flag === 'includeRendering') p.rendering.enabled = true;
-          if (key === 'compositionAssist' && v === 'plain_bg') includePlainBackground(o);
-          else include(o, flag);
+          setFlag(key === 'compositionAssist' && v === 'plain_bg' ? 'includeBackground' : flag, true);
         }
         changed();
       });
@@ -278,7 +262,7 @@
     function adjust(parent, id, label, list, key) {
       select(parent, id, label, list, choices.editable(p)[key], function(v) {
         var msg = choices.update(o, key, v);
-        if (v) include(o, 'includePresentation');
+        if (v) setFlag('includePresentation', true);
         changed(msg);
       });
     }
@@ -367,32 +351,59 @@
       }));
       recipeBox.appendChild(confirm);
     }
-    var scope = scopeOf(out);
-    var scopes = [{
-      id: 'outfit',
-      labelJa: '衣装だけ'
-    }, {
-      id: 'pose',
-      labelJa: '衣装＋ポーズ・構図'
-    }, {
-      id: 'all',
-      labelJa: '全部（背景・画風まで）'
-    }];
-    if (scope === 'custom') {
-      var included = [out.includePresentation && 'ポーズ・構図', out.includeBackground && '背景', out.includeRendering &&
-        '画風'].filter(Boolean);
-      scopes.push({
-        id: 'custom',
-        labelJa: '個別指定（' + included.join('、') + '）'
-      });
-    }
-    select(host, 'output-scope', '撮影の出力範囲', scopes, scope, function(v) {
-      C.presentation.setScope(o, v);
-      changed();
+    var scope = view.customRange ? 'custom' : C.presentationScope.scopeOf(out);
+    var ranges = [
+      {id:'outfit', labelJa:'衣装だけ'}, {id:'pose', labelJa:'衣装＋ポーズ・構図'},
+      {id:'all', labelJa:'全部（ポーズ・背景・画風）'}, {id:'custom', labelJa:'個別指定'}
+    ];
+    select(host, 'output-scope', '撮影の出力範囲', ranges, scope, function(value) {
+      view.customRange = value === 'custom';
+      if (view.customRange) {
+        view.pendingScope = null;
+        redraw();
+      } else {
+        C.presentation.setScope(o, value);
+        changed();
+      }
     }, false);
-    host.appendChild(E('p', {
-      class: 'studio-note',
-      text: '見せ方を選ぶと必要な出力範囲も有効になります。属性・物語・品質タグは個別に切り替えます。'
+    if (scope === 'custom') {
+      var flags = E('fieldset', {class:'scope-flags'}, [E('legend',{text:'英文に含める項目'})]);
+      Object.keys(C.presentationScope.labels).forEach(function(flag) {
+        toggle(flags, 'scope-' + flag, C.presentationScope.labels[flag], out[flag], function(on) { setFlag(flag, on, true); });
+      });
+      host.appendChild(flags);
+      if (p.compositionAssist === 'plain_bg' && !out.scope) {
+        var legacySet = p.layoutVersion !== 1 && p.preset;
+        host.appendChild(E('p', {class:'studio-note', text:legacySet ?
+          '従来の撮影セットでは、無地背景の出力には「全部」を選びます。' :
+          '保存形式の仕様により、この組み合わせの無地背景はポーズ・構図のオン／オフに従います。'}));
+      }
+    }
+    if (view.pendingScope) {
+      var proposed = view.pendingScope;
+      function restoreRangeFocus() {
+        var toggle = document.getElementById('scope-' + Object.keys(proposed.patch)[0]);
+        var target = toggle || document.getElementById('output-scope').labels[0];
+        if (!toggle) target.tabIndex = -1;
+        target.focus({preventScroll:true});
+        target.scrollIntoView({block:'nearest'});
+      }
+      host.appendChild(E('div', {class:'recipe-confirm', id:'scope-notice', tabindex:-1, role:'group', 'aria-label':'無地背景の出力を確認'}, [
+        E('p',{role:'status',text:proposed.note + ' 撮影の出力範囲を変更しますか？'}),
+        E('button',{type:'button',id:'scope-accept',class:'btn',text:'この出力範囲にする',onclick:function(){
+          C.presentationScope.setFlags(o, proposed.patch, true, proposed.individual);
+          changed();
+          restoreRangeFocus();
+        }}),
+        E('button',{type:'button',id:'scope-cancel',class:'btn',text:'今の範囲を保つ',onclick:function(){
+          view.pendingScope = null;
+          redraw();
+          restoreRangeFocus();
+        }})
+      ]));
+    }
+    host.appendChild(E('p', {class:'studio-note',
+      text:'項目を選ぶと、その項目を出力に加えます。属性・物語・品質タグは別に切り替えられます。'
     }));
     if (view.message) host.appendChild(E('p', {
       id: 'studio-message',
@@ -463,7 +474,7 @@
         simple(panel, '背景・光の演出', P.backgrounds, 'background', 'includeBackground');
         toggle(panel, 'plain-backdrop', '無地背景', p.compositionAssist === 'plain_bg', function(on) {
           p.compositionAssist = on ? 'plain_bg' : null;
-          if (on) includePlainBackground(o);
+          if (on) setFlag('includeBackground', true);
         });
       }
       if (id === 'mood') {
@@ -499,9 +510,9 @@
         simple(panel, '塗り', P.paints, 'rendering.paint', 'includeRendering');
         simple(panel, '線', P.lines, 'rendering.line', 'includeRendering');
         simple(panel, '仕上げ', P.finishes, 'rendering.finish', 'includeRendering');
-        toggle(panel, 'rendering-enabled', '画風を出力', p.rendering.enabled, function(on) {
+        toggle(panel, 'rendering-enabled', '画風を出力', out.includeRendering && p.rendering.enabled, function(on) {
           p.rendering.enabled = on;
-          if (on) include(o, 'includeRendering');
+          if (on) setFlag('includeRendering', true);
         });
       }
       if (group.reasons.length) {
@@ -514,9 +525,7 @@
         }[id];
         var canEnable = !out[flag] && (id !== 'mood' || p.poseMood) &&
           (id !== 'scene' || p.background !== 'none' || group.items.length > 1);
-        var needsPlainScope = id === 'scene' && p.compositionAssist === 'plain_bg' && !out.scope &&
-          !blocks.presentation.short.includes('plain background');
-        if (canEnable || id === 'art' && !p.rendering.enabled || needsPlainScope) panel.appendChild(E(
+        if (canEnable || id === 'art' && !p.rendering.enabled) panel.appendChild(E(
           'button', {
             class: 'btn',
             type: 'button',
@@ -524,8 +533,7 @@
             text: '保存した設定を出力に含める',
             onclick: function() {
               if (id === 'art') p.rendering.enabled = true;
-              if (id === 'scene' && p.compositionAssist === 'plain_bg') includePlainBackground(o);
-              else include(o, flag);
+              setFlag(flag, true);
               changed();
             }
           }));
@@ -563,53 +571,24 @@
     function posePanel(panel) {
       var editable = choices.editable(p),
         selected = poseFor(editable.poseId);
-      var picker = E('div', {});
-      panel.appendChild(picker);
-      var search = E('input', {
-        type: 'search',
-        id: 'pose-search',
-        class: 'cf-select',
-        value: view.query
-      });
-      var searchBox = disclosure(panel, 'search', 'ポーズを検索・分類');
-      searchBox.appendChild(E('label', {
-        for: 'pose-search',
-        text: '名前や動作で検索'
-      }));
-      searchBox.appendChild(search);
-      select(searchBox, 'pose-category', '動作の種類', D.poseCategories, view.category, function(v) {
-        view.category = v;
-        drawPoses();
-      }, 'すべて');
-      search.addEventListener('input', function() {
-        view.query = search.value;
-        drawPoses();
-      });
-
-      function drawPoses() {
-        picker.replaceChildren();
-        var query = C.presetCatalog.normalizeSearch(view.query);
-        var list = P.poseChoices.filter(function(x) {
-          return (!view.category || x.categoryId === view.category) &&
-            C.presetCatalog.normalizeSearch([x.labelJa, x.noteJa].concat(x.searchAliases || []).join(' '))
-            .includes(query);
-        });
-        if (selected && !list.includes(selected)) list.unshift(selected);
-        select(picker, 'pose-choice', 'ポーズ', list, editable.poseId, function(v) {
-          var msg = choices.update(o, 'poseId', v);
-          if (v) include(o, 'includePresentation');
-          changed(msg);
-        }, '指定しない', function(x) {
-          return choices.reason(o, x);
-        }, function(x) {
-          return name(D.poseCategories, x.categoryId);
-        });
-        if (!list.length) picker.appendChild(E('p', {
-          class: 'studio-note',
-          text: '一致するポーズがありません。検索条件を変えてください。'
-        }));
+      function choosePose(id) {
+        var message = choices.update(o, 'poseId', id);
+        if (id) setFlag('includePresentation', true);
+        changed(message);
       }
-      drawPoses();
+      if (selected) {
+        var selectedInfo = E('div', {class:'pose-current'}, [
+          E('strong', {text:'選択中 · '+selected.labelJa}),
+          E('button', {id:'pose-clear',type:'button',class:'btn',text:'ポーズを解除',onclick:function(){choosePose(null);}})
+        ]);
+        panel.appendChild(selectedInfo);
+        var english = blocks.presentation.short.join(', ');
+        var reason = choices.reason(o,selected) || (!out.includePresentation ? 'ポーズ・構図が出力範囲外です。' : '');
+        panel.appendChild(E('aside', {id:'pose-english',class:'studio-proof'}, [
+          E('strong', {text:'ポーズ・構図の英文'}),
+          E('p', {lang:english?'en':'ja',text:english || reason || '出力なし'})
+        ]));
+      }
       var legacy = p.layoutVersion !== 1,
         old = U.byId(P.presets, p.preset);
       var allowed = legacy && old && old.seated ? P.seats : choices.seats(selected).map(function(k) {
@@ -617,7 +596,7 @@
       });
       if (allowed.length) select(panel, 'pose-seat', '身体を支える場所', allowed, p.seat, function(v) {
         p.seat = v;
-        if (v) include(o, 'includePresentation');
+        if (v) setFlag('includePresentation', true);
         changed();
       }, '姿勢に合わせる');
       else if (p.seat) panel.appendChild(E('button', {
@@ -629,6 +608,7 @@
           changed();
         }
       }));
+      panel.appendChild(C.poseCards.gallery(o, view, editable.poseId, choosePose));
       var extra = disclosure(panel, 'details', '人物・従来の撮影セット');
       simple(extra, '人物指定', P.subjects, 'subject', 'includePresentation');
       var sets = P.presets.concat([{
@@ -640,7 +620,7 @@
           delete p[k];
         });
         p.preset = v === 'helpers' ? null : v;
-        if (p.preset) include(o, 'includePresentation');
+        if (p.preset) setFlag('includePresentation', true);
         changed();
       }, legacy ? '指定しない' : '個別のポーズ・構図を使用中', function(x) {
         var mapping = U.byId(D.presentationLegacyMap, x.id);
