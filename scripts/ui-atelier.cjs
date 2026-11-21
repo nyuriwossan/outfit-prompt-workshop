@@ -35,7 +35,15 @@ async function main() {
       await page.keyboard.press('Enter');
       await page.locator('#quick-garment-category').selectOption('dress');
       await page.locator('#quick-garment-subtype').selectOption('cocktail_dress');
-      await page.locator('#quick-palette-primary').selectOption('deep_crimson');
+      await page.locator('#quick-silhouette-fit').selectOption('tailored');
+      await page.locator('[data-color-picker="primary"] summary').click();
+      await page.locator('[data-color-option="primary:deep_crimson"]').click();
+      assert.equal(await page.evaluate(() => CPW.state.outfit.palette.primary), 'deep_crimson');
+      await page.locator('[data-color-picker="secondary"] summary').click();
+      await page.locator('[data-color-picker="secondary"] input[type="search"]').fill('藤鼠');
+      await page.locator('[data-color-option="secondary:dusty_lavender"]').click();
+      assert.equal(await page.evaluate(() => CPW.state.outfit.palette.secondary), 'dusty_lavender');
+      assert.equal(await page.evaluate(() => CPW.state.outfit.silhouette.fit), 'tailored');
       await layout('arrange');
       const initial = await snapshot();
       await page.locator('[data-ui-level="advanced"]').click();
