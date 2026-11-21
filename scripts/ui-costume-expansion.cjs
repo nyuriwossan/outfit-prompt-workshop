@@ -71,7 +71,7 @@ try{for(const width of [375,390,430]){
  const saved=await page.evaluate(()=>JSON.stringify(CPW.state.outfit.parts));await page.reload();await page.waitForFunction(()=>window.CPW&&CPW.state);
  assert(await page.evaluate(()=>JSON.stringify(CPW.store.listOutfits()[0].parts))===saved,'library survives reload');assert(await page.evaluate(()=>JSON.stringify(CPW.state.outfit.parts))===saved,'draft survives reload');r.reload=true;
  /* 8. プリセット：特集・着ぐるみの種類で絞り込み、プレビューでは状態不変、採用で反映 */
- await page.evaluate(()=>{CPW.state.load({garment:{category:'dress',subtype:'maid_dress'}});location.hash='#/presets';});await page.locator('#preset-theme').waitFor();
+ await page.evaluate(()=>{CPW.state.load({garment:{category:'dress',subtype:'maid_dress'}});location.hash='#/presets';});if(!await page.locator('#preset-theme').isVisible())await page.locator('.catalog-filters summary').click();await page.locator('#preset-theme').waitFor();
  const stateBefore=await page.evaluate(()=>JSON.stringify(CPW.state.outfit));
  await page.locator('#preset-theme').selectOption('kigurumi');await page.locator('#preset-sub').selectOption('full_mascot');
  const n=await page.locator('[data-preset]').count();assert(n>=11,'full mascot presets '+n);
@@ -79,7 +79,7 @@ try{for(const width of [375,390,430]){
  assert(await page.evaluate(()=>JSON.stringify(CPW.state.outfit))===stateBefore,'preview/color trial must not change outfit');
  await page.locator('[data-preset-adopt]').click();await page.locator('[data-preset-confirm]').click();
  assert(await page.evaluate(()=>CPW.state.outfit.garment.category==='full_mascot'&&CPW.state.outfit.parts.creature_motif==='rabbit'),'adopted');r.presetThemes=true;
- await page.evaluate(()=>{location.hash='#/';});await page.evaluate(()=>{location.hash='#/presets';});await page.locator('#preset-theme').waitFor();await page.locator('#preset-theme').selectOption('seasonal');
+ await page.evaluate(()=>{location.hash='#/';});await page.evaluate(()=>{location.hash='#/presets';});if(!await page.locator('#preset-theme').isVisible())await page.locator('.catalog-filters summary').click();await page.locator('#preset-theme').waitFor();await page.locator('#preset-theme').selectOption('seasonal');
  assert(await page.locator('#preset-sub').count()===1,'event filter appears');await page.locator('#preset-sub').selectOption('halloween');assert(await page.locator('[data-preset="halloween_witch"]').count()===1,'halloween filter');
  await noOverflow('presets');const smallP=await smallTargets();assert(!smallP.length,'preset tap targets '+smallP.slice(0,4).join(' '));
  await page.screenshot({path:path.join(shots,'costume-presets-'+engine+'-'+width+'.png'),fullPage:false});

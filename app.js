@@ -2150,42 +2150,19 @@
 
   /* ---------- トップ ---------- */
   routes[''] = function () {
-    var draft = store.loadDraft();
-    var lib = store.listOutfits();
-
-    return screen('', [
-      ui.el('header', { class: 'hero' }, [
-        ui.el('p', { class: 'hero-eyebrow', text: 'Costume Prompt Workshop' }),
-        ui.el('h1', { class: 'hero-title', text: '衣装プロンプト工房' }),
-        ui.el('p', { class: 'hero-sub', text: 'パーツを組み合わせて、一着の英語プロンプトを仕立てる。' })
-      ]),
-      ui.el('div', { class: 'stack' }, [
-        ui.el('a', { class: 'btn btn--primary', href: '#/presets', text: 'プリセットから遊ぶ' }),
-        ui.el('p', {class:'p p--note',text:'完成した衣装を選んで、自分好みにアレンジ'}),
-        ui.el('a', {class:'btn',href:'#/concept_fashion',text:'コンセプトから作る'}),
-        ui.el('p', {class:'p p--note',text:'題材や世界観から衣装のアイデアを作る'}),
-        ui.el('a', {class:'btn',href:'#/entry',text:'細かく選んで作る'}),
-        ui.el('p', {class:'p p--note',text:'服の形・素材・配色を選んで設計する'})
-      ]),
-      ui.el('div', {class:'card stack', role:'group', 'aria-label':'続きと保存した衣装'}, [
-        draft ? ui.el('a', { class: 'btn', href: '#/workshop', text: '前回の続き' + (draft.name ? '（' + draft.name + '）' : '') }) : null,
-        ui.el('a', { class: 'btn', href: '#/library', text: '保存した衣装（' + lib.length + '）' })
-      ]),
-      ui.el('div', { class: 'card' }, [
-        ui.el('h2', { class: 'card-title', text: 'この工房でできること' }),
-        ui.el('ul', { class: 'list' }, [
-          ui.el('li', { text: '服の形・部位・素材・装飾・配色を選んで一着に組み立てる' }),
-          ui.el('li', { text: '矛盾や盛りすぎを知らせる（Phase 4）' }),
-          ui.el('li', { text: '短縮版と詳細版の英語プロンプトを書き出す（Phase 3）' })
-        ])
-      ]),
-      ui.el('div', { class: 'card card--quiet' }, [
-        ui.el('h2', { class: 'card-title', text: '保存について' }),
-        ui.el('p', { class: 'p', text: '設計はこの端末のブラウザ内にのみ保存されます。閲覧履歴やサイトデータを消すと設計も消えるため、大切な一着はJSONで書き出して保管してください。' }),
-        store.available() ? null : ui.el('p', { class: 'p p--warn', text: 'このブラウザでは端末内保存が無効になっています。設計は保存されません。' })
-      ])
-    ]);
+    return CPW.atelier.home(function () {
+      if (!confirmReplacement()) return;
+      var outfit = schema.createOutfit();
+      outfit.entryMode = 'zero';
+      state.load(outfit);
+      location.hash = '#/workshop';
+    });
   };
+
+  function confirmReplacement() {
+    return !CPW.conceptFashion.hasDesign(state.outfit) ||
+      ui.confirm('現在の下書きを置き換えますか？ 保存一覧の衣装はそのまま残ります。');
+  }
 
   /* ---------- 開始方法 ---------- */
   var ENTRY_MODES = [
@@ -2196,20 +2173,7 @@
     { id: 'motif', labelJa: 'モチーフから設計', descJa: '童話・星座・神話・属性など、題材を起点にします。' }
   ];
 
-  routes['/entry'] = function () {
-    var cards = ENTRY_MODES.map(function (m) {
-      return ui.el('a', { class: 'card card--tap', href: '#/setup/'+m.id }, [
-        ui.el('h2', { class: 'card-title', text: m.labelJa }),
-        ui.el('p', { class: 'p', text: m.descJa })
-      ]);
-    });
-    return screen('', [
-      backBar('開始画面へ戻る', '#/'),
-      ui.el('h1', { class: 'page-title', text: '何から始める？' }),
-      ui.el('p', { class: 'p p--lead', text: 'ここで選んだ内容をもとに、衣装づくりを始めます。すべての項目は後から変更できます。' }),
-      ui.el('div', { class: 'stack' }, cards)
-    ]);
-  };
+  routes['/entry'] = routes[''];
 
   /* ---------- 初期設定 ---------- */
   routes['/setup'] = function (params) {
@@ -2220,6 +2184,7 @@
     draft.entryMode = mode;
 
     var start = function (patch) {
+      if (!confirmReplacement()) return;
       var o = schema.applyPatch(draft, patch || {});
       o.entryMode = mode;
       state.load(o);
@@ -2310,13 +2275,19 @@
     root.innerHTML = '';
     root.appendChild(buildHeaderInner());
     refreshSectionSummaries();
+    var sample = document.getElementById('outfit-sample');
+    if (sample) sample.replaceWith(CPW.atelier.sample());
+    var checks = document.getElementById('bb-checks');
+    if (checks) updateChecks(checks);
+    var badge = document.querySelector('#workshop-topnav .badge');
+    if (badge) { badge.textContent = state.dirty ? '未保存' : '保存済み'; badge.classList.toggle('badge--dirty', state.dirty); }
     var summary=document.querySelector('[data-hidden-summary="workshop"]');
     if(summary)summary.replaceWith(CPW.uiComplexity.summary(state.outfit,'workshop',function(){openAdvancedWorkshop();}));
   }
 
   function buildHeaderInner() {
     var o = state.outfit;
-    var p = CPW.progress.compute(o);
+    var progress = CPW.progress.compute(o);
 
     var conds = [];
     if (o.concept.worldview) conds.push(util.labelOf(D.worldviews, o.concept.worldview));
@@ -2358,17 +2329,14 @@
         ? ui.el('p', { class: 'wh-conds', text: conds.join('・') })
         : ui.el('p', { class: 'wh-conds wh-conds--empty', text: 'まだ何も決まっていない一着' }),
       swatches.childNodes.length ? swatches : null,
-      ui.el('div', { class: 'progress' }, [
-        ui.el('div', { class: 'progress-bar', role: 'progressbar', 'aria-valuenow': String(p.percent), 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-label': '基本設計の進み具合' }, [
-          (function () { var f = ui.el('span', { class: 'progress-fill' }); f.style.width = p.percent + '%'; return f; })()
-        ]),
-        ui.el('span', { class: 'progress-label', text: '基本設計 ' + p.percent + '％（' + p.filled + '/' + p.total + '）' })
-      ]),
+      ui.el('p', {class: 'p p--meta', text: '基本設計 ' + progress.percent + '％（' + progress.filled + '/' + progress.total + '）'}),
       ui.el('button', {
-        class: 'btn btn--primary btn--sm', type: 'button', text: '保存する',
+        class: 'btn btn--primary btn--sm', type: 'button', text: '保存する', id: 'save-outfit',
         onclick: function () {
           if (!state.outfit.name) { ui.toast('衣装名を入力してから保存してください'); var n = document.getElementById('outfit-name'); if (n) n.focus(); return; }
+          if (store.getOutfit(state.outfit.id) && !ui.confirm('保存一覧の同じ衣装を上書きしますか？')) return;
           state.saveToLibrary();
+          document.getElementById('save-outfit').focus({preventScroll: true});
           ui.toast('「' + state.outfit.name + '」を保存しました');
         }
       })
@@ -2417,10 +2385,13 @@
     });
   }
 
-  function openAdvancedWorkshop(section){
-    CPW.uiPrefs.set('workshop','advanced');if(section)openSections[section]=true;
-    var y=global.scrollY;CPW.render();var target=section?document.querySelector('[aria-controls="panel-'+section+'"]'):document.querySelector('[data-ui-level="advanced"]');
-    if(target){target.focus({preventScroll:true});if(section)target.scrollIntoView({block:'start'});else global.scrollTo(0,y);}
+  function openAdvancedWorkshop(section) {
+    CPW.uiPrefs.set('workshop', 'advanced');
+    if (section) openSections[section] = true;
+    CPW.render();
+    var selector = section ? '[aria-controls="panel-' + section + '"]' : '[data-ui-level="advanced"]';
+    var target = document.querySelector(selector);
+    if (target) { target.focus({preventScroll: true}); target.scrollIntoView({block: 'nearest'}); }
   }
   routes['/workshop'] = function () {
     // 戻る先は開始画面。設計は自動保存（下書き）されるので、確認ダイアログは出さない。
@@ -2434,8 +2405,8 @@
     var header = ui.el('div', { class: 'workshop-header', id: 'workshop-header' }, [buildHeaderInner()]);
     var body = ui.el('div', { class: 'accordion' });
 
-    SECTIONS.forEach(function (sec) {
-      if(CPW.uiPrefs.get('workshop')==='simple'&&['styling','condition','special'].indexOf(sec.id)>=0)return;
+    var simple = CPW.uiPrefs.get('workshop') === 'simple';
+    if (!simple) SECTIONS.forEach(function (sec) {
       var open = !!openSections[sec.id];
       var panelId = 'panel-' + sec.id;
       var btn = ui.el('button', {
@@ -2453,7 +2424,7 @@
         var inspiration=state.outfit.concept.inspiration;
         panel.appendChild(ui.el('a',{class:'btn',href:'#/concept_fashion/edit',text:inspiration && (inspiration.motifId || inspiration.customMotif || inspiration.traditional && inspiration.traditional.attireId) ? 'コンセプトを編集：'+CPW.conceptFashion.label(inspiration) : 'コンセプトから候補を作る'}));
         CONCEPT_FIELDS.forEach(function (f) { panel.appendChild(renderField(f)); });
-        if(CPW.uiPrefs.get('workshop')==='advanced')panel.appendChild(renderAttributeField());
+        panel.appendChild(renderAttributeField());
       } else if (sec.id === 'structure') {
         buildStructureSection(panel);
       } else if (sec.id === 'styling') {
@@ -2480,28 +2451,29 @@
       body.appendChild(ui.el('div', { class: 'acc-item' }, [btn, panel]));
     });
 
-    var sum = CPW.advisor.summary(CPW.advisor.check(state.outfit, { ignored: ignoredIssues }));
-    var warnLabel = sum.total ? '警告 ' + sum.hard + '/' + sum.warning + '/' + sum.info : '警告なし';
-    var bar = ui.el('div', { class: 'bottombar' }, [
-      ui.el('a', { class: 'bb-btn', href: '#/gacha', text: '部分ガチャ', id: 'bb-gacha' }),
-      ui.el('a', {
-        class: 'bb-btn' + (sum.hard ? ' bb-btn--alert' : sum.warning ? ' bb-btn--warn' : ''),
-        href: '#/checks', text: warnLabel, id: 'bb-checks'
-      }),
-      ui.el('a', { class: 'bb-btn bb-btn--primary', href: '#/output', text: 'プロンプトを見る' })
+    var checks = ui.el('a', {class: 'bb-btn', href: '#/checks', id: 'bb-checks'});
+    updateChecks(checks);
+    var bar = ui.el('nav', {class: 'bottombar', 'aria-label': '仕上げ'}, [checks,
+      ui.el('a', {class: 'bb-btn bb-btn--primary', href: '#/output', text: 'プロンプトを完成させる →'})
     ]);
-
-    var suggestLink = ui.el('div', { class: 'workshop-links' }, [
-      ui.el('a', { class: 'link-btn', href: '#/suggest', text: '補助候補を見る' })
+    var level = CPW.uiComplexity.switcher('workshop', function () { CPW.render(); });
+    var tools = ui.el('div', {class: 'row'}, [
+      ui.el('a', {class: 'btn', href: '#/gacha', id: 'bb-gacha', text: '部分ガチャ'}),
+      ui.el('a', {class: 'btn', href: '#/suggest', text: '補助候補を見る'})
     ]);
-    var level=CPW.uiComplexity.switcher('workshop',function(){CPW.render();});
-    var hidden=CPW.uiPrefs.get('workshop')==='simple'?CPW.uiComplexity.summary(state.outfit,'workshop',function(){openAdvancedWorkshop();}):null;
-    var finish=null;if(CPW.uiPrefs.get('workshop')==='simple'){
-      finish=ui.el('div',{class:'card stack'},[ui.el('h2',{class:'card-title',text:'もっと細かく仕上げる'})]);
-      [['styling','着こなし・着崩し'],['condition','衣装の状態・加工'],['special','特殊パーツ・演出']].forEach(function(pair){var h=CPW.uiComplexity.hiddenSummary(state.outfit,'workshop').groups.filter(function(g){return g.id===pair[0];})[0];finish.appendChild(ui.el('button',{type:'button',class:'btn',text:pair[1]+(h?'（設定あり '+h.count+'件）':''),onclick:function(){openAdvancedWorkshop(pair[0]);}}));});
-    }
-    return screen('', [nav, header, CPW.presentationChoices?CPW.presentationChoices.link():null, level, hidden, suggestLink, body, finish, bar]);
+    return screen('', [nav, ui.el('h1', {class: 'page-title', text: '衣装をアレンジ'}),
+      CPW.atelier.sample(), simple ? CPW.atelier.quickEditor() : null, level,
+      simple ? CPW.uiComplexity.summary(state.outfit, 'workshop', function () { openAdvancedWorkshop(); }) : body,
+      header, tools, CPW.presentationChoices.link(), bar]);
   };
+
+  function updateChecks(link) {
+    var sum = CPW.advisor.summary(CPW.advisor.check(state.outfit, {ignored: ignoredIssues}));
+    link.textContent = sum.hard ? '要確認 ' + sum.hard + '件' :
+      sum.warning ? '注意 ' + sum.warning + '件' : sum.info ? 'ヒント ' + sum.info + '件' : '警告なし';
+    link.classList.toggle('bb-btn--alert', !!sum.hard);
+    link.classList.toggle('bb-btn--warn', !sum.hard && !!sum.warning);
+  }
 
   /* ============================================================
    * Phase 4 のUI
@@ -2872,7 +2844,6 @@
     { key: 'includeQualityTags', labelJa: '品質タグを追加', noteJa: 'masterpiece などの定番タグを足す。' }
   ];
 
-  var outputTab = 'short';
 
   /* クリップボードへ。失敗しても理由を出す。 */
   function copyText(text, whatJa) {
@@ -2902,9 +2873,13 @@
   CPW.copyText = copyText;
 
   routes['/output'] = function () {
+    var outputTab = 'short';
     var host = ui.el('div', { id: 'output-host' });
 
     function draw() {
+      var oldOptions = host.querySelector('.output-options');
+      var optionsOpen = oldOptions && oldOptions.open;
+      var focusId = host.contains(document.activeElement) && document.activeElement.id;
       host.innerHTML = '';
       var o = state.outfit;
       var gen = CPW.generator;
@@ -2920,9 +2895,7 @@
       });
       host.appendChild(tabs);
 
-      var onlyCostume = !OUTPUT_OPTIONS.some(function (opt) { return o.output[opt.key]; });
-      host.appendChild(ui.el('p', { class: 'p p--note', text: onlyCostume ? '現在は「衣装のみ」です。背景・ポーズ・感情・物語・魔法演出・品質タグは含めていません。' : '任意オプションを含めた状態の出力です。' }));
-
+      var resultCard;
       if (outputTab === 'structure') {
         var lines = structureLines(o);
         var table = ui.el('dl', { class: 'struct' });
@@ -2931,7 +2904,7 @@
           table.appendChild(ui.el('dd', { text: l.value }));
         });
         if (!lines.length) table.appendChild(ui.el('dd', { class: 'p p--note', text: 'まだ何も選ばれていません。設計台で項目を選ぶと、ここに一覧を表示します。' }));
-        host.appendChild(ui.el('div', { class: 'card' }, [table]));
+        resultCard = ui.el('div', { class: 'card' }, [table]);
         host.appendChild(ui.el('button', {
           type: 'button', class: 'btn', 'data-fkey': 'copy:structure', text: '構造一覧をコピー',
           onclick: function () {
@@ -2941,16 +2914,30 @@
       } else {
         var text = gen[outputTab](o);
         var label = { short: '短縮版', detailed: '詳細版', markdown: 'Markdown' }[outputTab];
-        var box = ui.el('div', { class: 'card' });
-        if (text) box.appendChild(ui.el(outputTab === 'markdown' ? 'pre' : 'p', { class: 'prompt-text', id: 'prompt-text', text: text }));
-        else box.appendChild(ui.el('p', { class: 'p p--note', text: gen.EMPTY_JA }));
-        host.appendChild(box);
+        resultCard = ui.el('div', { class: 'card' });
+        if (text) resultCard.appendChild(ui.el(outputTab === 'markdown' ? 'pre' : 'p', { class: 'prompt-text', id: 'prompt-text', text: text }));
+        else resultCard.appendChild(ui.el('p', { class: 'p p--note', text: gen.EMPTY_JA }));
         host.appendChild(ui.el('button', {
           type: 'button', class: 'btn btn--primary', 'data-fkey': 'copy:' + outputTab,
           text: label + 'をコピー',
-          onclick: function () { copyText(text, label); }
+          onclick: function () { copyText(gen[outputTab](state.outfit), label); }
         }));
       }
+
+      // Keep the copy action ahead of long Markdown and structure results.
+      host.appendChild(resultCard);
+      function optionsLabel() {
+        var activeOptions = OUTPUT_OPTIONS.filter(function (opt) { return o.output[opt.key]; })
+          .map(function (opt) { return opt.labelJa.replace(/を追加$/, ''); });
+        if (o.output.includeBackground) activeOptions.push('背景');
+        if (o.output.includeRendering) activeOptions.push('画風');
+        if (o.output.customTags) activeOptions.push('追加タグ');
+        return 'タグ・出力設定' + (activeOptions.length ? '（' + activeOptions.join('・') + '）' : '（衣装のみ）');
+      }
+      var options = ui.el('details', {class: 'card output-options', open: optionsOpen}, [
+        ui.el('summary', {text: optionsLabel()})
+      ]);
+      host.appendChild(options);
 
       /* 追加タグ。生成文の末尾へそのまま付ける（改変しない）。 */
       var tagCard = ui.el('div', { class: 'card card--quiet' }, [
@@ -2966,13 +2953,18 @@
         state.outfit.output.customTags = tagInput.value;   // 入力中はre-renderしない
         state.dirty = true;
         autosave();
+        if (outputTab !== 'structure') {
+          var result = gen[outputTab](state.outfit);
+          resultCard.replaceChildren(ui.el(outputTab === 'markdown' ? 'pre' : 'p',
+            {class: 'prompt-text', id: 'prompt-text', text: result || gen.EMPTY_JA}));
+        }
+        options.querySelector('summary').textContent = optionsLabel();
       });
-      tagInput.addEventListener('change', function () { draw(); });
       tagCard.appendChild(tagInput);
-      host.appendChild(tagCard);
+      options.appendChild(tagCard);
 
-      if(CPW.presentationChoices)host.appendChild(CPW.presentationChoices.link());
-      if(CPW.presentation)host.appendChild(CPW.presentation.controls(o,draw));
+      if(CPW.presentationChoices)options.appendChild(CPW.presentationChoices.link(true));
+      if(CPW.presentation)options.appendChild(CPW.presentation.controls(o,draw));
       var opts_ = ui.el('div', { class: 'card card--quiet' }, [
         ui.el('h2', { class: 'card-title', text: '出力に足すもの' }),
         ui.el('p', { class: 'p p--sub', text: '既定では衣装のみを出力します。必要なものだけを追加してください。' })
@@ -2994,18 +2986,23 @@
         line.appendChild(ui.el('p', { class: 'field-note', text: opt.noteJa }));
         opts_.appendChild(line);
       });
-      host.appendChild(opts_);
+      options.appendChild(opts_);
 
       host.appendChild(ui.el('button', {
         class: 'btn', type: 'button', text: 'この衣装をJSONで書き出す',
         onclick: function () { downloadJSON(store.exportOutfit(state.outfit), (state.outfit.name || 'outfit') + '.json'); }
       }));
+      if (focusId) {
+        var control = document.getElementById(focusId);
+        var target = control && control.tagName === 'SELECT' ? control.labels[0] : control;
+        if (target) { if (target.tagName === 'LABEL') target.tabIndex = -1; target.focus({preventScroll: true}); }
+      }
     }
     draw();
 
     return screen('', [
-      backBar('設計台へ戻る', '#/workshop'),
-      ui.el('h1', { class: 'page-title', text: '出力' }),
+      backBar('アレンジへ戻る', '#/workshop'),
+      ui.el('h1', { class: 'page-title', text: 'プロンプトの完成' }),
       host
     ]);
   };
@@ -3043,7 +3040,7 @@
         sw.childNodes.length ? sw : null,
         ui.el('p', { class: 'p p--meta', text: '更新 ' + util.formatDate(o.updatedAt) }),
         ui.el('div', { class: 'row' }, [
-          ui.el('button', { class: 'btn btn--sm btn--primary', type: 'button', text: '開く', onclick: function () { state.load(o, { saved: true }); location.hash = '#/workshop'; } }),
+          ui.el('button', { class: 'btn btn--sm btn--primary', type: 'button', text: '開く', onclick: function () { if (!confirmReplacement()) return; state.load(o, { saved: true }); location.hash = '#/workshop'; } }),
           ui.el('button', { class: 'btn btn--sm', type: 'button', text: '複製', onclick: function () { store.duplicateOutfit(o.id); ui.toast('複製しました'); render(); } }),
           ui.el('button', {
             class: 'btn btn--sm', type: 'button', text: 'データ出力',
@@ -3122,6 +3119,10 @@
     var parsed = CPW.parseHash(location.hash);
     var view = routes[parsed.route] || routes[''];
     appRoot.innerHTML = '';
+    var finishing = parsed.route === '/output' || (parsed.route === '/presentation' && parsed.params[0] === 'output');
+    var step = finishing ? 3 :
+      ['/workshop', '/checks', '/suggest', '/gacha', '/presentation'].includes(parsed.route) ? 2 : 1;
+    if (parsed.route !== '/library') appRoot.appendChild(CPW.atelier.progress(step));
     appRoot.appendChild(view(parsed.params));
     global.scrollTo(0, 0);
   }
@@ -3146,6 +3147,8 @@
       // Same-screen redraws must retain save/import/duplicate feedback.
       ui.dismissToast();
       render();
+      var heading = appRoot.querySelector('h1') || appRoot.querySelector('.page-title');
+      if (heading) { heading.tabIndex = -1; heading.focus({preventScroll: true}); }
     });
     global.addEventListener('beforeunload', function () { if (autosave.pending()) store.saveDraft(state.outfit); });
     render();

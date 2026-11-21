@@ -13,6 +13,7 @@ const server=http.createServer((req,res)=>{
   const report={engine,cases:[],errors:[]};
   try{
     const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),page=await context.newPage();
+    page.on('dialog',d=>d.accept());
     page.on('pageerror',error=>report.errors.push(error.message));
     await page.goto('http://127.0.0.1:'+server.address().port+'/');
     await page.evaluate(()=>{const C=CPW;C.state.load(C.schema.normalize({name:'通知テスト',garment:{category:'dress',subtype:'cocktail_dress'}}));location.hash='#/workshop';});
@@ -20,7 +21,7 @@ const server=http.createServer((req,res)=>{
     await page.getByRole('button',{name:'保存する',exact:true}).click();
     assert(await page.locator('#toast').evaluate(el=>el.classList.contains('is-visible')),'save notification missing');
     const saved=await page.evaluate(()=>JSON.stringify(CPW.state.outfit));
-    await page.locator('a[href="#/output"]').click();await page.locator('#panel-concept').waitFor({state:'detached'});
+    await page.locator('a[href="#/output"]').click();await page.locator('#outfit-sample').waitFor({state:'detached'});
     assert(await page.locator('#toast').evaluate(el=>!el.classList.contains('is-visible')),'BUG-001: save notification survived route change');
     assert(await page.evaluate(()=>CPW.ui._toastTimer===null&&document.querySelector('#toast').textContent===''),'dismiss must clear timer and live-region text');
     assert(await page.evaluate(saved=>JSON.stringify(CPW.state.outfit)===saved,saved),'navigation changed outfit');report.cases.push('save then output dismisses without changing outfit');
@@ -34,7 +35,7 @@ const server=http.createServer((req,res)=>{
     assert(await page.locator('#toast').evaluate(el=>el.classList.contains('is-visible')),'same-screen import notification disappeared');report.cases.push('import redraw keeps success notification');
 
     await page.evaluate(()=>{location.hash='#/gacha';});await page.locator('#gacha-roll').click();await page.locator('[data-adopt="1"]').click();
-    await page.locator('#panel-concept').waitFor();
+    await page.locator('#outfit-sample').waitFor();
     assert(await page.locator('#toast').evaluate(el=>!el.classList.contains('is-visible')),'adoption notification survived automatic navigation');
     assert(await page.evaluate(()=>!!CPW.state.outfit.palette.primary),'gacha adoption failed');report.cases.push('gacha adoption applies outfit and dismisses on workshop navigation');
 

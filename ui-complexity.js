@@ -12,19 +12,44 @@
     if(path.indexOf('parts.')===0){var slot=path.slice(6);return (cat.slots||[]).indexOf(slot)>=0&&simpleSlots.concat(cat.requiredSlots||[],sub.requiredSlots||[]).indexOf(slot)>=0;}return false;
   }
   var workshopGroups=[
-    ['concept','コンセプト詳細',['concept.era','concept.occasion','concept.season','concept.role','concept.secondaryStyles','concept.secondaryThemeMotifs','concept.attribute.id']],
-    ['structure','衣装構造・仕立て',['garment.wearRole','garment.layers','silhouette.upperVolume','silhouette.lowerVolume','silhouette.waist','silhouette.symmetry']],
-    ['material','素材・装飾詳細',['materials.secondary','materials.trim','materials.transparency','materials.surface','materials.thickness','decorations.focalMotif','decorations.items']],
+    ['concept','コンセプト詳細',['concept.worldview','concept.primaryStyle','concept.primaryThemeMotif','concept.era','concept.occasion','concept.season','concept.role','concept.secondaryStyles','concept.secondaryThemeMotifs','concept.attribute.id']],
+    ['structure','衣装構造・仕立て',['silhouette.fit','silhouette.length','garment.wearRole','garment.layers','silhouette.upperVolume','silhouette.lowerVolume','silhouette.waist','silhouette.symmetry']],
+    ['material','素材・装飾詳細',['materials.patterns','decorations.density','materials.secondary','materials.trim','materials.transparency','materials.surface','materials.thickness','decorations.items']],
     ['palette','配色詳細',['palette.scheme','palette.metal','palette.gem']],['styling','着こなし',['styling.items']],['condition','状態・加工',['condition.items']],['special','特殊パーツ',['specialParts']]
   ];
   var conceptGroups=[['secondary','副題',['secondary.motifId','secondary.customMotif','blendMode']],['context','世界・人物',['context.worldviewId','context.eraId','context.roleId','context.occasionId','context.storyStateIds']],['design','デザイン詳細',['designLanguages','interpretationMode']],['finish','反映の詳細',['exclusions','placements','foodApplications','exposure']],['specific','題材の詳細',['traditional.treatmentId','traditional.qipaoNecklineId','traditional.qipaoLengthId','traditional.qipaoSlitId','traditional.qipaoDrapeId','idolStyleId','artNouveauShapeId']]];
   function count(value){if(Array.isArray(value))return value.length;if(value&&typeof value==='object')return Object.keys(value).reduce(function(n,k){return n+count(value[k]);},0);return value!==null&&value!==undefined&&value!==''&&value!==false?1:0;}
   function hiddenSummary(outfit,surface){
-    var draft=surface==='concept'?(outfit.concept?outfit.concept.inspiration:outfit):outfit,groups=(surface==='concept'?conceptGroups:workshopGroups).map(function(group){var paths=group[2].slice();if(surface==='workshop'&&group[0]==='structure')Object.keys(outfit.parts).forEach(function(k){paths.push('parts.'+k);});var n=paths.reduce(function(n,path){if(surface==='workshop'&&simpleField(path,outfit))return n;var v=U.getPath(draft,path);if((path==='garment.wearRole'&&v==='main_outfit')||(path==='blendMode'&&v==='primary_dominant')||(path==='interpretationMode'&&v==='auto'))return n;if(path==='specialParts')return n+C.schema.activeSpecialParts(outfit).length;if(path.indexOf('parts.')===0){var slot=U.byId(D.partSlots,path.slice(6));return n+(slot&&C.schema.isSlotFilled(slot,v)?1:0);}return n+count(v);},0);if(surface==='concept'&&group[0]==='design')n+=Math.max(0,(draft.directions||[]).length-1);return {id:group[0],labelJa:group[1],count:n};}).filter(function(x){return x.count>0;});
+    var draft=surface==='concept'?(outfit.concept?outfit.concept.inspiration:outfit):outfit,groups=(surface==='concept'?conceptGroups:workshopGroups).map(function(group){var paths=group[2].slice();if(surface==='workshop'&&group[0]==='structure')Object.keys(outfit.parts).forEach(function(k){paths.push('parts.'+k);});var n=paths.reduce(function(n,path){if(path==='decorations.density' && outfit.decorations.density===2)return n;var v=U.getPath(draft,path);if((path==='garment.wearRole'&&v==='main_outfit')||(path==='blendMode'&&v==='primary_dominant')||(path==='interpretationMode'&&v==='auto'))return n;if(path==='specialParts')return n+C.schema.activeSpecialParts(outfit).length + ['decorativeChains','restraintChains','floating','magical'].reduce(function(total,k){return total+(v[k]||[]).length;},0);if(path.indexOf('parts.')===0){var slot=U.byId(D.partSlots,path.slice(6));return n+(slot&&C.schema.isSlotFilled(slot,v)?1:0);}return n+count(v);},0);if(surface==='concept'&&group[0]==='design')n+=Math.max(0,(draft.directions||[]).length-1);return {id:group[0],labelJa:group[1],count:n};}).filter(function(x){return x.count>0;});
     if(surface==='workshop'){var inspiration=hiddenSummary(outfit,'concept');if(inspiration.count)groups.push({id:'inspiration',labelJa:'記録したコンセプト詳細',count:inspiration.count});}
     return {count:groups.reduce(function(n,x){return n+x.count;},0),groups:groups};
   }
-  function switcher(surface,onChange){var E=C.ui.el,wrap=E('fieldset',{class:'ui-level-switch','data-ui-surface':surface});wrap.appendChild(E('legend',{text:'設定レベル'}));[['simple','かんたん設計'],['advanced','こだわり設計']].forEach(function(pair){wrap.appendChild(E('button',{type:'button',class:'btn'+(C.uiPrefs.get(surface)===pair[0]?' btn--primary':''),'aria-pressed':String(C.uiPrefs.get(surface)===pair[0]),'data-ui-level':pair[0],text:pair[1],onclick:function(){if(C.uiPrefs.get(surface)===pair[0])return;var y=g.scrollY;C.uiPrefs.set(surface,pair[0]);onChange(pair[0]);var b=document.querySelector('[data-ui-surface="'+surface+'"] [data-ui-level="'+pair[0]+'"]');if(b)b.focus({preventScroll:true});g.scrollTo(0,y);}}));});return wrap;}
-  function summary(outfit,surface,onAdvanced){var E=C.ui.el,data=hiddenSummary(outfit,surface),box=E('aside',{class:'ui-hidden-summary','data-hidden-summary':surface});if(!data.count)return box;box.appendChild(E('p',{text:'非表示の詳細設定が'+data.count+'件あります。設定とプロンプトへの反映は保持しています。'}));box.appendChild(E('p',{text:data.groups.map(function(x){return x.labelJa+' '+x.count+'件';}).join(' ／ ')}));var s=surface==='concept'?(outfit.concept?outfit.concept.inspiration:outfit):outfit.concept.inspiration;if(s.secondary&&(s.secondary.motifId||s.secondary.customMotif))box.appendChild(E('p',{text:'副題：'+(U.labelOf(D.conceptFashion.motifs,s.secondary.motifId)||s.secondary.customMotif)}));box.appendChild(E('button',{type:'button',class:'btn',text:'こだわり設計で確認',onclick:onAdvanced}));return box;}
+  function switcher(surface, onChange) {
+    var E = C.ui.el;
+    var wrap = E('fieldset', {class:'ui-level-switch', 'data-ui-surface':surface});
+    wrap.appendChild(E('legend', {text:surface==='workshop' ? '編集する項目' : '設定レベル'}));
+    var labels = surface==='workshop' ? ['基本のアレンジ', 'もっとこだわる'] : ['かんたん設計', 'こだわり設計'];
+    ['simple','advanced'].forEach(function (level, i) {
+      var selected = C.uiPrefs.get(surface)===level;
+      wrap.appendChild(E('button', {
+        type:'button', class:'btn'+(selected ? ' btn--primary' : ''),
+        'aria-pressed':String(selected), 'data-ui-level':level, text:labels[i],
+        onclick:function () {
+          if (selected) return;
+          var y = g.scrollY;
+          C.uiPrefs.set(surface, level);
+          onChange(level);
+          var button = document.querySelector('[data-ui-surface="'+surface+'"] [data-ui-level="'+level+'"]');
+          g.scrollTo(0,y);
+          if (button) {
+            button.focus({preventScroll:true});
+            button.scrollIntoView({block:'nearest'});
+          }
+        }
+      }));
+    });
+    return wrap;
+  }
+  function summary(outfit,surface,onAdvanced){var E=C.ui.el,data=hiddenSummary(outfit,surface),box=E('aside',{class:'ui-hidden-summary','data-hidden-summary':surface});if(!data.count)return box;box.appendChild(E('p',{text:'非表示の詳細設定が'+data.count+'件あります。設定とプロンプトへの反映は保持しています。'}));box.appendChild(E('p',{text:data.groups.map(function(x){return x.labelJa+' '+x.count+'件';}).join(' ／ ')}));var s=surface==='concept'?(outfit.concept?outfit.concept.inspiration:outfit):outfit.concept.inspiration;if(s.secondary&&(s.secondary.motifId||s.secondary.customMotif))box.appendChild(E('p',{text:'副題：'+(U.labelOf(D.conceptFashion.motifs,s.secondary.motifId)||s.secondary.customMotif)}));box.appendChild(E('button',{type:'button',class:'btn',text:surface==='workshop'?'詳細を確認':'こだわり設計で確認',onclick:onAdvanced}));return box;}
   C.uiComplexity={simpleFields:simpleFields,simpleSlots:simpleSlots,workshopGroups:workshopGroups,conceptGroups:conceptGroups,isSimpleField:simpleField,visible:function(path,outfit){return C.uiPrefs.get('workshop')==='advanced'||simpleField(path,outfit);},hiddenSummary:hiddenSummary,switcher:switcher,summary:summary};
 })(typeof window!=='undefined'?window:global);

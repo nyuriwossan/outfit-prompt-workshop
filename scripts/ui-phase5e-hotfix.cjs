@@ -51,7 +51,7 @@ const server=http.createServer((req,res)=>{
         await noOverflow();
       };
       const verify=async(index,choice)=>{
-        await page.waitForURL('**/#/workshop');await page.locator('#panel-concept').waitFor({state:'visible'});
+        await page.waitForURL('**/#/workshop');await page.locator('#outfit-sample').waitFor({state:'visible'});
         const checks=await page.evaluate(({index,choice})=>{
           const C=CPW,c=hotfixCandidates[index],expected=C.schema.normalize(choice?C.conceptFashion.resolvePreserveConflict(c,choice):c.outfit);
           function content(o){const copy=JSON.parse(JSON.stringify(o));delete copy.id;delete copy.createdAt;delete copy.updatedAt;return JSON.stringify(copy);}
@@ -59,7 +59,7 @@ const server=http.createServer((req,res)=>{
           window.hotfixAdopted=JSON.stringify(C.state.outfit);C._autosave.flush();return {...result,snapshot:hotfixAdopted};
         },{index,choice});
         assert(checks.exactCandidate,'wrong candidate or fields changed '+index);assert(checks.inspiration,'inspiration lost');
-        await noOverflow();await page.reload();await page.locator('#panel-concept').waitFor({state:'visible'});
+        await noOverflow();await page.reload();await page.locator('#outfit-sample').waitFor({state:'visible'});
         assert(await page.evaluate(snapshot=>snapshot===JSON.stringify(CPW.state.outfit),checks.snapshot),'autosave reload differs');await noOverflow();
       };
       const confirmAdoption=async()=>{
