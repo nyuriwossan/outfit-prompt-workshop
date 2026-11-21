@@ -145,7 +145,7 @@
     },
     {
       id: 'sailor_student', group: 'modern', labelJa: 'セーラー服',
-      summaryJa: 'セーラー襟とプリーツスカートの制服',
+      summaryJa: 'セーラー襟を合わせた半袖の制服',
       patch: {
         concept: { primaryStyle: 'minimal' },
         garment: { category: 'uniform', subtype: 'sailor_school_uniform', wearRole: 'main_outfit' },
