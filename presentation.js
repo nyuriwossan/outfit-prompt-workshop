@@ -37,16 +37,5 @@
     if(o.output.includeRendering&&p.rendering.enabled){var words=[phrase(P.paints,p.rendering.paint),phrase(P.finishes,p.rendering.finish),phrase(P.lines,p.rendering.line)].filter(Boolean);out.rendering={short:words,detailed:words.length?['rendered with '+C.generator.joinAnd(words)]:[]};}
     return out;
   }
-  var expanded=false;
-  function controls(o,redraw){
-    var E=C.ui.el,p=normalize(o.presentation),wrap=E('details',{class:'card presentation-panel',open:expanded?true:null});wrap.appendChild(E('summary',{text:'演出・見せ方'}));wrap.addEventListener('toggle',function(){if(wrap.isConnected)expanded=wrap.open;});
-    function refresh(){expanded=wrap.open;redraw();}
-    function select(label,list,path){var id='pr-'+path.replace(/\./g,'-'),sel=E('select',{class:'cf-select',id:id});sel.appendChild(E('option',{value:'',text:'未選択'}));list.forEach(function(x){sel.appendChild(E('option',{value:x.id,text:x.labelJa}));});sel.value=U.getPath(o,path)||'';if(path==='presentation.preset'&&o.presentation.layoutVersion===1&&C.presentationChoices){sel.appendChild(E('option',{value:'__current',text:'選択中：'+C.presentationChoices.summary(o)}));sel.value='__current';}sel.addEventListener('change',function(){if(sel.value==='__current')return;if(path==='presentation.preset'&&C.state.outfit.presentation.layoutVersion===1){delete C.state.outfit.presentation.layoutVersion;delete C.state.outfit.presentation.poseId;delete C.state.outfit.presentation.distanceId;delete C.state.outfit.presentation.angleId;}C.state.set(path,sel.value||null);refresh();});wrap.appendChild(E('label',{for:id,text:label}));wrap.appendChild(sel);}
-    var scope=E('select',{id:'output-scope',class:'cf-select'});[['outfit','衣装だけ'],['pose','衣装＋ポーズ'],['all','全部']].forEach(function(x){scope.appendChild(E('option',{value:x[0],text:x[1]}));});scope.value=o.output.includeBackground||o.output.includeRendering?'all':o.output.includePresentation?'pose':'outfit';scope.addEventListener('change',function(){setScope(C.state.outfit,scope.value);C.state.touch();refresh();});wrap.appendChild(E('label',{for:'output-scope',text:'出力範囲'}));wrap.appendChild(scope);
-    select('見せ方',P.presets,'presentation.preset');select('ポーズの雰囲気',P.poseMoods,'presentation.poseMood');var preset=U.byId(P.presets,p.preset);if(preset&&preset.seated)select('座面（身体と衣装を支える面）',P.seats,'presentation.seat');select('背景',P.backgrounds,'presentation.background');select('人物指定（未選択で衣装のみ）',P.subjects,'presentation.subject');
-    wrap.appendChild(E('p',{class:'p p--note',text:'衣装の性別制限はありません。座面は座り構図でのみ出力します。画風は衣装素材とは別の指定です。'}));
-    wrap.appendChild(E('button',{class:'btn',type:'button',text:'画風を出力：'+(p.rendering.enabled?'ON':'OFF'),'aria-pressed':String(p.rendering.enabled),id:'rendering-enabled',onclick:function(){C.state.set('presentation.rendering.enabled',!p.rendering.enabled);refresh();}}));
-    select('塗り',P.paints,'presentation.rendering.paint');select('仕上げ',P.finishes,'presentation.rendering.finish');select('線',P.lines,'presentation.rendering.line');return wrap;
-  }
-  C.presentation={normalize:normalize,setScope:setScope,blocks:blocks,controls:controls};
+  C.presentation={normalize:normalize,setScope:setScope,blocks:blocks};
 })(typeof window!=='undefined'?window:global);

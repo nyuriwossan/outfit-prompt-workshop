@@ -22,3 +22,45 @@ for (const preset of previous.data.presets) {
   }
 }
 console.log(comparisons + ' matching outputs for ' + previous.data.presets.length + ' presets');
+
+// Exercise old helper fields, every legacy set, and every separated pose. A null
+// scope is intentionally distinct from an explicit scope for plain backgrounds.
+const P = previous.data.presentation;
+let presentationCases = 0;
+const settings = [
+  {focus:'detail',poseAssist:'walking',compositionAssist:'plain_bg'},
+  ...P.presets.map(x=>({preset:x.id,seat:'throne'})),
+  ...P.poseChoices.map(x=>({layoutVersion:1,poseId:x.id,distanceId:'upper',angleId:'back',seat:'bed'}))
+];
+for (const presentation of settings) {
+  for (const category of ['dress','merfolk']) {
+    for (const scope of [null,'outfit','pose','all']) {
+      const raw = {version:'0.6', garment:{category}, concept:{attribute:{id:'fire'}},
+        presentation:{...presentation,poseMood:'cool',background:'light',rendering:{enabled:true,paint:'watercolor'}},
+        output:{scope,includeBackground:true,includePresentation:false,includeRendering:true,includeEffects:true,includeNarrative:true}};
+      for (const format of ['short','detailed','markdown']) {
+        assert.equal(current.generator[format](raw),previous.generator[format](raw),JSON.stringify([presentation,scope,category,format]));
+        presentationCases++;
+      }
+    }
+  }
+}
+console.log(presentationCases + ' matching presentation outputs');
+
+// Run saved fixtures through each version's own migration before comparison.
+let migratedCases = 0;
+for (const fixture of [...previous.legacy03Fixtures, ...previous.phase5dBaseline, ...previous.fixtures05]) {
+  const raw = fixture.raw || fixture.outfit;
+  const oldImport = previous.schema.migrate(raw);
+  const newImport = current.schema.migrate(raw);
+  assert(oldImport.ok && newImport.ok, 'Could not import saved outfit '+raw.id);
+  const before = oldImport.outfit;
+  const after = newImport.outfit;
+  for (const format of ['short','detailed','markdown']) {
+    assert.equal(current.generator[format](after),previous.generator[format](before),raw.id+' '+format);
+    migratedCases++;
+  }
+  assert.equal(JSON.stringify(current.structureLines(after)),JSON.stringify(previous.structureLines(before)),raw.id+' structure');
+  migratedCases++;
+}
+console.log(migratedCases + ' matching migrated fixture outputs');
