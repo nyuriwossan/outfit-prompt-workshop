@@ -61,6 +61,86 @@
       fields.appendChild(E('label', {class: 'quick-label'}, [document.createTextNode(label), input]));
       return input;
     }
+
+    // A swatch-based quick picker; the selected value stays in the existing outfit schema.
+    function colorPicker(role, label) {
+      var path = 'palette.' + role;
+      var holder = E('div', {class: 'quick-color', 'data-color-picker': role});
+      var details = E('details', {class: 'quick-color-picker'});
+      var summary = E('summary', {class: 'quick-color-summary'});
+      var panel = E('div', {class: 'quick-color-panel'});
+      var query = E('input', {type: 'search', class: 'quick-color-search',
+        placeholder: '色名・英語名・HEXで検索', 'aria-label': label + 'の色を検索'});
+      var family = E('select', {class: 'cf-select', 'aria-label': label + 'の色系統'});
+      family.appendChild(E('option', {value: 'popular', text: 'よく使う色'}));
+      family.appendChild(E('option', {value: 'all', text: 'すべての色'}));
+      D.colorFamilies.forEach(function (f) {
+        family.appendChild(E('option', {value: f.id, text: f.labelJa}));
+      });
+      var grid = E('div', {class: 'quick-color-grid', role: 'group', 'aria-label': label + 'の候補'});
+      var popular = ['pure_white','warm_ivory','jet_black','charcoal_gray',
+        'deep_crimson','rose_red','blush_pink','antique_gold',
+        'forest_green','sage_green','teal','sky_blue','deep_navy',
+        'royal_purple','dusty_lavender','warm_brown','sand_beige','polished_silver'];
+      function current() { return C.util.byId(D.colors, C.util.getPath(C.state.outfit, path)); }
+      function updateSummary() {
+        var color = current();
+        var dot = E('i', {class: 'quick-color-dot', 'aria-hidden': 'true'});
+        if (color) dot.style.backgroundColor = color.hex;
+        summary.replaceChildren(dot, E('span', {text: color ? color.labelJa + ' (' + color.hex + ')' : '色見本から選ぶ'}));
+      }
+      function redraw() {
+        var search = query.value.trim().toLowerCase(), active = current();
+        grid.replaceChildren();
+        var matches = D.colors.filter(function (c) {
+          if (search) return [c.labelJa, c.promptEn, c.hex].some(function (v) {
+            return String(v || '').toLowerCase().includes(search);
+          });
+          if (family.value === 'all') return true;
+          if (family.value === 'popular') return popular.indexOf(c.id) >= 0 || !!active && active.id === c.id;
+          return c.family === family.value;
+        });
+        if (!matches.length) grid.appendChild(E('p', {class: 'p p--note', text: '該当する色がありません'}));
+        matches.forEach(function (c) {
+          var tile = E('i', {class: 'quick-color-tile', 'aria-hidden': 'true'});
+          tile.style.backgroundColor = c.hex;
+          var on = !!active && active.id === c.id;
+          var b = E('button', {type: 'button', class: 'quick-color-option' + (on ? ' is-selected' : ''),
+            'data-color-option': role + ':' + c.id,
+            'aria-label': c.labelJa + ' (' + c.hex + ')', 'aria-pressed': String(on)},
+            [tile, E('span', {text: c.labelJa})]);
+          b.addEventListener('click', function () {
+            C.state.set(path, c.id);
+            updateSummary();
+            details.open = false;
+            summary.focus({preventScroll: true});
+          });
+          grid.appendChild(b);
+        });
+      }
+      query.addEventListener('input', redraw);
+      family.addEventListener('change', redraw);
+      var clear = E('button', {type: 'button', class: 'btn btn--sm', text: '色の指定を解除'});
+      clear.addEventListener('click', function () {
+        C.state.set(path, null);
+        updateSummary();
+        details.open = false;
+        summary.focus({preventScroll: true});
+      });
+      details.addEventListener('toggle', function () { if (details.open) redraw(); });
+      panel.appendChild(query);
+      panel.appendChild(family);
+      panel.appendChild(grid);
+      panel.appendChild(clear);
+      details.appendChild(summary);
+      details.appendChild(panel);
+      holder.appendChild(E('span', {class: 'quick-color-title', text: label}));
+      holder.appendChild(details);
+      fields.appendChild(holder);
+      updateSummary();
+      redraw();
+    }
+
     function garments() { return D.garments.filter(function (g) { return g.category === o.garment.category; }); }
     select('garment.category', '服の種類', D.garmentCategories, function (category) {
       C.state.applyPatch({garment: {category: category, subtype: null}});
@@ -72,8 +152,9 @@
     });
     var shape = select('garment.subtype', '基本の形', garments());
     shape.disabled = !o.garment.category;
-    ['主役の色', '合わせる色', '差し色'].forEach(function (label, i) {
-      select('palette.' + ['primary', 'secondary', 'accent'][i], label, D.colors);
+    select('silhouette.fit', '全体の沿い方', D.silhouette.fit);
+    [['primary','主役の色'],['secondary','合わせる色'],['accent','差し色']].forEach(function (pair) {
+      colorPicker(pair[0], pair[1]);
     });
     select('materials.primary', '生地', D.materials.filter(function (m) { return m.category === 'material'; }));
     select('decorations.focalMotif', '主役の装飾', D.decorations);
