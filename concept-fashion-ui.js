@@ -8,12 +8,20 @@
     var existing=C.conceptFashion.hasDesign(source),level=C.uiPrefs.get('concept');
     function switchLevel(next){level=next;if(level==='simple'&&(step===1||step===2))step=3;draw();}
     function showAdvanced(){C.uiPrefs.set('concept','advanced');switchLevel('advanced');var b=host.querySelector('[data-ui-level="advanced"]');if(b)b.focus({preventScroll:true});}
-    function directionSelect(){var wrap=E('div',{class:'field'}),sel=E('select',{id:'cf-direction',class:'cf-select'});wrap.appendChild(E('label',{for:'cf-direction',text:'方向性'}));sel.appendChild(E('option',{value:'',text:'未選択'}));F.directions.forEach(function(d){sel.appendChild(E('option',{value:d.id,text:d.labelJa}));});sel.value=s.directions[0]||'';sel.addEventListener('change',function(){var hidden=s.directions.slice(1);s.directions=sel.value?[sel.value].concat(hidden.filter(function(id){return id!==sel.value;})):hidden;candidates=[];pendingConfirmation=null;draw();});wrap.appendChild(sel);return wrap;}
+    function redrawAfterSelect(select) {
+      var focused = document.activeElement === select;
+      draw();
+      if (focused) {
+        var label = host.querySelector('label[for="'+select.id+'"]');
+        if (label) { label.tabIndex=-1; label.focus({preventScroll:true}); }
+      }
+    }
+    function directionSelect(){var wrap=E('div',{class:'field'}),sel=E('select',{id:'cf-direction',class:'cf-select'});wrap.appendChild(E('label',{for:'cf-direction',text:'方向性'}));sel.appendChild(E('option',{value:'',text:'未選択'}));F.directions.forEach(function(d){sel.appendChild(E('option',{value:d.id,text:d.labelJa}));});sel.value=s.directions[0]||'';sel.addEventListener('change',function(){var hidden=s.directions.slice(1);s.directions=sel.value?[sel.value].concat(hidden.filter(function(id){return id!==sel.value;})):hidden;candidates=[];pendingConfirmation=null;redrawAfterSelect(sel);});wrap.appendChild(sel);return wrap;}
     function button(text,fn,attrs){return E('button',Object.assign({type:'button',class:'btn',text:text,onclick:fn},attrs||{}));}
     function select(label,list,path){
       var id='cf-'+path.replace(/\./g,'-'),wrap=E('div',{class:'field'}),sel=E('select',{id:id,class:'cf-select'});
       wrap.appendChild(E('label',{for:id,text:label}));sel.appendChild(E('option',{value:'',text:'未選択'}));list.forEach(function(o){sel.appendChild(E('option',{value:o.id,text:o.labelJa}));});sel.value=U.getPath(s,path)||'';
-      sel.addEventListener('change',function(){U.setPath(s,path,sel.value||null);s=C.conceptFashion.normalizeSelection(s);candidates=[];pendingConfirmation=null;message='';pendingAdopt=-1;draw();});wrap.appendChild(sel);return wrap;
+      sel.addEventListener('change',function(){U.setPath(s,path,sel.value||null);s=C.conceptFashion.normalizeSelection(s);candidates=[];pendingConfirmation=null;message='';pendingAdopt=-1;redrawAfterSelect(sel);});wrap.appendChild(sel);return wrap;
     }
     function multi(label,list,path,max){
       var wrap=E('fieldset',{class:'field'}),chips=E('div',{class:'chips'});wrap.appendChild(E('legend',{text:label}));
@@ -34,6 +42,13 @@
       function choose(id){s=C.conceptSearch.choose(s,id);candidates=[];pendingConfirmation=null;pendingAdopt=-1;message='';searchQuery='';draw();}
       function resultsDraw(){results.textContent='';if(!searchQuery.trim())return;var found=C.conceptSearch.search(searchQuery,s.categoryId,searchAll);if(!found.length)results.appendChild(E('p',{text:'見つかりませんでした。別の語か「すべてから検索」を試してください。'}));found.forEach(function(m){results.appendChild(button(m.labelJa+'（'+U.labelOf(F.categories,m.category)+'）',function(){choose(m.id);},{'data-cf-search-result':m.id}));});}
       input.addEventListener('input',function(){searchQuery=input.value;resultsDraw();});all.addEventListener('change',function(){searchAll=all.checked;resultsDraw();});resultsDraw();
+    }
+    function clearPreview() {
+      candidates=[];pendingAdopt=-1;pendingConfirmation=null;
+      var previous=host.querySelector('#cf-candidates');
+      if(previous)previous.remove();
+      var generate=host.querySelector('#cf-generate');
+      if(generate){generate.textContent='3案をプレビュー';if(level==='simple')generate.parentNode.classList.add('theme-next');}
     }
     function adopt(c,choice,confirmed){
       var previous={outfit:C.state.outfit,dirty:C.state.dirty,savedId:C.state.savedId},stage='resolve';
@@ -56,13 +71,15 @@
       }
     }
     function draw(){
-      host.textContent='';host.appendChild(E('a',{class:'back-btn',href:params[0]==='edit'?'#/workshop':'#/',text:'← '+(params[0]==='edit'?'設計台へ戻る':'開始画面へ戻る')}));host.appendChild(E('h1',{class:'page-title',text:'コンセプトから作る'}));host.appendChild(E('p',{class:'p p--note',text:'採用するまでは現在の設計を変更しません。'}));
-      host.appendChild(C.uiComplexity.switcher('concept',switchLevel));if(level==='simple')host.appendChild(C.uiComplexity.summary(s,'concept',showAdvanced));
+      host.textContent='';host.appendChild(E('a',{class:'back-btn',href:params[0]==='edit'?'#/workshop':'#/',text:'← '+(params[0]==='edit'?'設計台へ戻る':'開始画面へ戻る')}));host.appendChild(E('h1',{class:'page-title',text:'テーマから選ぶ'}));host.appendChild(E('p',{class:'p p--note',text:'採用するまでは現在の設計を変更しません。'}));
+      var levelSwitch=C.uiComplexity.switcher('concept',switchLevel);
+      if(level==='advanced')host.appendChild(levelSwitch);if(level==='simple')host.appendChild(C.uiComplexity.summary(s,'concept',showAdvanced));
       var steps=level==='simple'?[0,3,4]:[0,1,2,3,4],labels=level==='simple'?['1 題材','2 雰囲気・衣装','3 仕上げ']:['1 題材','2 世界・人物','3 デザイン','4 衣装','5 反映'];
-      var nav=E('nav',{class:'cf-steps','aria-label':'コンセプトの手順'});labels.forEach(function(t,n){var i=steps[n];nav.appendChild(button(t,function(){step=i;candidates=[];pendingConfirmation=null;pendingAdopt=-1;message='';draw();},{'aria-current':step===i?'step':null}));});host.appendChild(nav);
+      var nav=E('nav',{class:'cf-steps','aria-label':'コンセプトの手順'});labels.forEach(function(t,n){var i=steps[n];nav.appendChild(button(t,function(){step=i;candidates=[];pendingConfirmation=null;pendingAdopt=-1;message='';draw();},{'aria-current':step===i?'step':null}));});if(level==='advanced')host.appendChild(nav);
       var panel=E('div',{class:'card stack'});host.appendChild(panel);
       if(step===0){
-        var random=E('select',{id:'cf-random-profile',class:'cf-select'});F.randomProfiles.forEach(function(x){random.appendChild(E('option',{value:x.id,text:x.labelJa}));});random.value=randomProfile;random.addEventListener('change',function(){randomProfile=random.value;});panel.appendChild(E('label',{for:'cf-random-profile',text:'おまかせの傾向'}));panel.appendChild(random);panel.appendChild(button('おまかせで題材を作る',function(){var randomized=C.conceptFashion.randomSelection(randomProfile,seed++);if(level==='advanced')s=randomized;else{['categoryId','motifId','foodGroupId'].forEach(function(k){s[k]=randomized[k];});s.directions=randomized.directions.slice(0,1).concat(s.directions.slice(1).filter(function(id){return id!==randomized.directions[0];}));s=C.conceptFashion.normalizeSelection(s);}secondaryOpen=!!s.secondary.motifId;candidates=[];pendingConfirmation=null;message='';draw();},{id:'cf-random'}));
+        var randomTools=E('div',{class:'theme-random'});
+        var random=E('select',{id:'cf-random-profile',class:'cf-select'});F.randomProfiles.forEach(function(x){random.appendChild(E('option',{value:x.id,text:x.labelJa}));});random.value=randomProfile;random.addEventListener('change',function(){randomProfile=random.value;});randomTools.appendChild(E('label',{for:'cf-random-profile',text:'おまかせの傾向'}));randomTools.appendChild(random);randomTools.appendChild(button('おまかせで題材を作る',function(){var randomized=C.conceptFashion.randomSelection(randomProfile,seed++);if(level==='advanced')s=randomized;else{['categoryId','motifId','foodGroupId'].forEach(function(k){s[k]=randomized[k];});s.directions=randomized.directions.slice(0,1).concat(s.directions.slice(1).filter(function(id){return id!==randomized.directions[0];}));s=C.conceptFashion.normalizeSelection(s);}secondaryOpen=!!s.secondary.motifId;candidates=[];pendingConfirmation=null;message='';draw();},{id:'cf-random'}));
         panel.appendChild(select('カテゴリ',F.categories,'categoryId'));
         if(s.categoryId==='food')panel.appendChild(select('食べ物・飲み物の分類',F.foodGroups,'foodGroupId'));
         discovery(panel);
@@ -73,13 +90,14 @@
         }else if(s.categoryId&&(s.categoryId!=='food'||s.foodGroupId))panel.appendChild(select('モチーフ',F.motifs.filter(function(m){return m.category===s.categoryId&&(s.categoryId!=='food'||m.groupId===s.foodGroupId);}),'motifId'));
         if(level==='advanced'&&s.motifId==='idol')panel.appendChild(select('アイドル衣装の形',F.idolStyles,'idolStyleId'));
         if(level==='advanced'&&s.motifId==='art_nouveau')panel.appendChild(select('植物曲線の形・スリット',F.artNouveauShapes,'artNouveauShapeId'));
-        var custom=E('input',{id:'cf-custom',class:'name-input',type:'text',maxlength:'200',placeholder:'例：忘れられた約束'});custom.value=s.customMotif;custom.addEventListener('input',function(){s.customMotif=custom.value;candidates=[];pendingConfirmation=null;});panel.appendChild(E('label',{for:'cf-custom',text:'任意のカスタムモチーフ'}));panel.appendChild(custom);panel.appendChild(E('p',{class:'p p--note',text:'自由入力の題材から色や素材を推測しません。選んだ方向性と衣装ベースを使います。'}));
+        panel.appendChild(randomTools);
+        var custom=E('input',{id:'cf-custom',class:'name-input',type:'text',maxlength:'200',placeholder:'例：忘れられた約束'});custom.value=s.customMotif;custom.addEventListener('input',function(){s.customMotif=custom.value;clearPreview();});panel.appendChild(E('label',{for:'cf-custom',text:'任意のカスタムモチーフ'}));panel.appendChild(custom);panel.appendChild(E('p',{class:'p p--note',text:'自由入力の題材から色や素材を推測しません。選んだ方向性と衣装ベースを使います。'}));
         if(level==='advanced'){
         if(!secondaryOpen)panel.appendChild(button('＋ 副題を追加',function(){secondaryOpen=true;draw();},{id:'cf-secondary-add'}));
         else{
           panel.appendChild(E('h2',{class:'card-title',text:'副題'}));panel.appendChild(select('副題カテゴリ',F.categories.filter(function(x){return x.id!=='traditional';}),'secondary.categoryId'));
           if(s.secondary.categoryId)panel.appendChild(select('副題モチーフ',F.motifs.filter(function(m){return m.category===s.secondary.categoryId;}),'secondary.motifId'));
-          var customSecondary=E('input',{id:'cf-secondary-custom',class:'name-input',type:'text',maxlength:'200'});customSecondary.value=s.secondary.customMotif;customSecondary.addEventListener('input',function(){s.secondary.customMotif=customSecondary.value;candidates=[];pendingConfirmation=null;});panel.appendChild(E('label',{for:'cf-secondary-custom',text:'任意のカスタム副題'}));panel.appendChild(customSecondary);
+          var customSecondary=E('input',{id:'cf-secondary-custom',class:'name-input',type:'text',maxlength:'200'});customSecondary.value=s.secondary.customMotif;customSecondary.addEventListener('input',function(){s.secondary.customMotif=customSecondary.value;clearPreview();});panel.appendChild(E('label',{for:'cf-secondary-custom',text:'任意のカスタム副題'}));panel.appendChild(customSecondary);
           panel.appendChild(select('混ぜ方',F.blendModes,'blendMode'));
           if(s.motifId&&s.motifId===s.secondary.motifId)panel.appendChild(E('p',{class:'p p--warn',text:'主題と副題が同じです。同じモチーフを二重に反映しません。'}));
           panel.appendChild(button('副題を削除',function(){s.secondary={categoryId:null,motifId:null,customMotif:''};secondaryOpen=false;candidates=[];pendingConfirmation=null;draw();},{id:'cf-secondary-remove'}));
@@ -99,9 +117,13 @@
         if(level==='advanced'){panel.appendChild(compactMulti('入れたくないもの',F.exclusions,'exclusions',4));
         panel.appendChild(multi('反映先（4件まで・未選択なら配色／素材／形／装飾）',F.placements,'placements',4));}panel.appendChild(select('反映の強さ',F.strengths,'strengthId'));
         if(level==='advanced'){if(s.categoryId==='food')panel.appendChild(multi('食品モチーフの扱い（実物は選んだ場合のみ）',F.foodApplications,'foodApplications',8));
-        var exposure=E('select',{id:'cf-exposure',class:'cf-select'});exposure.appendChild(E('option',{value:'',text:'未選択'}));['控えめ','やや控えめ','標準','開放的','大胆','非常に大胆'].forEach(function(t,i){exposure.appendChild(E('option',{value:String(i),text:i+'：'+t}));});exposure.value=s.exposure==null?'':String(s.exposure);exposure.addEventListener('change',function(){s.exposure=exposure.value===''?null:Number(exposure.value);candidates=[];pendingConfirmation=null;});panel.appendChild(E('label',{for:'cf-exposure',text:'衣装の被覆バランス'}));panel.appendChild(exposure);}
+        var exposure=E('select',{id:'cf-exposure',class:'cf-select'});exposure.appendChild(E('option',{value:'',text:'未選択'}));['控えめ','やや控えめ','標準','開放的','大胆','非常に大胆'].forEach(function(t,i){exposure.appendChild(E('option',{value:String(i),text:i+'：'+t}));});exposure.value=s.exposure==null?'':String(s.exposure);exposure.addEventListener('change',function(){s.exposure=exposure.value===''?null:Number(exposure.value);clearPreview();});panel.appendChild(E('label',{for:'cf-exposure',text:'衣装の被覆バランス'}));panel.appendChild(exposure);}
       }
-      var actions=E('div',{class:'cf-actions'});if(steps.indexOf(step)>0)actions.appendChild(button('前へ',function(){step=steps[steps.indexOf(step)-1];draw();}));if(step<4)actions.appendChild(button('次へ',function(){step=steps[steps.indexOf(step)+1];draw();},{id:'cf-next'}));else actions.appendChild(button(candidates.length?'別案を見る':'3案をプレビュー',function(){candidates=C.conceptFashion.buildCandidates(s,{seed:seed++,currentOutfit:source,mode:mode});pendingAdopt=-1;pendingConfirmation=null;message=candidates.length?'':'この条件では候補を作れません。'+s.exclusions.map(function(id){return U.labelOf(F.exclusions,id);}).join('・')+'と衣装ベースの指定を見直してください。';draw();var target=host.querySelector('#cf-candidates');if(target)target.scrollIntoView({block:'start'});},{id:'cf-generate',class:'btn btn--primary'}));host.appendChild(actions);
+      var actions=E('div',{class:'cf-actions'});if(steps.indexOf(step)>0)actions.appendChild(button('前へ',function(){step=steps[steps.indexOf(step)-1];draw();}));if(step<4)actions.appendChild(button(level==='simple'?'条件を調整':'次へ',function(){step=steps[steps.indexOf(step)+1];draw();},{id:'cf-next'}));if(step===4||level==='simple')actions.appendChild(button(candidates.length?'別案を見る':'3案をプレビュー',function(){candidates=C.conceptFashion.buildCandidates(s,{seed:seed++,currentOutfit:source,mode:mode});pendingAdopt=-1;pendingConfirmation=null;message=candidates.length?'':'この条件では候補を作れません。'+s.exclusions.map(function(id){return U.labelOf(F.exclusions,id);}).join('・')+'と衣装ベースの指定を見直してください。';draw();var target=host.querySelector('#cf-candidates');if(target){target.tabIndex=-1;target.focus();target.scrollIntoView({block:'start'});}},{id:'cf-generate',class:'btn btn--primary'}));if(level==='simple'){
+        host.appendChild(nav);host.appendChild(levelSwitch);
+        if(!candidates.length)actions.classList.add('theme-next');
+      }
+      host.appendChild(actions);
       if(message)host.appendChild(E('p',{id:'cf-message',class:'p p--warn',role:'status',text:message}));
       if(candidates.length){var cards=E('div',{id:'cf-candidates',class:'stack','aria-live':'polite'});host.appendChild(cards);candidates.forEach(function(c,i){
         var o=c.outfit,D=C.data,card=E('article',{class:'card cf-candidate'});card.appendChild(E('h2',{class:'card-title',text:'案'+['A','B','C'][c.index]+'：'+c.strategyLabelJa}));card.appendChild(E('p',{class:'p',text:U.labelOf(D.garments,o.garment.subtype)}));card.appendChild(E('p',{class:'p',text:[U.labelOf(D.colors,o.palette.primary),U.labelOf(D.materials,o.materials.primary),U.labelOf(D.silhouette.fit,o.silhouette.fit),U.labelOf(D.silhouette.upperVolume,o.silhouette.upperVolume)].filter(Boolean).join(' / ')||'設計台で色・素材を自由に選べます'}));
@@ -113,7 +135,7 @@
         var parts=Object.keys(o.parts).map(function(k){var slot=U.byId(D.partSlots,k),value=o.parts[k];if(!slot||!value)return '';return U.labelOf(slot.options||[],typeof value==='string'?value:value.type)||slot.labelJa;}).filter(Boolean);extras.appendChild(E('p',{class:'p p--sub',text:'部位：'+(parts.join('・')||'未選択')+'／装飾：'+(o.decorations.items.map(function(x){return U.labelOf(D.decorations,x.type);}).join('・')||'なし')}));
         var detail=E('details',{});detail.appendChild(E('summary',{text:'反映理由・確認事項（'+c.warnings.filter(function(w){return w.severity==='warning'||w.severity==='hard';}).length+'件）'}));if(level==='simple')detail.appendChild(extras);else card.appendChild(extras);var list=E('ul',{class:'list'});c.reasons.map(reasonText).filter(function(text,n,a){return a.indexOf(text)===n;}).forEach(function(text){list.appendChild(E('li',{text:text}));});c.warnings.forEach(function(w){list.appendChild(E('li',{text:w.messageJa||w.titleJa||w.reasonJa||w.id}));});detail.appendChild(list);card.appendChild(detail);
         if(c.conflicts&&c.conflicts.length)card.appendChild(E('p',{class:'p p--warn',text:'現在の設計に'+c.conflicts.map(function(v){return '「'+v.labelJa+'」';}).filter(function(x,n,a){return a.indexOf(x)===n;}).join('・')+'と競合する既存要素があります。採用時に扱いを選べます。'}));
-        card.appendChild(button('この案を設計台へ',function(){pendingConfirmation=null;pendingAdopt=-1;if(c.conflicts&&c.conflicts.length){pendingAdopt=i;draw();return;}adopt(c);},{'data-cf-adopt':String(i),class:'btn btn--primary'}));
+        card.appendChild(button('この案をアレンジ →',function(){pendingConfirmation=null;pendingAdopt=-1;if(c.conflicts&&c.conflicts.length){pendingAdopt=i;draw();return;}adopt(c);},{'data-cf-adopt':String(i),class:'btn btn--primary'}));
         if(pendingConfirmation&&pendingConfirmation.candidate===c){
           var confirmation=E('div',{role:'group','aria-label':'採用の確認'});
           confirmation.appendChild(E('p',{class:'p p--warn',text:'案'+['A','B','C'][c.index]+'を現在の設計に反映します。未保存の変更は置き換わります。よろしいですか？'}));

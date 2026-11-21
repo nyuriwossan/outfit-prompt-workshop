@@ -50,14 +50,14 @@ const server=http.createServer((req,res)=>{
         const other=(index+1)%3;await frame.locator('[data-cf-adopt="'+other+'"]').click();
         assert((await frame.getByRole('group',{name:'採用の確認'}).innerText()).includes('案'+['A','B','C'][other]),'stale pending candidate');
         await frame.locator('[data-cf-adopt="'+index+'"]').click();await frame.locator('[data-cf-confirm="apply"]').click();
-        await frame.locator('#panel-concept').waitFor({state:'visible'});
+        await frame.locator('#outfit-sample').waitFor({state:'visible'});
         const snapshot=await frame.evaluate(index=>{
           const C=CPW;function content(o){const a=JSON.parse(JSON.stringify(o));delete a.id;delete a.createdAt;delete a.updatedAt;return JSON.stringify(a);}
           if(content(C.state.outfit)!==content(C.schema.normalize(previews[index].outfit)))throw Error('wrong candidate');
           if(location.hash!=='#/workshop'||nativeCalls!==0)throw Error('native confirm dependency');
           C._autosave.flush();return JSON.stringify(C.state.outfit);
         },index);
-        await frame.goto(frame.url());await frame.locator('#panel-concept').waitFor({state:'visible'});
+        await frame.goto(frame.url());await frame.locator('#outfit-sample').waitFor({state:'visible'});
         assert(await frame.evaluate(snapshot=>snapshot===JSON.stringify(CPW.state.outfit),snapshot),'reload mismatch');
         assert(await frame.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow');
         report.cases.push({width,motif,mode,index,noNativeConfirm:true,visibleSelection:true,cancel:true,candidateSwitch:true,workshop:true,exactCandidate:true,reload:true,noOverflow:true});

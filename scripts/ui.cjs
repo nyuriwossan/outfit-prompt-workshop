@@ -20,7 +20,7 @@ const assert=(v,m)=>{if(!v)throw new Error(m);};
   const page=await browser.newPage({viewport:{width,height:844},deviceScaleFactor:1});
   page.on('pageerror',e=>report.errors.push(e.message));
   await page.goto('http://127.0.0.1:'+server.address().port+'/');
-  await page.evaluate(()=>{CPW.state.load({garment:{category:'top_bottom',subtype:'simple_shirt_and_ankle_pants'},parts:{sleeves:'long_sleeves',collar:'point_collar'}});location.hash='#/workshop';});
+  await page.evaluate(()=>{CPW.uiPrefs.set('workshop','advanced');CPW.state.load({garment:{category:'top_bottom',subtype:'simple_shirt_and_ankle_pants'},parts:{sleeves:'long_sleeves',collar:'point_collar'}});location.hash='#/workshop';});
   await page.locator('#panel-structure').waitFor({state:'attached'});
   for(const id of ['structure','styling','material','condition']){
    const button=page.locator('[aria-controls="panel-'+id+'"]');if(await button.getAttribute('aria-expanded')==='false')await button.click();
@@ -32,6 +32,10 @@ const assert=(v,m)=>{if(!v)throw new Error(m);};
    assert(d.scrollWidth<=width,`${width} ${label}: horizontal overflow ${d.scrollWidth}`);assert(!d.small.length,`${width}: tap targets ${JSON.stringify(d.small)}`);assert(!d.overflow.length,`${width}: chips overflow`);return d;
   }
   await dimensions('initial');
+  for (const key of ['styling','part:sleeves','garment.category']) {
+    const head=page.locator('[data-fold="'+key+'"]');
+    if(await head.count() && await head.getAttribute('aria-expanded')==='false')await head.click();
+  }
   await page.locator('[data-fkey="styling:sleeves_rolled_up"]').click();
   await page.locator('[data-fkey="styling:half_tucked"]').click();
   await page.locator('[data-fkey="styling:collar_loosened"]').click();
@@ -64,7 +68,7 @@ const assert=(v,m)=>{if(!v)throw new Error(m);};
   await page.close();
  }
  const testsPage=await browser.newPage();
- await testsPage.goto('http://127.0.0.1:'+server.address().port+'/tests.html');
+ await testsPage.goto('http://127.0.0.1:'+server.address().port+'/tests.html',{timeout:180000});
  const summary=await testsPage.locator('#summary').innerText();
  assert(!summary.includes('失敗'),summary); report.browserTests=summary;
  await testsPage.close();

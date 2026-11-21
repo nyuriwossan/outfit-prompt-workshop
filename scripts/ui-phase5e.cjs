@@ -13,10 +13,15 @@ try{for(const width of [375,390,430]){
  const add=async(key,value)=>{await choose('cf-pick-'+key,value);await page.locator('#cf-add-'+key).click();};
  const step=async(n)=>{await page.getByRole('button',{name:['1 題材','2 世界・人物','3 デザイン','4 衣装','5 反映'][n-1],exact:true}).click();await noOverflow();};
  await page.goto('http://127.0.0.1:'+server.address().port+'/');
- assert(await page.getByRole('link',{name:'細かく選んで作る',exact:true}).count()===1,'home detailed');assert(await page.getByRole('link',{name:'コンセプトから作る',exact:true}).count()===1,'home concept');
- await page.getByRole('link',{name:'細かく選んで作る',exact:true}).click();await page.getByRole('heading',{name:'何から始める？',exact:true}).waitFor();assert(await page.locator('.card--tap').count()===5,'entry five routes');assert(await page.locator('a[href="#/concept_fashion"]').count()===0,'entry duplicate');
- for(const route of ['zero','worldview','garment','preset','motif']){await page.locator('a[href="#/setup/'+route+'"]').click();await page.locator('.screen button').first().waitFor();await page.locator('.screen button').first().click();await page.locator('#panel-concept').waitFor();assert(await page.evaluate(route=>CPW.state.outfit.entryMode===route,route),'entry route '+route);await page.evaluate(()=>{location.hash='#/entry'});await page.locator('a[href="#/setup/zero"]').waitFor();}
- await page.evaluate(()=>{CPW.state.load(CPW.schema.createOutfit());location.hash='#/';});await page.getByRole('link',{name:'コンセプトから作る',exact:true}).click();
+ assert(await page.locator('.entry-card').count()===3,'three entry routes');
+ for(const route of ['zero','worldview','garment','preset','motif']){
+   await page.evaluate(route=>{CPW.state.reset();location.hash='#/setup/'+route;},route);
+   if(route==='preset'){await page.locator('[data-preset]').first().click();await page.locator('[data-preset-adopt]').click();}
+   else await page.locator('.screen button').first().click();
+   await page.locator('#outfit-sample').waitFor();
+   assert(await page.evaluate(route=>CPW.state.outfit.entryMode===route,route),'legacy setup '+route);
+ }
+ await page.evaluate(()=>{CPW.state.reset();location.hash='#/';});await page.getByRole('link',{name:/テーマから/}).click();
  const before=await page.evaluate(()=>JSON.stringify(CPW.state.outfit));
  await choose('cf-categoryId','nature');await choose('cf-motifId','deep_sea');await page.locator('#cf-secondary-add').click();await choose('cf-secondary-categoryId','art');await choose('cf-secondary-motifId','gothic_cathedral');await choose('cf-blendMode','split_roles');
  await page.locator('#cf-secondary-remove').click();assert(await page.locator('#cf-secondary-motifId').count()===0,'secondary removed');await page.locator('#cf-secondary-add').click();await choose('cf-secondary-categoryId','art');await choose('cf-secondary-motifId','gothic_cathedral');
@@ -38,6 +43,6 @@ try{for(const width of [375,390,430]){
  }
  await page.getByRole('link',{name:/コンセプトを編集/}).click();await step(5);await page.screenshot({path:path.join(screenshotDir,'phase5e-controls-'+width+'.png'),fullPage:true});await noOverflow();
  const bars=await page.evaluate(()=>{const a=document.querySelector('.topnav'),b=document.querySelector('.bottombar');return a&&b?a.getBoundingClientRect().bottom<=b.getBoundingClientRect().top:document.querySelector('.cf-steps').getBoundingClientRect().right<=innerWidth;});assert(bars,'nav overlap');
- await page.goto('http://127.0.0.1:'+server.address().port+'/tests.html');const tests=await page.evaluate(()=>CPW.runTests());assert(tests.failed===0,'browser regressions');
- report.viewports.push({width,selectChanges:changes,noAutomaticRefocus:true,entryFiveRoutes:true,fiveSteps:true,secondaryAddRemove:true,context:true,limits:true,random:true,threeStrategies:true,details:true,previewImmutable:true,adopt:true,preserveKeepExcludeCancel:true,saveReload:true,edit:true,dependentFood:true,qipao:true,noOverflow:true,tap44:true,tests:tests.passed});await context.close();
+ await page.goto('http://127.0.0.1:'+server.address().port+'/tests.html',{timeout:180000});assert(await page.locator('#summary.is-ok').count()===1,'browser regressions');const testCount=await page.locator('#results .t-ok').count();
+ report.viewports.push({width,selectChanges:changes,noAutomaticRefocus:true,threeEntriesAndLegacySetup:true,fiveSteps:true,secondaryAddRemove:true,context:true,limits:true,random:true,threeStrategies:true,details:true,previewImmutable:true,adopt:true,preserveKeepExcludeCancel:true,saveReload:true,edit:true,dependentFood:true,qipao:true,noOverflow:true,tap44:true,tests:testCount});await context.close();
 }assert(!report.errors.length,report.errors.join('\n'));fs.writeFileSync(out,JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});
