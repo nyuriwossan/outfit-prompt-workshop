@@ -12,6 +12,18 @@ const CAT={suit:'work',casual:'daily',daily:'daily',military:'work',dark:'altern
 const MOOD={work:['クール','シンプル'],daily:['シンプル'],alternative:['ダーク','クール'],fantasy:['神秘的','華やか'],eastern:['上品'],stage:['華やか']};
 const PALETTE={suit:['charcoal_gray','pure_white','deep_navy'],casual:['sand_beige','charcoal_gray','sky_blue'],daily:['off_white','denim_blue','sand_beige'],military:['forest_green','antique_gold','jet_black'],dark:['jet_black','burgundy','oxidized_silver'],mage:['deep_navy','antique_gold','pearl_white'],japanese:['deep_navy','snow_white','vermilion'],chinese:['deep_crimson','antique_gold','jet_black'],world:['terracotta','antique_gold','warm_ivory'],sf:['pure_white','steel_blue','polished_silver'],swim:['coral_pink','pure_white','aqua']};
 const MATERIAL={suit:'wool',casual:'cotton',daily:'linen',military:'wool',dark:'velvet',mage:'velvet',japanese:'silk',chinese:'brocade',world:'linen',sf:'nylon'};
+// These recipe contexts belong to the source comparison. Only the listed fields
+// describe the garment itself closely enough to preselect in the workshop.
+const retainedContext = {
+  slim_suit:['occasion'], open_collar_suit:[], double_breasted:[], trench_suit:[],
+  cardigan:[], turtleneck_jacket:[], sweater_scarf:[], aloha:[], oversized_tee_wide:[],
+  zip_hoodie_tee:[], camp_collar_shirt:[], field_uniform:['worldview','occasion'],
+  police_detective:['occasion','role'], fallen_angel:['worldview'],
+  loose_kimono:['worldview'], ryukyu_kariyushi:['worldview','occasion'],
+  kente_stole:['occasion'], batik_shirt:[], string_bikini:['occasion'], harness_shirt:[],
+  utility_vest:[], minimal_blazer:[], art_nouveau_formal:['worldview','occasion'],
+  bandhgala:['occasion']
+};
 const out=[],skipped=[];
 rows.filter(r=>r.classification==='B').forEach(r=>{
   const w=JSON.parse(r.workshop_equivalent_ids||'{}');if((w.preset_ids||[]).length)return; // already discoverable through an existing preset
@@ -25,7 +37,11 @@ rows.filter(r=>r.classification==='B').forEach(r=>{
   if(rec.worldview_id&&!U.byId(D.worldviews,rec.worldview_id))bad.push('worldview:'+rec.worldview_id);
   if(bad.length){skipped.push({gacha_id:r.gacha_id,reasons:bad});return;}
   const pk=g.category==='swimwear'?'swim':r.gacha_category,pal=PALETTE[pk]||PALETTE.daily,catId=CAT[r.gacha_category]||'daily';
-  const concept={};if(rec.worldview_id)concept.worldview=rec.worldview_id;if(rec.occasion_id)concept.occasion=rec.occasion_id;if(rec.role_id)concept.role=rec.role_id;if((rec.motif_ids||[])[0])concept.primaryThemeMotif=rec.motif_ids[0];
+  const concept={};
+  for(const field of retainedContext[r.gacha_id] || ['worldview','occasion','role']) {
+    if(rec[field+'_id']) concept[field]=rec[field+'_id'];
+  }
+  if((rec.motif_ids||[])[0]) concept.primaryThemeMotif=rec.motif_ids[0];
   out.push({id:'recipe_'+r.gacha_id,group:'style',categoryId:catId,labelJa:r.gacha_name_ja,summaryJa:'既存の部位で組んだレシピ：'+g.labelJa+'＋'+Object.entries(rec.part_ids||{}).map(([s,id])=>U.byId(U.byId(D.partSlots,s).options,id).labelJa).join('・'),
     moodTags:(MOOD[catId]||['シンプル']).slice(),searchAliases:[r.gacha_id.replace(/_/g,' ')],themeTags:[],sourceGachaId:r.gacha_id,recipe:true,
     patch:{concept,garment:{category:g.category,subtype:g.id,wearRole:'main_outfit'},parts:rec.part_ids||{},materials:{primary:MATERIAL[pk]||(g.category==='swimwear'?'nylon':'cotton'),transparency:'opaque'},palette:{primary:pal[0],secondary:pal[1],accent:pal[2],scheme:'base_and_accent'}}});

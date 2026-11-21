@@ -118,9 +118,17 @@
     }
     return out;
   }
-  function hasDesign(outfit){
-    function content(o){var copy=S.normalize(o);['id','createdAt','updatedAt','version','entryMode'].forEach(function(k){delete copy[k];});return JSON.stringify(copy);}
-    return content(outfit)!==content({});
+  function designContent(outfit) {
+    var copy = S.normalize(outfit);
+    ['id','createdAt','updatedAt','version','entryMode'].forEach(function(key) { delete copy[key]; });
+    return JSON.stringify(copy, function(key, value) {
+      if (!U.isPlainObject(value)) return value;
+      var ordered = {};
+      Object.keys(value).sort().forEach(function(k) { ordered[k] = value[k]; });
+      return ordered;
+    });
   }
-  C.conceptFashion={normalizeSelection:normalizeSelection,label:label,buildCandidates:buildCandidates,hasDesign:hasDesign};
+  function sameDesign(left, right) { return designContent(left) === designContent(right); }
+  function hasDesign(outfit) { return !sameDesign(outfit, {}); }
+  C.conceptFashion={normalizeSelection:normalizeSelection,label:label,buildCandidates:buildCandidates,hasDesign:hasDesign,sameDesign:sameDesign};
 })(typeof window!=='undefined'?window:global);

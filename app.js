@@ -2464,7 +2464,7 @@
       ui.el('a', {class: 'btn', href: '#/suggest', text: '補助候補を見る'})
     ]);
     return screen('', [nav, ui.el('h1', {class: 'page-title', text: '衣装をアレンジ'}),
-      CPW.atelier.sample(), simple ? CPW.atelier.quickEditor() : null, level,
+      CPW.atelier.sample(), CPW.presetCatalog.undoControl(), simple ? CPW.atelier.quickEditor() : null, level,
       simple ? CPW.uiComplexity.summary(state.outfit, 'workshop', function () { openAdvancedWorkshop(); }) : body,
       header, tools, ui.el('a',{class:'link-btn',href:'#/output/presentation',text:'完成画面で見せ方を選ぶ'}), bar]);
   };

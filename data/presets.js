@@ -16,9 +16,9 @@
   CPW.data.presets = [
     {
       id: 'daily_casual', group: 'modern', labelJa: 'デイリーカジュアル',
-      summaryJa: '現代・日常・ゆるい上下',
+      summaryJa: 'フーディとカーゴパンツを合わせたゆったりした普段着',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'commoner', primaryStyle: 'street' },
+        concept: { occasion: 'daily', primaryStyle: 'street' },
         garment: { category: 'top_bottom', subtype: 'hoodie_and_cargo', wearRole: 'main_outfit' },
         silhouette: { fit: 'relaxed', lowerVolume: 'slim', waist: 'natural_waist' },
         parts: { footwear: 'sneakers' },
@@ -29,9 +29,9 @@
     },
     {
       id: 'office_business', group: 'modern', labelJa: 'オフィス・ビジネス',
-      summaryJa: '現代・仕事・仕立ての良いスーツ',
+      summaryJa: '仕立ての良い仕事用スーツ',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'work', role: 'office_worker', primaryStyle: 'minimal' },
+        concept: { occasion: 'work', primaryStyle: 'minimal' },
         garment: { category: 'uniform', subtype: 'business_suit', wearRole: 'main_outfit' },
         silhouette: { fit: 'tailored', upperVolume: 'structured', lowerVolume: 'slim', waist: 'natural_waist' },
         parts: { inner_shirt: 'dress_shirt', collar: 'wide_lapel', sleeves: 'fitted_long_sleeves', footwear: 'heeled_pumps' },
@@ -132,9 +132,9 @@
     /* ==== Phase 5B 前半：追加プリセット15件 ==== */
     {
       id: 'gakuran_student', group: 'modern', labelJa: '学ラン',
-      summaryJa: '現代・学生・黒の詰襟',
+      summaryJa: '黒の詰襟と揃いの学生服',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'student', primaryStyle: 'minimal' },
+        concept: { primaryStyle: 'minimal' },
         garment: { category: 'uniform', subtype: 'gakuran_uniform', wearRole: 'main_outfit' },
         silhouette: { fit: 'tailored', upperVolume: 'structured', lowerVolume: 'slim', waist: 'natural_waist' },
         parts: { collar: 'high_standing_collar', sleeves: 'fitted_long_sleeves', bottoms: 'fitted_trousers', footwear: 'sneakers' },
@@ -145,9 +145,9 @@
     },
     {
       id: 'sailor_student', group: 'modern', labelJa: 'セーラー服',
-      summaryJa: '現代・学生・セーラー襟',
+      summaryJa: 'セーラー襟を合わせた半袖の制服',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'student', primaryStyle: 'minimal' },
+        concept: { primaryStyle: 'minimal' },
         garment: { category: 'uniform', subtype: 'sailor_school_uniform', wearRole: 'main_outfit' },
         silhouette: { fit: 'relaxed', lowerVolume: 'flared', waist: 'natural_waist', length: 'knee' },
         parts: { collar: 'sailor_collar', sleeves: 'short_sleeves', skirt_shape: 'a_line_skirt', legwear: [{ id: 'knee_socks', layer: 'main' }], footwear: 'sneakers' },
@@ -186,7 +186,7 @@
       id: 'modern_basic', group: 'modern', labelJa: '現代ベーシック',
       summaryJa: 'シャツ＋アンクルパンツ・きれいめの普段着',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'commoner', primaryStyle: 'minimal' },
+        concept: { worldview: 'modern', occasion: 'daily', primaryStyle: 'minimal' },
         garment: { category: 'top_bottom', subtype: 'simple_shirt_and_ankle_pants', wearRole: 'main_outfit' },
         silhouette: { fit: 'relaxed', lowerVolume: 'slim', waist: 'natural_waist' },
         parts: { collar: 'no_collar', footwear: 'sneakers' },
@@ -199,7 +199,7 @@
       id: 'dreamy_loungewear', group: 'modern', labelJa: '夢かわルームウェア',
       summaryJa: 'パステル・ふわもこ・部屋着',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'rest', role: 'commoner', primaryStyle: 'street' },
+        concept: { occasion: 'rest', primaryStyle: 'street' },
         garment: { category: 'top_bottom', subtype: 'pastel_fluffy_loungewear', wearRole: 'main_outfit' },
         silhouette: { fit: 'oversized', lowerVolume: 'slim', waist: 'natural_waist' },
         parts: { sleeves: 'wide_sleeves', footwear: 'barefoot' },
@@ -212,7 +212,7 @@
       id: 'classic_bunny', group: 'style', labelJa: 'クラシックバニー',
       summaryJa: '舞台衣装・カフスと襟・網タイツなしの構成',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'party', role: 'idol', primaryStyle: 'classical' },
+        concept: { primaryStyle: 'classical' },
         garment: { category: 'lingerie', subtype: 'classic_bunny_suit', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', waist: 'fitted_waist' },
         parts: { cuffs: 'plain_cuffs', collar: 'no_collar', legwear: [{ id: 'sheer_tights', layer: 'main' }], footwear: 'heeled_pumps' },
@@ -225,7 +225,7 @@
       id: 'reverse_bunny', group: 'style', labelJa: '前開き逆バニー',
       summaryJa: '黒を基調にした前開きバニースーツ・うさ耳と手首カフス',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'party', role: 'idol', primaryStyle: 'classical' },
+        concept: { primaryStyle: 'classical' },
         garment: { category: 'lingerie', subtype: 'open_front_reverse_bunny_suit', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', waist: 'fitted_waist' },
         parts: { legwear: [{ id: 'thigh_high_stockings', layer: 'main' }], footwear: 'heeled_pumps' },
@@ -238,7 +238,7 @@
       id: 'lab_coat', group: 'modern', labelJa: '白衣',
       summaryJa: '研究者・仕事着・清潔な白',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'work', role: 'office_worker', primaryStyle: 'minimal' },
+        concept: { occasion: 'work', primaryStyle: 'minimal' },
         garment: { category: 'robe', subtype: 'laboratory_coat_outfit', wearRole: 'main_outfit' },
         silhouette: { fit: 'relaxed', lowerVolume: 'slim' },
         parts: { inner_shirt: 'dress_shirt', collar: 'wide_lapel', sleeves: 'fitted_long_sleeves', footwear: 'sneakers' },
@@ -251,7 +251,7 @@
       id: 'fictional_police', group: 'modern', labelJa: '架空の警察官風',
       summaryJa: '実在しない機関の制服・構築的',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'work', role: 'officer', primaryStyle: 'military' },
+        concept: { occasion: 'work', role: 'officer', primaryStyle: 'military' },
         garment: { category: 'uniform', subtype: 'fictional_police_uniform', wearRole: 'main_outfit' },
         silhouette: { fit: 'tailored', upperVolume: 'structured', lowerVolume: 'slim', waist: 'leather_belt' },
         parts: { collar: 'wide_lapel', shoulders: 'epaulettes', sleeves: 'fitted_long_sleeves', headwear: 'officer_cap', bottoms: 'fitted_trousers', footwear: 'lace_up_boots' },
@@ -264,7 +264,7 @@
       id: 'mafia_suit', group: 'style', labelJa: 'マフィア風',
       summaryJa: 'ピンストライプ・鋭い仕立て・夜の色',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'party', role: 'noble', primaryStyle: 'classical' },
+        concept: { primaryStyle: 'classical' },
         garment: { category: 'uniform', subtype: 'mafia_style_suit', wearRole: 'main_outfit' },
         silhouette: { fit: 'tailored', upperVolume: 'structured', lowerVolume: 'slim', waist: 'natural_waist' },
         parts: { inner_shirt: 'dress_shirt', collar: 'wide_lapel', sleeves: 'fitted_long_sleeves', bottoms: 'fitted_trousers', footwear: 'lace_up_boots' },
@@ -277,7 +277,7 @@
       id: 'qipao_style', group: 'style', labelJa: '旗袍（チャイナドレス）',
       summaryJa: '立ち襟・サイドスリット・艶のある絹',
       patch: {
-        concept: { worldview: 'chinese', occasion: 'party', role: 'courtier_cn', primaryStyle: 'classical' },
+        concept: { worldview: 'chinese', primaryStyle: 'classical' },
         garment: { category: 'chinese', subtype: 'qipao', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', lowerVolume: 'slim', waist: 'natural_waist', length: 'knee' },
         parts: { collar: 'high_standing_collar', sleeves: 'sleeveless', footwear: 'heeled_pumps' },
@@ -303,7 +303,7 @@
       id: 'mermaid', group: 'story', labelJa: '人魚',
       summaryJa: '一本の魚の尾・海の色・脚の衣類は使わない',
       patch: {
-        concept: { worldview: 'fairy_tale', occasion: 'ritual', role: 'traveler', primaryStyle: 'classical', attribute: { id: 'water' } },
+        concept: { worldview: 'fairy_tale', primaryStyle: 'classical', attribute: { id: 'water' } },
         garment: { category: 'merfolk', subtype: 'mermaid_tail', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', symmetry: 'mostly_symmetrical' },
         parts: { mermaid_tail_form: 'classic_scaled_tail', neckline: 'sweetheart_neckline', waist: 'ribbon_tie' },
@@ -316,7 +316,7 @@
       id: 'cutout_knit', group: 'modern', labelJa: '童貞を殺すセーター',
       summaryJa: '背中が大きく開いたノースリーブのリブニット・首の後ろでリボン結び',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily', role: 'commoner', primaryStyle: null },
+        concept: { primaryStyle: null },
         garment: { category: 'top_bottom', subtype: 'virgin_killer_sweater', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted', lowerVolume: 'slim', waist: 'high_waist' },
         parts: { neckline: 'high_neckline', sleeves: 'sleeveless', bottoms: 'wide_trousers' },
@@ -332,7 +332,7 @@
       id: 'battle_worn_combat', group: 'scene', labelJa: '戦闘後の傷んだ衣装',
       summaryJa: '軽装戦闘服・戦闘の使用感と所々の破れ',
       patch: {
-        concept: { worldview: 'western_fantasy', occasion: 'battle', primaryStyle: 'military' },
+        concept: { occasion: 'battle', primaryStyle: 'military' },
         garment: { category: 'top_bottom', subtype: 'light_combat_outfit', wearRole: 'main_outfit' },
         silhouette: { fit: 'fitted' },
         materials: { primary: 'canvas', secondary: 'leather', transparency: 'opaque', surface: 'matte' },
@@ -348,7 +348,7 @@
       id: 'rain_soaked_uniform', group: 'scene', labelJa: '雨に濡れた制服',
       summaryJa: 'ブレザー制服・雨上がりの濡れ',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'daily' },
+        concept: {},
         garment: { category: 'uniform', subtype: 'school_blazer_uniform', wearRole: 'main_outfit' },
         silhouette: { fit: 'tailored' },
         materials: { primary: 'wool', transparency: 'opaque', surface: 'matte' },
@@ -379,7 +379,7 @@
       id: 'well_worn_workwear', group: 'scene', labelJa: '使い込まれた作業着',
       summaryJa: '作業つなぎ・油汚れと使用感',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'work' },
+        concept: { occasion: 'work' },
         garment: { category: 'top_bottom', subtype: 'work_coveralls', wearRole: 'main_outfit' },
         silhouette: { fit: 'relaxed' },
         materials: { primary: 'twill', transparency: 'opaque', surface: 'matte' },
@@ -395,7 +395,7 @@
       id: 'bloodstained_labcoat', group: 'scene', labelJa: '血痕の付いた白衣',
       summaryJa: '白衣・片袖の小さな血痕（衣装の状態としてのみ）',
       patch: {
-        concept: { worldview: 'modern', era: 'contemporary', occasion: 'work' },
+        concept: { occasion: 'work' },
         garment: { category: 'robe', subtype: 'laboratory_coat_outfit', wearRole: 'main_outfit' },
         silhouette: { fit: 'tailored' },
         materials: { primary: 'cotton', transparency: 'opaque', surface: 'matte' },

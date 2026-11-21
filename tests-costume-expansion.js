@@ -19,12 +19,12 @@
   function withStore(fn) { var read = C.store._read, write = C.store._write, m = {}; C.store._read = function (k, d) { return m[k] ? U.clone(m[k]) : d; }; C.store._write = function (k, v) { m[k] = U.clone(v); return true; }; try { fn(); } finally { C.store._read = read; C.store._write = write; } }
 
   /* ---------- 既存出力・既存IDの不変 ---------- */
-  test('既存プリセット72件は先頭に同じ順で残り、英文が拡張前と完全一致', function () {
+  test('既存プリセット72件は先頭に同じ順で残り、旧初期値の英文が拡張前と完全一致', function () {
     assert(BASE.presets.length === 72);
     BASE.presets.forEach(function (b, i) {
       var p = D.presets[i];
       assert(p && p.id === b.id, 'order ' + i);
-      var x = PC.create(p.id);
+      var x = C.withPreviousPresetContext(p.id, PC.create(p.id));
       assert(G.short(x) === b.short, 'short ' + p.id);
       assert(G.detailed(x) === b.detailed, 'detailed ' + p.id);
     });
@@ -74,7 +74,7 @@
     test('プリセット ' + p.id + ' は有効な構造・可視の部位・hard 競合なし', function () {
       var x = PC.create(p.id), cat = U.byId(D.garmentCategories, x.garment.category);
       assert(U.byId(D.garments, x.garment.subtype) && cat);
-      assert(U.byId(D.worldviews, x.concept.worldview) || p.recipe, 'worldview');
+      assert(x.concept.worldview === null || U.byId(D.worldviews, x.concept.worldview), 'worldview');
       Object.keys(x.parts).forEach(function (k) { assert(cat.slots.indexOf(k) >= 0, 'hidden part ' + k); });
       assert(!hard(x).length, JSON.stringify(hard(x).map(function (i) { return i.id; })));
       ['short', 'detailed'].forEach(function (mode) {

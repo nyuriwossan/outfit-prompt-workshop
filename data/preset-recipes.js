@@ -19,9 +19,7 @@
   "recipe": true,
   "patch": {
    "concept": {
-    "worldview": "modern",
-    "occasion": "work",
-    "role": "office_worker"
+    "occasion": "work"
    },
    "garment": {
     "category": "uniform",
@@ -62,11 +60,7 @@
   "sourceGachaId": "open_collar_suit",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "party",
-    "role": "office_worker"
-   },
+   "concept": {},
    "garment": {
     "category": "uniform",
     "subtype": "business_suit",
@@ -106,11 +100,7 @@
   "sourceGachaId": "double_breasted",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "party",
-    "role": "office_worker"
-   },
+   "concept": {},
    "garment": {
     "category": "uniform",
     "subtype": "business_suit",
@@ -151,11 +141,7 @@
   "sourceGachaId": "trench_suit",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "investigation",
-    "role": "detective"
-   },
+   "concept": {},
    "garment": {
     "category": "robe",
     "subtype": "trench_coat",
@@ -194,11 +180,7 @@
   "sourceGachaId": "cardigan",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "scholar"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "shirt_and_trousers",
@@ -237,11 +219,7 @@
   "sourceGachaId": "turtleneck_jacket",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "work",
-    "role": "scholar"
-   },
+   "concept": {},
    "garment": {
     "category": "uniform",
     "subtype": "business_suit",
@@ -280,11 +258,7 @@
   "sourceGachaId": "sweater_scarf",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "crewneck_knit_and_chinos",
@@ -322,11 +296,7 @@
   "sourceGachaId": "aloha",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "linen_shirt_wide_trousers",
@@ -365,11 +335,7 @@
   "sourceGachaId": "oversized_tee_wide",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "linen_shirt_wide_trousers",
@@ -408,11 +374,7 @@
   "sourceGachaId": "zip_hoodie_tee",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "hoodie_and_cargo",
@@ -451,11 +413,7 @@
   "sourceGachaId": "camp_collar_shirt",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "linen_shirt_wide_trousers",
@@ -542,8 +500,7 @@
   "patch": {
    "concept": {
     "worldview": "modern",
-    "occasion": "battle",
-    "role": "officer"
+    "occasion": "battle"
    },
    "garment": {
     "category": "top_bottom",
@@ -630,7 +587,6 @@
   "recipe": true,
   "patch": {
    "concept": {
-    "worldview": "modern",
     "occasion": "investigation",
     "role": "detective"
    },
@@ -675,8 +631,6 @@
   "patch": {
    "concept": {
     "worldview": "dark_fantasy",
-    "occasion": "ritual",
-    "role": "mage",
     "primaryThemeMotif": "fallen_angel"
    },
    "garment": {
@@ -718,9 +672,7 @@
   "recipe": true,
   "patch": {
    "concept": {
-    "worldview": "japanese",
-    "occasion": "daily",
-    "role": "commoner"
+    "worldview": "japanese"
    },
    "garment": {
     "category": "wafuku",
@@ -762,8 +714,7 @@
   "patch": {
    "concept": {
     "worldview": "japanese",
-    "occasion": "daily",
-    "role": "commoner"
+    "occasion": "daily"
    },
    "garment": {
     "category": "top_bottom",
@@ -893,9 +844,7 @@
   "recipe": true,
   "patch": {
    "concept": {
-    "worldview": "modern",
-    "occasion": "ceremonial",
-    "role": "commoner"
+    "occasion": "ceremonial"
    },
    "garment": {
     "category": "top_bottom",
@@ -936,11 +885,7 @@
   "sourceGachaId": "batik_shirt",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "daily",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "linen_shirt_wide_trousers",
@@ -1116,9 +1061,7 @@
   "recipe": true,
   "patch": {
    "concept": {
-    "worldview": "modern",
-    "occasion": "beach",
-    "role": "commoner"
+    "occasion": "beach"
    },
    "garment": {
     "category": "swimwear",
@@ -1159,11 +1102,7 @@
   "sourceGachaId": "harness_shirt",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "party",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "top_bottom",
     "subtype": "shirt_and_trousers",
@@ -1202,11 +1141,7 @@
   "sourceGachaId": "utility_vest",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "work",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "uniform",
     "subtype": "business_suit",
@@ -1246,11 +1181,7 @@
   "sourceGachaId": "minimal_blazer",
   "recipe": true,
   "patch": {
-   "concept": {
-    "worldview": "modern",
-    "occasion": "work",
-    "role": "commoner"
-   },
+   "concept": {},
    "garment": {
     "category": "uniform",
     "subtype": "business_suit",
@@ -1294,7 +1225,6 @@
    "concept": {
     "worldview": "historical_western",
     "occasion": "ceremonial",
-    "role": "noble",
     "primaryThemeMotif": "plants_and_vines"
    },
    "garment": {
@@ -1337,9 +1267,7 @@
   "recipe": true,
   "patch": {
    "concept": {
-    "worldview": "modern",
-    "occasion": "ceremonial",
-    "role": "noble"
+    "occasion": "ceremonial"
    },
    "garment": {
     "category": "uniform",
