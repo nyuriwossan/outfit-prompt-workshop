@@ -107,6 +107,10 @@ def study(key,shoulder,hip,left_arm,right_arm,left_leg,right_leg,*,head=0,face='
     if support:
         args=support.split()
         parts.append(props[support] if support in props else chair(int(args[1]),int(args[2]),args[0]))
+    # Magnify the actual point of contact for gestures that differ by a few fingers.
+    contact = {'adjust_collar':(73,40), 'adjust_cuff':(91,59), 'pinch_outfit':(107,59),
+               'back_ornament':(76,46), 'hold_coat':(88,57)}
+    if key in contact: parts.append('<g id="figure">')
     parts += [leg(l,coords(left_leg),True),leg(r,coords(right_leg),False)]
     if cloth: parts.append(details[cloth])
     torso=f'M{fmt(a)} Q{fmt(local(s,0,-5))} {fmt(b)} Q{fmt(local(s,width+1,7))} {fmt(local(h,4.6,-6))} L{fmt(r)} Q{fmt(local(h,0,5))} {fmt(l)} L{fmt(local(h,-4.6,-6))} Q{fmt(local(s,-width-1,7))} {fmt(a)}Z'
@@ -131,7 +135,15 @@ def study(key,shoulder,hip,left_arm,right_arm,left_leg,right_leg,*,head=0,face='
         flip=-1 if face=='left' else 1
         parts.append(f'<g transform="scale({flip} 1)">'+path('M3-8Q8-4 6-1l2 3-2 1-2 3','#ddcfb4',INK,1)+path('M-4-1Q0-3 5-2',stroke='#ad9979',width=.8)+'</g>')
     else: parts.append(path('M1-8Q4 0 1 7M-5-1Q0 1 6-1',stroke='#ac997b',width=.9))
-    parts.append('</g></svg>')
+    if key in contact:
+        parts.append('</g></g>')
+        x,y=contact[key]
+        parts.append(line([(x+4,y),(116,33)],'#ae966e',.85))
+        parts.append('<defs><clipPath id="detail"><circle cx="132" cy="30" r="16"/></clipPath></defs>')
+        parts.append('<circle cx="132" cy="30" r="16.8" fill="#f8f0db" stroke="#b59b71" stroke-width="1.3"/>')
+        parts.append(f'<g clip-path="url(#detail)"><use href="#figure" transform="translate(132 30) scale(2.25) translate({-x} {-y})"/></g>')
+        parts.append('</svg>')
+    else: parts.append('</g></svg>')
     (DEST/(key+'.svg')).write_text('\n'.join(parts)+'\n')
 
 DEST.mkdir(parents=True,exist_ok=True)
