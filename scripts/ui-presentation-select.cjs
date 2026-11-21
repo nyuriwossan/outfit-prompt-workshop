@@ -6,11 +6,13 @@ const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://local
 (async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await pw[engine].launch({headless:true,...(engine==='chromium'?{channel:'msedge'}:{})}),report={engine,nativeIPhone:false,cases:[],errors:[]};
 try{for(const width of [375,390,430,1280]){
   const context=await browser.newContext({viewport:{width,height:844},isMobile:width<600,hasTouch:width<600}),page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
-  await page.goto(process.env.CPW_BASE_URL||'http://127.0.0.1:'+server.address().port+'/');await page.evaluate(()=>{CPW.state.load(CPW.schema.normalize({name:'select test',garment:{category:'dress',subtype:'cocktail_dress'}}));location.hash='#/output';});await page.locator('.output-options > summary').click();await page.locator('.presentation-panel summary').click();
-  async function choose(id,value){const node=page.locator('#'+id);await node.focus();await node.selectOption(value);assert(await page.locator('#'+id).inputValue()===value,'lost value '+id);assert(await page.locator('#'+id).evaluate(n=>document.activeElement!==n),'redraw reopened/refocused select '+id);assert(await page.locator('.presentation-panel').evaluate(n=>n.open),'presentation section unexpectedly closed');report.cases.push({width,id,value,noAutomaticRefocus:true});}
+  await page.goto(process.env.CPW_BASE_URL||'http://127.0.0.1:'+server.address().port+'/');await page.evaluate(()=>{CPW.state.load(CPW.schema.normalize({name:'select test',garment:{category:'dress',subtype:'cocktail_dress'}}));location.hash='#/output';});await page.locator('#open-pose').click();await page.getByText('人物・従来の撮影セット',{exact:true}).click();
+  async function choose(id,value){const node=page.locator('#'+id);await node.focus();await node.selectOption(value);assert(await page.locator('#'+id).inputValue()===value,'lost value '+id);assert(await page.locator('#'+id).evaluate(n=>document.activeElement!==n),'redraw reopened/refocused select '+id);assert(await page.locator('.studio-head[aria-expanded=true]').count()===1,'presentation section unexpectedly closed');report.cases.push({width,id,value,noAutomaticRefocus:true});}
   await choose('pr-presentation-preset','chair_sit');
   await choose('output-scope','all');
-  for(const id of ['pr-presentation-seat','pr-presentation-poseMood','pr-presentation-background','pr-presentation-subject','pr-presentation-rendering-paint','pr-presentation-rendering-finish','pr-presentation-rendering-line']){
+  for(const id of ['pose-seat','pr-presentation-poseMood','pr-presentation-background','pr-presentation-subject','pr-presentation-rendering-paint','pr-presentation-rendering-finish','pr-presentation-rendering-line']){
+    const group=id.includes('rendering')?'art':id.includes('background')?'scene':id.includes('poseMood')?'mood':'pose';
+    const head=page.locator('#open-'+group);if(await head.getAttribute('aria-expanded')==='false')await head.click();
     const values=await page.locator('#'+id+' option').evaluateAll(nodes=>nodes.map(n=>n.value).filter(Boolean).slice(0,2));
     for(const value of values.concat(values.slice(-1)))await choose(id,value);
   }

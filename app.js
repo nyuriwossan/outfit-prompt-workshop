@@ -957,9 +957,9 @@
       body.appendChild(irow);
 
       body.appendChild(ui.el('p', { class: 'field-sub', text: '反映先' }));
-      body.appendChild(ui.el('p', { class: 'field-note', text: '「魔法的演出」がオフの間は、炎や氷のエフェクトを出力に加えません。' }));
       var trow = ui.el('div', { class: 'switches' });
       ATTRIBUTE_APPLY.forEach(function (t) {
+        if (t.key === 'effects') return; // Scene effects are edited in STEP 3.
         var on = !!attr.applyTo[t.key];
         var btn = ui.el('button', {
           type: 'button', class: 'switch' + (on ? ' is-on' : ''),
@@ -977,6 +977,8 @@
         trow.appendChild(btn);
       });
       body.appendChild(trow);
+      body.appendChild(ui.el('a', {class:'link-btn', href:'#/output/mood',
+        text:'属性エフェクトを完成画面で編集（出力' + (state.outfit.output.includeEffects ? 'オン' : 'オフ') + '）'}));
     };
     var draw = function () { drawInner(); shell.refresh(); };
     draw();
@@ -2464,7 +2466,7 @@
     return screen('', [nav, ui.el('h1', {class: 'page-title', text: '衣装をアレンジ'}),
       CPW.atelier.sample(), simple ? CPW.atelier.quickEditor() : null, level,
       simple ? CPW.uiComplexity.summary(state.outfit, 'workshop', function () { openAdvancedWorkshop(); }) : body,
-      header, tools, CPW.presentationChoices.link(), bar]);
+      header, tools, ui.el('a',{class:'link-btn',href:'#/output/presentation',text:'完成画面で見せ方を選ぶ'}), bar]);
   };
 
   function updateChecks(link) {
@@ -2837,14 +2839,6 @@
   }
   CPW.structureLines = structureLines;
 
-  var OUTPUT_OPTIONS = [
-    { key: 'includeNarrative', labelJa: '雰囲気・物語を追加', noteJa: '拘束チェーンや物語のテーマ語が入るようになる。' },
-    { key: 'includeEffects', labelJa: '属性エフェクトを追加', noteJa: '炎や氷の演出語を足す。属性を選んでいるときだけ効く。' },
-    { key: 'includePresentation', labelJa: '見せ方補助を追加', noteJa: '構図・ポーズ・背景の指示を足す。' },
-    { key: 'includeQualityTags', labelJa: '品質タグを追加', noteJa: 'masterpiece などの定番タグを足す。' }
-  ];
-
-
   /* クリップボードへ。失敗しても理由を出す。 */
   function copyText(text, whatJa) {
     if (!text) { ui.toast('コピーする内容がまだありません'); return; }
@@ -2872,13 +2866,22 @@
   }
   CPW.copyText = copyText;
 
-  routes['/output'] = function () {
+  function studioSection(param) {
+    if (param === 'mood') return 'mood';
+    return param === 'presentation' ? 'pose' : '';
+  }
+
+  routes['/output'] = function (params) {
+    var studioView = {section:studioSection(params && params[0]), open:{}, query:'', category:'', message:''};
     var outputTab = 'short';
     var host = ui.el('div', { id: 'output-host' });
 
     function draw() {
       var oldOptions = host.querySelector('.output-options');
       var optionsOpen = oldOptions && oldOptions.open;
+      host.querySelectorAll('[data-studio-detail]').forEach(function (detail) {
+        studioView.open[detail.dataset.studioDetail] = detail.open;
+      });
       var focusId = host.contains(document.activeElement) && document.activeElement.id;
       host.innerHTML = '';
       var o = state.outfit;
@@ -2925,14 +2928,19 @@
       }
 
       // Keep the copy action ahead of long Markdown and structure results.
+      resultCard.classList.add('prompt-result');
+      resultCard.setAttribute('role', 'region');
+      resultCard.setAttribute('aria-label', '生成結果');
+      resultCard.tabIndex = 0;
       host.appendChild(resultCard);
+      host.appendChild(CPW.presentationStudio.editor(o, draw, studioView, function () {
+        var copy = host.querySelector('[data-fkey="copy:' + outputTab + '"]');
+        copy.scrollIntoView({block:'center'});
+        copy.focus({preventScroll:true});
+      }));
       function optionsLabel() {
-        var activeOptions = OUTPUT_OPTIONS.filter(function (opt) { return o.output[opt.key]; })
-          .map(function (opt) { return opt.labelJa.replace(/を追加$/, ''); });
-        if (o.output.includeBackground) activeOptions.push('背景');
-        if (o.output.includeRendering) activeOptions.push('画風');
-        if (o.output.customTags) activeOptions.push('追加タグ');
-        return 'タグ・出力設定' + (activeOptions.length ? '（' + activeOptions.join('・') + '）' : '（衣装のみ）');
+        var enabled = [o.output.customTags && '追加タグ', o.output.includeQualityTags && '品質タグ'].filter(Boolean);
+        return '追加タグ・品質タグ' + (enabled.length ? '（' + enabled.join('・') + '）' : '');
       }
       var options = ui.el('details', {class: 'card output-options', open: optionsOpen}, [
         ui.el('summary', {text: optionsLabel()})
@@ -2963,37 +2971,18 @@
       tagCard.appendChild(tagInput);
       options.appendChild(tagCard);
 
-      if(CPW.presentationChoices)options.appendChild(CPW.presentationChoices.link(true));
-      if(CPW.presentation)options.appendChild(CPW.presentation.controls(o,draw));
-      var opts_ = ui.el('div', { class: 'card card--quiet' }, [
-        ui.el('h2', { class: 'card-title', text: '出力に足すもの' }),
-        ui.el('p', { class: 'p p--sub', text: '既定では衣装のみを出力します。必要なものだけを追加してください。' })
-      ]);
-      OUTPUT_OPTIONS.filter(function(opt){return opt.key!=='includePresentation';}).forEach(function (opt) {
-        var on = !!o.output[opt.key];
-        var key = 'out:' + opt.key;
-        var line = ui.el('div', { class: 'opt-line' });
-        line.appendChild(ui.el('button', {
-          type: 'button', class: 'switch' + (on ? ' is-on' : ''),
-          'aria-pressed': on ? 'true' : 'false', 'data-fkey': key,
-          onclick: function () {
-            state.set('output.' + opt.key, !on);
-            // 属性エフェクトは、属性側の反映先とも意味が同じなので一緒に動かす
-            if (opt.key === 'includeEffects') state.set('concept.attribute.applyTo.effects', !on);
-            draw(); focusBack(host, key);
-          }
-        }, [ui.el('span', { class: 'switch-dot' }), ui.el('span', { text: opt.labelJa })]));
-        line.appendChild(ui.el('p', { class: 'field-note', text: opt.noteJa }));
-        opts_.appendChild(line);
-      });
-      options.appendChild(opts_);
+      options.appendChild(ui.el('button', {
+        type:'button', class:'studio-toggle', id:'quality-tags', 'aria-pressed':String(!!o.output.includeQualityTags),
+        text:'品質タグを追加 · ' + (o.output.includeQualityTags ? 'オン' : 'オフ'),
+        onclick:function () { state.set('output.includeQualityTags', !o.output.includeQualityTags); draw(); }
+      }));
 
       host.appendChild(ui.el('button', {
         class: 'btn', type: 'button', text: 'この衣装をJSONで書き出す',
         onclick: function () { downloadJSON(store.exportOutfit(state.outfit), (state.outfit.name || 'outfit') + '.json'); }
       }));
       if (focusId) {
-        var control = document.getElementById(focusId);
+        var control = document.getElementById(focusId) || host.querySelector('.studio-head[aria-expanded="true"]');
         var target = control && control.tagName === 'SELECT' ? control.labels[0] : control;
         if (target) { if (target.tagName === 'LABEL') target.tabIndex = -1; target.focus({preventScroll: true}); }
       }
@@ -3006,6 +2995,9 @@
       host
     ]);
   };
+
+  // Bookmarks from the separate pose screen open the same STEP 3 editor.
+  routes['/presentation'] = function () { return routes['/output'](['presentation']); };
 
   /* ---------- 保存一覧 ---------- */
   routes['/library'] = function () {
@@ -3119,12 +3111,17 @@
     var parsed = CPW.parseHash(location.hash);
     var view = routes[parsed.route] || routes[''];
     appRoot.innerHTML = '';
-    var finishing = parsed.route === '/output' || (parsed.route === '/presentation' && parsed.params[0] === 'output');
+    var finishing = parsed.route === '/output' || parsed.route === '/presentation';
     var step = finishing ? 3 :
-      ['/workshop', '/checks', '/suggest', '/gacha', '/presentation'].includes(parsed.route) ? 2 : 1;
+      ['/workshop', '/checks', '/suggest', '/gacha'].includes(parsed.route) ? 2 : 1;
     if (parsed.route !== '/library') appRoot.appendChild(CPW.atelier.progress(step));
     appRoot.appendChild(view(parsed.params));
-    global.scrollTo(0, 0);
+    var entrySection = parsed.route === '/presentation' ? 'pose' : finishing && studioSection(parsed.params[0]);
+    if (entrySection) {
+      var editorTitle = document.getElementById('open-' + entrySection);
+      editorTitle.focus({preventScroll:true});
+      editorTitle.scrollIntoView({block:'start'});
+    } else global.scrollTo(0, 0);
   }
   CPW.render = render;
 
@@ -3148,7 +3145,7 @@
       ui.dismissToast();
       render();
       var heading = appRoot.querySelector('h1') || appRoot.querySelector('.page-title');
-      if (heading) { heading.tabIndex = -1; heading.focus({preventScroll: true}); }
+      if (heading && !appRoot.contains(document.activeElement)) { heading.tabIndex = -1; heading.focus({preventScroll: true}); }
     });
     global.addEventListener('beforeunload', function () { if (autosave.pending()) store.saveDraft(state.outfit); });
     render();
