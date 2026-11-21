@@ -57,6 +57,11 @@ async function main() {
       await decide.click();
       await workshop.waitFor();
       await inspect('arrange');
+      // Regression: a selected color swatch must not retain the unset checkerboard image.
+      const swatchStyle = await page.locator('[data-color-picker="primary"] .quick-color-dot').evaluate(
+        el => ({image:getComputedStyle(el).backgroundImage, color:getComputedStyle(el).backgroundColor}));
+      assert.equal(swatchStyle.image, 'none', 'selected color swatch checkerboard');
+      assert.equal(swatchStyle.color, 'rgb(200, 203, 208)', 'selected silver color preview');
       await button('前の衣装に戻す').click();
       assert.deepEqual(await outfit(), daily);
 
