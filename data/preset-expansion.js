@@ -216,9 +216,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "top_bottom",
         "subtype": "oversized_knit_long_skirt",
@@ -260,9 +258,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "top_bottom",
         "subtype": "suspender_shirt_trousers",
@@ -303,9 +299,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "robe",
         "subtype": "long_coat",
@@ -349,9 +343,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "top_bottom",
         "subtype": "linen_shirt_wide_trousers",
@@ -392,9 +384,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "top_bottom",
         "subtype": "buttoned_pajama_set",
@@ -443,9 +433,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "business_suit",
@@ -489,9 +477,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "apron_shirt_outfit",
@@ -533,9 +519,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "stand_collar_service_uniform",
@@ -583,9 +567,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "flight_suit",
@@ -628,9 +610,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "school_uniform",
@@ -672,9 +652,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "business_suit",
@@ -718,9 +696,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "tailcoat_suit",
@@ -807,9 +783,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "dress",
         "subtype": "classic_maid_dress",
@@ -851,9 +825,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "business_suit",
@@ -1359,9 +1331,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "tailcoat_suit",
@@ -1404,9 +1374,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "business_suit",
@@ -1460,9 +1428,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "robe",
         "subtype": "long_coat",
@@ -1505,9 +1471,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "work_coveralls",
@@ -1556,9 +1520,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "robe",
         "subtype": "long_coat",
@@ -1600,9 +1562,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "royal_uniform",
@@ -1651,9 +1611,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "tailcoat_suit",
@@ -1708,9 +1666,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "dress",
         "subtype": "ball_gown",
@@ -1752,9 +1708,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "business_suit",
@@ -1803,9 +1757,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "stage_magician_outfit",
@@ -1848,9 +1800,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "robe",
         "subtype": "long_coat",
@@ -1905,9 +1855,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "western_fantasy"
-      },
+      "concept": {},
       "garment": {
         "category": "top_bottom",
         "subtype": "adventurer_outfit",
@@ -1962,9 +1910,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "modern"
-      },
+      "concept": {},
       "garment": {
         "category": "uniform",
         "subtype": "apron_shirt_outfit",
@@ -2076,9 +2022,7 @@ D.presets.push.apply(D.presets,[
     ],
     "searchAliases": [],
     "patch": {
-      "concept": {
-        "worldview": "western_fantasy"
-      },
+      "concept": {},
       "garment": {
         "category": "robe",
         "subtype": "cape_coat",

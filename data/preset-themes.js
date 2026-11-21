@@ -8,7 +8,7 @@
  *   kigurumiType  … 着ぐるみの6分類（motif_accessory / animal_hood / onesie / plush_suit / full_mascot / reinterpretation）
  *
  * プリセットは既存仕様どおり「部分パッチ」。一覧・プレビュー・配色試しでは編集中の衣装を変更せず、
- * 「この衣装を使う」で初めて反映する（preset-catalog.js）。
+ * 「この衣装に決定する」で初めて反映する（preset-catalog.js）。
  */
 (function (global) {
   var CPW = global.CPW, D = CPW.data;
@@ -55,7 +55,6 @@
     if (c.mat2) p.materials.secondary = c.mat2;
     if (c.trim) p.materials.trim = c.trim;
     if (c.pat) p.materials.patterns = c.pat;
-    if (!c.world) c.world = 'modern';
     [['theme', 'primaryThemeMotif'], ['season', 'season'], ['occasion', 'occasion'], ['role', 'role'], ['world', 'worldview'], ['style', 'primaryStyle']].forEach(function (k) { if (c[k[0]]) p.concept[k[1]] = c[k[0]]; });
     if (c.cond) p.condition = { items: c.cond };
     return p;
@@ -121,7 +120,7 @@
     P('aerialist_unitard', 'stage', 'ケープ付き空中演技ユニタード', '一体型のユニタードと肩のケープ', ['華やか', 'クール'], CO, [], null, ['ユニタード', 'サーカス'], { g: 'stage_unitard', parts: { cover_up: 'shoulder_cape', sleeves: 'fitted_long_sleeves' }, mat: 'spandex', fit: 'fitted', pal: ['deep_crimson', 'bright_gold'], deco: [['sequins', ['chest'], 'many']], occasion: 'stage_occasion' }),
     P('cheerleader', 'stage', 'チアリーダー', 'シェルトップとプリーツスカート、ポンポン', ['可愛い', '華やか'], CO, [], null, ['チア', 'cheerleader'], { g: 'cheerleader_uniform', parts: { sleeves: 'sleeveless', footwear: 'sneakers' }, mat: 'jersey', fit: 'fitted', pal: ['royal_blue', 'pure_white', 'canary_yellow'], deco: [['pom_poms', ['hands'], 'few']] }),
     P('nurse_costume', 'stage', 'ナース風の衣装', '前ボタンのワンピースと白いエプロン', ['可愛い', 'シンプル'], CO, [], null, ['ナース', '看護師', 'ミニスカナース'], { g: 'nurse_dress', parts: { skirt_shape: 'a_line_skirt', sleeves: 'short_sleeves' }, mat: 'cotton', pal: ['pure_white', 'pastel_pink', 'sky_blue'] }),
-    P('beekeeper', 'work', '養蜂家', 'ベール付きフードの作業着', ['シンプル'], CO, [], null, ['養蜂'], { g: 'beekeeping_suit', parts: { handwear: { type: 'hand_gloves', material: 'leather_hand', length: 'elbow_length', fingertips: 'full_fingered' }, footwear: 'rain_boots' }, mat: 'canvas', fit: 'oversized', pal: ['off_white', 'honey_yellow'], role: 'artisan', occasion: 'work' }),
+    P('beekeeper', 'work', '養蜂家', 'ベール付きフードの作業着', ['シンプル'], CO, [], null, ['養蜂'], { g: 'beekeeping_suit', parts: { handwear: { type: 'hand_gloves', material: 'leather_hand', length: 'elbow_length', fingertips: 'full_fingered' }, footwear: 'rain_boots' }, mat: 'canvas', fit: 'oversized', pal: ['off_white', 'honey_yellow'], occasion: 'work' }),
     P('blacksmith', 'fantasy', '鍛冶職人', '中央で分かれた長い革の前垂れと脚絆', ['クール'], CO, [], null, ['鍛冶', 'ブラックスミス'], { g: 'blacksmith_workwear', parts: { footwear: 'lace_up_boots' }, mat: 'canvas', mat2: 'leather', pal: ['warm_brown', 'charcoal_gray', 'copper_metal'], role: 'artisan', world: 'western_fantasy', cond: [{ type: 'soot_stained', group: 'state', severity: 'light', extent: 'scattered', placements: [] }] }),
     P('space_undersuit', 'alternative', '宇宙作業の冷却アンダースーツ', '冷却チューブが走る密着スーツ', ['クール'], CO, [], null, ['宇宙服', 'アンダースーツ'], { g: 'cooling_undersuit', mat: 'spandex', mat2: 'mesh', fit: 'fitted', pal: ['pure_white', 'steel_blue', 'tangerine'], world: 'sci_fi' }),
     P('pressure_suit_astronaut', 'alternative', '環状関節の宇宙飛行士', '硬い胴シェルと環状関節の圧力スーツ', ['クール'], CO, [], null, ['宇宙飛行士', '宇宙服'], { g: 'pressure_suit', mat: 'nylon', fit: 'boxy', pal: ['pure_white', 'tangerine', 'polished_silver'], world: 'sci_fi' }),
@@ -148,8 +147,8 @@
     P('greek_chiton', 'fantasy', 'キトンとヒマティオン', 'ピン留めのキトンに巻き布を重ねる', ['上品', '神秘的'], [], [], null, ['ヒマティオン', 'キトン', '古代ギリシャ'], { g: 'chiton_himation', mat: 'linen', fit: 'draped', pal: ['warm_ivory', 'pale_gold'], world: 'mythic_world' }),
     P('steppe_deel', 'fantasy', 'デール（草原の装束）', '脇留めの長衣と幅広の帯', ['上品'], [], [], null, ['デール', 'モンゴル'], { g: 'deel', parts: { waist: 'wide_belt', footwear: 'knee_high_boots' }, mat: 'brocade', pal: ['royal_blue', 'antique_gold', 'deep_crimson'], occasion: 'travel' }),
     P('chef_whites', 'work', 'シェフコート', '白いダブルのコックコート', ['シンプル', 'クール'], [], [], null, ['シェフ', 'コックコート'], { g: 'pastry_chef_uniform', parts: { closure: 'double_breasted' }, mat: 'cotton', fit: 'tailored', pal: ['pure_white', 'jet_black'], role: 'chef', occasion: 'work' }),
-    P('scrubs_medical', 'work', 'スクラブ', 'Vネックのスクラブ上下', ['シンプル'], [], [], null, ['医師', 'スクラブ'], { g: 'scrub_suit', mat: 'cotton', pal: ['teal', 'pure_white'], role: 'doctor', occasion: 'work' }),
-    P('hazmat_worker', 'alternative', '密閉型防護服', 'フード一体で透明な顔面バイザー付き', ['クール'], [], [], null, ['防護服', 'ハズマット'], { g: 'sealed_hazmat_suit', mat: 'rubberized_fabric', fit: 'oversized', pal: ['canary_yellow', 'jet_black'], world: 'post_apocalypse' }),
+    P('scrubs_medical', 'work', 'スクラブ', 'Vネックのスクラブ上下', ['シンプル'], [], [], null, ['医師', 'スクラブ'], { g: 'scrub_suit', mat: 'cotton', pal: ['teal', 'pure_white'], occasion: 'work' }),
+    P('hazmat_worker', 'alternative', '密閉型防護服', 'フード一体で透明な顔面バイザー付き', ['クール'], [], [], null, ['防護服', 'ハズマット'], { g: 'sealed_hazmat_suit', mat: 'rubberized_fabric', fit: 'oversized', pal: ['canary_yellow', 'jet_black'] }),
     P('fencing_whites', 'work', 'フェンシングウェア', '脇留めの白い上衣と膝丈ブリーチ', ['クール', 'シンプル'], [], [], null, ['フェンシング'], { g: 'fencing_uniform', mat: 'cotton', fit: 'fitted', pal: ['pure_white', 'pearl_gray'] }),
 
     /* ---------- 着ぐるみ：耳・尾のアクセサリー（顔出し） ---------- */

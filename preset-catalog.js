@@ -11,7 +11,90 @@ function labels(list,ids){return (ids||[]).map(function(id){var x=U.byId(list||[
 function filter(f){var terms=normalize(f.query).split(/\s+/).filter(Boolean),seen={};return D.presets.filter(function(p){if(seen[p.id])return false;seen[p.id]=true;var hay=normalize([p.labelJa,p.summaryJa].concat(p.moodTags,p.searchAliases||[],labels(D.presetEvents,p.eventTags),labels(D.presetThemes,p.themeTags),labels(D.kigurumiTypes,[p.kigurumiType])).join(' '));return (!f.category||p.categoryId===f.category)&&(!f.mood||p.moodTags.indexOf(f.mood)>=0)&&themeOk(p,f.theme)&&subOk(p,f)&&terms.every(function(t){return hay.includes(t);});});}
 function pick(list,last,rng){var choices=list.length>1?list.filter(function(p){return p.id!==last;}):list;return choices.length?choices[Math.floor((rng||Math.random)()*choices.length)]:null;}
 function create(id){var p=U.byId(D.presets,id);if(!p)throw Error('Unknown preset');var o=C.schema.applyPatch(C.schema.createOutfit(),p.patch);o.name=p.labelJa;o.entryMode='preset';return o;}
-function adopt(outfit){var before=C.state.outfit,dirty=C.state.dirty,saved=C.state.savedId;try{var next=C.schema.normalize(U.clone(outfit));C.state.load(next);return next;}catch(e){C.state.outfit=before;C.state.dirty=dirty;C.state.savedId=saved;C._autosave();throw e;}}
+// Keep the previous draft in this tab only. Its ID binds the undo to this adoption.
+var undoKey = 'cpw.presetUndo.v1';
+var undo = null;
+try {
+  var record = JSON.parse(g.sessionStorage.getItem(undoKey));
+  if (record && record.targetId && C.schema.validate(record.previous).ok) undo = record;
+} catch (e) { /* In-memory undo is available when tab storage is disabled. */ }
+
+function remember(record) {
+  undo = record;
+  try {
+    if (record) g.sessionStorage.setItem(undoKey, JSON.stringify(record));
+    else g.sessionStorage.removeItem(undoKey);
+  } catch (e) { /* Keep this session's in-memory copy. */ }
+}
+
+function needsConfirmation(current, incoming) {
+  var compare = C.conceptFashion.sameDesign;
+  if (compare(current, incoming)) return false;
+  var saved = C.store.getOutfit(current.id);
+  if (saved) return !compare(current, saved);
+  if (!C.conceptFashion.hasDesign(current)) return false;
+  var preset = current.entryMode === 'preset' && D.presets.find(function(item) {
+    return item.labelJa === current.name && compare(current, create(item.id));
+  });
+  return !preset;
+}
+
+function loadSafely(outfit, saved) {
+  var state = C.state;
+  var before = state.outfit, dirty = state.dirty, savedId = state.savedId;
+  try {
+    state.load(outfit, {saved:saved});
+    // Adoption and undo are navigation boundaries. An immediate reload must see this draft.
+    C.store.saveDraft(state.outfit);
+    return state.outfit;
+  } catch (e) {
+    state.outfit = before;
+    state.dirty = dirty;
+    state.savedId = savedId;
+    C._autosave();
+    throw e;
+  }
+}
+
+function adopt(outfit) {
+  var previous = C.state.outfit;
+  var hasPrevious = C.conceptFashion.hasDesign(previous) || C.store.getOutfit(previous.id);
+  var backup = hasPrevious ? U.clone(previous) : null;
+  var next = loadSafely(outfit, false);
+  remember(backup ? {targetId:next.id, previous:backup} : null);
+  return next;
+}
+
+function undoControl() {
+  if (!undo || undo.targetId !== C.state.outfit.id) return null;
+  var box = E('div', {class:'preset-undo'});
+  function restore() {
+    var saved = C.store.getOutfit(undo.previous.id);
+    try {
+      loadSafely(undo.previous, !!saved && C.conceptFashion.sameDesign(saved, undo.previous));
+      if (saved) C.state.savedId = saved.id;
+      remember(null);
+      C.render();
+      var title = document.querySelector('#app h1');
+      if (title) { title.tabIndex = -1; title.focus(); }
+      C.ui.toast('前の衣装に戻しました');
+    } catch (e) {
+      box.appendChild(E('p', {role:'alert', text:'復元できませんでした。もう一度お試しください。'}));
+    }
+  }
+  function draw() {
+    box.replaceChildren(button('前の衣装に戻す', function() {
+      if (!needsConfirmation(C.state.outfit, undo.previous)) { restore(); return; }
+      var cancel = button('キャンセル', function() { draw(); box.firstChild.focus(); },
+        {'aria-describedby':'undo-edit-warning'});
+      box.replaceChildren(E('p', {id:'undo-edit-warning', class:'p p--warn', text:'前の衣装に戻ると、いまの衣装の未保存の編集は失われます。'}),
+        button('編集を取り消して戻す', restore), cancel);
+      cancel.focus();
+    }, {class:'link-btn', 'data-preset-undo':'true'}));
+  }
+  draw();
+  return box;
+}
 function button(t,fn,attrs){return E('button',Object.assign({type:'button',class:'btn',text:t,onclick:fn},attrs));}
 function swatches(o){var box=E('div',{class:'discovery-swatches'});['primary','secondary','accent'].forEach(function(k){var c=U.byId(D.colors,o.palette[k]);if(c){var s=E('span',{class:'discovery-swatch',title:c.labelJa,'aria-label':c.labelJa});s.style.backgroundColor=c.hex;box.appendChild(s);box.appendChild(E('span',{text:c.labelJa}));}});return box;}
 var browsing={query:'',category:'',mood:'',theme:'',sub:'',scroll:0,page:0,filtersOpen:false},last=null;
@@ -27,7 +110,23 @@ function goPreview(p) {
 
 }
 function back(){if(g.history.state && g.history.state.fromCatalog)g.history.back();else g.location.replace('#/presets');}
-function doAdopt(){if(!confirming&&C.conceptFashion.hasDesign(C.state.outfit)){confirming=true;drawPreview();host.querySelector('[data-preset-confirm]').focus();return;}try{adopt(draft);g.location.hash='#/workshop';}catch(e){message='衣装を採用できませんでした。現在の設計は保持しています。';confirming=false;drawPreview();console.error(e);}}
+function doAdopt() {
+  if (!confirming && needsConfirmation(C.state.outfit, draft)) {
+    confirming = true;
+    drawPreview();
+    host.querySelector('[data-preset-cancel]').focus();
+    return;
+  }
+  try {
+    adopt(draft);
+    g.location.hash = '#/workshop';
+  } catch (e) {
+    message = '衣装を採用できませんでした。現在の設計は保持しています。';
+    confirming = false;
+    drawPreview();
+    console.error(e);
+  }
+}
 function drawPreview(){host.replaceChildren(button('← 見本一覧',back,{class:'back-btn'}),E('h1',{class:'page-title',tabindex:'-1',text:chosen.labelJa}),E('p',{class:'p',text:chosen.summaryJa}),swatches(draft),E('p',{class:'p p--note',text:'衣装データのプレビューです。画像生成の結果ではありません。'}));
 if(message)host.appendChild(E('p',{role:'status',text:message}));
 host.appendChild(button('配色を変える',function(){colorOpen=!colorOpen;drawPreview();host.querySelector('#preview-palette').focus({preventScroll:true});},{id:'preview-palette','aria-expanded':String(colorOpen)}));
@@ -35,8 +134,19 @@ if(colorOpen){['primary','secondary','accent'].forEach(function(k,i){var id='pre
   host.querySelector('.discovery-swatches').replaceWith(swatches(draft));
   host.querySelector('.prompt-text').textContent=C.generator.short(draft);
 });host.appendChild(E('label',{for:id,text:['主色','副色','差し色'][i]}));host.appendChild(select);});}
-if(confirming){host.appendChild(E('p',{text:'現在の衣装を置き換えます。未保存の変更も置き換わります。',class:'p p--warn'}));host.appendChild(button('この衣装に置き換える',doAdopt,{'data-preset-confirm':'true'}));host.appendChild(button('キャンセル',function(){confirming=false;drawPreview();host.querySelector('[data-preset-adopt]').focus();}));}
-else host.appendChild(button('この衣装をアレンジ →',doAdopt,{'data-preset-adopt':'true',class:'btn btn--primary'}));
+if (confirming) {
+  var name = C.state.outfit.name || '編集中の衣装';
+  host.appendChild(E('p', {id:'preset-edit-warning', class:'p p--warn',
+    text:'「'+name+'」には未保存の編集があります。この見本で始めますか？ 決定後もこのタブのアレンジ画面で前の衣装に戻せます。'}));
+  host.appendChild(button('この見本で始める', doAdopt, {'data-preset-confirm':'true', class:'btn btn--primary'}));
+  host.appendChild(button('キャンセル', function() {
+    confirming = false;
+    drawPreview();
+    host.querySelector('[data-preset-adopt]').focus();
+  }, {'data-preset-cancel':'true', 'aria-describedby':'preset-edit-warning'}));
+} else {
+  host.appendChild(button('この衣装に決定する', doAdopt, {'data-preset-adopt':'true', class:'btn btn--primary'}));
+}
 host.appendChild(E('details',{class:'card'},[E('summary',{text:'英文を試し読み'}),E('p',{class:'prompt-text',text:C.generator.short(draft)})]));
 var list=filter(browsing);host.appendChild(button('別の候補を見る',function(){var p=pick(list,last);if(p)goPreview(p);},{disabled:!list.length}));host.appendChild(button('一覧に戻る',back));}
 function drawList(){host.replaceChildren(E('a',{href:'#/',class:'back-btn',text:'← 開始画面'}),E('h1',{class:'page-title',text:'見本から選ぶ'}),E('p',{class:'p',text:'衣装を試して、気に入ったら使い始めましょう。'}));var search=E('input',{id:'preset-search',type:'search',class:'name-input',placeholder:'名前・説明・別名で検索'});search.value=browsing.query;host.appendChild(E('label',{for:'preset-search',text:'衣装を検索'}));host.appendChild(search);
@@ -69,5 +179,5 @@ else {
   });
 }
 return host;}
-C.presetCatalog={normalizeSearch:normalize,filter:filter,subOptions:subOptions,pick:pick,create:create,adopt:adopt,view:view};C.routes['/presets']=view;
+C.presetCatalog={normalizeSearch:normalize,filter:filter,subOptions:subOptions,pick:pick,create:create,adopt:adopt,undoControl:undoControl,view:view};C.routes['/presets']=view;
 })(window);
