@@ -86,7 +86,10 @@
       function updateSummary() {
         var color = current();
         var dot = E('i', {class: 'quick-color-dot', 'aria-hidden': 'true'});
-        if (color) dot.style.backgroundColor = color.hex;
+        if (color) {
+          dot.style.backgroundColor = color.hex;
+          dot.style.backgroundImage = 'none'; // Do not mask a selected swatch with the unset checkerboard.
+        }
         summary.replaceChildren(dot, E('span', {text: color ? color.labelJa + ' (' + color.hex + ')' : '色見本から選ぶ'}));
       }
       function redraw() {
