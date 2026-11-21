@@ -8,12 +8,20 @@
     var existing=C.conceptFashion.hasDesign(source),level=C.uiPrefs.get('concept');
     function switchLevel(next){level=next;if(level==='simple'&&(step===1||step===2))step=3;draw();}
     function showAdvanced(){C.uiPrefs.set('concept','advanced');switchLevel('advanced');var b=host.querySelector('[data-ui-level="advanced"]');if(b)b.focus({preventScroll:true});}
-    function directionSelect(){var wrap=E('div',{class:'field'}),sel=E('select',{id:'cf-direction',class:'cf-select'});wrap.appendChild(E('label',{for:'cf-direction',text:'方向性'}));sel.appendChild(E('option',{value:'',text:'未選択'}));F.directions.forEach(function(d){sel.appendChild(E('option',{value:d.id,text:d.labelJa}));});sel.value=s.directions[0]||'';sel.addEventListener('change',function(){var hidden=s.directions.slice(1);s.directions=sel.value?[sel.value].concat(hidden.filter(function(id){return id!==sel.value;})):hidden;candidates=[];pendingConfirmation=null;draw();});wrap.appendChild(sel);return wrap;}
+    function redrawAfterSelect(select) {
+      var focused = document.activeElement === select;
+      draw();
+      if (focused) {
+        var label = host.querySelector('label[for="'+select.id+'"]');
+        if (label) { label.tabIndex=-1; label.focus({preventScroll:true}); }
+      }
+    }
+    function directionSelect(){var wrap=E('div',{class:'field'}),sel=E('select',{id:'cf-direction',class:'cf-select'});wrap.appendChild(E('label',{for:'cf-direction',text:'方向性'}));sel.appendChild(E('option',{value:'',text:'未選択'}));F.directions.forEach(function(d){sel.appendChild(E('option',{value:d.id,text:d.labelJa}));});sel.value=s.directions[0]||'';sel.addEventListener('change',function(){var hidden=s.directions.slice(1);s.directions=sel.value?[sel.value].concat(hidden.filter(function(id){return id!==sel.value;})):hidden;candidates=[];pendingConfirmation=null;redrawAfterSelect(sel);});wrap.appendChild(sel);return wrap;}
     function button(text,fn,attrs){return E('button',Object.assign({type:'button',class:'btn',text:text,onclick:fn},attrs||{}));}
     function select(label,list,path){
       var id='cf-'+path.replace(/\./g,'-'),wrap=E('div',{class:'field'}),sel=E('select',{id:id,class:'cf-select'});
       wrap.appendChild(E('label',{for:id,text:label}));sel.appendChild(E('option',{value:'',text:'未選択'}));list.forEach(function(o){sel.appendChild(E('option',{value:o.id,text:o.labelJa}));});sel.value=U.getPath(s,path)||'';
-      sel.addEventListener('change',function(){U.setPath(s,path,sel.value||null);s=C.conceptFashion.normalizeSelection(s);candidates=[];pendingConfirmation=null;message='';pendingAdopt=-1;draw();});wrap.appendChild(sel);return wrap;
+      sel.addEventListener('change',function(){U.setPath(s,path,sel.value||null);s=C.conceptFashion.normalizeSelection(s);candidates=[];pendingConfirmation=null;message='';pendingAdopt=-1;redrawAfterSelect(sel);});wrap.appendChild(sel);return wrap;
     }
     function multi(label,list,path,max){
       var wrap=E('fieldset',{class:'field'}),chips=E('div',{class:'chips'});wrap.appendChild(E('legend',{text:label}));

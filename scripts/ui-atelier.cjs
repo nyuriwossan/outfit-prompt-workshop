@@ -63,7 +63,12 @@ async function main() {
       assert.equal(await cards.count(),12);
       await page.getByRole('button',{name:'次の見本'}).click();
       await cards.first().click();
-      await page.locator('[data-preset-adopt]').waitFor();
+      await page.getByRole('button',{name:'配色を変える'}).click();
+      await page.locator('#preview-color-primary').focus();
+      await page.locator('#preview-color-primary').selectOption('deep_crimson');
+      await page.keyboard.press('Tab');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'preview-color-secondary');
+      assert.equal(await snapshot(),initial);
       await page.goBack();
       await cards.first().waitFor();
       await cards.first().click();
@@ -78,7 +83,9 @@ async function main() {
       await page.locator('#workshop-topnav a').click();
       await page.getByRole('link',{name:/テーマから/}).click();
       const preset = await snapshot();
+      await page.locator('#cf-categoryId').focus();
       await page.locator('#cf-categoryId').selectOption('object');
+      assert.equal(await page.evaluate(()=>document.activeElement.htmlFor),'cf-categoryId');
       await page.locator('#cf-motifId').selectOption('hourglass');
       await page.locator('#cf-generate').click();
       assert.equal(await page.locator('[data-cf-adopt]').count(),3);
