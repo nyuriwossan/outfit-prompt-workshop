@@ -1067,7 +1067,7 @@
       wrap.className = 'field field--fold is-' + key;
       stateEl.textContent = st.dormantJa ? '休止中' : FOLD_STATE_JA[key];
       summaryEl.textContent = st.filled ? st.summaryJa : (st.dormantJa || (tier === 'required' ? '選ぶと基本設計が進みます' : 'タップで選択'));
-      head.setAttribute('aria-label', cfg.labelJa + '：' + (st.filled ? st.summaryJa : (st.dormantJa ? '休止中' : FOLD_STATE_JA[key])) + (openFields[cfg.key] ? '（開いています）' : ''));
+      head.setAttribute('aria-label', cfg.labelJa + '：' + (st.filled ? st.summaryJa : (st.dormantJa ? '休止中' : FOLD_STATE_JA[key])));
       clearRow.innerHTML = '';
       if (st.filled && cfg.onClear) {
         clearRow.appendChild(ui.el('button', {
@@ -1156,6 +1156,7 @@
   /* ---------- 部位スロット ---------- */
   function renderSlotField(slot) {
     if (!CPW.uiComplexity.visible('parts.'+slot.id,state.outfit)) return ui.el('span',{hidden:'hidden'});
+    if (CPW.garmentCatalog.slots.has(slot.id)) return CPW.garmentCatalog.field(slot);
     var kind = schema.slotKind(slot);
     if (kind === 'composite') return renderCompositeSlot(slot);
     if (kind === 'multi') return renderMultiSlot(slot);

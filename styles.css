@@ -818,3 +818,32 @@ body {
 .scope-flags .studio-toggle { margin:2px; font-size:14px; }
 @media(min-width:700px) { .pose-cards { grid-template-columns:repeat(3,minmax(0,1fr)); } }
 .pose-no-image { display:grid; height:100%; place-items:center; font-size:12px; color:var(--muted); }
+
+/* Garment plates keep a common baseline and leave room for the fixed finish bar. */
+.garment-section { grid-column:1/-1; min-width:0; padding-top:10px; border-top:1px solid var(--line); }
+.garment-section h2 { font: bold 20px/1.5 Georgia, "Yu Mincho", serif; color:var(--accent-deep); margin:4px 0; }
+.garment-controls { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.garment-controls input,.garment-controls select,.garment-mode { min-width:0; min-height:44px; padding:6px 9px;
+  font:inherit; color:var(--ink); border:1px solid var(--line); border-radius:5px; background:var(--surface); }
+.garment-controls input { flex:1 0 100%; }
+.garment-controls select { flex:1; }
+.garment-mode { margin-left:auto; cursor:pointer; }
+.garment-mode[aria-pressed=true] { background:var(--accent-deep); color:white; }
+.garment-count { display:block; font-size:13px; color:var(--muted); margin:6px 0; }
+.garment-group { display:flex; align-items:center; gap:10px; margin:14px 0 7px; color:var(--accent-deep); font-size:14px; }
+.garment-group::after { content:""; height:1px; background:var(--line); flex:1; }
+.garment-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.garment-card { position:relative; display:flex; flex-direction:column; align-items:stretch; min-width:0; min-height:48px;
+  padding:3px 3px 8px; border:1px solid #b4a58c; background:#fffdf7; border-radius:6px; font:inherit; color:var(--ink);
+  text-align:left; cursor:pointer; scroll-margin-block:10px 84px; }
+.garment-card strong,.garment-card small { padding:0 5px; overflow-wrap:anywhere; }
+.garment-card strong { margin-top:5px; font-size:15px; line-height:1.45; }
+.garment-card small { color:var(--muted); line-height:1.5; font-size:12px; }
+.garment-plate { position:relative; display:grid; place-items:center; aspect-ratio:1.6; background:#f5f1e7; border-radius:3px; overflow:hidden; }
+.garment-plate img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.garment-unavailable { font-size:13px; color:var(--muted); }
+.garment-card[aria-pressed=true] { border-color:var(--accent); box-shadow:inset 0 0 0 2px var(--accent); }
+.garment-card[aria-pressed=true] strong::before { content:"✓ "; color:var(--accent); }
+.garment-card:focus-visible,.garment-controls :focus-visible { outline:3px solid var(--accent-deep); outline-offset:2px; }
+.garment-text .garment-plate { display:none; }
+@media(min-width:700px) { .garment-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }

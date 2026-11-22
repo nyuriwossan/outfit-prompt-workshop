@@ -144,6 +144,7 @@
       redraw();
     }
 
+    var catalog = C.garmentCatalog.quickSection();
     function garments() { return D.garments.filter(function (g) { return g.category === o.garment.category; }); }
     select('garment.category', '服の種類', D.garmentCategories, function (category) {
       C.state.applyPatch({garment: {category: category, subtype: null}});
@@ -152,6 +153,9 @@
         shape.appendChild(E('option', {value: g.id, text: g.labelJa}));
       });
       shape.disabled = !category;
+      var next = C.garmentCatalog.quickSection();
+      catalog.replaceWith(next);
+      catalog = next;
     });
     var shape = select('garment.subtype', '基本の形', garments());
     shape.disabled = !o.garment.category;
@@ -161,6 +165,7 @@
     });
     select('materials.primary', '生地', D.materials.filter(function (m) { return m.category === 'material'; }));
     select('decorations.focalMotif', '主役の装飾', D.decorations);
+    fields.appendChild(catalog);
     return fields;
   }
 
