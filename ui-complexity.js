@@ -4,7 +4,7 @@
   function valid(v){return v==='simple'||v==='advanced';}
   try{var saved=JSON.parse(g.localStorage.getItem(key)||'{}');Object.keys(prefs).forEach(function(k){if(valid(saved[k]))prefs[k]=saved[k];});}catch(e){}
   C.uiPrefs={key:key,get:function(surface){return prefs[surface+'Level']||'simple';},set:function(surface,level){if(!Object.prototype.hasOwnProperty.call(prefs,surface+'Level')||!valid(level))return;prefs[surface+'Level']=level;try{g.localStorage.setItem(key,JSON.stringify(prefs));}catch(e){}},snapshot:function(){return U.clone(prefs);}};
-  var simpleFields=['concept.worldview','concept.primaryStyle','concept.primaryThemeMotif','garment.category','garment.subtype','silhouette.fit','silhouette.length','materials.primary','materials.patterns','decorations.density','palette.primary','palette.secondary','palette.accent'];
+  var simpleFields=['concept.worldview','concept.primaryStyle','concept.primaryThemeMotif','garment.category','garment.subtype','silhouette.fit','silhouette.length','materials.primary','materials.patterns','decorations.density','palette.primary','palette.secondary','palette.accent','palette.metal','palette.gem'];
   var simpleSlots=['neckline','collar','sleeves','skirt_shape','bottoms','footwear','headwear','swim_form','straps','lingerie_form','top_structure','bottom_structure','mermaid_tail_form','creature_motif','animal_hood','kigurumi_hands','kigurumi_feet','mascot_head','mascot_body','mascot_hands','mascot_feet'];
   function simpleField(path,o){
     var cat=U.byId(D.garmentCategories,o.garment.category)||{},sub=U.byId(D.garments,o.garment.subtype)||{};
@@ -15,7 +15,7 @@
     ['concept','コンセプト詳細',['concept.worldview','concept.primaryStyle','concept.primaryThemeMotif','concept.era','concept.occasion','concept.season','concept.role','concept.secondaryStyles','concept.secondaryThemeMotifs','concept.attribute.id']],
     ['structure','衣装構造・仕立て',['silhouette.fit','silhouette.length','garment.wearRole','garment.layers','silhouette.upperVolume','silhouette.lowerVolume','silhouette.waist','silhouette.symmetry']],
     ['material','素材・装飾詳細',['materials.patterns','decorations.density','materials.secondary','materials.trim','materials.transparency','materials.surface','materials.thickness','decorations.items']],
-    ['palette','配色詳細',['palette.scheme','palette.metal','palette.gem']],['styling','着こなし',['styling.items']],['condition','状態・加工',['condition.items']],['special','特殊パーツ',['specialParts']]
+    ['palette','配色詳細',['palette.scheme']],['styling','着こなし',['styling.items']],['condition','状態・加工',['condition.items']],['special','特殊パーツ',['specialParts']]
   ];
   var conceptGroups=[['secondary','副題',['secondary.motifId','secondary.customMotif','blendMode']],['context','世界・人物',['context.worldviewId','context.eraId','context.roleId','context.occasionId','context.storyStateIds']],['design','デザイン詳細',['designLanguages','interpretationMode']],['finish','反映の詳細',['exclusions','placements','foodApplications','exposure']],['specific','題材の詳細',['traditional.treatmentId','traditional.qipaoNecklineId','traditional.qipaoLengthId','traditional.qipaoSlitId','traditional.qipaoDrapeId','idolStyleId','artNouveauShapeId']]];
   function count(value){if(Array.isArray(value))return value.length;if(value&&typeof value==='object')return Object.keys(value).reduce(function(n,k){return n+count(value[k]);},0);return value!==null&&value!==undefined&&value!==''&&value!==false?1:0;}
