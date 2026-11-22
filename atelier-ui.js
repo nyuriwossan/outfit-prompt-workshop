@@ -85,12 +85,13 @@
       function current() { return C.util.byId(D.colors, C.util.getPath(C.state.outfit, path)); }
       function updateSummary() {
         var color = current();
+        custom.replaceChildren(C.palettePicker.control(role, updateSummary));
         var dot = E('i', {class: 'quick-color-dot', 'aria-hidden': 'true'});
         if (color) {
           dot.style.backgroundColor = color.hex;
           dot.style.backgroundImage = 'none'; // Do not mask a selected swatch with the unset checkerboard.
         }
-        summary.replaceChildren(dot, E('span', {text: color ? color.labelJa + ' (' + color.hex + ')' : '色見本から選ぶ'}));
+        summary.replaceChildren(dot, E('span', {text: color ? '色見本から選ぶ · ' + color.labelJa + ' (' + color.hex + ')' : '色見本から選ぶ'}));
       }
       function redraw() {
         var search = query.value.trim().toLowerCase(), active = current();
@@ -139,6 +140,8 @@
       details.appendChild(panel);
       holder.appendChild(E('span', {class: 'quick-color-title', text: label}));
       holder.appendChild(details);
+      var custom = E('div');
+      holder.appendChild(custom);
       fields.appendChild(holder);
       updateSummary();
       redraw();
@@ -160,7 +163,7 @@
     var shape = select('garment.subtype', '基本の形', garments());
     shape.disabled = !o.garment.category;
     select('silhouette.fit', '全体の沿い方', D.silhouette.fit);
-    [['primary','主役の色'],['secondary','合わせる色'],['accent','差し色']].forEach(function (pair) {
+    [['primary','主役の色'],['secondary','合わせる色'],['accent','差し色'],['metal','金属色'],['gem','宝石色']].forEach(function (pair) {
       colorPicker(pair[0], pair[1]);
     });
     select('materials.primary', '生地', D.materials.filter(function (m) { return m.category === 'material'; }));
@@ -173,8 +176,8 @@
     var o = C.state.outfit;
     var title = C.util.labelOf(D.garments, o.garment.subtype) || C.util.labelOf(D.garmentCategories, o.garment.category);
     var colors = E('div', {class: 'sample-colors'});
-    ['primary', 'secondary', 'accent'].forEach(function (key) {
-      var color = C.util.byId(D.colors, o.palette[key]);
+    D.colorRoles.forEach(function (role) {
+      var color = C.hex.swatch(o.palette, role.id);
       if (!color) return;
       var dot = E('i', {'aria-hidden': 'true'});
       dot.style.backgroundColor = color.hex;

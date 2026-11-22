@@ -113,25 +113,40 @@
   /* ============================================================
    * 部品ごとの句
    * ========================================================== */
-  function colorEn(id) { var c = U.byId(D.colors, id); return c ? c.promptEn : null; }
   function hasInspiration(o){var s=o.concept.inspiration;return !!(s&&(s.motifId||s.customMotif||s.traditional.attireId));}
+  var neutralColors = {
+    primary: 'primary garment color', secondary: 'secondary garment color',
+    accent: 'accent color', metal: 'metal color', gem: 'gem color'
+  };
 
-  /* 主色＋副色。1色なら and を作らない。 */
-  function baseColorPhrase(o) {
-    var colors=[colorEn(o.palette.primary),colorEn(o.palette.secondary)].filter(Boolean);
-    return joinAnd(hasInspiration(o)?compress(colors):colors);
+  function paletteColor(o, role, includeHex) {
+    var color = U.byId(D.colors, o.palette[role]);
+    var hex = includeHex && o.palette.hexColors && o.palette.hexColors[role];
+    if (hex) return (color ? color.promptEn : neutralColors[role]) + ' (' + hex + ')';
+    return color ? color.promptEn : null;
   }
 
-  /* 差し色・金属色・宝石色 */
-  function accentClauses(o) {
-    var out = [];
-    var used=[colorEn(o.palette.primary),colorEn(o.palette.secondary)].filter(Boolean);
-    o=U.clone(o);
-    if(hasInspiration(o))['accent','metal','gem'].forEach(function(k){var color=colorEn(o.palette[k]);if(used.indexOf(color)>=0)o.palette[k]=null;else if(color)used.push(color);});
-    if (o.palette.accent) out.push({ verb: 'accented with', text: colorEn(o.palette.accent) + ' accents', plain: colorEn(o.palette.accent) });
-    if (o.palette.metal) out.push({ verb: 'finished with', text: colorEn(o.palette.metal) + ' details', plain: colorEn(o.palette.metal) + ' details' });
-    if (o.palette.gem) out.push({ verb: 'highlighted with', text: colorEn(o.palette.gem) + ' highlights', plain: colorEn(o.palette.gem) });
-    return out;
+  function palettePhrases(o, includeHex) {
+    var used = [];
+    var deduplicate = hasInspiration(o) || includeHex && !!o.palette.hexColors;
+    function take(role) {
+      var color = paletteColor(o, role, includeHex);
+      if (!color || deduplicate && used.includes(color)) return null;
+      used.push(color);
+      return color;
+    }
+    var base = [take('primary'), take('secondary')].filter(Boolean);
+    var extras = [];
+    function extra(role, verb, noun) {
+      var color = take(role);
+      if (!color) return;
+      var text = color + ' ' + noun;
+      extras.push({verb: verb, text: text, plain: role === 'metal' ? text : color});
+    }
+    extra('accent', 'accented with', 'accents');
+    extra('metal', 'finished with', 'details');
+    extra('gem', 'highlighted with', 'highlights');
+    return {base: joinAnd(hasInspiration(o) ? compress(base) : base), extras: extras};
   }
 
   function densityAdj(o) {
@@ -255,7 +270,7 @@
     return opt.coreAdjEn;
   }
 
-  function blockIdentity(o, mode) {
+  function blockIdentity(o, baseColor) {
     var head = garmentHead(o);
     if (!head) return { short: [], detailed: [] };
     var g = U.byId(D.garments, o.garment.subtype);
@@ -281,14 +296,14 @@
 
     var common = [densityAdj(o), themeAdj(o)].concat(styles).concat([wv, role]);
     // 短縮版だけ、核へ主色・副色を入れる（"white and silver fantasy royal uniform"）
-    var shortMods = dropRedundant([densityAdj(o), baseColorPhrase(o), themeAdj(o)].concat(styles).concat([wv, role]), head);
+    var shortMods = dropRedundant([densityAdj(o), baseColor, themeAdj(o)].concat(styles).concat([wv, role]), head);
     var detailMods = dropRedundant(common, head);
 
     var detailPhrase = dropRedundant(common, headDetail).concat([headDetail]).join(' ');
     // board shorts のような複数形の核に "A ... shorts" と冠詞を付けない
     var detailCore = g && g.plural ? 'a pair of ' + detailPhrase : withArticle(detailPhrase);
     return {
-      short: [shortCore(shortMods, head, baseColorPhrase(o))],
+      short: [shortCore(shortMods, head, baseColor)],
       detailed: [detailCore]
     };
   }
@@ -299,7 +314,7 @@
     var words = mods.concat([head]);
     var i = color ? words.indexOf(color) : -1;
     if (i >= 0) {
-      var last = color.split(' ').pop().toLowerCase();
+      var last = color.replace(/ \(#[A-F0-9]{6}\)$/, '').split(' ').pop().toLowerCase();
       var next = String(words[i + 1] || '').split(/[\s-]/)[0].toLowerCase();
       if (last && last === next) {
         var rest = words.slice(0, i).concat(words.slice(i + 1));
@@ -310,9 +325,9 @@
   }
   CPW.generator.shortCore = shortCore;
 
-  function blockPalette(o) {
-    var base = baseColorPhrase(o);
-    var extras = accentClauses(o);
+  function blockPalette(o, palette, standalone) {
+    var base = palette.base;
+    var extras = palette.extras;
     if (!base && !extras.length) return { short: [], detailed: [] };
 
     // 短縮版：核が主色・副色を持っているので、ここは差し色以降だけ
@@ -321,7 +336,7 @@
     var scheme = o.palette.scheme === 'monochrome' ? '' : en(D.colorSchemes, o.palette.scheme);
     var schemeAdj = scheme ? scheme.replace(/\s*(color\s*)?palette$/, '') : null;
 
-    var sh = [];
+    var sh = standalone && base ? [base] : [];
     if (extras.length) sh.push('with ' + joinAnd(extras.map(function (e) { return e.text; })));
     if (scheme) sh.push(scheme);
 
@@ -934,16 +949,19 @@
     'condition', 'decorations', 'theme', 'conceptInspiration', 'specialParts', 'effects', 'presentation', 'background', 'rendering', 'optionalNarrative', 'quality'
   ];
 
-  function blocks(outfit) {
-    return outfitBlocks(S.normalize(outfit));
+  function blocks(outfit, includeHex) {
+    return outfitBlocks(S.normalize(outfit), false, includeHex);
   }
 
-  function outfitBlocks(o, individual) {
-    var identity = blockIdentity(o);
+  function outfitBlocks(o, individual, includeHex) {
+    var palette = palettePhrases(o, includeHex);
+    var identity = blockIdentity(o, palette.base);
+    var hex = includeHex && o.palette.hexColors;
+    var showBaseColor = hex && (hex.primary || hex.secondary);
     var headWords = words((identity.detailed[0] || '') + ' ' + (identity.short[0] || ''));
     return {
       identity: identity,
-      palette: blockPalette(o),
+      palette: blockPalette(o, palette, !identity.short.length && showBaseColor),
       silhouette: blockSilhouette(o),
       garments: blockGarments(o),
       parts: blockParts(o, headWords, individual),
@@ -985,8 +1003,8 @@
     return t.replace(/[\s,]+$/, '');
   }
 
-  function short(outfit) {
-    var b = blocks(outfit);
+  function short(outfit, includeHex) {
+    var b = blocks(outfit, includeHex);
     var list = [];
     BLOCK_ORDER.forEach(function (k) { list = list.concat(b[k].short); });
     var out = compress(list);
@@ -1017,8 +1035,8 @@
     quality: ['', '']
   };
 
-  function detailed(outfit) {
-    var b = blocks(outfit);
+  function detailed(outfit, includeHex) {
+    var b = blocks(outfit, includeHex);
     var parts_ = [];
     var lastConnector = null;
 
@@ -1042,9 +1060,9 @@
     return extra ? s + ' ' + extra : s;
   }
 
-  function markdown(outfit) {
+  function markdown(outfit, includeHex) {
     var o = S.normalize(outfit);
-    var b = outfitBlocks(o, true);
+    var b = outfitBlocks(o, true, includeHex);
     var sections = [];
     function field(label, value) { return value ? label + ': ' + value : null; }
     function section(title, rows) {
@@ -1065,9 +1083,9 @@
     section('Silhouette', b.silhouette.short);
     var palette = o.palette;
     section('Colors', [
-      field('Primary', colorEn(palette.primary)), field('Secondary', colorEn(palette.secondary)),
-      field('Accent', colorEn(palette.accent)), field('Metal', colorEn(palette.metal)),
-      field('Gem', colorEn(palette.gem)), field('Garment color scheme', en(D.colorSchemes, palette.scheme))
+      field('Primary', paletteColor(o, 'primary', includeHex)), field('Secondary', paletteColor(o, 'secondary', includeHex)),
+      field('Accent', paletteColor(o, 'accent', includeHex)), field('Metal', paletteColor(o, 'metal', includeHex)),
+      field('Gem', paletteColor(o, 'gem', includeHex)), field('Garment color scheme', en(D.colorSchemes, palette.scheme))
     ]);
     var m = o.materials;
     section('Materials', [

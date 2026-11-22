@@ -255,6 +255,7 @@
       o.name = typeof raw.name === 'string' ? raw.name : '';
       o.version = CPW.SCHEMA_VERSION;
       ['concept','garment','silhouette','materials','decorations','palette','presentation','output'].forEach(function(k){if(!util.isPlainObject(o[k]))o[k]=util.clone(base[k]);});
+      CPW.hex.cleanPalette(o.palette);
       var oldVersion=raw.version && ['0.1','0.2','0.3','0.4'].indexOf(String(raw.version))>=0;
       o.concept.inspiration=CPW.conceptFashion && !oldVersion ? CPW.conceptFashion.normalizeSelection(o.concept.inspiration) : schema.emptyInspiration();
       if(CPW.presentation)o.presentation=CPW.presentation.normalize(o.presentation);
@@ -585,6 +586,12 @@
   var DRAFT_KEY = 'cpw:draft:v1';
   var LIB_KEY = 'cpw:library:v1';
 
+  function outfitForStorage(outfit) {
+    var copy = util.clone(outfit);
+    if (copy.palette) CPW.hex.cleanPalette(copy.palette);
+    return copy;
+  }
+
   var store = (CPW.store = {
     available: function () {
       try {
@@ -612,7 +619,7 @@
       var m = schema.migrate(raw);
       return m.ok ? m.outfit : null;
     },
-    saveDraft: function (outfit) { return store._write(DRAFT_KEY, outfit); },
+    saveDraft: function (outfit) { return store._write(DRAFT_KEY, outfitForStorage(outfit)); },
     clearDraft: function () { try { global.localStorage.removeItem(DRAFT_KEY); } catch (e) {} },
 
     listOutfits: function () {
@@ -625,7 +632,7 @@
     getOutfit: function (id) { return util.byId(store.listOutfits(), id); },
     saveOutfit: function (outfit) {
       var lib = store.listOutfits();
-      var next = util.clone(outfit);
+      var next = outfitForStorage(outfit);
       next.updatedAt = util.nowISO();
       if (!next.name) next.name = '名称未設定の衣装';
       var idx = -1;
@@ -650,7 +657,7 @@
     },
 
     exportOutfit: function (outfit) {
-      return JSON.stringify({ type: 'cpw-outfit', version: CPW.SCHEMA_VERSION, exportedAt: util.nowISO(), outfit: outfit }, null, 2);
+      return JSON.stringify({ type: 'cpw-outfit', version: CPW.SCHEMA_VERSION, exportedAt: util.nowISO(), outfit: outfitForStorage(outfit) }, null, 2);
     },
     exportAll: function () {
       return JSON.stringify({ type: 'cpw-library', version: CPW.SCHEMA_VERSION, exportedAt: util.nowISO(), outfits: store.listOutfits() }, null, 2);
@@ -2014,7 +2021,7 @@
       var bar = ui.el('div', { class: 'swatch-row swatch-row--tall' });
       var any = false;
       D.colorRoles.forEach(function (r) {
-        var c = util.byId(D.colors, o.palette[r.id]);
+        var c = CPW.hex.swatch(o.palette, r.id);
         if (!c) return;
         any = true;
         var s = ui.el('span', { class: 'swatch', title: c.labelJa });
@@ -2036,7 +2043,8 @@
 
         var head = ui.el('div', { class: 'color-role-head' });
         var sw = ui.el('span', { class: 'swatch swatch--dot' });
-        if (c) sw.style.background = c.hex; else sw.classList.add('swatch--empty');
+        var current = CPW.hex.swatch(o.palette, role.id);
+        if (current) sw.style.background = current.hex; else sw.classList.add('swatch--empty');
         head.appendChild(sw);
         head.appendChild(ui.el('span', { class: 'color-role-name', text: role.labelJa }));
         head.appendChild(ui.el('span', {
@@ -2056,6 +2064,7 @@
           }
         }));
         row.appendChild(head);
+        row.appendChild(CPW.palettePicker.control(role.id, draw));
 
         if (c) {
           row.appendChild(ui.el('button', {
@@ -2320,7 +2329,7 @@
 
     var swatches = ui.el('div', { class: 'swatch-row' });
     [['primary', 70], ['secondary', 20], ['accent', 10], ['metal', 0], ['gem', 0]].forEach(function (pair) {
-      var c = util.byId(D.colors, o.palette[pair[0]]);
+      var c = CPW.hex.swatch(o.palette, pair[0]);
       if (!c) return;
       var chip = ui.el('span', { class: 'swatch', title: c.labelJa });
       chip.style.background = c.hex;
@@ -2755,7 +2764,7 @@
 
   /* ---------- 出力 ---------- */
   /* 日本語構造一覧の行。英語生成は generator.js に閉じている。 */
-  function structureLines(o) {
+  function structureLines(o, includeHex) {
     var lines = [];
     var push = function (label, value) { if (value) lines.push({ label: label, value: value }); };
     push('衣装名', o.name);
@@ -2850,7 +2859,9 @@
 
     D.colorRoles.forEach(function (r) {
       var c = util.byId(D.colors, o.palette[r.id]);
-      if (c) push(r.labelJa, c.labelJa + '（' + c.promptEn + '）');
+      var hex = includeHex && CPW.hex.normalize(o.palette.hexColors && o.palette.hexColors[r.id]);
+      var name = c ? c.labelJa + '（' + c.promptEn + '）' : '';
+      if (name || hex) push(r.labelJa, [name, hex].filter(Boolean).join(' '));
     });
     push('配色方式', util.labelOf(D.colorSchemes, o.palette.scheme));
     return lines;
@@ -2892,6 +2903,7 @@
   routes['/output'] = function (params) {
     var studioView = {section:studioSection(params && params[0]), open:{}, query:'', category:'', message:''};
     var outputTab = 'short';
+    var includeHex = store._read('cpw:showPaletteHex', false) === true;
     var host = ui.el('div', { id: 'output-host' });
 
     function draw() {
@@ -2915,10 +2927,20 @@
         }));
       });
       host.appendChild(tabs);
+      host.appendChild(ui.el('button', {
+        id: 'palette-output-mode', type: 'button', class: 'studio-toggle',
+        'aria-pressed': String(includeHex), 'aria-label': '色名にHEXを併記',
+        text: '配色の出力 · ' + (includeHex ? '色名＋HEX' : '色名のみ'),
+        onclick: function () {
+          includeHex = !includeHex;
+          store._write('cpw:showPaletteHex', includeHex);
+          draw();
+        }
+      }));
 
       var resultCard;
       if (outputTab === 'structure') {
-        var lines = structureLines(o);
+        var lines = structureLines(o, includeHex);
         var table = ui.el('dl', { class: 'struct' });
         lines.forEach(function (l) {
           table.appendChild(ui.el('dt', { text: l.label }));
@@ -2933,7 +2955,7 @@
           }
         }));
       } else {
-        var text = gen[outputTab](o);
+        var text = gen[outputTab](o, includeHex);
         var label = { short: '短縮版', detailed: '詳細版', markdown: 'Markdown' }[outputTab];
         resultCard = ui.el('div', { class: 'card' });
         if (text) resultCard.appendChild(ui.el(outputTab === 'markdown' ? 'pre' : 'p', { class: 'prompt-text', id: 'prompt-text', text: text }));
@@ -2941,7 +2963,7 @@
         host.appendChild(ui.el('button', {
           type: 'button', class: 'btn btn--primary', 'data-fkey': 'copy:' + outputTab,
           text: label + 'をコピー',
-          onclick: function () { copyText(gen[outputTab](state.outfit), label); }
+          onclick: function () { copyText(gen[outputTab](state.outfit, includeHex), label); }
         }));
       }
 
@@ -2980,7 +3002,7 @@
         state.dirty = true;
         autosave();
         if (outputTab !== 'structure') {
-          var result = gen[outputTab](state.outfit);
+          var result = gen[outputTab](state.outfit, includeHex);
           resultCard.replaceChildren(ui.el(outputTab === 'markdown' ? 'pre' : 'p',
             {class: 'prompt-text', id: 'prompt-text', text: result || gen.EMPTY_JA}));
         }
@@ -3037,7 +3059,7 @@
 
       var sw = ui.el('div', { class: 'swatch-row swatch-row--sm' });
       ['primary', 'secondary', 'accent', 'metal', 'gem'].forEach(function (k) {
-        var c = util.byId(D.colors, o.palette[k]);
+        var c = CPW.hex.swatch(o.palette, k);
         if (!c) return;
         var s = ui.el('span', { class: 'swatch', title: c.labelJa });
         s.style.background = c.hex;

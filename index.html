@@ -17,6 +17,25 @@
 
 <main id="app" class="app"></main>
 
+<dialog id="hex-dialog" class="hex-dialog" aria-labelledby="hex-dialog-title">
+    <div class="hex-dialog-head"><h2 id="hex-dialog-title">HEXカラー</h2></div>
+    <div class="hex-dialog-body" id="hex-dialog-body">
+      <div class="hex-preview"><span id="hex-preview-swatch" class="hex-preview-swatch" aria-hidden="true"></span><div><strong id="hex-preview-code" aria-live="polite"></strong><small id="hex-preview-name"></small></div></div>
+      <div class="hex-sv" id="hex-sv" tabindex="0" role="application" aria-label="彩度と明るさ。ドラッグ、または矢印キーで調整"><div class="hex-sv-thumb" id="hex-sv-thumb"></div></div>
+      <label class="hex-slider"><span>色相<output id="hex-h-val" for="hex-h"></output></span><input id="hex-h" class="hex-range hue" type="range" min="0" max="359" step="1"></label>
+      <label class="hex-slider"><span>彩度<output id="hex-s-val" for="hex-s"></output></span><input id="hex-s" class="hex-range" type="range" min="0" max="100" step="1"></label>
+      <label class="hex-slider"><span>明るさ<output id="hex-v-val" for="hex-v"></output></span><input id="hex-v" class="hex-range" type="range" min="0" max="100" step="1"></label>
+      <div class="hex-dialog-row">
+        <label class="hex-field"><span>HEXコード</span><input id="hex-dialog-input" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" maxlength="9" placeholder="#RRGGBB" aria-describedby="hex-dialog-message"></label>
+        <label class="hex-native"><input id="hex-native" type="color" aria-label="端末のカラーピッカーを開く"><span>端末のピッカー</span></label>
+      </div>
+      <p id="hex-dialog-message" class="hex-message" data-kind="error" role="alert" hidden></p>
+      <button type="button" class="btn hex-reference" id="hex-reference" hidden><span id="hex-reference-swatch" class="quick-color-tile" aria-hidden="true"></span>色名の色見本に合わせる</button>
+      <p class="field-note">「この色を設定」を押すと、この衣装にHEXを保存します。完成画面で併記を選べます。</p>
+    </div>
+    <div class="hex-dialog-actions"><button type="button" class="btn" data-hex-cancel>キャンセル</button><button type="button" class="btn btn--danger" id="hex-unset" hidden>HEXを解除</button><button type="button" class="btn btn--primary" id="hex-apply">この色を設定</button></div>
+  </dialog>
+
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <noscript><p class="p" style="padding:16px">この工房はJavaScriptで動作します。ブラウザの設定で有効にしてから開き直してください。</p></noscript>
@@ -49,8 +68,10 @@
 <script src="data/concept-constraints.js"></script>
 
 <!-- 本体 -->
+<script src="palette-hex.js"></script>
 <script src="app.js"></script>
 <script src="garment-catalog.js"></script>
+<script src="palette-picker.js"></script>
 <script src="atelier-ui.js"></script>
 <script src="generator.js"></script>
 <script src="advisor.js"></script>
