@@ -7,7 +7,7 @@ const {load,root} = require('./test.cjs');
 const [url='http://localhost:8000',shots,baseline] = process.argv.slice(2);
 const C = load();
 const reference = baseline ? require(path.resolve(baseline,'scripts/test.cjs')).load() : C;
-const categories = ['neckline','sleeves','cuffs','top_structure','bottom_structure','straps','waist','garter'];
+const categories = ['neckline','sleeves','cuffs','top_structure','bottom_structure','straps','waist','garter','collar','cutout'];
 const assets = path.join(root,'assets/garment-parts');
 assert.deepEqual([...C.garmentCatalog.slots].sort(),categories.slice().sort());
 assert.deepEqual(fs.readdirSync(assets).sort(),categories.slice().sort());
@@ -75,8 +75,9 @@ async function run() {
           assert(await button.evaluate(el=>el===document.activeElement));
           assert(Math.abs(await page.evaluate(()=>scrollY)-before)<3,'selection scroll: '+o.id);
           const [saved,short,detailed] = await page.evaluate(id=>[CPW.state.outfit.parts[id],CPW.generator.short(CPW.state.outfit),CPW.generator.detailed(CPW.state.outfit)],id);
-          assert.equal(saved,o.id);
-          const expected = reference.schema.normalize({...initial,parts:{[id]:o.id}});
+          const value = slot.multi ? [{id:o.id,layer:'main'}] : o.id;
+          assert.deepEqual(saved,value);
+          const expected = reference.schema.normalize({...initial,parts:{[id]:value}});
           assert.equal(short,reference.generator.short(expected),o.id);
           assert.equal(detailed,reference.generator.detailed(expected),o.id);
           await page.keyboard.press('Space');
@@ -84,8 +85,39 @@ async function run() {
         }
         if (id==='sleeves') await field(id).locator('select').selectOption('ボリューム');
         if (['neckline','sleeves','cuffs','top_structure','bottom_structure'].includes(id)) await shot(id,id);
+        if (id==='collar') {
+          await shot('collar-overview',id);
+          await field(id).locator('select').selectOption('シャツ系');
+          await shot('collar-shirts',id);
+          await field(id).locator('select').selectOption('テーラード');
+          await shot('collar-lapels',id);
+        }
+        if (id==='cutout') {
+          await shot('cutout-front',id);
+          await field(id).locator('select').selectOption('背面');
+          await shot('cutout-back',id);
+        }
         await head(id).click();
       }
+      await open('collar');
+      await card('collar','peak_lapels').click();
+      await open('cutout');
+      await card('cutout','open_back').click();
+      const outer = field('cutout').locator('[data-fkey="layer:cutout:open_back:outer"]');
+      await outer.click();
+      await field('cutout').locator('select').selectOption('胸元・肩');
+      await card('cutout','small_keyhole').click();
+      const layered = [{id:'open_back',layer:'outer'},{id:'small_keyhole',layer:'main'}];
+      assert.deepEqual(await page.evaluate(()=>CPW.state.outfit.parts.cutout),layered);
+      await shot('cutout-selected','cutout');
+      await card('cutout','small_keyhole').click();
+      assert.deepEqual(await page.evaluate(()=>CPW.state.outfit.parts.cutout),layered.slice(0,1));
+      await card('cutout','small_keyhole').click();
+      const expected = reference.schema.normalize({...initial,parts:{collar:'peak_lapels',cutout:layered}});
+      assert.deepEqual(await page.evaluate(()=>[CPW.generator.short(CPW.state.outfit),CPW.generator.detailed(CPW.state.outfit)]),
+        [reference.generator.short(expected),reference.generator.detailed(expected)]);
+      await head('cutout').click();
+      await head('collar').click();
       await open('neckline');
       const search=field('neckline').locator('input');
       await search.fill('Vネック');
@@ -104,11 +136,17 @@ async function run() {
       await structure.click();
       await open('neckline');
       assert.equal(await card('neckline','deep_v_neck').getAttribute('aria-pressed'),'true');
+      await open('collar');
+      await open('cutout');
+      assert.equal(await card('collar','peak_lapels').getAttribute('aria-pressed'),'true');
+      assert.equal(await card('cutout','small_keyhole').getAttribute('aria-pressed'),'true');
+      assert.equal(await outer.getAttribute('aria-pressed'),'true');
       await page.evaluate(()=>CPW.state.saveToLibrary());
+      assert.deepEqual(await page.evaluate(()=>CPW.store.listOutfits()[0].parts.cutout),layered);
       assert.equal(await page.evaluate(()=>CPW.store.listOutfits()[0].parts.neckline),'deep_v_neck');
       await page.goto(url+'/#/library');
       const old = {version:'0.4',name:'旧JSON',concept:{},garment:{category:'lingerie'},
-        parts:{topStructure:'bandeau',bottomStructure:'boyshorts'}};
+        parts:{topStructure:'bandeau',bottomStructure:'boyshorts',collar:'wing_collar',cutout:['waist_cutouts',{id:'open_back',layer:'inner'}]}};
       await page.locator('#import-file').setInputFiles({name:'old.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(old))});
       page.once('dialog', dialog=>dialog.accept());
       await page.locator('.card').filter({has:page.getByRole('heading',{name:'旧JSON'})}).getByRole('button',{name:'開く'}).click();
@@ -120,6 +158,24 @@ async function run() {
       assert.equal(await card('bottom_structure','boyshorts').getAttribute('aria-pressed'),'true');
       await page.route('**/assets/garment-parts/**',route=>route.abort());
       await page.reload();
+      for (const [id,oldId,nextId] of [['collar','wing_collar','spread_collar'],['cutout','waist_cutouts','deep_side_openings']]) {
+        await open(id);
+        assert.equal(await card(id,oldId).getAttribute('aria-pressed'),'true');
+        await card(id,nextId).scrollIntoViewIfNeeded();
+        await card(id,nextId).locator('.garment-unavailable').waitFor();
+        await field(id).getByRole('button',{name:'文字一覧'}).click();
+        await card(id,nextId).click();
+        assert.equal(await card(id,nextId).getAttribute('aria-pressed'),'true');
+        if (id==='cutout') {
+          assert.equal(await card(id,oldId).getAttribute('aria-pressed'),'true');
+          assert.equal(await field(id).locator('[data-fkey="layer:cutout:open_back:inner"]').getAttribute('aria-pressed'),'true');
+          await field(id).locator('select').selectOption('脇・ウエスト');
+          await shot('cutout-text',id);
+        }
+        await field(id).locator('[data-fold-clear]').click();
+        assert.equal(await page.evaluate(id=>CPW.state.outfit.parts[id],id),undefined);
+        await head(id).click();
+      }
       await open('cuffs');
       await card('cuffs','plain_cuffs').scrollIntoViewIfNeeded();
       await card('cuffs','plain_cuffs').locator('.garment-unavailable').waitFor();
@@ -131,6 +187,16 @@ async function run() {
       await shot('text-fallback','cuffs');
       await field('cuffs').locator('[data-fold-clear]').click();
       assert.equal(await page.evaluate(()=>CPW.state.outfit.parts.cuffs),undefined);
+      await page.locator('#quick-garment-category').selectOption('swimwear');
+      await page.locator('[data-ui-level="advanced"]').click();
+      if(await structure.getAttribute('aria-expanded')==='false') await structure.click();
+      await open('cutout');
+      await open('back');
+      const coveredBack = field('back').locator('[data-fkey="part:back:covered_back"]');
+      await coveredBack.click();
+      assert.equal(await card('cutout','open_back').count(),0);
+      await coveredBack.click();
+      assert.equal(await card('cutout','open_back').count(),1);
       assert.deepEqual(errors,[]);
       await page.close();
       console.log(width+'px passed');

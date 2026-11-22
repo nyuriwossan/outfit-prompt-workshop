@@ -1164,9 +1164,54 @@
       labelJa: slot.labelJa, noteJa: slot.noteJa, fkey: 'part:' + slot.id,
       items: function () { return slot.options.filter(function (opt) { return CPW.partOptionAllowed(state.outfit, slot.id, opt); }); },
       get: function () { return state.outfit.parts[slot.id] || null; },
-      set: function (id, sel) { state.setPart(slot.id, sel ? null : id); }
+      set: function (id, sel) {
+        state.setPart(slot.id, sel ? null : id);
+        // A swimwear back choice changes which back openings are available in the adjacent catalog.
+        if (slot.id === 'back' && state.outfit.garment.category === 'swimwear') {
+          var cutout = document.querySelector('[data-field="part:cutout"]');
+          if (cutout) cutout.replaceWith(renderSlotField(util.byId(D.partSlots,'cutout')));
+        }
+      }
     });
   }
+
+  function toggleLayeredPart(slot, id) {
+    var current = state.outfit.parts[slot.id] || [];
+    var selected = current.some(function (item) { return item.id === id; });
+    state.setPart(slot.id, selected ? current.filter(function (item) { return item.id !== id; })
+      : current.concat({id:id, layer:'main'}));
+  }
+
+  function renderPartLayers(body, slot, redraw) {
+    var val = state.outfit.parts[slot.id] || [];
+    if (!val.length) return;
+    body.appendChild(ui.el('p', { class: 'field-sub', text: 'どの層に着る？' }));
+    val.forEach(function (item) {
+      var opt = util.byId(slot.options, item.id);
+      var line = ui.el('div', { class: 'layer-line' }, [
+        ui.el('span', { class: 'layer-name', text: opt ? opt.labelJa : item.id })
+      ]);
+      var lrow = ui.el('div', { class: 'chips chips--tight', role: 'group', 'aria-label': (opt ? opt.labelJa : item.id) + 'の層' });
+      D.partLayers.forEach(function (L) {
+        var on = item.layer === L.id;
+        var key = 'layer:' + slot.id + ':' + item.id + ':' + L.id;
+        var b = ui.el('button', {
+          type: 'button', class: 'chip chip--sm' + (on ? ' is-selected' : ''),
+          'aria-pressed': on ? 'true' : 'false', 'data-fkey': key, text: L.labelJa
+        });
+        b.addEventListener('click', function () {
+          var next = (state.outfit.parts[slot.id] || []).map(function (v) { return v.id === item.id ? { id: v.id, layer: L.id } : v; });
+          state.setPart(slot.id, next);
+          redraw(); focusBack(body, key);
+        });
+        lrow.appendChild(b);
+      });
+      line.appendChild(lrow);
+      body.appendChild(line);
+    });
+    body.appendChild(ui.el('p', { class: 'field-note', text: '同じ層で似たパーツが重なると、重複のヒントが表示されます。' }));
+  }
+  CPW.layeredParts = {toggle:toggleLayeredPart, renderLayers:renderPartLayers};
 
   /* 複数選択スロット：選んだものごとに層（内側／主衣装／外側）を指定できる */
   function renderMultiSlot(slot) {
@@ -1200,42 +1245,14 @@
           'aria-pressed': sel ? 'true' : 'false', 'data-fkey': key, text: o.labelJa
         });
         b.addEventListener('click', function () {
-          var next = current().slice();
-          if (sel) next = next.filter(function (v) { return v.id !== o.id; });
-          else next.push({ id: o.id, layer: 'main' });
-          state.setPart(slot.id, next);
+          toggleLayeredPart(slot, o.id);
           draw(); focusBack(body, key);
         });
         row.appendChild(b);
       });
       body.appendChild(row);
 
-      if (!val.length) return;
-      body.appendChild(ui.el('p', { class: 'field-sub', text: 'どの層に着る？' }));
-      val.forEach(function (item) {
-        var opt = util.byId(slot.options, item.id);
-        var line = ui.el('div', { class: 'layer-line' }, [
-          ui.el('span', { class: 'layer-name', text: opt ? opt.labelJa : item.id })
-        ]);
-        var lrow = ui.el('div', { class: 'chips chips--tight' });
-        D.partLayers.forEach(function (L) {
-          var on = item.layer === L.id;
-          var key = 'layer:' + slot.id + ':' + item.id + ':' + L.id;
-          var b = ui.el('button', {
-            type: 'button', class: 'chip chip--sm' + (on ? ' is-selected' : ''),
-            'aria-pressed': on ? 'true' : 'false', 'data-fkey': key, text: L.labelJa
-          });
-          b.addEventListener('click', function () {
-            var next = current().map(function (v) { return v.id === item.id ? { id: v.id, layer: L.id } : v; });
-            state.setPart(slot.id, next);
-            draw(); focusBack(body, key);
-          });
-          lrow.appendChild(b);
-        });
-        line.appendChild(lrow);
-        body.appendChild(line);
-      });
-      body.appendChild(ui.el('p', { class: 'field-note', text: '同じ層に似たものを重ねると重複として警告するよ（Phase 4）。層を分ければ重ね着として扱う。' }));
+      renderPartLayers(body, slot, draw);
     }
     var drawBody = draw;
     draw = function () { drawBody(); shell.refresh(); };
