@@ -1,6 +1,7 @@
 # 衣装図鑑の素材対応表
 
 保存先は `parts.<カテゴリID>`。図は共通素体と項目別の型紙から生成します。
+襟の形は単一のID、カットアウト・開口は選んだ順の `[{id, layer}]` で保存します。各項目の層は `inner`・`main`・`outer` のいずれかです。
 表示名・分類・英文は既存の衣装データを参照します。再生成は `node scripts/build-garment-plates.cjs`。
 
 | カテゴリ | カテゴリID | 表示名 | 保存ID | SVG |
@@ -30,6 +31,31 @@
 | 襟・胸元 | neckline | 切り込み入りの胸元 | split_neckline | [split_neckline.svg](../assets/garment-parts/neckline/split_neckline.svg) |
 | 襟・胸元 | neckline | 小さな角切りの胸元 | notch_neckline | [notch_neckline.svg](../assets/garment-parts/neckline/notch_neckline.svg) |
 | 襟・胸元 | neckline | 開いたシャツの胸元 | open_neckline | [open_neckline.svg](../assets/garment-parts/neckline/open_neckline.svg) |
+| 襟の形 | collar | 立ち襟 | high_standing_collar | [high_standing_collar.svg](../assets/garment-parts/collar/high_standing_collar.svg) |
+| 襟の形 | collar | 取り外し立ち襟 | detachable_standing_collar | [detachable_standing_collar.svg](../assets/garment-parts/collar/detachable_standing_collar.svg) |
+| 襟の形 | collar | 広いラペル | wide_lapel | [wide_lapel.svg](../assets/garment-parts/collar/wide_lapel.svg) |
+| 襟の形 | collar | フリル襟 | ruffled_collar | [ruffled_collar.svg](../assets/garment-parts/collar/ruffled_collar.svg) |
+| 襟の形 | collar | セーラー襟 | sailor_collar | [sailor_collar.svg](../assets/garment-parts/collar/sailor_collar.svg) |
+| 襟の形 | collar | 襟なし | no_collar | [no_collar.svg](../assets/garment-parts/collar/no_collar.svg) |
+| 襟の形 | collar | 標準のシャツ襟 | point_collar | [point_collar.svg](../assets/garment-parts/collar/point_collar.svg) |
+| 襟の形 | collar | 開きの広いシャツ襟 | spread_collar | [spread_collar.svg](../assets/garment-parts/collar/spread_collar.svg) |
+| 襟の形 | collar | ボタンダウン襟 | button_down_collar | [button_down_collar.svg](../assets/garment-parts/collar/button_down_collar.svg) |
+| 襟の形 | collar | バンドカラー | band_collar | [band_collar.svg](../assets/garment-parts/collar/band_collar.svg) |
+| 襟の形 | collar | マンダリンカラー | mandarin_collar | [mandarin_collar.svg](../assets/garment-parts/collar/mandarin_collar.svg) |
+| 襟の形 | collar | 低い立ち襟 | stand_collar | [stand_collar.svg](../assets/garment-parts/collar/stand_collar.svg) |
+| 襟の形 | collar | ウィングカラー | wing_collar | [wing_collar.svg](../assets/garment-parts/collar/wing_collar.svg) |
+| 襟の形 | collar | 開襟 | open_collar | [open_collar.svg](../assets/garment-parts/collar/open_collar.svg) |
+| 襟の形 | collar | ピーターパンカラー | peter_pan_collar | [peter_pan_collar.svg](../assets/garment-parts/collar/peter_pan_collar.svg) |
+| 襟の形 | collar | 丸い襟先 | rounded_collar | [rounded_collar.svg](../assets/garment-parts/collar/rounded_collar.svg) |
+| 襟の形 | collar | ショールカラー | shawl_collar | [shawl_collar.svg](../assets/garment-parts/collar/shawl_collar.svg) |
+| 襟の形 | collar | 細いラペル | narrow_lapels | [narrow_lapels.svg](../assets/garment-parts/collar/narrow_lapels.svg) |
+| 襟の形 | collar | ノッチドラペル | notched_lapels | [notched_lapels.svg](../assets/garment-parts/collar/notched_lapels.svg) |
+| 襟の形 | collar | ピークドラペル | peak_lapels | [peak_lapels.svg](../assets/garment-parts/collar/peak_lapels.svg) |
+| 襟の形 | collar | ショールラペル | shawl_lapels | [shawl_lapels.svg](../assets/garment-parts/collar/shawl_lapels.svg) |
+| 襟の形 | collar | 大きな襟 | oversized_collar | [oversized_collar.svg](../assets/garment-parts/collar/oversized_collar.svg) |
+| 襟の形 | collar | レース襟 | lace_collar | [lace_collar.svg](../assets/garment-parts/collar/lace_collar.svg) |
+| 襟の形 | collar | 毛皮縁の襟 | fur_trimmed_collar | [fur_trimmed_collar.svg](../assets/garment-parts/collar/fur_trimmed_collar.svg) |
+| 襟の形 | collar | 切り込みのある襟 | split_collar | [split_collar.svg](../assets/garment-parts/collar/split_collar.svg) |
 | 袖 | sleeves | 袖なし | sleeveless | [sleeveless.svg](../assets/garment-parts/sleeves/sleeveless.svg) |
 | 袖 | sleeves | 半袖 | short_sleeves | [short_sleeves.svg](../assets/garment-parts/sleeves/short_sleeves.svg) |
 | 袖 | sleeves | 細い長袖 | fitted_long_sleeves | [fitted_long_sleeves.svg](../assets/garment-parts/sleeves/fitted_long_sleeves.svg) |
@@ -109,3 +135,24 @@
 | ガーター | garter | ガーターベルト | garter_belt | [garter_belt.svg](../assets/garment-parts/garter/garter_belt.svg) |
 | ガーター | garter | ガーター飾り | garter_details | [garter_details.svg](../assets/garment-parts/garter/garter_details.svg) |
 | ガーター | garter | なし | no_garter | [no_garter.svg](../assets/garment-parts/garter/no_garter.svg) |
+| カットアウト・開口 | cutout | 小さなキーホール | small_keyhole | [small_keyhole.svg](../assets/garment-parts/cutout/small_keyhole.svg) |
+| カットアウト・開口 | cutout | 胸元の縦長キーホール | chest_keyhole | [chest_keyhole.svg](../assets/garment-parts/cutout/chest_keyhole.svg) |
+| カットアウト・開口 | cutout | 肩の開口 | shoulder_cutouts | [shoulder_cutouts.svg](../assets/garment-parts/cutout/shoulder_cutouts.svg) |
+| カットアウト・開口 | cutout | 肩先の開口 | cold_shoulder_cutouts | [cold_shoulder_cutouts.svg](../assets/garment-parts/cutout/cold_shoulder_cutouts.svg) |
+| カットアウト・開口 | cutout | 背面上部の開口 | upper_back_cutout | [upper_back_cutout.svg](../assets/garment-parts/cutout/upper_back_cutout.svg) |
+| カットアウト・開口 | cutout | オープンバック | open_back | [open_back.svg](../assets/garment-parts/cutout/open_back.svg) |
+| カットアウト・開口 | cutout | 低い背あき | low_back | [low_back.svg](../assets/garment-parts/cutout/low_back.svg) |
+| カットアウト・開口 | cutout | 背面を覆わない構造 | backless | [backless.svg](../assets/garment-parts/cutout/backless.svg) |
+| カットアウト・開口 | cutout | 脇のカットアウト | side_cutouts | [side_cutouts.svg](../assets/garment-parts/cutout/side_cutouts.svg) |
+| カットアウト・開口 | cutout | 深い脇あき | deep_side_openings | [deep_side_openings.svg](../assets/garment-parts/cutout/deep_side_openings.svg) |
+| カットアウト・開口 | cutout | 袖下のカットアウト | underarm_cutouts | [underarm_cutouts.svg](../assets/garment-parts/cutout/underarm_cutouts.svg) |
+| カットアウト・開口 | cutout | 腰のカットアウト | waist_cutouts | [waist_cutouts.svg](../assets/garment-parts/cutout/waist_cutouts.svg) |
+| カットアウト・開口 | cutout | 中央のカットアウト | midriff_cutout | [midriff_cutout.svg](../assets/garment-parts/cutout/midriff_cutout.svg) |
+| カットアウト・開口 | cutout | 幾何学カットアウト | geometric_cutouts | [geometric_cutouts.svg](../assets/garment-parts/cutout/geometric_cutouts.svg) |
+| カットアウト・開口 | cutout | ひし形カットアウト | diamond_cutout | [diamond_cutout.svg](../assets/garment-parts/cutout/diamond_cutout.svg) |
+| カットアウト・開口 | cutout | 円形カットアウト | circular_cutout | [circular_cutout.svg](../assets/garment-parts/cutout/circular_cutout.svg) |
+| カットアウト・開口 | cutout | 非対称カットアウト | asymmetric_cutout | [asymmetric_cutout.svg](../assets/garment-parts/cutout/asymmetric_cutout.svg) |
+| カットアウト・開口 | cutout | 脇が開いたパネル | side_open_panels | [side_open_panels.svg](../assets/garment-parts/cutout/side_open_panels.svg) |
+| カットアウト・開口 | cutout | 脇を覆わない構造 | open_sides | [open_sides.svg](../assets/garment-parts/cutout/open_sides.svg) |
+| カットアウト・開口 | cutout | 重ねた開口パネル | layered_cutout_panels | [layered_cutout_panels.svg](../assets/garment-parts/cutout/layered_cutout_panels.svg) |
+| カットアウト・開口 | cutout | メッシュ入りカットアウト | mesh_inset_cutout | [mesh_inset_cutout.svg](../assets/garment-parts/cutout/mesh_inset_cutout.svg) |

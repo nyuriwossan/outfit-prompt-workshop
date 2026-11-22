@@ -4,10 +4,13 @@ const path = require('node:path');
 const {root, load} = require('./test.cjs');
 const categories = {
   ...require('./garment-plates/bodice.cjs'),
+  collar:require('./garment-plates/collars.cjs'),
+  cutout:require('./garment-plates/cutouts.cjs'),
   sleeves:require('./garment-plates/sleeves.cjs'),
   ...require('./garment-plates/finishes.cjs')
 };
 const rows = ['# 衣装図鑑の素材対応表','','保存先は `parts.<カテゴリID>`。図は共通素体と項目別の型紙から生成します。',
+  '襟の形は単一のID、カットアウト・開口は選んだ順の `[{id, layer}]` で保存します。各項目の層は `inner`・`main`・`outer` のいずれかです。',
   '表示名・分類・英文は既存の衣装データを参照します。再生成は `node scripts/build-garment-plates.cjs`。','',
   '| カテゴリ | カテゴリID | 表示名 | 保存ID | SVG |','|---|---|---|---|---|'];
 const slots = load().data.partSlots.filter(s=>Object.hasOwn(categories,s.id));
